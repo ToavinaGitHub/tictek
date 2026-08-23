@@ -574,6 +574,137 @@ p { color: var(--text-dim); }
 .qa-card p { font-size: 14.5px; margin: 0; }
 
 
+/*** Pricing ***/
+.pricing-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface);
+    padding: 30px;
+    transition: border-color .25s, transform .25s;
+}
+
+.pricing-card:hover { border-color: var(--border-strong); transform: translateY(-2px); }
+
+.pricing-card.is-featured {
+    border-color: rgba(0, 240, 255, .4);
+    background: linear-gradient(180deg, rgba(0, 102, 255, .08), rgba(0, 240, 255, .03));
+    box-shadow: 0 0 32px rgba(0, 240, 255, .1);
+}
+
+.pricing-ribbon {
+    position: absolute;
+    top: -12px;
+    left: 30px;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: #04070D;
+    background: linear-gradient(90deg, var(--blue), var(--cyan));
+    border-radius: 999px;
+    padding: 5px 14px;
+}
+
+.pricing-head { margin-bottom: 6px; }
+.pricing-card .icon-tag { margin-bottom: 18px; }
+.pricing-card.is-featured .pricing-head { margin-top: 10px; }
+.pricing-card h4 { font-size: 20px; margin-bottom: 6px; }
+
+.pricing-price {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--cyan);
+    margin-bottom: 12px;
+}
+
+.pricing-card .desc { color: var(--text-dim); font-size: 14.5px; margin-bottom: 0; }
+
+.pricing-features {
+    flex: 1;
+    list-style: none;
+    margin: 22px 0 26px;
+    padding: 0;
+    border-top: 1px dashed var(--border);
+    padding-top: 20px;
+}
+
+.pricing-features li {
+    position: relative;
+    padding-left: 26px;
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 12px;
+}
+
+.pricing-features li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--success);
+    font-weight: 700;
+}
+
+
+/*** Quote request form ***/
+.quote-form-wrap {
+    max-width: 760px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface);
+    padding: 40px;
+}
+
+.quote-form .form-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 8px;
+}
+
+.quote-form .form-control,
+.quote-form .form-select {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--text);
+    padding: 12px 14px;
+    font-size: 14.5px;
+}
+
+.quote-form .form-control::placeholder { color: var(--text-faint); }
+
+.quote-form .form-control:focus,
+.quote-form .form-select:focus {
+    background: var(--surface-2);
+    border-color: var(--cyan);
+    color: var(--text);
+    box-shadow: 0 0 0 3px rgba(0, 240, 255, .12);
+}
+
+.quote-form .form-select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%2300F0FF' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right .9rem center;
+    background-size: 14px 10px;
+}
+
+.quote-form .micro { font-family: var(--font-mono); font-size: 12.5px; color: var(--text-faint); }
+
+@media (max-width: 575.98px) {
+    .quote-form-wrap { padding: 26px; }
+}
+
+
 /*** CTA final ***/
 .cta-final {
     border: 1px solid var(--border);

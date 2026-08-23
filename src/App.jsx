@@ -8,6 +8,8 @@ import Methodology from './components/Methodology';
 import TechStack from './components/TechStack';
 import QASection from './components/QASection';
 import CaseStudies from './components/CaseStudies';
+import Pricing from './components/Pricing';
+import QuoteRequest from './components/QuoteRequest';
 import CtaFinal from './components/CtaFinal';
 import Footer from './components/Footer';
 import BackToTop from './components/BackToTop';
@@ -26,6 +28,8 @@ export default function App() {
       <TechStack />
       <QASection />
       <CaseStudies />
+      <Pricing />
+      <QuoteRequest />
       <CtaFinal />
       <Footer />
       <BackToTop />
