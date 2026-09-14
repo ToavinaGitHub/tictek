@@ -12,10 +12,15 @@ export const navLinks = [
 
 export const contactInfo = {
   phone: '+261 38 47 110 37',
-  email: 'team.tictek.IT@outlook.com',
+  email: 'andiejessica2020@gmail.com',
   address: 'Antananarivo, Madagascar',
 };
 
+// No longer used to build a mailto: link — QuoteRequest now sends through
+// the portfolio's EmailJS template (see .env), whose "To Email" is fixed on
+// the EmailJS dashboard. Kept as a reminder of the intended recipient in
+// case that template's recipient needs to be updated or a dedicated
+// template is created for tictek later.
 export const quoteEmail = 'rtoavina.andriantahiry@gmail.com';
 
 export const projectTypes = [
