@@ -1,9 +1,12 @@
-import { hero } from '../data/content';
-import { contactInfo } from '../data/content';
+import { contactInfo, heroPanels } from '../data/content';
+import { usePreferences } from '../context/PreferencesContext';
 import Reveal from './Reveal';
 import HeroVisual from './HeroVisual';
 
 export default function Hero() {
+  const { t } = usePreferences();
+  const hero = t.hero;
+
   return (
     <div id="hero" className="hero">
       <div className="container">
@@ -22,7 +25,7 @@ export default function Hero() {
             </div>
           </Reveal>
           <Reveal as="div" className="col-lg-6" delay={0.3}>
-            <HeroVisual panels={hero.panels} />
+            <HeroVisual panels={heroPanels} />
           </Reveal>
         </div>
       </div>

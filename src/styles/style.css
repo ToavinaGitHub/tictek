@@ -1,4 +1,4 @@
-/********** TicTek — Design System **********/
+/********** TicTek · Design System **********/
 :root {
     --bg: #05070D;
     --surface: #0D1424;
@@ -12,6 +12,17 @@
     --cyan: #00F0FF;
     --success: #21D07A;
     --warning: #FFB020;
+    --danger: #FF5C6C;
+    --on-accent: #04070D;
+    --nav-bg: rgba(5, 7, 13, .72);
+    --nav-bg-solid: rgba(5, 7, 13, .92);
+    --panel-bg: rgba(13, 20, 36, .65);
+    --node-fill: rgba(234, 240, 251, .9);
+    --card-sheen: rgba(255, 255, 255, .03);
+    --ghost-bg: rgba(255, 255, 255, .02);
+    --glow-cyan: rgba(0, 240, 255, .10);
+    --glow-blue: rgba(0, 102, 255, .12);
+    color-scheme: dark;
     --font-display: 'Unbounded', sans-serif;
     --font-body: 'Manrope', sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
@@ -22,6 +33,33 @@
     --secondary: var(--cyan);
     --light: var(--surface);
     --dark: var(--bg);
+}
+
+/* Light theme: same accents, darkened so text stays readable on white */
+:root[data-theme="light"] {
+    --bg: #F4F7FC;
+    --surface: #FFFFFF;
+    --surface-2: #EEF2F9;
+    --border: rgba(16, 32, 64, .10);
+    --border-strong: rgba(16, 32, 64, .22);
+    --text: #0B1220;
+    --text-dim: #45516B;
+    --text-faint: #636E87;
+    --blue: #0057E0;
+    --cyan: #007FA8;
+    --success: #0E8A4F;
+    --warning: #A86400;
+    --danger: #C62839;
+    --on-accent: #FFFFFF;
+    --nav-bg: rgba(244, 247, 252, .78);
+    --nav-bg-solid: rgba(244, 247, 252, .95);
+    --panel-bg: rgba(255, 255, 255, .8);
+    --node-fill: #0B1220;
+    --card-sheen: rgba(255, 255, 255, .9);
+    --ghost-bg: rgba(16, 32, 64, .02);
+    --glow-cyan: rgba(0, 160, 210, .10);
+    --glow-blue: rgba(0, 87, 224, .08);
+    color-scheme: light;
 }
 
 * { box-sizing: border-box; }
@@ -35,6 +73,7 @@ body {
     line-height: 1.65;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
+    transition: background-color .3s, color .3s;
 }
 
 ::selection { background: var(--blue); color: #fff; }
@@ -51,8 +90,8 @@ a:hover { color: var(--text); }
     z-index: 0;
     pointer-events: none;
     background:
-        radial-gradient(55vw 38vw at 88% -6%, rgba(0, 240, 255, .10), transparent 60%),
-        radial-gradient(48vw 34vw at -8% 18%, rgba(0, 102, 255, .12), transparent 60%);
+        radial-gradient(55vw 38vw at 88% -6%, var(--glow-cyan), transparent 60%),
+        radial-gradient(48vw 34vw at -8% 18%, var(--glow-blue), transparent 60%);
 }
 
 
@@ -143,19 +182,19 @@ p { color: var(--text-dim); }
 .btn-primary {
     background: linear-gradient(90deg, var(--blue), var(--cyan));
     border: none;
-    color: #04070D !important;
+    color: var(--on-accent) !important;
 }
 
 .btn-primary:hover, .btn-primary:focus {
     filter: brightness(1.1);
     box-shadow: 0 0 24px rgba(0, 240, 255, .25);
-    color: #04070D !important;
+    color: var(--on-accent) !important;
 }
 
 .btn-outline-light {
     border: 1px solid var(--border-strong);
     color: var(--text);
-    background: rgba(255, 255, 255, .02);
+    background: var(--ghost-bg);
 }
 
 .btn-outline-light:hover {
@@ -188,20 +227,64 @@ p { color: var(--text-dim); }
 
 .footer-icon { color: var(--cyan); }
 
+.lang-switch {
+    display: inline-flex;
+    border: 1px solid var(--border-strong);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.lang-switch button,
+.theme-toggle {
+    background: transparent;
+    border: 0;
+    color: var(--text-dim);
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    letter-spacing: .06em;
+    line-height: 1;
+    cursor: pointer;
+    transition: color .2s, background-color .2s;
+}
+
+.lang-switch button { padding: 6px 10px; }
+
+.lang-switch button:hover,
+.theme-toggle:hover { color: var(--cyan); }
+
+.lang-switch button.active {
+    background: var(--cyan);
+    color: var(--on-accent);
+}
+
+.theme-toggle {
+    width: 28px;
+    height: 26px;
+    font-size: 14px;
+    border: 1px solid var(--border-strong);
+    border-radius: 8px;
+}
+
+.lang-switch button:focus-visible,
+.theme-toggle:focus-visible {
+    outline: 2px solid var(--cyan);
+    outline-offset: 2px;
+}
+
 
 /*** Navbar ***/
 .navbar {
     position: sticky;
     top: 0;
     z-index: 999;
-    background: rgba(5, 7, 13, .72);
+    background: var(--nav-bg);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--border);
 }
 
 .navbar.sticky-top {
-    background: rgba(5, 7, 13, .92);
+    background: var(--nav-bg-solid);
 }
 
 .navbar-brand .wordmark {
@@ -284,7 +367,7 @@ p { color: var(--text-dim); }
 .hero-visual svg { width: 100%; height: 100%; }
 
 .hero-visual .node {
-    fill: rgba(234, 240, 251, .9);
+    fill: var(--node-fill);
     filter: drop-shadow(0 0 6px rgba(0, 240, 255, .8));
 }
 
@@ -296,7 +379,7 @@ p { color: var(--text-dim); }
 
 .hero-panel {
     position: absolute;
-    background: rgba(13, 20, 36, .65);
+    background: var(--panel-bg);
     border: 1px solid var(--border);
     border-radius: 12px;
     backdrop-filter: blur(10px);
@@ -376,7 +459,7 @@ p { color: var(--text-dim); }
 
 .bento .card {
     grid-column: span 6;
-    background: linear-gradient(180deg, rgba(255, 255, 255, .03), rgba(255, 255, 255, 0));
+    background: linear-gradient(180deg, var(--card-sheen), transparent);
     border: 1px solid var(--border);
     border-radius: var(--radius);
     padding: 30px;
@@ -603,7 +686,7 @@ p { color: var(--text-dim); }
     font-size: 10.5px;
     letter-spacing: .06em;
     text-transform: uppercase;
-    color: #04070D;
+    color: var(--on-accent);
     background: linear-gradient(90deg, var(--blue), var(--cyan));
     border-radius: 999px;
     padding: 5px 14px;
@@ -696,6 +779,10 @@ p { color: var(--text-dim); }
     background-repeat: no-repeat;
     background-position: right .9rem center;
     background-size: 14px 10px;
+}
+
+:root[data-theme="light"] .quote-form .form-select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23007FA8' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
 }
 
 .quote-form .micro { font-family: var(--font-mono); font-size: 12.5px; color: var(--text-faint); }

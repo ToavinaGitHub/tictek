@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { navLinks } from '../data/content';
+import { sectionIds } from '../data/content';
+import { usePreferences } from '../context/PreferencesContext';
 import { useScrollSpy, useScrolled } from '../hooks/useScrollSpy';
 
-const sectionIds = navLinks.map((link) => link.href.slice(1));
-
 export default function Navbar() {
+  const { t } = usePreferences();
   const [open, setOpen] = useState(false);
   const scrolled = useScrolled(45);
   const activeId = useScrollSpy(sectionIds);
@@ -17,21 +17,21 @@ export default function Navbar() {
       <button
         className="navbar-toggler"
         type="button"
-        aria-label="Ouvrir le menu"
+        aria-label={t.nav.openMenu}
         onClick={() => setOpen((v) => !v)}
       >
         <span className="fa fa-bars"></span>
       </button>
       <div className={`collapse navbar-collapse${open ? ' show' : ''}`}>
         <div className="navbar-nav ms-auto py-0">
-          {navLinks.map((link) => (
+          {sectionIds.map((id) => (
             <a
-              key={link.href}
-              href={link.href}
-              className={`nav-item nav-link${activeId === link.href.slice(1) ? ' active' : ''}`}
+              key={id}
+              href={`#${id}`}
+              className={`nav-item nav-link${activeId === id ? ' active' : ''}`}
               onClick={() => setOpen(false)}
             >
-              {link.label}
+              {t.nav.links[id]}
             </a>
           ))}
         </div>

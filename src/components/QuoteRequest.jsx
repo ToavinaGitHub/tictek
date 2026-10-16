@@ -1,17 +1,20 @@
 import { useState } from 'react';
 import emailjs from '@emailjs/browser';
-import { projectTypes } from '../data/content';
+import { projectTypeIds, translations } from '../data/content';
+import { usePreferences } from '../context/PreferencesContext';
 import { EMAILJS_CONFIG } from '../config/emailjs';
 import SectionTitle from './SectionTitle';
 import Reveal from './Reveal';
 
-const INITIAL_FORM = { name: '', email: '', company: '', projectType: projectTypes[0], message: '' };
+const INITIAL_FORM = { name: '', email: '', company: '', projectType: projectTypeIds[0], message: '' };
 
 export default function QuoteRequest() {
+  const { lang, t } = usePreferences();
+  const quote = t.quote;
   const [form, setForm] = useState(INITIAL_FORM);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [errorMessage, setErrorMessage] = useState(null);
+  const [hasError, setHasError] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,15 +27,18 @@ export default function QuoteRequest() {
 
     setIsSubmitting(true);
     setIsSuccess(false);
-    setErrorMessage(null);
+    setHasError(false);
 
     // Reuses the portfolio's EmailJS service/template (see .env), whose
     // template only interpolates {{from_name}}, {{from_email}}, {{reason}}
-    // and {{message}} — so company/projectType are folded into those two
+    // and {{message}}, so company/projectType are folded into those two
     // fields instead of sent as their own (unrendered) variables.
+    // The email is for the (French-speaking) team, so it is always in French.
+    const projectLabel = translations.fr.quote.projectTypes[form.projectType];
     const message = [
-      `Type de projet : ${form.projectType}`,
+      `Type de projet : ${projectLabel}`,
       form.company.trim() && `Entreprise : ${form.company.trim()}`,
+      `Langue du visiteur : ${lang.toUpperCase()}`,
       '',
       form.message.trim(),
     ].filter(Boolean).join('\n');
@@ -44,7 +50,7 @@ export default function QuoteRequest() {
         {
           from_name: form.name.trim(),
           from_email: form.email.trim(),
-          reason: `Demande de devis — ${form.projectType}`,
+          reason: `Demande de devis : ${projectLabel}`,
           message,
         },
         { publicKey: EMAILJS_CONFIG.publicKey },
@@ -53,7 +59,7 @@ export default function QuoteRequest() {
       setIsSuccess(true);
       setForm(INITIAL_FORM);
     } catch {
-      setErrorMessage("Une erreur est survenue lors de l'envoi. Merci de réessayer.");
+      setHasError(true);
     } finally {
       setIsSubmitting(false);
     }
@@ -63,17 +69,13 @@ export default function QuoteRequest() {
     <div id="devis" className="container-fluid py-5">
       <div className="container py-5">
         <Reveal>
-          <SectionTitle
-            eyebrow="Demande de devis"
-            title="Décrivez votre projet, recevez un retour sous 24h"
-            lede="Ce formulaire envoie votre demande directement à notre équipe technique. Pas d'intermédiaire, pas de spam."
-          />
+          <SectionTitle eyebrow={quote.eyebrow} title={quote.title} lede={quote.lede} />
         </Reveal>
         <Reveal variant="zoom" className="quote-form-wrap mx-auto">
           <form className="quote-form" onSubmit={handleSubmit}>
             <fieldset disabled={isSubmitting} className="row g-3">
               <div className="col-md-6">
-                <label className="form-label" htmlFor="quote-name">Nom complet</label>
+                <label className="form-label" htmlFor="quote-name">{quote.fields.name}</label>
                 <input
                   required
                   id="quote-name"
@@ -82,11 +84,11 @@ export default function QuoteRequest() {
                   className="form-control"
                   value={form.name}
                   onChange={handleChange}
-                  placeholder="Jean Dupont"
+                  placeholder={quote.placeholders.name}
                 />
               </div>
               <div className="col-md-6">
-                <label className="form-label" htmlFor="quote-email">Email</label>
+                <label className="form-label" htmlFor="quote-email">{quote.fields.email}</label>
                 <input
                   required
                   id="quote-email"
@@ -95,11 +97,11 @@ export default function QuoteRequest() {
                   className="form-control"
                   value={form.email}
                   onChange={handleChange}
-                  placeholder="jean@entreprise.com"
+                  placeholder={quote.placeholders.email}
                 />
               </div>
               <div className="col-md-6">
-                <label className="form-label" htmlFor="quote-company">Entreprise (optionnel)</label>
+                <label className="form-label" htmlFor="quote-company">{quote.fields.company}</label>
                 <input
                   id="quote-company"
                   name="company"
@@ -107,11 +109,11 @@ export default function QuoteRequest() {
                   className="form-control"
                   value={form.company}
                   onChange={handleChange}
-                  placeholder="Nom de votre entreprise"
+                  placeholder={quote.placeholders.company}
                 />
               </div>
               <div className="col-md-6">
-                <label className="form-label" htmlFor="quote-type">Type de projet</label>
+                <label className="form-label" htmlFor="quote-type">{quote.fields.projectType}</label>
                 <select
                   id="quote-type"
                   name="projectType"
@@ -119,13 +121,13 @@ export default function QuoteRequest() {
                   value={form.projectType}
                   onChange={handleChange}
                 >
-                  {projectTypes.map((type) => (
-                    <option key={type} value={type}>{type}</option>
+                  {projectTypeIds.map((id) => (
+                    <option key={id} value={id}>{quote.projectTypes[id]}</option>
                   ))}
                 </select>
               </div>
               <div className="col-12">
-                <label className="form-label" htmlFor="quote-message">Décrivez votre besoin</label>
+                <label className="form-label" htmlFor="quote-message">{quote.fields.message}</label>
                 <textarea
                   required
                   id="quote-message"
@@ -134,7 +136,7 @@ export default function QuoteRequest() {
                   className="form-control"
                   value={form.message}
                   onChange={handleChange}
-                  placeholder="Contexte, objectifs, délais envisagés..."
+                  placeholder={quote.placeholders.message}
                 />
               </div>
             </fieldset>
@@ -142,22 +144,22 @@ export default function QuoteRequest() {
               {isSubmitting ? (
                 <>
                   <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true" />
-                  Envoi en cours...
+                  {quote.sending}
                 </>
               ) : (
-                'Envoyer ma demande de devis'
+                quote.submit
               )}
             </button>
-            <div className="micro mt-3">Envoyé directement à notre équipe technique.</div>
+            <div className="micro mt-3">{quote.micro}</div>
 
             {isSuccess && (
-              <p className="mt-3 mb-0" style={{ color: 'var(--bs-success, #198754)' }}>
-                ✓ Votre demande a bien été envoyée. Nous revenons vers vous sous 24h.
+              <p className="mt-3 mb-0" style={{ color: 'var(--success)' }}>
+                {quote.success}
               </p>
             )}
-            {errorMessage && (
-              <p className="mt-3 mb-0" style={{ color: 'var(--bs-danger, #dc3545)' }}>
-                {errorMessage}
+            {hasError && (
+              <p className="mt-3 mb-0" style={{ color: 'var(--danger)' }}>
+                {quote.error}
               </p>
             )}
           </form>

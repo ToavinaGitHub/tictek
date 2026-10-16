@@ -1,6 +1,8 @@
 import { useScrolled } from '../hooks/useScrollSpy';
+import { usePreferences } from '../context/PreferencesContext';
 
 export default function BackToTop() {
+  const { t } = usePreferences();
   const visible = useScrolled(100);
 
   function handleClick(e) {
@@ -14,7 +16,7 @@ export default function BackToTop() {
       onClick={handleClick}
       className="btn btn-lg btn-primary btn-lg-square rounded back-to-top"
       style={{ display: visible ? 'flex' : 'none' }}
-      aria-label="Retour en haut de page"
+      aria-label={t.backToTop}
     >
       <i className="bi bi-arrow-up"></i>
     </a>

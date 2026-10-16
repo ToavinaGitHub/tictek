@@ -3,7 +3,19 @@
 
 <head>
     <meta charset="utf-8">
-    <title>TicTek — Ingénierie logicielle Web, Mobile &amp; QA</title>
+    <title>TicTek | Ingénierie logicielle Web, Mobile &amp; QA</title>
+
+    <!-- Apply the saved (or system) theme before first paint to avoid a flash -->
+    <script>
+        (function () {
+            var theme;
+            try { theme = localStorage.getItem('tictek-theme'); } catch (e) {}
+            if (theme !== 'light' && theme !== 'dark') {
+                theme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+            }
+            document.documentElement.dataset.theme = theme;
+        })();
+    </script>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta name="keywords" content="ESN, développement web, applications mobiles, QA, tests automatisés, DevOps, TicTek">
     <meta name="description" content="TicTek conçoit, développe et audite vos plateformes web et mobiles avec la rigueur d'une ingénierie critique : architectures scalables, couverture de tests exhaustive, déploiements sans stress.">

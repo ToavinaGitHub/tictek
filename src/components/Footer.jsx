@@ -1,20 +1,20 @@
-import { contactInfo, footerColumns } from '../data/content';
+import { contactInfo } from '../data/content';
+import { usePreferences } from '../context/PreferencesContext';
 
 export default function Footer() {
+  const { t } = usePreferences();
+  const footer = t.footer;
+
   return (
     <div id="contact" className="container-fluid site-footer pt-5">
       <div className="container">
         <div className="row gx-5">
           <div className="col-lg-4 col-md-6 pb-4">
             <span className="wordmark d-inline-block mb-3">TicTek</span>
-            <p className="lead-text">
-              TicTek est une ESN spécialisée en ingénierie logicielle : développement web sur-mesure, applications
-              mobiles, assurance qualité et infrastructure cloud. Nous livrons du code que vos équipes n'auront pas
-              à réécrire dans 18 mois.
-            </p>
+            <p className="lead-text">{footer.about}</p>
           </div>
 
-          {footerColumns.map((col) => (
+          {footer.columns.map((col) => (
             <div className="col-lg-2 col-md-6 pb-4" key={col.title}>
               <h3 className="mb-3">{col.title}</h3>
               <div className="link-animated d-flex flex-column">
@@ -26,7 +26,7 @@ export default function Footer() {
           ))}
 
           <div className="col-lg-4 col-md-6 pb-4">
-            <h3 className="mb-3">Contact</h3>
+            <h3 className="mb-3">{footer.contactTitle}</h3>
             <div className="d-flex mb-2">
               <i className="bi bi-geo-alt me-2 footer-icon"></i>
               <p className="mb-0">{contactInfo.address}</p>
@@ -46,8 +46,7 @@ export default function Footer() {
       <div className="footer-bottom">
         <div className="container text-center">
           <p className="mb-0">
-            &copy; 2026 <a href="#hero">TicTek</a>. Tous droits réservés. Conçu et développé avec la même rigueur
-            que ce que nous livrons à nos clients.
+            &copy; 2026 <a href="#hero">TicTek</a>. {footer.rights}
           </p>
         </div>
       </div>
