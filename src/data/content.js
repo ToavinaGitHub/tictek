@@ -30,8 +30,8 @@ export const heroPanels = [
   { text: 'Deploy → Production ✓', className: 'p3', style: { bottom: '8%', left: '8%' } },
 ];
 
-// Tech logos (Devicon, pinned version), keyed by the names used in the
-// banner and in locales/*.stack.categories. Names missing here show as text only.
+// Tech logos (Devicon, pinned version), keyed by the names used in
+// locales/*.stack.categories. Names missing here show as text only.
 const DEVICON = 'https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons';
 const icon = (path) => `${DEVICON}/${path}.svg`;
 
@@ -70,10 +70,3 @@ export const techIcons = {
 
 // Black logos, inverted on the dark theme.
 export const monoTechs = new Set(['Express', 'Next.js', 'GitHub', 'Solidity']);
-
-// The key technologies shown in the top banner.
-export const bannerTechs = [
-  'Java', 'Spring Boot', 'Node.js', 'C# / .NET', 'PHP', 'TypeScript', 'React', 'Next.js', 'Angular', 'Vue.js',
-  'React Native', 'PostgreSQL', 'MySQL', 'MongoDB', 'Redis', 'Docker', 'RabbitMQ', 'GitHub', 'GitLab',
-  'Gemini', 'n8n', 'Solidity', 'Postman',
-];

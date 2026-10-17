@@ -51,10 +51,6 @@ const fr = {
     'Automatisation des Processus',
   ],
 
-  techBanner: {
-    label: 'Les technologies que nous utilisons au quotidien',
-  },
-
   services: {
     eyebrow: 'Nos expertises',
     title: 'Une ingénierie complète, du code à la production',

@@ -51,10 +51,6 @@ const en = {
     'Process Automation',
   ],
 
-  techBanner: {
-    label: 'The technologies we use every day',
-  },
-
   services: {
     eyebrow: 'Our expertise',
     title: 'End-to-end engineering, from code to production',
