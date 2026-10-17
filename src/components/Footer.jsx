@@ -1,5 +1,6 @@
 import { contactInfo } from '../data/content';
 import { usePreferences } from '../context/PreferencesContext';
+import Logo from './Logo';
 
 export default function Footer() {
   const { t } = usePreferences();
@@ -10,7 +11,7 @@ export default function Footer() {
       <div className="container">
         <div className="row gx-5">
           <div className="col-lg-4 col-md-6 pb-4">
-            <span className="wordmark d-inline-block mb-3">TicTek</span>
+            <Logo className="d-block mb-3" />
             <p className="lead-text">{footer.about}</p>
           </div>
 

@@ -287,15 +287,13 @@ p { color: var(--text-dim); }
     background: var(--nav-bg-solid);
 }
 
-.navbar-brand .wordmark {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 20px;
-    letter-spacing: .01em;
-    color: var(--text);
+.logo {
+    display: block;
+    width: auto;
+    height: 40px;
 }
 
-.navbar-brand .wordmark span { color: var(--cyan); }
+.site-footer .logo { height: 48px; }
 
 .navbar-dark .navbar-nav .nav-link {
     font-family: var(--font-mono);
@@ -449,6 +447,84 @@ p { color: var(--text-dim); }
 }
 
 
+/*** Tech banner (scrolling logos) ***/
+.tech-banner {
+    position: relative;
+    z-index: 1;
+    padding: 34px 0;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+}
+
+.tech-banner-label {
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 22px;
+    padding: 0 16px;
+}
+
+.marquee {
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee-scroll 60s linear infinite;
+}
+
+.marquee-track.reverse { animation-direction: reverse; }
+
+.marquee:hover .marquee-track { animation-play-state: paused; }
+
+.marquee-list {
+    display: flex;
+    gap: 12px;
+    margin: 0;
+    padding: 0 6px;
+    list-style: none;
+}
+
+.marquee-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 16px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--bg);
+    font-family: var(--font-mono);
+    font-size: 13.5px;
+    color: var(--text);
+    white-space: nowrap;
+    transition: border-color .2s;
+}
+
+.marquee-item:hover { border-color: var(--cyan); }
+
+.marquee-item img { width: 24px; height: 24px; object-fit: contain; }
+
+:root:not([data-theme="light"]) .marquee-item img.mono { filter: invert(1); }
+
+@keyframes marquee-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .marquee { -webkit-mask-image: none; mask-image: none; }
+    .marquee-track { animation: none; width: auto; }
+    .marquee-list { flex-wrap: wrap; }
+    .marquee-list[aria-hidden] { display: none; }
+}
+
+
 /*** Section title ***/
 .section-title { margin-bottom: 50px; }
 .section-title p { max-width: 68ch; }
@@ -562,32 +638,30 @@ p { color: var(--text-dim); }
 }
 
 
-/*** Stack chips ***/
-.stack-cat { margin-bottom: 26px; }
+/*** Stack rows ***/
+.stack-rows { display: grid; gap: 14px; }
 
-.stack-cat h4 {
+.stack-row {
+    display: grid;
+    grid-template-columns: 200px minmax(0, 1fr);
+    align-items: center;
+    gap: 20px;
+}
+
+.stack-row h4 {
     font-family: var(--font-mono);
     font-size: 12.5px;
     letter-spacing: .06em;
     text-transform: uppercase;
     color: var(--text-faint);
-    margin-bottom: 12px;
+    margin: 0;
 }
 
-.chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.stack-row .marquee-item { background: var(--surface); }
 
-.chip-tag {
-    font-family: var(--font-mono);
-    font-size: 13.5px;
-    color: var(--text);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 8px 14px;
-    background: var(--surface);
-    transition: border-color .2s, color .2s;
+@media (max-width: 767.98px) {
+    .stack-row { grid-template-columns: minmax(0, 1fr); gap: 8px; }
 }
-
-.chip-tag:hover { border-color: var(--cyan); color: var(--cyan); }
 
 
 /*** Case studies ***/
@@ -871,7 +945,14 @@ p { color: var(--text-dim); }
     z-index: 99;
     width: 48px;
     height: 48px;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    line-height: 1;
     border-radius: 12px;
 }
+
+.back-to-top i::before { display: block; }
 
 hr.divider { border-color: var(--border); opacity: 1; }

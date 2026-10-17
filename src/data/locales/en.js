@@ -29,7 +29,7 @@ const en = {
   backToTop: 'Back to top',
 
   hero: {
-    kicker: 'Software Engineering, Mobile, QA & Cloud',
+    kicker: 'Software Engineering, Mobile, QA, Cloud & Automation',
     title: 'Your digital products. Built to scale, tested to last.',
     lede: 'TicTek is an IT services company specializing in the design, development and security of web and mobile applications. From cloud architecture to automated test coverage, our team helps you ship robust, high-performance, production-ready products.',
     ctaPrimary: 'Request a free quote / audit',
@@ -48,12 +48,17 @@ const en = {
     'Web & Mobile Apps',
     'QA & Test Automation',
     'Cloud, DevOps & AI Solutions',
+    'Process Automation',
   ],
+
+  techBanner: {
+    label: 'The technologies we use every day',
+  },
 
   services: {
     eyebrow: 'Our expertise',
     title: 'End-to-end engineering, from code to production',
-    lede: 'Web, mobile, quality assurance and cloud: four disciplines we handle in-house, with no subcontracting and no weak link.',
+    lede: 'Web, mobile, quality assurance, cloud and automation: five disciplines we handle in-house, with no subcontracting and no weak link.',
     items: [
       {
         span: 'span3',
@@ -82,7 +87,7 @@ const en = {
         benefit: '→ One codebase, two stores, no compromise on user experience.',
       },
       {
-        span: 'span4',
+        span: 'span2',
         tag: 'QA & Security',
         title: 'Quality Assurance & Test Automation',
         desc: 'At TicTek, QA is not an end-of-project option but a daily discipline. We automate E2E, performance and integration tests to stop regressions before they reach your users.',
@@ -106,6 +111,19 @@ const en = {
           'Monitoring, proactive alerting and infrastructure management',
         ],
         benefit: '→ Automated deployments and AI-powered features.',
+      },
+      {
+        span: 'span2',
+        tag: 'Automation',
+        title: 'Business Process Automation',
+        desc: 'Do your teams spend hours copying data from one tool to another? We automate those repetitive tasks and connect your software so it works together.',
+        features: [
+          'Automated workflows with n8n',
+          'Syncing your project management tools, CRM and email',
+          'Integrations between your tools (CRM, ERP, invoicing, email) via API',
+          'Generative AI to sort, extract and process your data',
+        ],
+        benefit: '→ Hours of data entry saved every week, and no more copy-paste errors.',
       },
     ],
   },
@@ -146,11 +164,15 @@ const en = {
     title: 'Tools chosen for fit, not out of habit',
     lede: 'These are the technologies we know in depth and run in production, not in side projects.',
     categories: [
-      { name: 'Backend', items: ['Java / Spring Boot', 'Node.js', 'C# / .NET', 'PostgreSQL', 'MySQL', 'SQL Server'] },
-      { name: 'Frontend', items: ['React', 'Next.js', 'Angular', 'TypeScript', 'TailwindCSS', 'Bootstrap'] },
-      { name: 'Mobile', items: ['React Native', 'Expo', 'Android (Kotlin)'] },
-      { name: 'Cloud & DevOps', items: ['Docker', 'GitHub Actions', 'AWS', 'Kubernetes'] },
-      { name: 'QA & AI Tooling', items: ['Playwright', 'Cypress', 'Postman', 'JMeter', 'Gemini / OpenAI APIs', 'SonarQube'] },
+      { name: 'Backend', items: ['Java', 'Spring Boot', 'Node.js', 'Express', 'C# / .NET', 'PHP'] },
+      { name: 'Frontend', items: ['TypeScript', 'JavaScript', 'React', 'Next.js', 'Angular', 'Vue.js', 'Tailwind CSS'] },
+      { name: 'Mobile', items: ['React Native', 'Expo'] },
+      { name: 'Databases', items: ['PostgreSQL', 'MySQL', 'SQL Server', 'MongoDB', 'Redis', 'Elasticsearch'] },
+      { name: 'Architecture & DevOps', items: ['Microservices', 'REST APIs', 'Docker', 'RabbitMQ', 'CI/CD', 'GitHub', 'GitLab'] },
+      { name: 'AI & Data', items: ['Generative AI', 'Gemini', 'Web scraping', 'Data pipelines'] },
+      { name: 'Automation', items: ['n8n', 'API integration'] },
+      { name: 'Blockchain / Web3', items: ['Solidity', 'Hardhat', 'Ethers.js', 'Polygon', 'Smart Contracts'] },
+      { name: 'Methods & tools', items: ['Agile (Scrum / Kanban)', 'Postman', 'Notion', 'Trello'] },
     ],
   },
 
@@ -284,6 +306,7 @@ const en = {
       mobile: 'Mobile Application',
       qa: 'QA & Test Automation',
       cloud: 'Cloud, DevOps & AI',
+      automation: 'Process Automation',
       other: 'Other / Not sure yet',
     },
     fields: {
@@ -323,6 +346,7 @@ const en = {
           { label: 'Mobile Apps', href: '#services' },
           { label: 'QA & Test Automation', href: '#qa' },
           { label: 'Cloud, DevOps & AI', href: '#services' },
+          { label: 'Process Automation', href: '#services' },
         ],
       },
       {

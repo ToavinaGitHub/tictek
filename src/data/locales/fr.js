@@ -29,7 +29,7 @@ const fr = {
   backToTop: 'Retour en haut de page',
 
   hero: {
-    kicker: 'Ingénierie Logicielle, Mobile, QA & Cloud',
+    kicker: 'Ingénierie Logicielle, Mobile, QA, Cloud & Automatisation',
     title: 'Vos projets numériques. Construits pour scaler, testés pour durer.',
     lede: "TicTek est une entreprise de services numériques (ESN) spécialisée dans la conception, le développement et la sécurisation d'applications web et mobiles. De l'architecture cloud à la couverture de tests automatisée, notre équipe vous accompagne pour livrer des produits robustes, performants et prêts pour la production.",
     ctaPrimary: 'Demander un devis / un audit gratuit',
@@ -48,12 +48,17 @@ const fr = {
     'Applications Web & Mobile',
     'QA & Tests Automatisés',
     'Cloud, DevOps & Solutions IA',
+    'Automatisation des Processus',
   ],
+
+  techBanner: {
+    label: 'Les technologies que nous utilisons au quotidien',
+  },
 
   services: {
     eyebrow: 'Nos expertises',
     title: 'Une ingénierie complète, du code à la production',
-    lede: 'Web, mobile, assurance qualité et cloud : quatre disciplines que nous maîtrisons en interne, sans sous-traitance ni maillon faible.',
+    lede: 'Web, mobile, assurance qualité, cloud et automatisation : cinq disciplines que nous maîtrisons en interne, sans sous-traitance ni maillon faible.',
     items: [
       {
         span: 'span3',
@@ -82,7 +87,7 @@ const fr = {
         benefit: '→ Un seul codebase, deux stores, une expérience utilisateur sans compromis.',
       },
       {
-        span: 'span4',
+        span: 'span2',
         tag: 'QA & Sécurité',
         title: 'Assurance Qualité & Tests Automatisés',
         desc: "Pour TicTek, la QA n'est pas une option de fin de projet mais une discipline intégrée au quotidien. Nous automatisons les tests E2E, de performance et d'intégration afin de bloquer les régressions avant qu'elles n'atteignent vos utilisateurs.",
@@ -106,6 +111,19 @@ const fr = {
           'Monitoring, alerting proactif et gestion d’infrastructure',
         ],
         benefit: '→ Des déploiements automatisés et des fonctionnalités augmentées par l’IA.',
+      },
+      {
+        span: 'span2',
+        tag: 'Automatisation',
+        title: 'Automatisation des Processus Métier',
+        desc: "Vos équipes passent des heures à copier des données d'un outil à l'autre ? Nous automatisons ces tâches répétitives et connectons vos logiciels entre eux pour qu'ils travaillent ensemble.",
+        features: [
+          'Workflows automatisés avec n8n',
+          'Synchronisation de vos outils de gestion de projet, CRM et emails',
+          'Intégrations entre vos outils (CRM, ERP, facturation, emails) via API',
+          'IA générative pour trier, extraire et traiter vos données',
+        ],
+        benefit: '→ Des heures de saisie en moins chaque semaine et zéro erreur de copier-coller.',
       },
     ],
   },
@@ -146,11 +164,15 @@ const fr = {
     title: 'Des outils choisis par adéquation, pas par habitude',
     lede: 'Voici les technologies que nous maîtrisons en profondeur et déployons en production, pas en side-project.',
     categories: [
-      { name: 'Backend', items: ['Java / Spring Boot', 'Node.js', 'C# / .NET', 'PostgreSQL', 'MySQL', 'SQL Server'] },
-      { name: 'Frontend', items: ['React', 'Next.js', 'Angular', 'TypeScript', 'TailwindCSS', 'Bootstrap'] },
-      { name: 'Mobile', items: ['React Native', 'Expo', 'Android (Kotlin)'] },
-      { name: 'Cloud & DevOps', items: ['Docker', 'GitHub Actions', 'AWS', 'Kubernetes'] },
-      { name: 'QA & Outillage IA', items: ['Playwright', 'Cypress', 'Postman', 'JMeter', 'Gemini / OpenAI APIs', 'SonarQube'] },
+      { name: 'Backend', items: ['Java', 'Spring Boot', 'Node.js', 'Express', 'C# / .NET', 'PHP'] },
+      { name: 'Frontend', items: ['TypeScript', 'JavaScript', 'React', 'Next.js', 'Angular', 'Vue.js', 'Tailwind CSS'] },
+      { name: 'Mobile', items: ['React Native', 'Expo'] },
+      { name: 'Bases de données', items: ['PostgreSQL', 'MySQL', 'SQL Server', 'MongoDB', 'Redis', 'Elasticsearch'] },
+      { name: 'Architecture & DevOps', items: ['Microservices', 'API REST', 'Docker', 'RabbitMQ', 'CI/CD', 'GitHub', 'GitLab'] },
+      { name: 'IA & Data', items: ['IA générative', 'Gemini', 'Scraping web', 'Pipelines de données'] },
+      { name: 'Automatisation', items: ['n8n', "Intégration d'API"] },
+      { name: 'Blockchain / Web3', items: ['Solidity', 'Hardhat', 'Ethers.js', 'Polygon', 'Smart Contracts'] },
+      { name: 'Méthodes & outils', items: ['Agile (Scrum / Kanban)', 'Postman', 'Notion', 'Trello'] },
     ],
   },
 
@@ -284,6 +306,7 @@ const fr = {
       mobile: 'Application Mobile',
       qa: 'QA & Tests Automatisés',
       cloud: 'Cloud, DevOps & IA',
+      automation: 'Automatisation des processus',
       other: 'Autre / Je ne sais pas encore',
     },
     fields: {
@@ -323,6 +346,7 @@ const fr = {
           { label: 'Applications Mobiles', href: '#services' },
           { label: 'QA & Tests Automatisés', href: '#qa' },
           { label: 'Cloud, DevOps & IA', href: '#services' },
+          { label: 'Automatisation des Processus', href: '#services' },
         ],
       },
       {

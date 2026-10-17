@@ -1,5 +1,5 @@
 import { usePreferences } from '../context/PreferencesContext';
-import ChipGroup from './ui/ChipGroup';
+import TechMarquee from './ui/TechMarquee';
 import SectionTitle from './SectionTitle';
 import Reveal from './Reveal';
 
@@ -13,12 +13,13 @@ export default function TechStack() {
         <Reveal>
           <SectionTitle eyebrow={eyebrow} title={title} lede={lede} />
         </Reveal>
-        <div className="row">
-          <div className="col-lg-10 mx-auto">
-            {categories.map((cat) => (
-              <ChipGroup key={cat.name} {...cat} />
-            ))}
-          </div>
+        <div className="stack-rows">
+          {categories.map((cat, i) => (
+            <div className="stack-row" key={cat.name}>
+              <h4>{cat.name}</h4>
+              <TechMarquee items={cat.items} reverse={i % 2 === 1} />
+            </div>
+          ))}
         </div>
       </div>
     </div>

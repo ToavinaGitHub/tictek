@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { sectionIds } from '../data/content';
 import { usePreferences } from '../context/PreferencesContext';
 import { useScrollSpy, useScrolled } from '../hooks/useScrollSpy';
+import Logo from './Logo';
 
 export default function Navbar() {
   const { t } = usePreferences();
@@ -12,7 +13,7 @@ export default function Navbar() {
   return (
     <nav className={`navbar navbar-expand-lg navbar-dark px-4 px-lg-5 py-3${scrolled ? ' sticky-top shadow-sm' : ''}`}>
       <a href="#hero" className="navbar-brand p-0">
-        <span className="wordmark">T<span>I</span>c<span>T</span>eK</span>
+        <Logo />
       </a>
       <button
         className="navbar-toggler"
