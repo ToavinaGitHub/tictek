@@ -16,23 +16,26 @@ const fr = {
       collaboration: 'Collaboration',
       about: 'À propos',
       contact: 'Contact',
+      pricing: 'Tarifs',
+      careers: 'Nous rejoindre',
     },
     ctaContact: 'Discutons de votre projet',
     cta: {
       title: 'Un projet, une idée, une application à reprendre ?',
       text: 'Expliquez-nous où vous en êtes. Nous vous dirons ce que nous pouvons faire, comment et dans quelles conditions.',
     },
-    switchLang: { label: 'EN', title: 'Read this page in English' },
+    language: 'Langue',
+    darkMode: 'Mode sombre',
     learnMore: 'En savoir plus',
   },
 
   footer: {
     about:
-      'TicTek conçoit, développe et maintient des logiciels sur mesure : applications web et mobiles, SaaS, API, automatisation et intégration IA. Équipe basée à Madagascar, travail à distance en français et en anglais.',
+      'TicTek conçoit, développe et maintient des logiciels sur mesure : applications web et mobiles, SaaS, API, automatisation et intégration IA. Équipe basée à Madagascar, au service de clients à l’international, en français et en anglais.',
     servicesTitle: 'Services',
     companyTitle: 'Entreprise',
     contactTitle: 'Contact',
-    location: 'Antananarivo, Madagascar',
+    location: 'Antananarivo, Madagascar · clients à l’international',
     rights: 'Tous droits réservés.',
   },
 
@@ -180,15 +183,26 @@ const fr = {
     home: {
       title: 'TicTek | Développement logiciel sur mesure : web, mobile, SaaS et IA',
       description:
-        'TicTek conçoit et développe vos applications web et mobiles, SaaS, API et automatisations, avec intégration IA. Équipe basée à Madagascar, en français et en anglais.',
+        'TicTek conçoit vos applications web et mobiles, SaaS, API et automatisations avec IA. Équipe à Madagascar, clients à l’international, en français et en anglais.',
       hero: {
         eyebrow: 'Entreprise de services numériques',
-        title: 'Votre partenaire de développement logiciel, du besoin à la mise en production.',
+        title: 'Votre partenaire de développement logiciel,',
+        titleAccent: 'du besoin à la mise en production.',
         lede:
-          "TicTek accompagne les entreprises dans la création de logiciels web et mobiles, l'automatisation de leurs processus et l'intégration de l'IA. Notre équipe technique, basée à Madagascar, travaille à distance avec ses clients, en français comme en anglais.",
+          "TicTek accompagne les entreprises dans la création de logiciels web et mobiles, l'automatisation de leurs processus et l'intégration de l'IA. Notre équipe technique, basée à Madagascar, travaille à distance avec des clients à l’international, en français comme en anglais.",
         ctaWork: 'Découvrir nos réalisations',
         ctaServices: 'Découvrir nos services',
-        asideTitle: 'Trois façons de travailler avec nous',
+        visual: {
+          url: 'app.votre-entreprise.com',
+          dashboard: 'Tableau de bord',
+          orders: 'Commandes',
+          clients: 'Clients',
+          activity: 'Activité',
+          synced: 'Synchronisé',
+          automation: 'Workflow automatisé',
+        },
+        stackTitle: 'Technologies que nous utilisons au quotidien',
+        stackPause: 'Mettre en pause le défilement',
       },
       services: {
         title: 'Ce que nous développons pour vous',
@@ -231,8 +245,8 @@ const fr = {
             text: "Nous travaillons dans les deux langues, à l'écrit comme à l'oral.",
           },
           {
-            title: 'Un décalage horaire réduit avec l’Europe',
-            text: 'Madagascar est à UTC+3 : une à deux heures d’écart avec la France et la Suisse.',
+            title: 'Des horaires adaptés à votre fuseau',
+            text: 'Madagascar est à UTC+3 : une à deux heures d’écart avec l’Europe, et des créneaux convenus ensemble pour les autres fuseaux.',
           },
         ],
       },
@@ -316,8 +330,8 @@ const fr = {
           a: 'Visioconférences pour les points importants, messagerie pour le quotidien, outil de tickets pour suivre les demandes, et démonstrations régulières sur un environnement de test.',
         },
         {
-          q: 'Quel est le décalage horaire ?',
-          a: 'Madagascar est à UTC+3, sans changement d’heure. L’écart est d’une à deux heures avec la France et la Suisse. Avec le Québec, il est de sept à huit heures : la fin de journée à Madagascar correspond à la matinée à Montréal.',
+          q: 'Travaillez-vous avec des clients dans d’autres fuseaux horaires ?',
+          a: 'Oui, nous travaillons à l’international. Madagascar est à UTC+3, sans changement d’heure : une à deux heures d’écart avec la France et la Suisse, sept à huit heures avec le Québec. Au démarrage, nous fixons ensemble des créneaux d’échange réguliers compatibles avec vos horaires ; le reste du suivi se fait de façon asynchrone dans vos outils.',
         },
         {
           q: 'Pouvez-vous reprendre une application existante ?',
@@ -326,13 +340,133 @@ const fr = {
       ],
     },
 
+    pricing: {
+      title: 'Tarifs : comment nous chiffrons votre projet logiciel | TicTek',
+      description:
+        "Forfait, régie au jour, maintenance mensuelle ou marque blanche : comment TicTek établit ses devis et ce qui fait varier le prix d'un projet logiciel.",
+      h1: 'Tarifs',
+      lede:
+        'Chaque projet logiciel est différent : nous ne publions pas de grille tarifaire figée. Voici comment nous facturons, ce qui fait varier le prix et comment obtenir une estimation.',
+      modelsTitle: 'Nos modes de facturation',
+      fitLabel: 'Pour :',
+      models: [
+        {
+          id: 'forfait',
+          title: 'Forfait',
+          text: "Un prix global fixé à l'avance, pour un périmètre défini ensemble lors du cadrage.",
+          points: [
+            'Prix, livrables et étapes fixés dans le devis',
+            'Évolutions hors périmètre chiffrées à part, avant réalisation',
+            'Échéancier de paiement précisé dans le devis',
+          ],
+          fit: 'projets au besoin clair : application, logiciel métier, MVP.',
+        },
+        {
+          id: 'regie',
+          title: 'Régie',
+          text: 'Vous réservez du temps de développement, facturé au jour. Le périmètre peut évoluer librement.',
+          points: [
+            'Taux journalier indiqué dans le devis',
+            'Suivi du temps passé partagé avec vous',
+            'Volume ajustable selon vos besoins',
+          ],
+          fit: "renfort d'équipe, produits en construction, besoins évolutifs.",
+        },
+        {
+          id: 'maintenance',
+          title: 'Maintenance mensuelle',
+          text: 'Un montant mensuel pour maintenir et faire évoluer une application en production.',
+          points: [
+            'Mises à jour de sécurité et des dépendances',
+            'Corrections et petites évolutions',
+            'Volume mensuel défini ensemble',
+          ],
+          fit: 'applications déjà en production.',
+        },
+        {
+          id: 'marque-blanche',
+          title: 'Marque blanche',
+          text: 'Des conditions adaptées aux agences qui intègrent nos développements dans leurs propres offres.',
+          points: [
+            'Au forfait par projet ou en régie',
+            'Facturation à votre agence uniquement',
+            'Discrétion totale vis-à-vis de vos clients',
+          ],
+          fit: 'agences web, digitales et de communication.',
+        },
+      ],
+      factorsTitle: 'Ce qui fait varier le prix',
+      factors: [
+        { title: 'Le périmètre', text: "Nombre d'écrans, de fonctionnalités et de types d'utilisateurs." },
+        { title: 'Les plateformes', text: 'Web, iOS, Android, ou plusieurs à la fois.' },
+        { title: 'Les intégrations', text: 'Connexion à vos outils existants, paiement en ligne, API tierces, IA.' },
+        { title: 'Le design', text: "Maquettes fournies par vous, ou conception de l'interface par nos soins." },
+        { title: "Le niveau d'exigence", text: 'Volume de données, sécurité, couverture de tests, disponibilité attendue.' },
+        { title: 'Les délais', text: 'Un calendrier serré peut demander plus de développeurs en parallèle.' },
+      ],
+      stepsTitle: 'Comment obtenir un devis',
+      steps: [
+        'Vous décrivez votre projet via le formulaire de contact, en indiquant si possible une enveloppe budgétaire.',
+        'Nous en parlons lors d’un premier appel, gratuit et sans engagement.',
+        'Nous vous envoyons une estimation écrite : périmètre, étapes, planning et prix.',
+      ],
+      faqTitle: 'Questions fréquentes',
+      faq: [
+        {
+          q: 'Pourquoi ne pas afficher de prix ?',
+          a: 'Deux applications qui se ressemblent peuvent demander des efforts très différents selon les intégrations, les volumes et le niveau d’exigence. Un prix affiché sans connaître votre projet serait soit trompeur, soit gonflé par précaution.',
+        },
+        {
+          q: 'Le premier échange est-il payant ?',
+          a: 'Non, le premier appel est gratuit et sans engagement. Pour un projet complexe, nous pouvons proposer une phase de cadrage avant l’estimation définitive ; elle est alors chiffrée à l’avance.',
+        },
+        {
+          q: 'Comment se passe le paiement ?',
+          a: 'L’échéancier (acompte, étapes, solde) est précisé dans chaque devis et validé avec vous avant tout démarrage.',
+        },
+      ],
+      cta: 'Demander un devis',
+    },
+
+    careers: {
+      title: 'Nous rejoindre : candidature spontanée | TicTek',
+      description:
+        'Développeur web, mobile, back-end, QA ou DevOps ? Envoyez votre candidature spontanée à TicTek : projets variés pour des clients à l’international.',
+      h1: 'Nous rejoindre',
+      lede:
+        'Nous n’avons pas de poste ouvert en ce moment, mais nous lisons toutes les candidatures spontanées. Si votre profil correspond à un besoin actuel ou à venir, nous vous recontactons.',
+      whyTitle: 'Travailler chez TicTek',
+      why: [
+        { title: 'Des projets variés', text: 'Applications web et mobiles, API, automatisation et IA, pour des clients à l’international.' },
+        { title: 'Une stack moderne', text: 'React, Next.js, Node.js, Java / Spring Boot, .NET, React Native, Docker…' },
+        { title: 'La qualité comme habitude', text: 'Revues de code, tests automatisés et intégration continue au quotidien.' },
+        { title: 'Français et anglais', text: 'Vous échangez avec des clients et des équipes dans les deux langues.' },
+      ],
+      profilesTitle: 'Les profils qui nous intéressent',
+      profiles: [
+        'Développeur·se front-end : React, Angular, Vue.js',
+        'Développeur·se back-end : Node.js, Java, .NET, PHP',
+        'Développeur·se mobile : React Native',
+        'QA et automatisation des tests',
+        'DevOps et cloud',
+        'Un autre profil technique ? Écrivez-nous quand même.',
+      ],
+      processTitle: 'Comment ça se passe',
+      process: [
+        'Vous envoyez votre candidature avec le formulaire ci-dessous.',
+        'Vous recevez aussitôt un e-mail de confirmation.',
+        'Nous étudions votre profil et revenons vers vous s’il correspond à un besoin.',
+      ],
+      formTitle: 'Candidature spontanée',
+    },
+
     about: {
       title: 'À propos de TicTek, entreprise de développement logiciel | TicTek',
       description:
-        'TicTek est une entreprise de services numériques basée à Antananarivo, Madagascar : mission, compétences, organisation, approche qualité et collaboration à distance.',
+        'TicTek, entreprise de services numériques basée à Antananarivo (Madagascar) et tournée vers l’international : mission, compétences, organisation et approche qualité.',
       h1: 'À propos de TicTek',
       lede:
-        'TicTek est une entreprise de services numériques basée à Antananarivo, à Madagascar. Nous concevons, développons et maintenons des logiciels pour des entreprises qui cherchent un partenaire technique fiable, flexible et attentif aux coûts.',
+        'TicTek est une entreprise de services numériques basée à Antananarivo, à Madagascar, qui travaille à distance avec des clients à l’international. Nous concevons, développons et maintenons des logiciels pour des entreprises qui cherchent un partenaire technique fiable, flexible et attentif aux coûts.',
       sections: [
         {
           id: 'mission',
@@ -361,7 +495,7 @@ const fr = {
           id: 'distance',
           title: 'Collaboration à distance',
           paragraphs: [
-            'Nous travaillons à distance, en français et en anglais. Madagascar est à UTC+3, ce qui laisse une large plage horaire commune avec l’Europe, et des créneaux en fin de journée pour l’Amérique du Nord.',
+            'Depuis Madagascar, nous travaillons à distance avec des entreprises à l’international, en français et en anglais. Madagascar est à UTC+3, ce qui laisse une large plage horaire commune avec l’Europe ; avec les autres fuseaux, nous convenons de créneaux d’échange adaptés.',
             'Les échanges se font par visioconférence, messagerie et outils de suivi partagés, selon vos habitudes.',
           ],
         },
@@ -390,7 +524,6 @@ const fr = {
         'Si le projet nous correspond, nous vous proposons un cadrage et une estimation écrite.',
       ],
       directTitle: 'Nous écrire directement',
-      locationLabel: 'Équipe basée à',
     },
 
     notFound: {

@@ -15,8 +15,7 @@ export default function ProjectCard({ project, compact = false, headingLevel = 2
   if (compact) {
     return (
       <article className="card project-card">
-        <p className="eyebrow">{t.pages.work.kinds[project.kind]}</p>
-        <Heading className="card-title">
+       <Heading className="card-title">
           <a href={`${href('work')}#${project.slug}`}>{text('title')}</a>
         </Heading>
         <p>{text('problem')}</p>

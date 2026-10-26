@@ -6,7 +6,7 @@ export default function ProcessSteps() {
   return (
     <ol className="steps">
       {t.process.map((step) => (
-        <li className="step" key={step.title}>
+        <li className="step reveal" key={step.title}>
           <h3>{step.title}</h3>
           <p>{step.text}</p>
         </li>

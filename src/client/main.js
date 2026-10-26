@@ -1,5 +1,7 @@
-// Loaded on every page. The site is static HTML; this only adds the mobile menu.
-import '../styles/style.css';
+// Loaded on every page. The site is static HTML; this only adds the mobile
+// menu and the theme toggle (the theme itself is applied before first paint
+// by the inline script in seo/head.js).
+const THEME_STORAGE_KEY = 'tictek-theme';
 
 const toggle = document.querySelector('[data-nav-toggle]');
 const nav = toggle && document.getElementById(toggle.getAttribute('aria-controls'));
@@ -17,5 +19,23 @@ if (toggle && nav) {
       setOpen(false);
       toggle.focus();
     }
+  });
+}
+
+const themeToggle = document.querySelector('[data-theme-toggle]');
+
+if (themeToggle) {
+  const root = document.documentElement;
+  const sync = () => themeToggle.setAttribute('aria-pressed', String(root.dataset.theme === 'dark'));
+  sync();
+
+  themeToggle.addEventListener('click', () => {
+    root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
+    try {
+      localStorage.setItem(THEME_STORAGE_KEY, root.dataset.theme);
+    } catch {
+      // Storage blocked (private mode): the choice just won't persist.
+    }
+    sync();
   });
 }

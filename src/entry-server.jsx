@@ -1,7 +1,7 @@
 // Build-time renderer: scripts/prerender.mjs (production) and the dev
 // middleware in vite.config.js call renderPage() for every route. Pages are
 // plain HTML; the only client code is src/client/main.js (menu) and the
-// contact form island (src/client/contact.jsx).
+// form islands (src/client/forms.jsx).
 import { renderToStaticMarkup } from 'react-dom/server';
 import { languages, pageIds, paths } from './data/site';
 import { LocaleProvider } from './i18n';
@@ -12,12 +12,27 @@ import Services from './pages/Services';
 import Work from './pages/Work';
 import Collaboration from './pages/Collaboration';
 import About from './pages/About';
+import Pricing from './pages/Pricing';
+import Careers from './pages/Careers';
 import Contact from './pages/Contact';
 import NotFound from './pages/NotFound';
 
 export { siteUrl } from './data/site';
+export { THEME_SCRIPT } from './seo/head';
 
-const PAGES = { home: Home, services: Services, work: Work, collaboration: Collaboration, about: About, contact: Contact };
+const PAGES = {
+  home: Home,
+  services: Services,
+  work: Work,
+  collaboration: Collaboration,
+  pricing: Pricing,
+  about: About,
+  careers: Careers,
+  contact: Contact,
+};
+
+/** Pages with a form island (they load src/client/forms.jsx). */
+export const FORM_PAGES = ['contact', 'careers'];
 
 export const NOT_FOUND_PATH = '/404.html';
 
@@ -37,7 +52,7 @@ export function renderPage(route, assets) {
   const Page = PAGES[pageId] ?? NotFound;
   const pageAssets = {
     ...assets,
-    modules: pageId === 'contact' ? [...assets.modules, assets.islands.contact] : assets.modules,
+    modules: FORM_PAGES.includes(pageId) ? [...assets.modules, assets.islands.forms] : assets.modules,
   };
 
   const body = renderToStaticMarkup(

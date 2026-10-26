@@ -3,12 +3,12 @@ import { contactInfo } from '../data/site';
 import { useLocale } from '../i18n';
 import Icon from '../components/Icon';
 import PageHeader from '../components/PageHeader';
-import ContactForm from '../contact/ContactForm';
+import ContactForm from '../forms/ContactForm';
 
 export default function Contact() {
   const { lang, t } = useLocale();
   const page = t.pages.contact;
-  // Rendered separately so src/client/contact.jsx can hydrate it as an island.
+  // Rendered separately so src/client/forms.jsx can hydrate it as an island.
   const formHtml = renderToString(<ContactForm lang={lang} />);
 
   return (
@@ -16,7 +16,7 @@ export default function Contact() {
       <PageHeader pageId="contact" title={page.h1} lede={page.lede} />
 
       <div className="container contact-grid">
-        <div id="contact-form" data-lang={lang} dangerouslySetInnerHTML={{ __html: formHtml }} />
+        <div data-form="contact" data-lang={lang} dangerouslySetInnerHTML={{ __html: formHtml }} />
 
         <aside className="contact-aside">
           <section aria-labelledby="next-title">
@@ -41,9 +41,7 @@ export default function Contact() {
               </li>
               <li>
                 <Icon name="pin" size={18} />
-                <span>
-                  {page.locationLabel} {t.footer.location}
-                </span>
+                <span>{t.footer.location}</span>
               </li>
             </ul>
           </section>

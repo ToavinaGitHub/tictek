@@ -1,4 +1,4 @@
-import { brand, contactInfo, navIds, serviceIds } from '../data/site';
+import { brand, companyIds, contactInfo, serviceIds } from '../data/site';
 import { useLocale } from '../i18n';
 import Icon from './Icon';
 
@@ -10,7 +10,8 @@ export default function Footer() {
     <footer className="site-footer">
       <div className="container footer-grid">
         <div className="footer-about">
-          <img src={brand.logo} alt={brand.name} width={275} height={89} className="brand-logo" loading="lazy" />
+          <img src={brand.logo} alt={brand.name} width={275} height={89} className="brand-logo logo-light" loading="lazy" />
+          <img src={brand.logoDark} alt={brand.name} width={275} height={89} className="brand-logo logo-dark" loading="lazy" />
           <p>{t.footer.about}</p>
         </div>
 
@@ -28,13 +29,11 @@ export default function Footer() {
         <div>
           <h2 className="footer-title">{t.footer.companyTitle}</h2>
           <ul className="footer-links">
-            {navIds
-              .filter((id) => id !== 'services')
-              .map((id) => (
-                <li key={id}>
-                  <a href={href(id)}>{t.common.nav[id]}</a>
-                </li>
-              ))}
+            {companyIds.map((id) => (
+              <li key={id}>
+                <a href={href(id)}>{t.common.nav[id]}</a>
+              </li>
+            ))}
             <li>
               <a href={href('contact')}>{t.common.nav.contact}</a>
             </li>

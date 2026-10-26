@@ -2,6 +2,8 @@ import { hasProjects, modelIds, serviceIds } from '../data/site';
 import { projects } from '../data/projects';
 import { useLocale } from '../i18n';
 import Icon from '../components/Icon';
+import HeroVisual from '../components/HeroVisual';
+import TechMarquee from '../components/TechMarquee';
 import ProcessSteps from '../components/ProcessSteps';
 import ProjectCard from '../components/ProjectCard';
 import CtaBand from '../components/CtaBand';
@@ -14,46 +16,39 @@ export default function Home() {
     <>
       <section className="hero">
         <div className="container hero-grid">
-          <div>
-            <p className="eyebrow">{page.hero.eyebrow}</p>
-            <h1>{page.hero.title}</h1>
+          <div className="hero-copy">
+            <h1>
+              {page.hero.title} <span className="accent-text">{page.hero.titleAccent}</span>
+            </h1>
             <p className="lede">{page.hero.lede}</p>
             <div className="actions">
-              <a href={href('contact')} className="btn btn-primary">
+              <a href={href('contact')} className="btn btn-primary btn-lg">
                 {t.common.ctaContact}
+                <Icon name="arrow" size={18} />
               </a>
-              <a href={hasProjects ? href('work') : href('services')} className="btn btn-secondary">
+              <a href={hasProjects ? href('work') : href('services')} className="btn btn-secondary btn-lg">
                 {hasProjects ? page.hero.ctaWork : page.hero.ctaServices}
               </a>
             </div>
           </div>
+          <HeroVisual />
+        </div>
 
-          <aside className="hero-aside" aria-labelledby="hero-aside-title">
-            <h2 id="hero-aside-title">{page.hero.asideTitle}</h2>
-            <ul>
-              {modelIds.map((id) => (
-                <li key={id}>
-                  <Icon name={id} />
-                  <div>
-                    <a href={`${href('collaboration')}#${id}`}>{t.models[id].title}</a>
-                    <p>{t.models[id].short}</p>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </aside>
+        <div className="container">
+          <TechMarquee />
         </div>
       </section>
 
-      <section className="section section-alt" aria-labelledby="services-title">
+      <section className="section" aria-labelledby="services-title">
         <div className="container">
-          <div className="section-head">
+          <div className="section-head reveal">
+            <p className="eyebrow">{t.common.nav.services}</p>
             <h2 id="services-title">{page.services.title}</h2>
             <p>{page.services.lede}</p>
           </div>
           <ul className="grid grid-3">
             {serviceIds.map((id) => (
-              <li className="card" key={id}>
+              <li className="card card-service reveal" key={id}>
                 <Icon name={id} className="icon card-icon" />
                 <h3 className="card-title">
                   <a href={`${href('services')}#${id}`} className="stretched-link">
@@ -61,6 +56,10 @@ export default function Home() {
                   </a>
                 </h3>
                 <p>{t.services[id].short}</p>
+                <span className="card-more" aria-hidden="true">
+                  {t.common.learnMore}
+                  <Icon name="arrow" size={16} />
+                </span>
               </li>
             ))}
           </ul>
@@ -74,9 +73,9 @@ export default function Home() {
       </section>
 
       {hasProjects && (
-        <section className="section" aria-labelledby="work-title">
+        <section className="section section-alt" aria-labelledby="work-title">
           <div className="container">
-            <div className="section-head">
+            <div className="section-head reveal">
               <h2 id="work-title">{page.work.title}</h2>
             </div>
             <div className="grid grid-3">
@@ -94,15 +93,16 @@ export default function Home() {
         </section>
       )}
 
-      <section className="section" aria-labelledby="models-title">
+      <section className="section section-dark" aria-labelledby="models-title">
         <div className="container">
-          <div className="section-head">
+          <div className="section-head reveal">
+            <p className="eyebrow">{t.common.nav.collaboration}</p>
             <h2 id="models-title">{page.models.title}</h2>
             <p>{page.models.lede}</p>
           </div>
           <ul className="grid grid-3">
             {modelIds.map((id) => (
-              <li className="card" key={id}>
+              <li className="card card-dark reveal" key={id}>
                 <Icon name={id} className="icon card-icon" />
                 <h3 className="card-title">{t.models[id].title}</h3>
                 <p>{t.models[id].text}</p>
@@ -119,23 +119,23 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section section-alt" aria-labelledby="process-title">
+      <section className="section" aria-labelledby="process-title">
         <div className="container">
-          <div className="section-head">
+          <div className="section-head reveal">
             <h2 id="process-title">{page.process.title}</h2>
           </div>
           <ProcessSteps />
         </div>
       </section>
 
-      <section className="section" aria-labelledby="trust-title">
-        <div className="container">
-          <div className="section-head">
+      <section className="section section-alt" aria-labelledby="trust-title">
+        <div className="container trust-layout">
+          <div className="reveal">
             <h2 id="trust-title">{page.trust.title}</h2>
           </div>
-          <ul className="grid grid-3 trust-list">
+          <ul className="trust-list">
             {page.trust.items.map((item) => (
-              <li key={item.title}>
+              <li key={item.title} className="reveal">
                 <Icon name="check" className="icon trust-icon" />
                 <div>
                   <h3>{item.title}</h3>

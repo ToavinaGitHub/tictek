@@ -1,9 +1,12 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
+// The stylesheet is its own entry so every page links it in <head>, in dev
+// as in production: importing it from JS would paint the page unstyled first.
 const CLIENT_ENTRIES = {
+  style: 'src/styles/style.css',
   main: 'src/client/main.js',
-  contact: 'src/client/contact.jsx',
+  forms: 'src/client/forms.jsx',
 };
 
 /**
@@ -23,10 +26,10 @@ function prerenderedPagesInDev() {
           const { findRoute, renderPage } = await server.ssrLoadModule('/src/entry-server.jsx');
           const route = findRoute(path);
           const html = renderPage(route ?? null, {
-            css: [],
+            css: [`/${CLIENT_ENTRIES.style}`],
             preloads: [],
             modules: [`/${CLIENT_ENTRIES.main}`],
-            islands: { contact: `/${CLIENT_ENTRIES.contact}` },
+            islands: { forms: `/${CLIENT_ENTRIES.forms}` },
           });
           res.statusCode = route ? 200 : 404;
           res.setHeader('Content-Type', 'text/html; charset=utf-8');

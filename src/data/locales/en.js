@@ -16,23 +16,26 @@ const en = {
       collaboration: 'Engagement models',
       about: 'About',
       contact: 'Contact',
+      pricing: 'Pricing',
+      careers: 'Careers',
     },
     ctaContact: "Let's talk about your project",
     cta: {
       title: 'A project, an idea, an application to take over?',
       text: 'Tell us where you stand. We will tell you what we can do, how, and on what terms.',
     },
-    switchLang: { label: 'FR', title: 'Lire cette page en français' },
+    language: 'Language',
+    darkMode: 'Dark mode',
     learnMore: 'Learn more',
   },
 
   footer: {
     about:
-      'TicTek designs, builds and maintains custom software: web and mobile apps, SaaS, APIs, process automation and AI integration. Team based in Madagascar, working remotely in English and French.',
+      'TicTek designs, builds and maintains custom software: web and mobile apps, SaaS, APIs, process automation and AI integration. Team based in Madagascar, serving clients internationally, in English and French.',
     servicesTitle: 'Services',
     companyTitle: 'Company',
     contactTitle: 'Contact',
-    location: 'Antananarivo, Madagascar',
+    location: 'Antananarivo, Madagascar · clients worldwide',
     rights: 'All rights reserved.',
   },
 
@@ -171,15 +174,26 @@ const en = {
     home: {
       title: 'TicTek | Custom software development: web, mobile, SaaS and AI',
       description:
-        'TicTek designs and builds web and mobile apps, SaaS products, APIs and automations, with AI integration. Team based in Madagascar, working in English and French.',
+        'TicTek designs and builds web and mobile apps, SaaS products, APIs and automations, with AI integration. Team in Madagascar, clients worldwide, in English and French.',
       hero: {
         eyebrow: 'Software development company',
-        title: 'Your software development partner, from first idea to production.',
+        title: 'Your software development partner,',
+        titleAccent: 'from first idea to production.',
         lede:
-          'TicTek helps companies build web and mobile software, automate their processes and integrate AI. Our technical team is based in Madagascar and works remotely with clients, in English and French.',
+          'TicTek helps companies build web and mobile software, automate their processes and integrate AI. Our technical team is based in Madagascar and works remotely with clients internationally, in English and French.',
         ctaWork: 'See our work',
         ctaServices: 'Explore our services',
-        asideTitle: 'Three ways to work with us',
+        visual: {
+          url: 'app.your-company.com',
+          dashboard: 'Dashboard',
+          orders: 'Orders',
+          clients: 'Clients',
+          activity: 'Activity',
+          synced: 'Synced',
+          automation: 'Automated workflow',
+        },
+        stackTitle: 'Technologies we use every day',
+        stackPause: 'Pause the scrolling',
       },
       services: {
         title: 'What we build for you',
@@ -222,8 +236,8 @@ const en = {
             text: 'We work in both languages, written and spoken.',
           },
           {
-            title: 'Overlapping working hours',
-            text: 'Madagascar is on UTC+3: one to two hours from Western Europe, with late-day slots for North America.',
+            title: 'Hours that fit your time zone',
+            text: 'Madagascar is on UTC+3: one to two hours from Europe, and agreed meeting slots for other time zones.',
           },
         ],
       },
@@ -305,8 +319,8 @@ const en = {
           a: 'Video calls for key discussions, chat for day-to-day questions, a ticketing tool to track requests, and regular demos on a staging environment.',
         },
         {
-          q: 'What about time zones?',
-          a: 'Madagascar is on UTC+3 with no daylight saving time. That is one to two hours from France and Switzerland, and seven to eight hours from Eastern Canada: late afternoon in Madagascar is morning in Montreal or Toronto.',
+          q: 'Do you work with clients in other time zones?',
+          a: 'Yes, we work internationally. Madagascar is on UTC+3 with no daylight saving time: one to two hours from France and Switzerland, seven to eight hours from Eastern Canada. At kickoff we agree on regular meeting slots that fit your hours; the rest of the follow-up happens asynchronously in your tools.',
         },
         {
           q: 'Can you take over an existing application?',
@@ -315,13 +329,133 @@ const en = {
       ],
     },
 
+    pricing: {
+      title: 'Pricing: how we estimate your software project | TicTek',
+      description:
+        'Fixed price, time and materials, monthly maintenance or white label: how TicTek prices its work and what drives the cost of a software project.',
+      h1: 'Pricing',
+      lede:
+        'Every software project is different, so we don’t publish a fixed price list. Here is how we bill, what drives the price and how to get an estimate.',
+      modelsTitle: 'How we bill',
+      fitLabel: 'Best for:',
+      models: [
+        {
+          id: 'fixed-price',
+          title: 'Fixed price',
+          text: 'One overall price agreed upfront, for a scope defined together during scoping.',
+          points: [
+            'Price, deliverables and milestones set in the quote',
+            'Out-of-scope changes priced separately, before any work',
+            'Payment schedule stated in the quote',
+          ],
+          fit: 'projects with a clear need: application, business software, MVP.',
+        },
+        {
+          id: 'time-and-materials',
+          title: 'Time and materials',
+          text: 'You book development time, billed per day. The scope can change freely.',
+          points: [
+            'Daily rate stated in the quote',
+            'Time tracking shared with you',
+            'Volume adjusted to your needs',
+          ],
+          fit: 'team augmentation, products in progress, evolving needs.',
+        },
+        {
+          id: 'maintenance',
+          title: 'Monthly maintenance',
+          text: 'A monthly amount to maintain and improve an application in production.',
+          points: [
+            'Security and dependency updates',
+            'Fixes and small improvements',
+            'Monthly volume agreed together',
+          ],
+          fit: 'applications already in production.',
+        },
+        {
+          id: 'white-label',
+          title: 'White label',
+          text: 'Terms designed for agencies that include our development work in their own offers.',
+          points: [
+            'Fixed price per project or time and materials',
+            'Invoiced to your agency only',
+            'Complete discretion towards your clients',
+          ],
+          fit: 'web, digital and marketing agencies.',
+        },
+      ],
+      factorsTitle: 'What drives the price',
+      factors: [
+        { title: 'Scope', text: 'Number of screens, features and user types.' },
+        { title: 'Platforms', text: 'Web, iOS, Android, or several at once.' },
+        { title: 'Integrations', text: 'Connections to your existing tools, online payment, third-party APIs, AI.' },
+        { title: 'Design', text: 'Mockups provided by you, or interface design by our team.' },
+        { title: 'Requirements', text: 'Data volume, security, test coverage, expected availability.' },
+        { title: 'Timeline', text: 'A tight schedule can require more developers working in parallel.' },
+      ],
+      stepsTitle: 'How to get a quote',
+      steps: [
+        'Describe your project through the contact form, ideally with a budget range.',
+        'We discuss it in a first call, free and with no commitment.',
+        'We send you a written estimate: scope, milestones, schedule and price.',
+      ],
+      faqTitle: 'Frequently asked questions',
+      faq: [
+        {
+          q: 'Why not show prices?',
+          a: 'Two similar-looking applications can take very different effort depending on integrations, volumes and requirements. A price shown without knowing your project would be either misleading or padded just in case.',
+        },
+        {
+          q: 'Is the first call free?',
+          a: 'Yes, the first call is free and with no commitment. For a complex project, we may suggest a scoping phase before the final estimate; it is then priced upfront.',
+        },
+        {
+          q: 'How does payment work?',
+          a: 'The payment schedule (deposit, milestones, balance) is stated in every quote and agreed with you before any work starts.',
+        },
+      ],
+      cta: 'Request a quote',
+    },
+
+    careers: {
+      title: 'Careers: send an open application | TicTek',
+      description:
+        'Web, mobile, back-end, QA or DevOps developer? Send TicTek an open application: varied projects for clients worldwide.',
+      h1: 'Careers',
+      lede:
+        'We have no open positions right now, but we read every open application. If your profile matches a current or upcoming need, we will get back to you.',
+      whyTitle: 'Working at TicTek',
+      why: [
+        { title: 'Varied projects', text: 'Web and mobile apps, APIs, automation and AI, for clients worldwide.' },
+        { title: 'A modern stack', text: 'React, Next.js, Node.js, Java / Spring Boot, .NET, React Native, Docker…' },
+        { title: 'Quality as a habit', text: 'Code reviews, automated tests and continuous integration every day.' },
+        { title: 'English and French', text: 'You work with clients and teams in both languages.' },
+      ],
+      profilesTitle: 'Profiles we are interested in',
+      profiles: [
+        'Front-end developer: React, Angular, Vue.js',
+        'Back-end developer: Node.js, Java, .NET, PHP',
+        'Mobile developer: React Native',
+        'QA and test automation',
+        'DevOps and cloud',
+        'Another technical profile? Write to us anyway.',
+      ],
+      processTitle: 'How it works',
+      process: [
+        'Send your application with the form below.',
+        'You immediately receive a confirmation email.',
+        'We review your profile and get back to you if it matches a need.',
+      ],
+      formTitle: 'Open application',
+    },
+
     about: {
       title: 'About TicTek, software development company | TicTek',
       description:
-        'TicTek is a software services company based in Antananarivo, Madagascar: mission, skills, how we work, quality approach and remote collaboration.',
+        'TicTek is a software services company based in Antananarivo, Madagascar, working internationally: mission, skills, how we work, quality approach and remote collaboration.',
       h1: 'About TicTek',
       lede:
-        'TicTek is a software services company based in Antananarivo, Madagascar. We design, build and maintain software for companies looking for a reliable, flexible and cost-conscious technical partner.',
+        'TicTek is a software services company based in Antananarivo, Madagascar, working remotely with clients internationally. We design, build and maintain software for companies looking for a reliable, flexible and cost-conscious technical partner.',
       sections: [
         {
           id: 'mission',
@@ -350,7 +484,7 @@ const en = {
           id: 'remote',
           title: 'Remote collaboration',
           paragraphs: [
-            'We work remotely, in English and French. Madagascar is on UTC+3, which gives a wide overlap with Europe and late-day slots for North America.',
+            'From Madagascar, we work remotely with companies internationally, in English and French. Madagascar is on UTC+3, which gives a wide overlap with Europe; for other time zones, we agree on suitable meeting slots.',
             'We communicate by video call, chat and shared tracking tools, following your habits.',
           ],
         },
@@ -379,7 +513,6 @@ const en = {
         'If the project is a good fit, we propose a scoping phase and a written estimate.',
       ],
       directTitle: 'Email us directly',
-      locationLabel: 'Team based in',
     },
 
     notFound: {

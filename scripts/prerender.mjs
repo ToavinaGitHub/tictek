@@ -1,5 +1,6 @@
 // Writes one static HTML file per route, plus 404.html, sitemap.xml and
 // robots.txt, into dist/. Runs after the client and SSR builds (see package.json).
+import { createHash } from 'node:crypto';
 import { readFile, writeFile, mkdir, rm } from 'node:fs/promises';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
@@ -9,7 +10,7 @@ const dist = join(root, 'dist');
 const ssrDir = join(root, 'dist-ssr');
 
 const manifest = JSON.parse(await readFile(join(dist, '.vite/manifest.json'), 'utf8'));
-const { routes, renderPage, NOT_FOUND_PATH, siteUrl } = await import(pathToFileURL(join(ssrDir, 'entry-server.js')).href);
+const { routes, renderPage, NOT_FOUND_PATH, FORM_PAGES, siteUrl, THEME_SCRIPT } = await import(pathToFileURL(join(ssrDir, 'entry-server.js')).href);
 
 /** Resolves a manifest entry to its JS file, its CSS and the chunks it imports. */
 function entry(src) {
@@ -19,20 +20,21 @@ function entry(src) {
   return { file: `/${chunk.file}`, css: (chunk.css ?? []).map((f) => `/${f}`), imports };
 }
 
+const style = entry('src/styles/style.css');
 const main = entry('src/client/main.js');
-const contact = entry('src/client/contact.jsx');
+const forms = entry('src/client/forms.jsx');
 const assets = {
-  css: main.css,
+  css: [style.file],
   preloads: [],
   modules: [main.file],
-  islands: { contact: contact.file },
+  islands: { forms: forms.file },
 };
 
 const outputFile = (path) => join(dist, path.endsWith('/') ? `${path}index.html` : path);
 
 for (const route of routes) {
   const file = outputFile(route.path);
-  const routeAssets = route.pageId === 'contact' ? { ...assets, preloads: contact.imports } : assets;
+  const routeAssets = FORM_PAGES.includes(route.pageId) ? { ...assets, preloads: forms.imports } : assets;
   await mkdir(dirname(file), { recursive: true });
   await writeFile(file, renderPage(route, routeAssets));
 }
@@ -54,6 +56,28 @@ await writeFile(
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${urls.join('\n')}
 </urlset>
+`,
+);
+
+// Security and cache headers, read by Netlify and Cloudflare Pages (other
+// hosts: copy them into their config). The inline theme script is allowed
+// by hash, so script-src stays free of 'unsafe-inline'.
+const themeHash = createHash('sha256').update(THEME_SCRIPT).digest('base64');
+await writeFile(
+  join(dist, '_headers'),
+  `/*
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'sha256-${themeHash}'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.emailjs.com; form-action 'self'; frame-ancestors 'none'; base-uri 'self'; object-src 'none'
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  X-Frame-Options: DENY
+  Strict-Transport-Security: max-age=31536000
+
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
 `,
 );
 

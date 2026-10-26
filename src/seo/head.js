@@ -10,6 +10,16 @@ const jsonLd = (data) =>
 
 const organizationId = `${siteUrl}/#organization`;
 
+export const THEME_STORAGE_KEY = 'tictek-theme';
+
+/**
+ * Runs before the first paint so the page never flashes in the wrong theme:
+ * saved choice first, else the system preference. Inline on purpose (an
+ * external file would block rendering); scripts/prerender.mjs allows it in
+ * the Content-Security-Policy by its SHA-256 hash.
+ */
+export const THEME_SCRIPT = `(function(){var t;try{t=localStorage.getItem('${THEME_STORAGE_KEY}')}catch(e){}if(t!=='dark'&&t!=='light')t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t})()`;
+
 function organization() {
   return {
     '@type': 'Organization',
@@ -87,11 +97,13 @@ export function renderHead({ pageId, lang, assets, indexable = true }) {
     '<meta name="viewport" content="width=device-width, initial-scale=1">',
     `<title>${escapeHtml(page.title)}</title>`,
     `<meta name="description" content="${escapeHtml(page.description)}">`,
-    '<meta name="theme-color" content="#ffffff">',
-    '<meta name="color-scheme" content="light">',
+    `<script>${THEME_SCRIPT}</script>`,
+    '<meta name="color-scheme" content="light dark">',
+    '<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">',
+    '<meta name="theme-color" content="#0a0f1a" media="(prefers-color-scheme: dark)">',
     '<link rel="icon" href="/favicon.svg" type="image/svg+xml">',
     '<link rel="apple-touch-icon" href="/apple-touch-icon.png">',
-    '<link rel="preload" href="/fonts/manrope-latin-var.woff2" as="font" type="font/woff2" crossorigin>',
+    '<link rel="preload" href="/fonts/plus-jakarta-sans-latin-var.woff2" as="font" type="font/woff2" crossorigin>',
     ...assets.css.map((href) => `<link rel="stylesheet" href="${href}">`),
     ...assets.preloads.map((src) => `<link rel="modulepreload" href="${src}">`),
   ];
