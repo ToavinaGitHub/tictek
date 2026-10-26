@@ -1,56 +1,70 @@
-import { contactInfo } from '../data/content';
-import { usePreferences } from '../context/PreferencesContext';
-import Logo from './Logo';
+import { brand, contactInfo, navIds, serviceIds } from '../data/site';
+import { useLocale } from '../i18n';
+import Icon from './Icon';
 
 export default function Footer() {
-  const { t } = usePreferences();
-  const footer = t.footer;
+  const { t, href } = useLocale();
+  const year = new Date().getFullYear();
 
   return (
-    <div id="contact" className="container-fluid site-footer pt-5">
-      <div className="container">
-        <div className="row gx-5">
-          <div className="col-lg-4 col-md-6 pb-4">
-            <Logo className="d-block mb-3" />
-            <p className="lead-text">{footer.about}</p>
-          </div>
+    <footer className="site-footer">
+      <div className="container footer-grid">
+        <div className="footer-about">
+          <img src={brand.logo} alt={brand.name} width={275} height={89} className="brand-logo" loading="lazy" />
+          <p>{t.footer.about}</p>
+        </div>
 
-          {footer.columns.map((col) => (
-            <div className="col-lg-2 col-md-6 pb-4" key={col.title}>
-              <h3 className="mb-3">{col.title}</h3>
-              <div className="link-animated d-flex flex-column">
-                {col.links.map((link) => (
-                  <a href={link.href} key={link.label}>{link.label}</a>
-                ))}
-              </div>
-            </div>
-          ))}
+        <div>
+          <h2 className="footer-title">{t.footer.servicesTitle}</h2>
+          <ul className="footer-links">
+            {serviceIds.map((id) => (
+              <li key={id}>
+                <a href={`${href('services')}#${id}`}>{t.services[id].title}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
 
-          <div className="col-lg-4 col-md-6 pb-4">
-            <h3 className="mb-3">{footer.contactTitle}</h3>
-            <div className="d-flex mb-2">
-              <i className="bi bi-geo-alt me-2 footer-icon"></i>
-              <p className="mb-0">{contactInfo.address}</p>
-            </div>
-            <div className="d-flex mb-2">
-              <i className="bi bi-envelope-open me-2 footer-icon"></i>
-              <p className="mb-0">{contactInfo.email}</p>
-            </div>
-            <div className="d-flex mb-2">
-              <i className="bi bi-telephone me-2 footer-icon"></i>
-              <p className="mb-0">{contactInfo.phone}</p>
-            </div>
-          </div>
+        <div>
+          <h2 className="footer-title">{t.footer.companyTitle}</h2>
+          <ul className="footer-links">
+            {navIds
+              .filter((id) => id !== 'services')
+              .map((id) => (
+                <li key={id}>
+                  <a href={href(id)}>{t.common.nav[id]}</a>
+                </li>
+              ))}
+            <li>
+              <a href={href('contact')}>{t.common.nav.contact}</a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 className="footer-title">{t.footer.contactTitle}</h2>
+          <ul className="footer-contact">
+            <li>
+              <Icon name="mail" size={18} />
+              <a href={`mailto:${contactInfo.email}`}>{contactInfo.email}</a>
+            </li>
+            <li>
+              <Icon name="phone" size={18} />
+              <a href={`tel:${contactInfo.phone.replace(/\s+/g, '')}`}>{contactInfo.phone}</a>
+            </li>
+            <li>
+              <Icon name="pin" size={18} />
+              <span>{t.footer.location}</span>
+            </li>
+          </ul>
         </div>
       </div>
 
-      <div className="footer-bottom">
-        <div className="container text-center">
-          <p className="mb-0">
-            &copy; 2026 <a href="#hero">TicTek</a>. {footer.rights}
-          </p>
-        </div>
+      <div className="container footer-bottom">
+        <p>
+          © {year} {brand.name}. {t.footer.rights}
+        </p>
       </div>
-    </div>
+    </footer>
   );
 }

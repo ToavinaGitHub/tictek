@@ -1,365 +1,396 @@
+import forms from './form';
+
 const en = {
-  meta: {
-    title: 'TicTek | Web, Mobile & QA Software Engineering',
-    description:
-      'TicTek designs, builds and audits your web and mobile platforms with the rigor of critical engineering: scalable architectures, thorough test coverage and stress-free deployments.',
-  },
+  lang: 'en',
+  ogLocale: 'en_US',
 
-  topbar: {
-    language: 'Language',
-    toLight: 'Switch to light theme',
-    toDark: 'Switch to dark theme',
-  },
-
-  nav: {
-    openMenu: 'Open menu',
-    links: {
-      hero: 'Home',
+  common: {
+    skipLink: 'Skip to content',
+    menu: 'Menu',
+    mainNav: 'Main navigation',
+    breadcrumb: 'Breadcrumb',
+    nav: {
+      home: 'Home',
       services: 'Services',
-      methodologie: 'Methodology',
-      stack: 'Tech Stack',
-      qa: 'Quality & QA',
-      'etudes-de-cas': 'Our Work',
-      tarifs: 'Pricing',
-      devis: 'Quote',
+      work: 'Work',
+      collaboration: 'Engagement models',
+      about: 'About',
       contact: 'Contact',
     },
-  },
-
-  backToTop: 'Back to top',
-
-  hero: {
-    kicker: 'Software Engineering, Mobile, QA, Cloud & Automation',
-    title: 'Your digital products. Built to scale, tested to last.',
-    lede: 'TicTek is an IT services company specializing in the design, development and security of web and mobile applications. From cloud architecture to automated test coverage, our team helps you ship robust, high-performance, production-ready products.',
-    ctaPrimary: 'Request a free quote / audit',
-    ctaSecondary: 'Explore our services',
-  },
-
-  metrics: [
-    { num: '<4 wks', label: 'Average time to ship a working MVP to production' },
-    { num: '95%+', label: 'Automated test coverage on core business logic' },
-    { num: '100%', label: 'Of projects delivered with an automated CI/CD pipeline' },
-    { num: '24/7', label: 'Architectural rigor & continuous application monitoring' },
-  ],
-
-  badges: [
-    'Custom Development',
-    'Web & Mobile Apps',
-    'QA & Test Automation',
-    'Cloud, DevOps & AI Solutions',
-    'Process Automation',
-  ],
-
-  services: {
-    eyebrow: 'Our expertise',
-    title: 'End-to-end engineering, from code to production',
-    lede: 'Web, mobile, quality assurance, cloud and automation: five disciplines we handle in-house, with no subcontracting and no weak link.',
-    items: [
-      {
-        span: 'span3',
-        tag: 'Web & API',
-        title: 'Web Development & Backend Architecture',
-        desc: 'Custom web platforms that are fast and secure. We build scalable architectures (microservices or modular monoliths with Java Spring Boot, Node.js, C# .NET) paired with responsive frontends (React, Next.js, Angular).',
-        features: [
-          'Microservice architectures & RESTful / GraphQL APIs',
-          'Modern, responsive frontends (React, Next.js, Angular)',
-          'Robust backends (Java Spring Boot, Node.js, C# ASP.NET)',
-          'Database design and tuning (PostgreSQL, MySQL, SQL Server)',
-        ],
-        benefit: '→ A platform that grows with you, without piling up technical debt.',
-      },
-      {
-        span: 'span3',
-        tag: 'Mobile',
-        title: 'iOS & Android Mobile Apps',
-        desc: 'Smooth, user-friendly mobile apps. We favor React Native & Expo to speed up your time-to-market with a single high-performance codebase, or go native when your hardware needs call for it.',
-        features: [
-          'React Native & Expo (simultaneous iOS & Android release)',
-          'Modern interface design and optimized user journeys',
-          'Real-time APIs, push notifications and offline features',
-          'App Store and Google Play publishing and support',
-        ],
-        benefit: '→ One codebase, two stores, no compromise on user experience.',
-      },
-      {
-        span: 'span2',
-        tag: 'QA & Security',
-        title: 'Quality Assurance & Test Automation',
-        desc: 'At TicTek, QA is not an end-of-project option but a daily discipline. We automate E2E, performance and integration tests to stop regressions before they reach your users.',
-        features: [
-          'Automated E2E tests (Playwright / Cypress) & unit tests',
-          'Load and scalability testing (k6 / JMeter)',
-          'Code, compliance and security audits (OWASP Top 10)',
-          'Blocking quality gates in your CI/CD pipelines',
-        ],
-        benefit: '→ Fewer bugs in production, calmer releases and a protected reputation.',
-      },
-      {
-        span: 'span2',
-        tag: 'Cloud & AI',
-        title: 'Cloud DevOps & AI Integration',
-        desc: 'Industrialized deployments and smarter business tools through AI API integration (LLMs, vision, automated analysis).',
-        features: [
-          'Docker containerization & cloud orchestration',
-          'Automated CI/CD pipelines (GitHub Actions / GitLab CI)',
-          'AI API integration (OpenAI, Gemini API, workflow automation)',
-          'Monitoring, proactive alerting and infrastructure management',
-        ],
-        benefit: '→ Automated deployments and AI-powered features.',
-      },
-      {
-        span: 'span2',
-        tag: 'Automation',
-        title: 'Business Process Automation',
-        desc: 'Do your teams spend hours copying data from one tool to another? We automate those repetitive tasks and connect your software so it works together.',
-        features: [
-          'Automated workflows with n8n',
-          'Syncing your project management tools, CRM and email',
-          'Integrations between your tools (CRM, ERP, invoicing, email) via API',
-          'Generative AI to sort, extract and process your data',
-        ],
-        benefit: '→ Hours of data entry saved every week, and no more copy-paste errors.',
-      },
-    ],
-  },
-
-  methodology: {
-    eyebrow: 'Methodology',
-    title: 'From scoping to monitoring, a process that skips no step',
-    steps: [
-      {
-        n: '01',
-        title: 'Scoping & Architecture',
-        text: 'We analyze your business needs and technical constraints in detail, then model the database and application architecture before writing a single line of code.',
-        deliverable: 'Deliverable → Technical architecture document, data model & project roadmap',
-      },
-      {
-        n: '02',
-        title: 'Agile Development in Sprints',
-        text: 'Two-week sprints with a feature demo at the end of each cycle. Backend and frontend code is written alongside its test suite.',
-        deliverable: 'Deliverable → A working software increment deployed to staging every sprint',
-      },
-      {
-        n: '03',
-        title: 'Quality Assurance & Acceptance',
-        text: 'Thorough validation by our QA team: automated test runs, load testing and security audits to deliver a zero-defect product.',
-        deliverable: 'Deliverable → Full acceptance report, test coverage and sign-off',
-      },
-      {
-        n: '04',
-        title: 'Deployment & Stabilization',
-        text: 'Secure release through a CI/CD pipeline, followed by real-time performance monitoring and post-launch support.',
-        deliverable: 'Deliverable → A containerized platform in production under continuous monitoring',
-      },
-    ],
-  },
-
-  stack: {
-    eyebrow: 'Tech stack & rigor',
-    title: 'Tools chosen for fit, not out of habit',
-    lede: 'These are the technologies we know in depth and run in production, not in side projects.',
-    categories: [
-      { name: 'Backend', items: ['Java', 'Spring Boot', 'Node.js', 'Express', 'C# / .NET', 'PHP'] },
-      { name: 'Frontend', items: ['TypeScript', 'JavaScript', 'React', 'Next.js', 'Angular', 'Vue.js', 'Tailwind CSS'] },
-      { name: 'Mobile', items: ['React Native', 'Expo'] },
-      { name: 'Databases', items: ['PostgreSQL', 'MySQL', 'SQL Server', 'MongoDB', 'Redis', 'Elasticsearch'] },
-      { name: 'Architecture & DevOps', items: ['Microservices', 'REST APIs', 'Docker', 'RabbitMQ', 'CI/CD', 'GitHub', 'GitLab'] },
-      { name: 'AI & Data', items: ['Generative AI', 'Gemini', 'Web scraping', 'Data pipelines'] },
-      { name: 'Automation', items: ['n8n', 'API integration'] },
-      { name: 'Blockchain / Web3', items: ['Solidity', 'Hardhat', 'Ethers.js', 'Polygon', 'Smart Contracts'] },
-      { name: 'Methods & tools', items: ['Agile (Scrum / Kanban)', 'Postman', 'Notion', 'Trello'] },
-    ],
-  },
-
-  qa: {
-    eyebrow: 'Quality Assurance',
-    title: 'The most expensive bug is the one found in production',
-    intro: 'At TicTek, software quality is the cornerstone of everything we do. We apply strict quality criteria from architecture design to final deployment: strong typing, automated tests on every commit, security audits and containerization for rock-solid releases.',
-    cards: [
-      {
-        letter: 'A',
-        title: 'CI/CD Automation',
-        text: 'Continuous integration with mandatory unit, integration and E2E tests. A non-compliant build, or one below the coverage threshold, is automatically rejected.',
-      },
-      {
-        letter: 'B',
-        title: 'Proven Architectures',
-        text: 'Built on professional frameworks (Spring Boot, ASP.NET, Node.js) that ensure separation of concerns, secure access and maintainability.',
-      },
-      {
-        letter: 'C',
-        title: 'Security & OWASP Standards',
-        text: 'Regular security audits, protection against common vulnerabilities (OWASP Top 10) and strict authentication and authorization handling.',
-      },
-      {
-        letter: 'D',
-        title: 'Identical Environments',
-        text: 'Docker containers everywhere, so the application behaves exactly the same in staging as it does in production.',
-      },
-    ],
-    metrics: [
-      { num: '95%+', label: 'Automated test coverage on critical modules' },
-      { num: '100%', label: 'Of projects deployed through a secure CI/CD pipeline' },
-      { num: 'Top 10', label: 'Compliance with OWASP Web & Mobile security requirements' },
-      { num: '<24h', label: 'Guaranteed response time for incoming requests' },
-    ],
-    cta: 'Discuss your current testing strategy',
-  },
-
-  caseStudies: {
-    eyebrow: 'Case studies',
-    title: 'Proof, not promises',
-    labels: {
-      problem: 'Initial problem',
-      solution: 'TicTek technical solution',
-      result: 'Measured results',
+    ctaContact: "Let's talk about your project",
+    cta: {
+      title: 'A project, an idea, an application to take over?',
+      text: 'Tell us where you stand. We will tell you what we can do, how, and on what terms.',
     },
-    items: [
-      {
-        tag: 'SaaS & Custom Web Applications',
-        problem: 'An aging management platform had to be rebuilt: it slowed down under load and had become hard to evolve.',
-        solution: 'Split and rebuilt the application as a REST API / microservice architecture (Spring Boot & Node.js) with a modern Next.js frontend and Docker containerization.',
-        result: '3x faster load times, 5x processing capacity with zero downtime, and much simpler delivery of new features.',
-      },
-      {
-        tag: 'Digitalization & Field Mobile Apps',
-        problem: 'No mobile tool in the field meant manual paper entry, wasting time and causing stock errors.',
-        solution: 'Built a cross-platform React Native / Expo mobile app connected in real time to the backend APIs, with full offline support.',
-        result: '40% productivity gain for field teams, no more data-entry errors and instant data sync.',
-      },
-      {
-        tag: 'Automation, QA & AI Tooling',
-        problem: 'Release cycles slowed down by repetitive manual testing and little visibility into code quality.',
-        solution: 'Set up an automated E2E test suite in GitHub Actions, combined with an internal AI-assisted code analysis tool.',
-        result: '70% shorter acceptance phases, earlier defect detection and a faster release cadence for the client.',
-      },
-    ],
-    note: '⚠️ These case studies follow a publish-ready structure; the figures illustrate the expected level of rigor and must be replaced with real, validated data from your client projects before going live.',
-  },
-
-  pricing: {
-    eyebrow: 'Pricing',
-    title: 'A clear commitment, matched to your project’s maturity',
-    lede: 'No fixed price list for custom work: here are the engagement levels we offer most often, to be refined together during a first technical call.',
-    plans: [
-      {
-        name: 'MVP',
-        tag: 'Validate an idea',
-        price: 'Custom quote',
-        description: 'A first working product, scoped and tested, to put your idea in front of the market without delay.',
-        features: [
-          'Scoping & technical architecture',
-          '1 web or mobile platform',
-          'Unit tests on core business logic',
-          'Deployment to a staging environment',
-          'Post-launch support',
-        ],
-        cta: 'Discuss my MVP',
-        highlighted: false,
-      },
-      {
-        name: 'Growth',
-        tag: 'Most popular',
-        price: 'Custom quote',
-        description: 'A robust, tested and industrialized platform designed to handle your growth.',
-        features: [
-          'Microservice or modular architecture',
-          'Web & mobile combined',
-          '90%+ automated test coverage',
-          'Full CI/CD pipeline',
-          'Production monitoring & alerting',
-          'Priority support',
-        ],
-        cta: 'Plan my project',
-        highlighted: true,
-      },
-      {
-        name: 'Custom',
-        tag: 'Complex projects',
-        price: 'Custom quote',
-        description: 'A dedicated team for your specific needs: integrations, AI, compliance, cloud infrastructure.',
-        features: [
-          'Dedicated cross-functional team',
-          'AI integration & automation',
-          'Full OWASP security audit',
-          'Multi-environment cloud infrastructure',
-          'SLA & ongoing support',
-        ],
-        cta: 'Request a quote',
-        highlighted: false,
-      },
-    ],
-    note: 'Since every project is unique, our prices are set after a free initial technical call. These plans give a sense of the scope covered at each level of engagement.',
-  },
-
-  quote: {
-    eyebrow: 'Request a quote',
-    title: 'Describe your project, hear back within 24h',
-    lede: 'This form sends your request straight to our technical team. No middleman, no spam.',
-    projectTypes: {
-      web: 'Web Application',
-      mobile: 'Mobile Application',
-      qa: 'QA & Test Automation',
-      cloud: 'Cloud, DevOps & AI',
-      automation: 'Process Automation',
-      other: 'Other / Not sure yet',
-    },
-    fields: {
-      name: 'Full name',
-      email: 'Email',
-      company: 'Company (optional)',
-      projectType: 'Project type',
-      message: 'Describe your needs',
-    },
-    placeholders: {
-      name: 'John Smith',
-      email: 'john@company.com',
-      company: 'Your company name',
-      message: 'Context, goals, expected timeline...',
-    },
-    submit: 'Send my quote request',
-    sending: 'Sending...',
-    micro: 'Sent directly to our technical team.',
-    success: '✓ Your request has been sent. We will get back to you within 24h.',
-    error: 'Something went wrong while sending. Please try again.',
-  },
-
-  cta: {
-    title: 'Your next project deserves engineering that holds up under load.',
-    text: 'Spend 30 minutes with a TicTek architect, not a salesperson. You leave with concrete technical feedback on your project, whether or not you work with us afterwards.',
-    button: 'Book my technical call',
-    micro: 'Guaranteed reply within 24 business hours.',
+    switchLang: { label: 'FR', title: 'Lire cette page en français' },
+    learnMore: 'Learn more',
   },
 
   footer: {
-    about: 'TicTek is an IT services company focused on software engineering: custom web development, mobile apps, quality assurance and cloud infrastructure. We ship code your teams won’t have to rewrite in 18 months.',
-    columns: [
-      {
-        title: 'Our Services',
-        links: [
-          { label: 'Web & API Development', href: '#services' },
-          { label: 'Mobile Apps', href: '#services' },
-          { label: 'QA & Test Automation', href: '#qa' },
-          { label: 'Cloud, DevOps & AI', href: '#services' },
-          { label: 'Process Automation', href: '#services' },
-        ],
-      },
-      {
-        title: 'Company',
-        links: [
-          { label: 'Our Work', href: '#etudes-de-cas' },
-          { label: 'Our Methodology', href: '#methodologie' },
-          { label: 'Tech Stack', href: '#stack' },
-          { label: 'Pricing', href: '#tarifs' },
-          { label: 'Request a quote', href: '#devis' },
-          { label: 'Contact', href: '#contact' },
-        ],
-      },
-    ],
+    about:
+      'TicTek designs, builds and maintains custom software: web and mobile apps, SaaS, APIs, process automation and AI integration. Team based in Madagascar, working remotely in English and French.',
+    servicesTitle: 'Services',
+    companyTitle: 'Company',
     contactTitle: 'Contact',
-    rights: 'All rights reserved. Designed and built with the same rigor we bring to our clients.',
+    location: 'Antananarivo, Madagascar',
+    rights: 'All rights reserved.',
   },
+
+  services: {
+    web: {
+      title: 'Web applications and business software',
+      short: 'Internal tools, client portals, back offices: applications shaped around your processes.',
+      problem:
+        'Your teams juggle spreadsheets, emails and tools that don’t talk to each other, or your current application holds your business back instead of supporting it.',
+      deliverables: [
+        'Custom web application: internal tool, client portal, back office',
+        'Redesign or takeover of an existing application',
+        'Responsive, accessible interfaces',
+        'Technical documentation and production release',
+      ],
+      audience: 'SMEs and organizations whose processes don’t fit off-the-shelf software, or who have outgrown their spreadsheets.',
+      tech: ['React', 'Next.js', 'Angular', 'Java / Spring Boot', 'Node.js', '.NET', 'PostgreSQL'],
+    },
+    mobile: {
+      title: 'iOS and Android mobile apps',
+      short: 'One codebase for both platforms, with offline mode when you need it.',
+      problem: 'Your customers or field teams need a tool that works on a phone, including on an unreliable connection.',
+      deliverables: [
+        'iOS and Android app from a shared codebase',
+        'Offline mode and data synchronization',
+        'Notifications and integration with your APIs',
+        'Support for App Store and Google Play publishing',
+      ],
+      audience: 'Companies launching a mobile service or equipping their field teams.',
+      tech: ['React Native', 'Expo', 'TypeScript'],
+    },
+    'saas-api': {
+      title: 'SaaS, backend and APIs',
+      short: 'Solid foundations for your online product and reliable APIs for your data exchanges.',
+      problem: 'You are launching an online product, or your tools and partners need to exchange data reliably and securely.',
+      deliverables: [
+        'Backend architecture and development',
+        'Documented REST APIs',
+        'Accounts, roles and access management',
+        'Docker containerization and CI/CD pipelines',
+      ],
+      audience: 'Startups and software vendors building a SaaS product, companies opening their data to partners.',
+      tech: ['Node.js', 'Java / Spring Boot', '.NET', 'PostgreSQL', 'Redis', 'Docker'],
+    },
+    automation: {
+      title: 'Business process automation',
+      short: 'Less manual data entry: your tools exchange data without copy and paste.',
+      problem: 'Hours are lost every week copying data from one tool to another, and mistakes follow.',
+      deliverables: [
+        'Review of repetitive tasks and data flows',
+        'Automated workflows with n8n or custom code',
+        'Connections between CRM, invoicing, email and internal tools',
+        'Run monitoring and failure alerts',
+      ],
+      audience: 'Admin, sales or operations teams working across several tools at once.',
+      tech: ['n8n', 'REST APIs', 'Node.js'],
+    },
+    ai: {
+      title: 'AI feature integration',
+      short: 'Generative AI applied to your documents, data and tools, where it actually helps.',
+      problem: 'You want to use generative AI in your tools or on your own data, without starting an open-ended experiment.',
+      deliverables: [
+        'Realistic use cases, and an honest view of where AI is not the answer',
+        'Extraction and classification of documents, emails or forms',
+        'Assistants connected to your data',
+        'Integration into your existing applications through APIs',
+      ],
+      audience: 'Companies that handle a lot of text or documents and want to save time.',
+      tech: ['OpenAI API', 'Gemini', 'Data pipelines'],
+    },
+    maintenance: {
+      title: 'Ongoing development and team augmentation',
+      short: 'Keep an existing application moving, or add capacity to your tech team.',
+      problem: 'Your application has to keep evolving, but your team lacks time or skills in some technologies.',
+      deliverables: [
+        'Planned fixes and improvements',
+        'Dependency updates and security patches',
+        'Automated tests: unit, integration, end-to-end',
+        'Developers embedded in your team and your tools',
+      ],
+      audience: 'Companies with a product in production, agencies and tech teams short on capacity.',
+      tech: ['GitHub / GitLab', 'CI/CD', 'Playwright', 'Cypress'],
+    },
+  },
+
+  models: {
+    project: {
+      title: 'Fixed-scope project',
+      short: 'A defined need, an agreed scope, a delivered application.',
+      text:
+        'You have a clear need but no in-house tech team. We define the scope together, then build the application against an estimate and a schedule agreed before work starts.',
+      points: [
+        'Scope, deliverables and milestones agreed in writing',
+        'Regular demos during development',
+        'Acceptance testing with you before release',
+      ],
+      fit: 'SMEs and organizations without an in-house development team.',
+    },
+    'white-label': {
+      title: 'White-label development',
+      short: 'We build for your clients, under your brand.',
+      text:
+        'You run an agency. You keep the client relationship; we handle all or part of the technical delivery, discreetly.',
+      points: [
+        'No direct contact with your client without your consent',
+        'We work in your tools and follow your conventions',
+        'A single technical contact for your team',
+      ],
+      fit: 'Web, digital and marketing agencies.',
+    },
+    'staff-augmentation': {
+      title: 'Team augmentation',
+      short: 'Developers who join your team, your tools and your rituals.',
+      text:
+        'Your team needs extra capacity or a specific skill. One or more TicTek developers work alongside you, inside your organization.',
+      points: [
+        'Onboarding into your tools: Git, tickets, chat',
+        'Participation in code reviews and team rituals',
+        'Volume and duration adjusted to your needs',
+      ],
+      fit: 'Startups, software vendors and in-house tech teams.',
+    },
+  },
+
+  process: [
+    { title: 'Intro call', text: 'A call to understand your need, your constraints and your priorities. No commitment.' },
+    { title: 'Scoping', text: 'Features, users, integrations, risks: we clarify the scope and send you a written summary.' },
+    { title: 'Estimate', text: 'A detailed proposal: milestones, schedule and budget.' },
+    { title: 'Development', text: 'Short iterations and regular demos on a staging environment.' },
+    { title: 'Testing', text: 'Automated tests and acceptance testing with you before every release.' },
+    { title: 'Delivery', text: 'Production release, technical documentation and handover.' },
+    { title: 'Maintenance', text: 'If you wish, we then take care of monitoring, fixes and improvements.' },
+  ],
+
+  pages: {
+    home: {
+      title: 'TicTek | Custom software development: web, mobile, SaaS and AI',
+      description:
+        'TicTek designs and builds web and mobile apps, SaaS products, APIs and automations, with AI integration. Team based in Madagascar, working in English and French.',
+      hero: {
+        eyebrow: 'Software development company',
+        title: 'Your software development partner, from first idea to production.',
+        lede:
+          'TicTek helps companies build web and mobile software, automate their processes and integrate AI. Our technical team is based in Madagascar and works remotely with clients, in English and French.',
+        ctaWork: 'See our work',
+        ctaServices: 'Explore our services',
+        asideTitle: 'Three ways to work with us',
+      },
+      services: {
+        title: 'What we build for you',
+        lede: 'From business software to AI integration, we start from your problem before choosing the technology.',
+        link: 'See all services in detail',
+      },
+      work: {
+        title: 'Recent work',
+        link: 'See all projects',
+      },
+      models: {
+        title: 'An engagement model that fits your situation',
+        lede: 'With or without a tech team, directly or on behalf of your clients.',
+        link: 'Compare engagement models',
+      },
+      process: {
+        title: 'A clear method, from first call to production',
+      },
+      trust: {
+        title: 'What you can count on',
+        items: [
+          {
+            title: 'A direct technical contact',
+            text: 'You talk to the people who design and build your project, with no sales layer in between.',
+          },
+          {
+            title: 'An estimate before any commitment',
+            text: 'Scope, milestones and budget are set out in writing before work starts.',
+          },
+          {
+            title: 'Continuous visibility',
+            text: 'Regular demos and access to the staging environment: you see the software take shape.',
+          },
+          {
+            title: 'Code built to last',
+            text: 'Automated tests, code reviews and documentation are part of the job, not extras.',
+          },
+          {
+            title: 'English and French',
+            text: 'We work in both languages, written and spoken.',
+          },
+          {
+            title: 'Overlapping working hours',
+            text: 'Madagascar is on UTC+3: one to two hours from Western Europe, with late-day slots for North America.',
+          },
+        ],
+      },
+    },
+
+    services: {
+      title: 'Services: web and mobile apps, SaaS, APIs and AI | TicTek',
+      description:
+        'Web and business applications, mobile apps, SaaS and APIs, process automation, AI integration, maintenance and team augmentation: TicTek’s services.',
+      h1: 'Custom software development services',
+      lede:
+        'Six areas of work, presented by the problem they solve. If your need doesn’t fit any of them, tell us about it: it often spans several.',
+      labels: {
+        problem: 'The problem',
+        deliverables: 'What we deliver',
+        audience: 'Who it’s for',
+        tech: 'Technologies',
+        projects: 'Related work',
+      },
+      quality: {
+        title: 'Quality is part of every service',
+        items: [
+          'Automated tests written alongside the code and run on every change through CI/CD',
+          'Code review before every merge',
+          'Application security best practices (OWASP Top 10)',
+          'Containerized environments so staging matches production',
+        ],
+      },
+    },
+
+    work: {
+      title: 'Work: web, mobile and software projects | TicTek',
+      description: 'Projects delivered by TicTek: context, problem, solution, tech stack and the team’s exact role.',
+      h1: 'Our work',
+      lede: 'Each project states what it is (client project, team contribution, internal project or prototype) and TicTek’s exact role.',
+      kinds: {
+        client: 'Client project',
+        team: 'Team contribution',
+        personal: 'Internal project',
+        prototype: 'Prototype',
+      },
+      labels: {
+        context: 'Context',
+        problem: 'Initial problem',
+        solution: 'Solution',
+        features: 'Key features',
+        stack: 'Tech stack',
+        role: 'TicTek’s role',
+        results: 'Measured results',
+        services: 'Related services',
+        link: 'View project',
+      },
+    },
+
+    collaboration: {
+      title: 'Fixed-scope, white-label or team augmentation | TicTek',
+      description:
+        'Fixed-scope projects, white-label development for agencies or team augmentation: how TicTek works with you, step by step.',
+      h1: 'How to work with TicTek',
+      lede: 'Three engagement models, one method. Pick the one that fits your organization; we can switch along the way.',
+      fitLabel: 'Best for:',
+      processTitle: 'Project steps',
+      processLede: 'Every step applies to a fixed-scope project. For white-label or team augmentation, we follow your own process.',
+      estimateTitle: 'What helps us estimate your project',
+      estimateItems: [
+        'The problem to solve and who will use the software',
+        'Existing tools or systems to connect',
+        'Your timing constraints and, if possible, a budget range',
+        'Any existing material: specifications, mockups, screenshots',
+      ],
+      faqTitle: 'Frequently asked questions',
+      faq: [
+        {
+          q: 'How much does a project cost?',
+          a: 'It depends on scope, integrations and the expected level of quality. We don’t publish a price list: every project gets a detailed estimate after scoping. Sharing a budget range in the form helps us suggest a suitable approach.',
+        },
+        {
+          q: 'How does remote work happen in practice?',
+          a: 'Video calls for key discussions, chat for day-to-day questions, a ticketing tool to track requests, and regular demos on a staging environment.',
+        },
+        {
+          q: 'What about time zones?',
+          a: 'Madagascar is on UTC+3 with no daylight saving time. That is one to two hours from France and Switzerland, and seven to eight hours from Eastern Canada: late afternoon in Madagascar is morning in Montreal or Toronto.',
+        },
+        {
+          q: 'Can you take over an existing application?',
+          a: 'Yes. We start by reviewing the code, dependencies and infrastructure to assess the project, then propose a takeover plan.',
+        },
+      ],
+    },
+
+    about: {
+      title: 'About TicTek, software development company | TicTek',
+      description:
+        'TicTek is a software services company based in Antananarivo, Madagascar: mission, skills, how we work, quality approach and remote collaboration.',
+      h1: 'About TicTek',
+      lede:
+        'TicTek is a software services company based in Antananarivo, Madagascar. We design, build and maintain software for companies looking for a reliable, flexible and cost-conscious technical partner.',
+      sections: [
+        {
+          id: 'mission',
+          title: 'Our mission',
+          paragraphs: [
+            'Make custom software development accessible to companies without a tech team, and provide reliable extra capacity to those who have one.',
+          ],
+        },
+        {
+          id: 'team',
+          title: 'How we work',
+          paragraphs: [
+            'Every project has a named technical lead who is your contact from scoping to delivery.',
+            'Work is organized in short iterations tracked in a shared ticketing tool. Every change goes through code review and automated tests before it ships.',
+          ],
+        },
+        {
+          id: 'quality',
+          title: 'Our approach to quality',
+          paragraphs: [
+            'We treat quality as a daily discipline, not an end-of-project phase: typing, automated tests, continuous integration, security best practices and containerized environments.',
+            'The goal is simple: software your team can keep evolving without having to rewrite it.',
+          ],
+        },
+        {
+          id: 'remote',
+          title: 'Remote collaboration',
+          paragraphs: [
+            'We work remotely, in English and French. Madagascar is on UTC+3, which gives a wide overlap with Europe and late-day slots for North America.',
+            'We communicate by video call, chat and shared tracking tools, following your habits.',
+          ],
+        },
+      ],
+      skillsTitle: 'Technical skills',
+      skills: [
+        { name: 'Front end', items: ['TypeScript', 'React', 'Next.js', 'Angular', 'Vue.js'] },
+        { name: 'Back end', items: ['Java / Spring Boot', 'Node.js', 'C# / .NET', 'PHP'] },
+        { name: 'Mobile', items: ['React Native', 'Expo'] },
+        { name: 'Data', items: ['PostgreSQL', 'MySQL', 'SQL Server', 'MongoDB', 'Redis'] },
+        { name: 'DevOps', items: ['Docker', 'CI/CD', 'GitHub Actions', 'GitLab CI'] },
+        { name: 'AI and automation', items: ['OpenAI API', 'Gemini', 'n8n'] },
+      ],
+    },
+
+    contact: {
+      title: 'Contact: tell us about your software project | TicTek',
+      description:
+        'Describe your web, mobile, SaaS, automation or AI integration project. TicTek replies by email to set up a first call.',
+      h1: "Let's talk about your project",
+      lede: 'Describe your need in a few lines. We will reply by email to set up a first call.',
+      nextTitle: 'What happens next?',
+      next: [
+        'We read your request and reply by email, with any questions we have.',
+        'We set up a first video call, with no commitment.',
+        'If the project is a good fit, we propose a scoping phase and a written estimate.',
+      ],
+      directTitle: 'Email us directly',
+      locationLabel: 'Team based in',
+    },
+
+    notFound: {
+      title: 'Page not found | TicTek',
+      description: 'This page does not exist or has moved.',
+      h1: 'Page not found',
+      lede: 'This page does not exist or has moved. Here are some useful links:',
+    },
+  },
+
+  form: forms.en,
 };
 
 export default en;

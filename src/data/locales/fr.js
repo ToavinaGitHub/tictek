@@ -1,365 +1,407 @@
+import forms from './form';
+
 const fr = {
-  meta: {
-    title: 'TicTek | Ingénierie logicielle Web, Mobile & QA',
-    description:
-      "TicTek conçoit, développe et audite vos plateformes web et mobiles avec la rigueur d'une ingénierie critique : architectures scalables, couverture de tests exhaustive, déploiements sans stress.",
-  },
+  lang: 'fr',
+  ogLocale: 'fr_FR',
 
-  topbar: {
-    language: 'Langue',
-    toLight: 'Activer le thème clair',
-    toDark: 'Activer le thème sombre',
-  },
-
-  nav: {
-    openMenu: 'Ouvrir le menu',
-    links: {
-      hero: 'Accueil',
+  common: {
+    skipLink: 'Aller au contenu',
+    menu: 'Menu',
+    mainNav: 'Navigation principale',
+    breadcrumb: "Fil d'Ariane",
+    nav: {
+      home: 'Accueil',
       services: 'Services',
-      methodologie: 'Méthodologie',
-      stack: 'Stack Technique',
-      qa: 'Qualité & QA',
-      'etudes-de-cas': 'Nos Réalisations',
-      tarifs: 'Tarifs',
-      devis: 'Devis',
+      work: 'Réalisations',
+      collaboration: 'Collaboration',
+      about: 'À propos',
       contact: 'Contact',
     },
-  },
-
-  backToTop: 'Retour en haut de page',
-
-  hero: {
-    kicker: 'Ingénierie Logicielle, Mobile, QA, Cloud & Automatisation',
-    title: 'Vos projets numériques. Construits pour scaler, testés pour durer.',
-    lede: "TicTek est une entreprise de services numériques (ESN) spécialisée dans la conception, le développement et la sécurisation d'applications web et mobiles. De l'architecture cloud à la couverture de tests automatisée, notre équipe vous accompagne pour livrer des produits robustes, performants et prêts pour la production.",
-    ctaPrimary: 'Demander un devis / un audit gratuit',
-    ctaSecondary: 'Explorer nos services',
-  },
-
-  metrics: [
-    { num: '<4 sem.', label: "Temps moyen pour la mise en production d'un MVP fonctionnel" },
-    { num: '95%+', label: 'De couverture de tests automatisés sur les cœurs métiers' },
-    { num: '100%', label: 'De projets livrés avec pipeline CI/CD automatisé' },
-    { num: '24/7', label: 'Rigueur architecturale & monitoring continu des applications' },
-  ],
-
-  badges: [
-    'Développement Sur-Mesure',
-    'Applications Web & Mobile',
-    'QA & Tests Automatisés',
-    'Cloud, DevOps & Solutions IA',
-    'Automatisation des Processus',
-  ],
-
-  services: {
-    eyebrow: 'Nos expertises',
-    title: 'Une ingénierie complète, du code à la production',
-    lede: 'Web, mobile, assurance qualité, cloud et automatisation : cinq disciplines que nous maîtrisons en interne, sans sous-traitance ni maillon faible.',
-    items: [
-      {
-        span: 'span3',
-        tag: 'Web & API',
-        title: 'Développement Web & Architecture Backend',
-        desc: "Conception de plateformes web sur-mesure, performantes et sécurisées. Nous développons des architectures évolutives (microservices ou monolithes modulaires avec Java Spring Boot, Node.js, C# .NET) combinées à des frontends réactifs (React, Next.js, Angular).",
-        features: [
-          'Architectures Microservices & APIs RESTful / GraphQL',
-          'Frontends modernes & réactifs (React, Next.js, Angular)',
-          'Backends robustes (Java Spring Boot, Node.js, C# ASP.NET)',
-          'Gestion et optimisation de bases de données (PostgreSQL, MySQL, SQL Server)',
-        ],
-        benefit: '→ Une plateforme évolutive qui absorbe votre croissance sans dette technique.',
-      },
-      {
-        span: 'span3',
-        tag: 'Mobile',
-        title: 'Applications Mobiles iOS & Android',
-        desc: "Développement d'applications mobiles fluides et ergonomiques. Nous privilégions React Native & Expo pour maximiser votre time-to-market avec une seule base de code performante, ou le développement natif selon vos besoins matériels.",
-        features: [
-          'React Native & Expo (déploiement iOS & Android simultané)',
-          'Design d’interfaces modernes et parcours utilisateur optimisés',
-          'Intégration d’APIs temps réel, notifications et fonctionnalités hors-ligne',
-          'Publication et accompagnement sur App Store et Google Play',
-        ],
-        benefit: '→ Un seul codebase, deux stores, une expérience utilisateur sans compromis.',
-      },
-      {
-        span: 'span2',
-        tag: 'QA & Sécurité',
-        title: 'Assurance Qualité & Tests Automatisés',
-        desc: "Pour TicTek, la QA n'est pas une option de fin de projet mais une discipline intégrée au quotidien. Nous automatisons les tests E2E, de performance et d'intégration afin de bloquer les régressions avant qu'elles n'atteignent vos utilisateurs.",
-        features: [
-          'Tests E2E automatisés (Playwright / Cypress) & Unitaires',
-          'Tests de charge et de montée en puissance (k6 / JMeter)',
-          'Audit de code, conformité et sécurité (OWASP Top 10)',
-          'Intégration de Quality Gates bloquants dans vos pipelines CI/CD',
-        ],
-        benefit: '→ Moins de bugs en prod, des releases sereines et une réputation préservée.',
-      },
-      {
-        span: 'span2',
-        tag: 'Cloud & IA',
-        title: 'Cloud DevOps & Intégration d’IA',
-        desc: "Industrialisation de vos déploiements et enrichissement de vos outils métiers grâce à l'intégration d'APIs d'intelligence artificielle (LLM, vision, analyse automatique).",
-        features: [
-          'Conteneurisation Docker & orchestration cloud',
-          'Pipelines CI/CD automatisés (GitHub Actions / GitLab CI)',
-          'Intégration d’APIs IA (OpenAI, Gemini API, automatisation de workflows)',
-          'Monitoring, alerting proactif et gestion d’infrastructure',
-        ],
-        benefit: '→ Des déploiements automatisés et des fonctionnalités augmentées par l’IA.',
-      },
-      {
-        span: 'span2',
-        tag: 'Automatisation',
-        title: 'Automatisation des Processus Métier',
-        desc: "Vos équipes passent des heures à copier des données d'un outil à l'autre ? Nous automatisons ces tâches répétitives et connectons vos logiciels entre eux pour qu'ils travaillent ensemble.",
-        features: [
-          'Workflows automatisés avec n8n',
-          'Synchronisation de vos outils de gestion de projet, CRM et emails',
-          'Intégrations entre vos outils (CRM, ERP, facturation, emails) via API',
-          'IA générative pour trier, extraire et traiter vos données',
-        ],
-        benefit: '→ Des heures de saisie en moins chaque semaine et zéro erreur de copier-coller.',
-      },
-    ],
-  },
-
-  methodology: {
-    eyebrow: 'Méthodologie',
-    title: 'Du cadrage au monitoring, un process qui ne saute aucune étape',
-    steps: [
-      {
-        n: '01',
-        title: 'Cadrage & Architecture',
-        text: "Nous analysons en détail vos besoins métiers, vos contraintes techniques et modélisons la base de données et l'architecture applicative avant d'écrire la première ligne de code.",
-        deliverable: "Livrable → Dossier d'architecture technique, modélisation de données & roadmap projet",
-      },
-      {
-        n: '02',
-        title: 'Développement Agile en Sprints',
-        text: 'Sprints de 2 semaines avec démonstration des fonctionnalités à chaque fin de cycle. Le code backend et frontend est développé en parallèle de sa suite de tests.',
-        deliverable: 'Livrable → Incrément logiciel fonctionnel déployé en environnement de recette à chaque sprint',
-      },
-      {
-        n: '03',
-        title: 'Assurance Qualité & Recette',
-        text: 'Validation rigoureuse par notre pôle QA : exécution des tests automatisés, tests de charge et audits de sécurité pour garantir un produit zéro défaut.',
-        deliverable: 'Livrable → Rapport de recette complet, couverture de tests et PV de validation',
-      },
-      {
-        n: '04',
-        title: 'Déploiement & Stabilisation',
-        text: 'Mise en production sécurisée via pipeline CI/CD, suivie d’un monitoring des performances en temps réel et d’un accompagnement post-lancement.',
-        deliverable: 'Livrable → Plateforme en production, conteneurisée et sous surveillance continue',
-      },
-    ],
-  },
-
-  stack: {
-    eyebrow: 'Stack technique & rigueur',
-    title: 'Des outils choisis par adéquation, pas par habitude',
-    lede: 'Voici les technologies que nous maîtrisons en profondeur et déployons en production, pas en side-project.',
-    categories: [
-      { name: 'Backend', items: ['Java', 'Spring Boot', 'Node.js', 'Express', 'C# / .NET', 'PHP'] },
-      { name: 'Frontend', items: ['TypeScript', 'JavaScript', 'React', 'Next.js', 'Angular', 'Vue.js', 'Tailwind CSS'] },
-      { name: 'Mobile', items: ['React Native', 'Expo'] },
-      { name: 'Bases de données', items: ['PostgreSQL', 'MySQL', 'SQL Server', 'MongoDB', 'Redis', 'Elasticsearch'] },
-      { name: 'Architecture & DevOps', items: ['Microservices', 'API REST', 'Docker', 'RabbitMQ', 'CI/CD', 'GitHub', 'GitLab'] },
-      { name: 'IA & Data', items: ['IA générative', 'Gemini', 'Scraping web', 'Pipelines de données'] },
-      { name: 'Automatisation', items: ['n8n', "Intégration d'API"] },
-      { name: 'Blockchain / Web3', items: ['Solidity', 'Hardhat', 'Ethers.js', 'Polygon', 'Smart Contracts'] },
-      { name: 'Méthodes & outils', items: ['Agile (Scrum / Kanban)', 'Postman', 'Notion', 'Trello'] },
-    ],
-  },
-
-  qa: {
-    eyebrow: 'Assurance Qualité',
-    title: "Le bug le plus cher est celui qu'on trouve en production",
-    intro: "Chez TicTek, la qualité logicielle est la clé de voûte de nos interventions. Nous intégrons des critères de qualité stricts dès le design d'architecture jusqu'au déploiement final : typage fort, tests automatisés à chaque commit, audit de sécurité et conteneurisation pour des livraisons parfaitement stables.",
-    cards: [
-      {
-        letter: 'A',
-        title: 'Automatisation CI/CD',
-        text: 'Intégration continue avec passage obligatoire des tests unitaires, d’intégration et E2E. Un build non conforme ou sous le seuil de couverture est automatiquement rejeté.',
-      },
-      {
-        letter: 'B',
-        title: 'Architectures Éprouvées',
-        text: 'Conception basée sur des frameworks professionnels (Spring Boot, ASP.NET, Node.js) garantissant la séparation des responsabilités, la sécurité des accès et la maintenabilité.',
-      },
-      {
-        letter: 'C',
-        title: 'Sécurité & Standards OWASP',
-        text: 'Audits de sécurité réguliers, protection contre les vulnérabilités courantes (OWASP Top 10) et gestion stricte des authentifications et autorisations.',
-      },
-      {
-        letter: 'D',
-        title: 'Environnements Isomorphes',
-        text: 'Utilisation systématique de conteneurs Docker pour garantir que le comportement de l’application en recette soit rigoureusement identique à celui en production.',
-      },
-    ],
-    metrics: [
-      { num: '95%+', label: 'De couverture de tests automatisés sur les modules critiques' },
-      { num: '100%', label: 'Des projets déployés via un pipeline CI/CD sécurisé' },
-      { num: 'Top 10', label: 'Conformité aux exigences de sécurité OWASP Web & Mobile' },
-      { num: '<24h', label: 'Délai de réactivité garanti pour la prise en charge des demandes' },
-    ],
-    cta: 'Discuter de votre stratégie de tests actuelle',
-  },
-
-  caseStudies: {
-    eyebrow: 'Études de cas',
-    title: 'La preuve, pas la promesse',
-    labels: {
-      problem: 'Problème initial',
-      solution: 'Solution technique TicTek',
-      result: 'Résultats chiffrés',
+    ctaContact: 'Discutons de votre projet',
+    cta: {
+      title: 'Un projet, une idée, une application à reprendre ?',
+      text: 'Expliquez-nous où vous en êtes. Nous vous dirons ce que nous pouvons faire, comment et dans quelles conditions.',
     },
-    items: [
-      {
-        tag: 'SaaS & Applications Web sur-mesure',
-        problem: "Obligation de refondre une plateforme de gestion vieillissante subissant des ralentissements de charge et des difficultés d'évolution.",
-        solution: "Découpage et reconstruction de l'application en architecture API REST / Microservices (Spring Boot & Node.js) couplée à un frontend moderne Next.js et conteneurisation Docker.",
-        result: "Temps de chargement divisé par 3, capacité de traitement multipliée par 5 sans interruption de service et livraison de nouvelles fonctionnalités simplifiée.",
-      },
-      {
-        tag: 'Digitalisation & Applications Mobiles Métier',
-        problem: "Absence d'outil mobile sur le terrain nécessitant des saisies manuelles sur papier, générant pertes de temps et erreurs de stock.",
-        solution: "Développement d'une application mobile cross-platform sous React Native / Expo connectée en temps réel aux APIs backend et fonctionnant en mode hors-ligne.",
-        result: "Gains de productivité de 40% pour les équipes terrain, élimination des erreurs de saisie et synchronisation instantanée des données.",
-      },
-      {
-        tag: 'Automation, QA & Outillage IA',
-        problem: "Cycles de livraison ralentis par des phases de tests manuels répétitives et un manque de visibilité sur la qualité du code.",
-        solution: "Mise en place d'une suite de tests E2E automatisés intégrée dans GitHub Actions, combinée à un outil interne d'analyse automatisée de code assistée par IA.",
-        result: "Durée des recettes réduite de 70%, détection précoce des anomalies et cadence de déploiement accélérée pour le client.",
-      },
-    ],
-    note: '⚠️ Ces études de cas suivent une structure prête à publier ; les chiffres illustrent le niveau de rigueur attendu et doivent être remplacés par les données réelles et validées de vos projets clients avant mise en ligne.',
-  },
-
-  pricing: {
-    eyebrow: 'Tarifs',
-    title: 'Un engagement clair, adapté à la maturité de votre projet',
-    lede: "Pas de grille tarifaire figée pour du sur-mesure : voici les niveaux d'accompagnement que nous proposons le plus souvent, à affiner ensemble lors d'un premier échange technique.",
-    plans: [
-      {
-        name: 'MVP',
-        tag: 'Valider une idée',
-        price: 'Sur devis',
-        description: "Un premier produit fonctionnel, cadré et testé, pour confronter votre idée au marché sans attendre.",
-        features: [
-          'Cadrage & architecture technique',
-          '1 plateforme web ou mobile',
-          'Tests unitaires sur le cœur métier',
-          'Déploiement en environnement de recette',
-          'Accompagnement post-lancement',
-        ],
-        cta: 'Discuter de mon MVP',
-        highlighted: false,
-      },
-      {
-        name: 'Croissance',
-        tag: 'Le plus demandé',
-        price: 'Sur devis',
-        description: 'Une plateforme robuste, testée et industrialisée, pensée pour absorber votre montée en charge.',
-        features: [
-          'Architecture microservices ou modulaire',
-          'Web & mobile combinés',
-          'Couverture de tests automatisés 90%+',
-          'Pipeline CI/CD complet',
-          'Monitoring & alerting en production',
-          'Support prioritaire',
-        ],
-        cta: 'Planifier mon projet',
-        highlighted: true,
-      },
-      {
-        name: 'Sur-mesure',
-        tag: 'Projets complexes',
-        price: 'Sur devis',
-        description: 'Une équipe dédiée pour vos besoins spécifiques : intégrations, IA, conformité, infrastructure cloud.',
-        features: [
-          'Équipe dédiée multi-compétences',
-          'Intégration IA & automatisation',
-          'Audit de sécurité OWASP complet',
-          'Infrastructure cloud multi-environnements',
-          'SLA & accompagnement continu',
-        ],
-        cta: 'Demander un devis',
-        highlighted: false,
-      },
-    ],
-    note: "Chaque projet étant unique, nos tarifs sont établis après un premier échange technique gratuit. Ces formules donnent un ordre de grandeur du périmètre couvert à chaque niveau d'engagement.",
-  },
-
-  quote: {
-    eyebrow: 'Demande de devis',
-    title: 'Décrivez votre projet, recevez un retour sous 24h',
-    lede: "Ce formulaire envoie votre demande directement à notre équipe technique. Pas d'intermédiaire, pas de spam.",
-    projectTypes: {
-      web: 'Application Web',
-      mobile: 'Application Mobile',
-      qa: 'QA & Tests Automatisés',
-      cloud: 'Cloud, DevOps & IA',
-      automation: 'Automatisation des processus',
-      other: 'Autre / Je ne sais pas encore',
-    },
-    fields: {
-      name: 'Nom complet',
-      email: 'Email',
-      company: 'Entreprise (optionnel)',
-      projectType: 'Type de projet',
-      message: 'Décrivez votre besoin',
-    },
-    placeholders: {
-      name: 'Jean Dupont',
-      email: 'jean@entreprise.com',
-      company: 'Nom de votre entreprise',
-      message: 'Contexte, objectifs, délais envisagés...',
-    },
-    submit: 'Envoyer ma demande de devis',
-    sending: 'Envoi en cours...',
-    micro: 'Envoyé directement à notre équipe technique.',
-    success: '✓ Votre demande a bien été envoyée. Nous revenons vers vous sous 24h.',
-    error: "Une erreur est survenue lors de l'envoi. Merci de réessayer.",
-  },
-
-  cta: {
-    title: 'Votre prochain projet mérite une ingénierie qui ne cède pas sous la charge.',
-    text: 'Parlez 30 minutes avec un architecte TicTek, pas un commercial. Vous repartez avec un avis technique concret sur votre projet, que vous travailliez avec nous ensuite ou non.',
-    button: 'Réserver mon appel technique',
-    micro: 'Réponse garantie sous 24h ouvrées.',
+    switchLang: { label: 'EN', title: 'Read this page in English' },
+    learnMore: 'En savoir plus',
   },
 
   footer: {
-    about: "TicTek est une ESN spécialisée en ingénierie logicielle : développement web sur-mesure, applications mobiles, assurance qualité et infrastructure cloud. Nous livrons du code que vos équipes n'auront pas à réécrire dans 18 mois.",
-    columns: [
-      {
-        title: 'Nos Services',
-        links: [
-          { label: 'Développement Web & API', href: '#services' },
-          { label: 'Applications Mobiles', href: '#services' },
-          { label: 'QA & Tests Automatisés', href: '#qa' },
-          { label: 'Cloud, DevOps & IA', href: '#services' },
-          { label: 'Automatisation des Processus', href: '#services' },
-        ],
-      },
-      {
-        title: 'Entreprise',
-        links: [
-          { label: 'Nos Réalisations', href: '#etudes-de-cas' },
-          { label: 'Notre Méthodologie', href: '#methodologie' },
-          { label: 'Stack Technique', href: '#stack' },
-          { label: 'Tarifs', href: '#tarifs' },
-          { label: 'Demander un devis', href: '#devis' },
-          { label: 'Contact', href: '#contact' },
-        ],
-      },
-    ],
+    about:
+      'TicTek conçoit, développe et maintient des logiciels sur mesure : applications web et mobiles, SaaS, API, automatisation et intégration IA. Équipe basée à Madagascar, travail à distance en français et en anglais.',
+    servicesTitle: 'Services',
+    companyTitle: 'Entreprise',
     contactTitle: 'Contact',
-    rights: 'Tous droits réservés. Conçu et développé avec la même rigueur que ce que nous livrons à nos clients.',
+    location: 'Antananarivo, Madagascar',
+    rights: 'Tous droits réservés.',
   },
+
+  // Shared by the home page and the services page. Keys follow site.js serviceIds.
+  services: {
+    web: {
+      title: 'Applications web et logiciels métier',
+      short: 'Outils internes, portails clients, back-offices : des applications adaptées à vos processus.',
+      problem:
+        "Vos équipes jonglent entre tableurs, e-mails et outils qui ne communiquent pas, ou votre application actuelle freine votre activité au lieu de la soutenir.",
+      deliverables: [
+        'Application web sur mesure : outil interne, portail client, back-office',
+        "Refonte ou reprise d'une application existante",
+        'Interfaces responsives et accessibles',
+        'Documentation technique et mise en production',
+      ],
+      audience:
+        "PME et organisations dont les processus ne rentrent pas dans un logiciel standard, ou qui ont dépassé leurs tableurs.",
+      tech: ['React', 'Next.js', 'Angular', 'Java / Spring Boot', 'Node.js', '.NET', 'PostgreSQL'],
+    },
+    mobile: {
+      title: 'Applications mobiles iOS et Android',
+      short: 'Une seule base de code pour les deux plateformes, avec mode hors ligne si nécessaire.',
+      problem:
+        "Vos clients ou vos équipes terrain ont besoin d'un outil utilisable sur téléphone, y compris avec une connexion instable.",
+      deliverables: [
+        'Application iOS et Android à partir d’une base de code commune',
+        'Mode hors ligne et synchronisation des données',
+        'Notifications et connexion à vos API',
+        "Accompagnement à la publication sur l'App Store et Google Play",
+      ],
+      audience: 'Entreprises qui lancent un service mobile ou qui équipent leurs équipes sur le terrain.',
+      tech: ['React Native', 'Expo', 'TypeScript'],
+    },
+    'saas-api': {
+      title: 'SaaS, backend et API',
+      short: 'Des fondations solides pour votre produit en ligne et des API fiables pour vos échanges de données.',
+      problem:
+        'Vous lancez un produit en ligne, ou vos outils et vos partenaires doivent échanger des données de façon fiable et sécurisée.',
+      deliverables: [
+        'Architecture et développement backend',
+        'API REST documentées',
+        'Gestion des comptes, des rôles et des accès',
+        'Conteneurisation Docker et pipelines CI/CD',
+      ],
+      audience:
+        'Startups et éditeurs qui construisent un produit SaaS, entreprises qui ouvrent leurs données à des partenaires.',
+      tech: ['Node.js', 'Java / Spring Boot', '.NET', 'PostgreSQL', 'Redis', 'Docker'],
+    },
+    automation: {
+      title: 'Automatisation des processus',
+      short: 'Moins de saisie manuelle : vos outils échangent leurs données sans copier-coller.',
+      problem:
+        'Des heures sont perdues chaque semaine à recopier des données entre vos outils, avec des erreurs à la clé.',
+      deliverables: [
+        'Analyse des tâches répétitives et des flux de données',
+        'Workflows automatisés avec n8n ou développement spécifique',
+        'Connexion entre CRM, facturation, e-mails et outils internes',
+        "Suivi des exécutions et alertes en cas d'échec",
+      ],
+      audience: 'Équipes administratives, commerciales ou opérationnelles qui utilisent plusieurs outils en parallèle.',
+      tech: ['n8n', 'API REST', 'Node.js'],
+    },
+    ai: {
+      title: 'Intégration de fonctionnalités IA',
+      short: "L'IA générative appliquée à vos documents, vos données et vos outils, là où elle est réellement utile.",
+      problem:
+        "Vous voulez exploiter l'IA générative dans vos outils ou sur vos propres données, sans vous lancer dans un projet expérimental sans fin.",
+      deliverables: [
+        "Identification de cas d'usage réalistes, et de ceux où l'IA n'est pas la bonne réponse",
+        'Extraction et classement de documents, e-mails ou formulaires',
+        'Assistants connectés à vos données',
+        'Intégration dans vos applications existantes via API',
+      ],
+      audience: 'Entreprises qui traitent beaucoup de texte ou de documents et veulent gagner du temps.',
+      tech: ['API OpenAI', 'Gemini', 'Pipelines de données'],
+    },
+    maintenance: {
+      title: "Maintenance évolutive et renfort d'équipe",
+      short: 'Faire vivre une application existante ou renforcer votre équipe technique.',
+      problem:
+        'Votre application doit continuer à évoluer, mais votre équipe manque de temps ou de compétences sur certaines technologies.',
+      deliverables: [
+        'Corrections et évolutions planifiées',
+        'Mises à jour des dépendances et correctifs de sécurité',
+        'Tests automatisés : unitaires, intégration, end-to-end',
+        'Développeurs intégrés à votre équipe et à vos outils',
+      ],
+      audience: 'Entreprises avec un produit en production, agences et équipes techniques en manque de capacité.',
+      tech: ['GitHub / GitLab', 'CI/CD', 'Playwright', 'Cypress'],
+    },
+  },
+
+  // Keys follow site.js modelIds.
+  models: {
+    project: {
+      title: 'Projet au forfait',
+      short: 'Un besoin défini, un périmètre validé, une application livrée.',
+      text:
+        "Vous avez un besoin précis mais pas d'équipe technique. Nous cadrons le périmètre ensemble, puis nous réalisons l'application selon une estimation et un planning validés avant le démarrage.",
+      points: [
+        'Périmètre, livrables et étapes fixés par écrit',
+        'Démonstrations régulières pendant le développement',
+        'Recette avec vous avant la mise en production',
+      ],
+      fit: 'PME et organisations sans équipe de développement interne.',
+    },
+    'white-label': {
+      title: 'Sous-traitance en marque blanche',
+      short: 'Nous développons pour vos clients, sous votre marque.',
+      text:
+        'Vous êtes une agence. Vous gardez la relation avec votre client, nous prenons en charge tout ou partie de la réalisation technique, en toute discrétion.',
+      points: [
+        'Aucun contact direct avec votre client sans votre accord',
+        'Travail dans vos outils et selon vos conventions',
+        'Un interlocuteur technique unique pour votre équipe',
+      ],
+      fit: 'Agences web, digitales et de communication.',
+    },
+    'staff-augmentation': {
+      title: "Renfort d'équipe",
+      short: 'Des développeurs qui rejoignent votre équipe, vos outils et vos rituels.',
+      text:
+        "Votre équipe a besoin de capacité supplémentaire ou d'une compétence précise. Un ou plusieurs développeurs TicTek travaillent avec vous, dans votre organisation.",
+      points: [
+        'Intégration à vos outils : Git, tickets, messagerie',
+        'Participation aux revues de code et aux rituels',
+        'Volume et durée ajustables selon vos besoins',
+      ],
+      fit: 'Startups, éditeurs de logiciels et équipes techniques internes.',
+    },
+  },
+
+  process: [
+    { title: 'Premier échange', text: 'Un appel pour comprendre votre besoin, vos contraintes et vos priorités. Sans engagement.' },
+    { title: 'Cadrage', text: 'Fonctionnalités, utilisateurs, intégrations, risques : nous clarifions le périmètre et vous remettons une synthèse écrite.' },
+    { title: 'Estimation', text: 'Une proposition détaillée : découpage en étapes, planning et budget.' },
+    { title: 'Développement', text: 'Des itérations courtes et des démonstrations régulières sur un environnement de test.' },
+    { title: 'Tests', text: 'Tests automatisés et recette fonctionnelle avec vous avant chaque mise en production.' },
+    { title: 'Livraison', text: 'Mise en production, documentation technique et passation.' },
+    { title: 'Maintenance', text: 'Si vous le souhaitez, nous assurons ensuite le suivi, les corrections et les évolutions.' },
+  ],
+
+  pages: {
+    home: {
+      title: 'TicTek | Développement logiciel sur mesure : web, mobile, SaaS et IA',
+      description:
+        'TicTek conçoit et développe vos applications web et mobiles, SaaS, API et automatisations, avec intégration IA. Équipe basée à Madagascar, en français et en anglais.',
+      hero: {
+        eyebrow: 'Entreprise de services numériques',
+        title: 'Votre partenaire de développement logiciel, du besoin à la mise en production.',
+        lede:
+          "TicTek accompagne les entreprises dans la création de logiciels web et mobiles, l'automatisation de leurs processus et l'intégration de l'IA. Notre équipe technique, basée à Madagascar, travaille à distance avec ses clients, en français comme en anglais.",
+        ctaWork: 'Découvrir nos réalisations',
+        ctaServices: 'Découvrir nos services',
+        asideTitle: 'Trois façons de travailler avec nous',
+      },
+      services: {
+        title: 'Ce que nous développons pour vous',
+        lede: 'Du logiciel métier à l’intégration IA, nous partons de votre problème avant de choisir la technologie.',
+        link: 'Voir le détail des services',
+      },
+      work: {
+        title: 'Réalisations récentes',
+        link: 'Voir toutes les réalisations',
+      },
+      models: {
+        title: 'Un mode de collaboration adapté à votre situation',
+        lede: 'Avec ou sans équipe technique, en direct ou pour le compte de vos clients.',
+        link: 'Comparer les modes de collaboration',
+      },
+      process: {
+        title: 'Une méthode claire, du premier échange à la mise en production',
+      },
+      trust: {
+        title: 'Ce sur quoi vous pouvez compter',
+        items: [
+          {
+            title: 'Un interlocuteur technique direct',
+            text: 'Vous échangez avec les personnes qui conçoivent et développent votre projet, sans intermédiaire commercial.',
+          },
+          {
+            title: 'Une estimation avant tout engagement',
+            text: 'Périmètre, étapes et budget sont posés par écrit avant le démarrage.',
+          },
+          {
+            title: 'De la visibilité en continu',
+            text: "Démonstrations régulières et accès à l'environnement de test : vous voyez le logiciel avancer.",
+          },
+          {
+            title: 'Du code pensé pour durer',
+            text: 'Tests automatisés, revues de code et documentation font partie du travail, pas des options.',
+          },
+          {
+            title: 'Français et anglais',
+            text: "Nous travaillons dans les deux langues, à l'écrit comme à l'oral.",
+          },
+          {
+            title: 'Un décalage horaire réduit avec l’Europe',
+            text: 'Madagascar est à UTC+3 : une à deux heures d’écart avec la France et la Suisse.',
+          },
+        ],
+      },
+    },
+
+    services: {
+      title: 'Services : applications web, mobiles, SaaS, API et IA | TicTek',
+      description:
+        "Applications web et métier, applications mobiles, SaaS et API, automatisation des processus, intégration IA, maintenance et renfort d'équipe : les services de TicTek.",
+      h1: 'Services de développement logiciel sur mesure',
+      lede:
+        'Six domaines d’intervention, présentés par le problème qu’ils résolvent. Si votre besoin ne rentre dans aucune case, décrivez-le-nous : il recoupe souvent plusieurs d’entre eux.',
+      labels: {
+        problem: 'Le problème',
+        deliverables: 'Ce que nous livrons',
+        audience: 'Pour qui',
+        tech: 'Technologies',
+        projects: 'Réalisations liées',
+      },
+      quality: {
+        title: 'La qualité fait partie de chaque service',
+        items: [
+          'Tests automatisés intégrés au développement, exécutés à chaque modification via CI/CD',
+          'Revues de code systématiques avant intégration',
+          'Bonnes pratiques de sécurité applicative (référentiel OWASP Top 10)',
+          'Environnements conteneurisés pour que la recette reflète la production',
+        ],
+      },
+    },
+
+    work: {
+      title: 'Réalisations : projets web, mobiles et logiciels | TicTek',
+      description:
+        'Projets réalisés par TicTek : contexte, problème, solution, stack technique et rôle exact de l’équipe.',
+      h1: 'Réalisations',
+      lede: 'Chaque projet précise sa nature (client, contribution en équipe, projet interne ou prototype) et le rôle exact de TicTek.',
+      kinds: {
+        client: 'Projet client',
+        team: 'Contribution en équipe',
+        personal: 'Projet interne',
+        prototype: 'Prototype',
+      },
+      labels: {
+        context: 'Contexte',
+        problem: 'Problème initial',
+        solution: 'Solution',
+        features: 'Fonctionnalités clés',
+        stack: 'Stack technique',
+        role: 'Rôle de TicTek',
+        results: 'Résultats mesurés',
+        services: 'Services concernés',
+        link: 'Voir le projet',
+      },
+    },
+
+    collaboration: {
+      title: 'Collaboration : forfait, marque blanche ou renfort d’équipe | TicTek',
+      description:
+        "Projet au forfait, sous-traitance en marque blanche pour les agences ou renfort d'équipe : comment TicTek travaille avec vous, étape par étape.",
+      h1: 'Comment travailler avec TicTek',
+      lede:
+        'Trois modes de collaboration, une même méthode. Choisissez celui qui correspond à votre organisation : nous pouvons aussi en changer en cours de route.',
+      fitLabel: 'Pour qui :',
+      processTitle: 'Les étapes d’un projet',
+      processLede: 'Pour un projet au forfait, toutes les étapes s’appliquent. En marque blanche ou en renfort, nous nous adaptons à votre propre processus.',
+      estimateTitle: 'Ce qui nous aide à estimer votre projet',
+      estimateItems: [
+        'Le problème à résoudre et les personnes qui utiliseront le logiciel',
+        'Les outils ou systèmes existants à connecter',
+        'Vos contraintes de délai et, si possible, une enveloppe budgétaire',
+        'Tout document existant : cahier des charges, maquettes, captures d’écran',
+      ],
+      faqTitle: 'Questions fréquentes',
+      faq: [
+        {
+          q: 'Combien coûte un projet ?',
+          a: 'Cela dépend du périmètre, des intégrations et du niveau de qualité attendu. Nous ne publions pas de grille tarifaire : chaque projet fait l’objet d’une estimation détaillée après le cadrage. Indiquer une enveloppe dans le formulaire nous aide à proposer une solution adaptée.',
+        },
+        {
+          q: 'Comment se passe le travail à distance ?',
+          a: 'Visioconférences pour les points importants, messagerie pour le quotidien, outil de tickets pour suivre les demandes, et démonstrations régulières sur un environnement de test.',
+        },
+        {
+          q: 'Quel est le décalage horaire ?',
+          a: 'Madagascar est à UTC+3, sans changement d’heure. L’écart est d’une à deux heures avec la France et la Suisse. Avec le Québec, il est de sept à huit heures : la fin de journée à Madagascar correspond à la matinée à Montréal.',
+        },
+        {
+          q: 'Pouvez-vous reprendre une application existante ?',
+          a: 'Oui. Nous commençons par examiner le code, les dépendances et l’infrastructure pour évaluer l’état du projet, puis nous proposons un plan de reprise.',
+        },
+      ],
+    },
+
+    about: {
+      title: 'À propos de TicTek, entreprise de développement logiciel | TicTek',
+      description:
+        'TicTek est une entreprise de services numériques basée à Antananarivo, Madagascar : mission, compétences, organisation, approche qualité et collaboration à distance.',
+      h1: 'À propos de TicTek',
+      lede:
+        'TicTek est une entreprise de services numériques basée à Antananarivo, à Madagascar. Nous concevons, développons et maintenons des logiciels pour des entreprises qui cherchent un partenaire technique fiable, flexible et attentif aux coûts.',
+      sections: [
+        {
+          id: 'mission',
+          title: 'Notre mission',
+          paragraphs: [
+            "Rendre le développement logiciel sur mesure accessible aux entreprises qui n'ont pas d'équipe technique, et apporter un renfort fiable à celles qui en ont une.",
+          ],
+        },
+        {
+          id: 'equipe',
+          title: 'Comment nous fonctionnons',
+          paragraphs: [
+            'Chaque projet a un responsable technique identifié, qui est votre interlocuteur du cadrage à la livraison.',
+            'Le travail est organisé en itérations courtes, suivies dans un outil de tickets partagé. Chaque modification passe par une revue de code et des tests automatisés avant d’être livrée.',
+          ],
+        },
+        {
+          id: 'qualite',
+          title: 'Notre approche de la qualité',
+          paragraphs: [
+            'Nous considérons la qualité comme une discipline quotidienne, pas comme une phase de fin de projet : typage, tests automatisés, intégration continue, bonnes pratiques de sécurité et environnements conteneurisés.',
+            'Le but est simple : un logiciel que vos équipes peuvent faire évoluer sans devoir le réécrire.',
+          ],
+        },
+        {
+          id: 'distance',
+          title: 'Collaboration à distance',
+          paragraphs: [
+            'Nous travaillons à distance, en français et en anglais. Madagascar est à UTC+3, ce qui laisse une large plage horaire commune avec l’Europe, et des créneaux en fin de journée pour l’Amérique du Nord.',
+            'Les échanges se font par visioconférence, messagerie et outils de suivi partagés, selon vos habitudes.',
+          ],
+        },
+      ],
+      skillsTitle: 'Compétences techniques',
+      skills: [
+        { name: 'Front-end', items: ['TypeScript', 'React', 'Next.js', 'Angular', 'Vue.js'] },
+        { name: 'Back-end', items: ['Java / Spring Boot', 'Node.js', 'C# / .NET', 'PHP'] },
+        { name: 'Mobile', items: ['React Native', 'Expo'] },
+        { name: 'Données', items: ['PostgreSQL', 'MySQL', 'SQL Server', 'MongoDB', 'Redis'] },
+        { name: 'DevOps', items: ['Docker', 'CI/CD', 'GitHub Actions', 'GitLab CI'] },
+        { name: 'IA et automatisation', items: ['API OpenAI', 'Gemini', 'n8n'] },
+      ],
+    },
+
+    contact: {
+      title: 'Contact : parlez-nous de votre projet logiciel | TicTek',
+      description:
+        "Décrivez votre projet d'application web, mobile, SaaS, d'automatisation ou d'intégration IA. TicTek vous répond par e-mail pour convenir d'un premier échange.",
+      h1: 'Discutons de votre projet',
+      lede: "Décrivez votre besoin en quelques lignes. Nous vous répondons par e-mail pour convenir d'un premier échange.",
+      nextTitle: 'Et ensuite ?',
+      next: [
+        'Nous lisons votre demande et revenons vers vous par e-mail, avec nos questions éventuelles.',
+        'Nous organisons un premier échange en visioconférence, sans engagement.',
+        'Si le projet nous correspond, nous vous proposons un cadrage et une estimation écrite.',
+      ],
+      directTitle: 'Nous écrire directement',
+      locationLabel: 'Équipe basée à',
+    },
+
+    notFound: {
+      title: 'Page introuvable | TicTek',
+      description: "Cette page n'existe pas ou a été déplacée.",
+      h1: 'Page introuvable',
+      lede: "Cette page n'existe pas ou a été déplacée. Voici quelques liens utiles :",
+    },
+  },
+
+  form: forms.fr,
 };
 
 export default fr;

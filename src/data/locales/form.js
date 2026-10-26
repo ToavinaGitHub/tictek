@@ -1,0 +1,106 @@
+// Contact form copy, kept apart so the form island only ships these strings.
+const forms = {
+  fr: {
+    needs: {
+      web: 'Application web ou logiciel métier',
+      mobile: 'Application mobile',
+      'saas-api': 'SaaS, backend ou API',
+      automation: 'Automatisation des processus',
+      ai: 'Intégration IA',
+      maintenance: "Maintenance ou renfort d'équipe",
+      'white-label': 'Sous-traitance pour une agence',
+      other: 'Autre / je ne sais pas encore',
+    },
+    timelines: {
+      '': 'Non précisé',
+      asap: 'Dès que possible',
+      quarter: "Dans les 3 prochains mois",
+      later: 'Plus tard',
+    },
+    fields: {
+      name: 'Nom',
+      email: 'Adresse e-mail professionnelle',
+      company: 'Entreprise',
+      need: 'Type de besoin',
+      message: 'Description du projet',
+      budget: 'Budget envisagé',
+      timeline: 'Délai souhaité',
+    },
+    optional: 'facultatif',
+    hints: {
+      message: 'Contexte, objectifs, utilisateurs, outils existants… Quelques lignes suffisent.',
+      budget: 'Une fourchette, dans la devise de votre choix.',
+    },
+    choose: 'Choisissez une option',
+    errors: {
+      summary: 'Le formulaire contient des erreurs :',
+      nameRequired: 'Indiquez votre nom.',
+      emailRequired: 'Indiquez votre adresse e-mail.',
+      emailInvalid: 'Cette adresse e-mail ne semble pas valide (exemple : nom@entreprise.com).',
+      needRequired: 'Choisissez le type de besoin le plus proche.',
+      messageRequired: 'Décrivez votre projet.',
+      messageTooShort: 'Ajoutez quelques détails (au moins 20 caractères).',
+      tooLong: 'Ce champ est trop long.',
+    },
+    submit: 'Envoyer ma demande',
+    sending: 'Envoi en cours…',
+    privacy:
+      "Vos informations servent uniquement à répondre à votre demande. Elles nous sont transmises par e-mail via le service EmailJS et ne sont ni revendues ni utilisées pour de la prospection.",
+    successTitle: 'Merci, votre demande a bien été envoyée.',
+    successText: 'Nous revenons vers vous par e-mail. Pensez à vérifier vos courriers indésirables.',
+    errorText: "L'envoi n'a pas abouti. Réessayez dans un instant, ou écrivez-nous directement à",
+  },
+
+  en: {
+    needs: {
+      web: 'Web application or business software',
+      mobile: 'Mobile app',
+      'saas-api': 'SaaS, backend or API',
+      automation: 'Process automation',
+      ai: 'AI integration',
+      maintenance: 'Maintenance or team augmentation',
+      'white-label': 'White-label work for an agency',
+      other: 'Other / not sure yet',
+    },
+    timelines: {
+      '': 'Not specified',
+      asap: 'As soon as possible',
+      quarter: 'Within the next 3 months',
+      later: 'Later',
+    },
+    fields: {
+      name: 'Name',
+      email: 'Work email',
+      company: 'Company',
+      need: 'Type of need',
+      message: 'Project description',
+      budget: 'Budget range',
+      timeline: 'Desired timeline',
+    },
+    optional: 'optional',
+    hints: {
+      message: 'Context, goals, users, existing tools… A few lines are enough.',
+      budget: 'A range, in any currency.',
+    },
+    choose: 'Choose an option',
+    errors: {
+      summary: 'The form has errors:',
+      nameRequired: 'Enter your name.',
+      emailRequired: 'Enter your email address.',
+      emailInvalid: 'This email address doesn’t look valid (example: name@company.com).',
+      needRequired: 'Choose the closest type of need.',
+      messageRequired: 'Describe your project.',
+      messageTooShort: 'Add a few more details (at least 20 characters).',
+      tooLong: 'This field is too long.',
+    },
+    submit: 'Send my request',
+    sending: 'Sending…',
+    privacy:
+      'Your details are only used to reply to your request. They reach us by email through the EmailJS service and are never sold or used for marketing.',
+    successTitle: 'Thank you, your request has been sent.',
+    successText: 'We will get back to you by email. Please check your spam folder too.',
+    errorText: 'Sending failed. Please try again in a moment, or email us directly at',
+  },
+};
+
+export default forms;
