@@ -11,9 +11,9 @@ export default function Work() {
   return (
     <>
       <PageHeader pageId="work" title={page.h1} lede={page.lede} />
-      <div className="container project-list">
-        {projects.map((project) => (
-          <ProjectCard key={project.slug} project={project} />
+      <div className="container grid grid-3 project-list">
+        {projects.map((project, i) => (
+          <ProjectCard key={project.slug} project={project} priority={i === 0} />
         ))}
       </div>
       <CtaBand />

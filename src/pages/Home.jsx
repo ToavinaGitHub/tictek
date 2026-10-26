@@ -46,7 +46,7 @@ export default function Home() {
             <h2 id="services-title">{page.services.title}</h2>
             <p>{page.services.lede}</p>
           </div>
-          <ul className="grid grid-3">
+          <ul className="grid grid-3 grid-services">
             {serviceIds.map((id) => (
               <li className="card card-service reveal" key={id}>
                 <Icon name={id} className="icon card-icon" />
@@ -62,6 +62,18 @@ export default function Home() {
                 </span>
               </li>
             ))}
+            <li className="card card-service card-other reveal">
+              <h3 className="card-title">
+                <a href={href('contact')} className="stretched-link">
+                  {page.services.otherTitle}
+                </a>
+              </h3>
+              <p>{page.services.otherText}</p>
+              <span className="card-more" aria-hidden="true">
+                {t.common.ctaContact}
+                <Icon name="arrow" size={16} />
+              </span>
+            </li>
           </ul>
           <p className="section-link">
             <a href={href('services')} className="text-link">
@@ -80,7 +92,7 @@ export default function Home() {
             </div>
             <div className="grid grid-3">
               {projects.slice(0, 3).map((project) => (
-                <ProjectCard key={project.slug} project={project} compact headingLevel={3} />
+                <ProjectCard key={project.slug} project={project} teaser headingLevel={3} />
               ))}
             </div>
             <p className="section-link">

@@ -70,37 +70,44 @@ export const paths = {
 export const absoluteUrl = (path) => `${siteUrl}${path}`;
 
 // Service anchors on the services page, shared by both languages.
-export const serviceIds = ['web', 'mobile', 'saas-api', 'automation', 'ai', 'maintenance'];
+export const serviceIds = ['web', 'mobile', 'saas-api', 'automation', 'ai', 'web3', 'maintenance'];
 
 // Technologies scrolled under the home hero. Logos are self-hosted in
-// public/img/tech/ (Devicon, MIT; n8n, OpenAI and Expo from Simple Icons, CC0).
+// public/img/tech/ (Devicon, MIT; n8n, OpenAI, Expo, Ethereum and Ethers from Simple Icons, CC0).
 // Single-colour black logos, inverted in the dark theme.
-const MONO_LOGOS = new Set(['nextjs', 'expo', 'openai']);
+const MONO_LOGOS = new Set(['nextjs', 'expo', 'openai', 'solidity', 'ethereum']);
 
+// Categories are interleaved so each kind (web, back end, mobile, AI, Web3…)
+// shows up within the first seconds of the scroll.
 export const techLogos = [
   ['React', 'react'],
-  ['Next.js', 'nextjs'],
-  ['Angular', 'angular'],
-  ['Vue.js', 'vuejs'],
-  ['TypeScript', 'typescript'],
-  ['Tailwind CSS', 'tailwindcss'],
   ['Node.js', 'nodejs'],
-  ['Java', 'java'],
-  ['Spring Boot', 'spring'],
-  ['.NET', 'dotnetcore'],
-  ['C#', 'csharp'],
-  ['PHP', 'php'],
+  ['Solidity', 'solidity'],
   ['React Native', 'react'],
-  ['Expo', 'expo'],
+  ['Spring Boot', 'spring'],
+  ['Ethereum', 'ethereum'],
+  ['Next.js', 'nextjs'],
+  ['OpenAI', 'openai'],
+  ['Polygon', 'polygon'],
   ['PostgreSQL', 'postgresql'],
-  ['MySQL', 'mysql'],
-  ['MongoDB', 'mongodb'],
-  ['Redis', 'redis'],
+  ['Hardhat', 'hardhat'],
+  ['TypeScript', 'typescript'],
   ['Docker', 'docker'],
+  ['Ethers.js', 'ethers'],
+  ['Angular', 'angular'],
+  ['n8n', 'n8n'],
+  ['Java', 'java'],
+  ['Vue.js', 'vuejs'],
+  ['.NET', 'dotnetcore'],
+  ['Expo', 'expo'],
+  ['MongoDB', 'mongodb'],
+  ['Tailwind CSS', 'tailwindcss'],
+  ['C#', 'csharp'],
+  ['Redis', 'redis'],
+  ['PHP', 'php'],
+  ['MySQL', 'mysql'],
   ['GitHub Actions', 'githubactions'],
   ['GitLab CI', 'gitlab'],
-  ['n8n', 'n8n'],
-  ['OpenAI', 'openai'],
 ].map(([name, file]) => ({ name, logo: `/img/tech/${file}.svg`, mono: MONO_LOGOS.has(file) }));
 
 export const modelIds = ['project', 'white-label', 'staff-augmentation'];

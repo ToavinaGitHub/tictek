@@ -1,104 +1,55 @@
 import { useLocale } from '../i18n';
+import Icon from './Icon';
 
 /**
- * One case study from data/projects.js. Optional fields (results, link,
- * image…) are simply not rendered when missing.
- * `compact` is the home page teaser; the full version is used on the work page.
+ * One project from data/projects.js: screenshot, title, short summary, key
+ * technologies and a link to the project. Same card on the home page
+ * (`teaser`: the whole card links to the work page) and on the work page.
+ * `priority`: the first image of the work page is the largest visible
+ * element (LCP), so it loads eagerly instead of lazily.
  */
-export default function ProjectCard({ project, compact = false, headingLevel = 2 }) {
+export default function ProjectCard({ project, teaser = false, headingLevel = 2, priority = false }) {
   const { lang, t, href } = useLocale();
-  const labels = t.pages.work.labels;
   const Heading = `h${headingLevel}`;
-  const SubHeading = `h${headingLevel + 1}`;
-  const text = (field) => project[field]?.[lang];
-
-  if (compact) {
-    return (
-      <article className="card project-card">
-       <Heading className="card-title">
-          <a href={`${href('work')}#${project.slug}`}>{text('title')}</a>
-        </Heading>
-        <p>{text('problem')}</p>
-        {project.stack?.length > 0 && <TechList items={project.stack} />}
-      </article>
-    );
-  }
+  const { image } = project;
 
   return (
-    <article className="project" id={project.slug}>
-      <header className="project-head">
-        <p className="eyebrow">
-          {t.pages.work.kinds[project.kind]}
-          {project.year && ` · ${project.year}`}
-        </p>
-        <Heading>{text('title')}</Heading>
-      </header>
-
-      {project.image && (
+    <article className="card card-service project-card" id={teaser ? undefined : project.slug}>
+      {image && (
         <img
-          className="project-image"
-          src={project.image.src}
-          width={project.image.width}
-          height={project.image.height}
-          alt={project.image.alt?.[lang] ?? ''}
-          loading="lazy"
+          className="project-thumb"
+          src={image.small ?? image.src}
+          srcSet={image.small ? `${image.small} 960w, ${image.src} ${image.width}w` : undefined}
+          sizes="(min-width: 1240px) 380px, (min-width: 960px) 31vw, (min-width: 640px) 50vw, 100vw"
+          width={image.width}
+          height={image.height}
+          alt={teaser ? '' : image.alt[lang]}
+          loading={priority ? 'eager' : 'lazy'}
+          fetchpriority={priority ? 'high' : undefined}
           decoding="async"
         />
       )}
 
-      <dl className="project-details">
-        {['context', 'problem', 'solution', 'role'].map(
-          (field) =>
-            text(field) && (
-              <div key={field}>
-                <dt>{labels[field]}</dt>
-                <dd>{text(field)}</dd>
-              </div>
-            ),
-        )}
-      </dl>
-
-      {text('features')?.length > 0 && (
-        <>
-          <SubHeading className="project-subtitle">{labels.features}</SubHeading>
-          <ul className="check-list">
-            {text('features').map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </>
-      )}
-
-      {text('results')?.length > 0 && (
-        <>
-          <SubHeading className="project-subtitle">{labels.results}</SubHeading>
-          <ul className="check-list">
-            {text('results').map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </>
-      )}
-
-      {project.stack?.length > 0 && (
-        <>
-          <SubHeading className="project-subtitle">{labels.stack}</SubHeading>
-          <TechList items={project.stack} />
-        </>
-      )}
-
-      <div className="project-links">
-        {project.services?.map((id) => (
-          <a key={id} href={`${href('services')}#${id}`} className="text-link">
-            {t.services[id].title}
+      <Heading className="card-title">
+        {teaser ? (
+          <a href={`${href('work')}#${project.slug}`} className="stretched-link">
+            {project.title[lang]}
           </a>
-        ))}
-        {project.link && (
-          <a href={project.link} className="text-link" target="_blank" rel="noopener noreferrer">
-            {labels.link}
-          </a>
+        ) : (
+          project.title[lang]
         )}
-      </div>
+      </Heading>
+      <p>{project.summary[lang]}</p>
+      <TechList items={project.stack} />
+
+      {!teaser && project.link && (
+        <p className="project-links">
+          <a href={project.link} className="btn btn-secondary btn-sm" target="_blank" rel="noopener noreferrer">
+            {project.linkLabel?.[lang] ?? t.pages.work.labels.link}
+            <Icon name="arrow" size={16} />
+          </a>
+        </p>
+      )}
     </article>
   );
 }

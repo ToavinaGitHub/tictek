@@ -31,7 +31,7 @@ export function isLikelySpam(values, elapsedMs) {
 
 /* ---------- Contact (project request) ---------- */
 
-export const needIds = ['web', 'mobile', 'saas-api', 'automation', 'ai', 'maintenance', 'white-label', 'other'];
+export const needIds = ['web', 'mobile', 'saas-api', 'automation', 'ai', 'web3', 'maintenance', 'white-label', 'other'];
 export const timelineIds = ['', 'asap', 'quarter', 'later'];
 
 export const CONTACT_INITIAL = {
@@ -64,7 +64,7 @@ export function validateContact(values) {
 
 /* ---------- Careers (open application) ---------- */
 
-export const profileIds = ['frontend', 'backend', 'fullstack', 'mobile', 'qa', 'devops', 'other'];
+export const profileIds = ['frontend', 'backend', 'fullstack', 'mobile', 'qa', 'devops', 'web3', 'other'];
 export const levelIds = ['student', 'junior', 'confirmed', 'senior'];
 
 export const CAREERS_INITIAL = {

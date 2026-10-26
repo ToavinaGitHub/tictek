@@ -106,6 +106,20 @@ const en = {
       audience: 'Companies that handle a lot of text or documents and want to save time.',
       tech: ['OpenAI API', 'Gemini', 'Data pipelines'],
     },
+    web3: {
+      title: 'Blockchain and Web3',
+      short: 'Smart contracts and decentralized applications, connected to your existing tools.',
+      problem:
+        'You want to tokenize an asset, certify data or launch a decentralized application, without taking risks on contract security.',
+      deliverables: [
+        'An honest view of whether blockchain really fits your use case',
+        'Solidity smart contracts covered by automated tests (Hardhat)',
+        'Decentralized applications (dApps): web interface and wallet connection',
+        'ERC-20 and ERC-721 tokens and NFTs, integrated with your applications',
+      ],
+      audience: 'Web3 startups and companies exploring traceability, certification or tokenization.',
+      tech: ['Solidity', 'Hardhat', 'Ethers.js', 'Ethereum (EVM)', 'Polygon'],
+    },
     maintenance: {
       title: 'Ongoing development and team augmentation',
       short: 'Keep an existing application moving, or add capacity to your tech team.',
@@ -197,8 +211,10 @@ const en = {
       },
       services: {
         title: 'What we build for you',
-        lede: 'From business software to AI integration, we start from your problem before choosing the technology.',
+        lede: 'From business software to AI and Web3, we start from your problem before choosing the technology.',
         link: 'See all services in detail',
+        otherTitle: 'Something else?',
+        otherText: 'Your project doesn’t fit any box? Describe it and we will tell you how we can help.',
       },
       work: {
         title: 'Recent work',
@@ -244,12 +260,12 @@ const en = {
     },
 
     services: {
-      title: 'Services: web and mobile apps, SaaS, APIs and AI | TicTek',
+      title: 'Services: web, mobile, SaaS, APIs, AI and Web3 | TicTek',
       description:
-        'Web and business applications, mobile apps, SaaS and APIs, process automation, AI integration, maintenance and team augmentation: TicTek’s services.',
+        'Web and business applications, mobile apps, SaaS and APIs, automation, AI, blockchain and Web3, maintenance and team augmentation: TicTek’s services.',
       h1: 'Custom software development services',
       lede:
-        'Six areas of work, presented by the problem they solve. If your need doesn’t fit any of them, tell us about it: it often spans several.',
+        'Seven areas of work, presented by the problem they solve. If your need doesn’t fit any of them, tell us about it: it often spans several.',
       labels: {
         problem: 'The problem',
         deliverables: 'What we deliver',
@@ -270,24 +286,10 @@ const en = {
 
     work: {
       title: 'Work: web, mobile and software projects | TicTek',
-      description: 'Projects delivered by TicTek: context, problem, solution, tech stack and the team’s exact role.',
+      description: 'Projects designed and built by TicTek: ride-hailing platform with AI and blockchain, architecture decision tool, web and mobile apps.',
       h1: 'Our work',
-      lede: 'Each project states what it is (client project, team contribution, internal project or prototype) and TicTek’s exact role.',
-      kinds: {
-        client: 'Client project',
-        team: 'Team contribution',
-        personal: 'Internal project',
-        prototype: 'Prototype',
-      },
+      lede: 'A few projects designed and built by the TicTek team.',
       labels: {
-        context: 'Context',
-        problem: 'Initial problem',
-        solution: 'Solution',
-        features: 'Key features',
-        stack: 'Tech stack',
-        role: 'TicTek’s role',
-        results: 'Measured results',
-        services: 'Related services',
         link: 'View project',
       },
     },
@@ -438,6 +440,7 @@ const en = {
         'Mobile developer: React Native',
         'QA and test automation',
         'DevOps and cloud',
+        'Blockchain developer: Solidity, Ethers.js',
         'Another technical profile? Write to us anyway.',
       ],
       processTitle: 'How it works',
@@ -497,6 +500,7 @@ const en = {
         { name: 'Data', items: ['PostgreSQL', 'MySQL', 'SQL Server', 'MongoDB', 'Redis'] },
         { name: 'DevOps', items: ['Docker', 'CI/CD', 'GitHub Actions', 'GitLab CI'] },
         { name: 'AI and automation', items: ['OpenAI API', 'Gemini', 'n8n'] },
+        { name: 'Blockchain and Web3', items: ['Solidity', 'Hardhat', 'Ethers.js', 'Polygon'] },
       ],
     },
 

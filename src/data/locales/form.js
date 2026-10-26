@@ -7,6 +7,7 @@ const forms = {
       'saas-api': 'SaaS, backend ou API',
       automation: 'Automatisation des processus',
       ai: 'Intégration IA',
+      web3: 'Blockchain / Web3',
       maintenance: "Maintenance ou renfort d'équipe",
       'white-label': 'Sous-traitance pour une agence',
       other: 'Autre / je ne sais pas encore',
@@ -64,6 +65,7 @@ const forms = {
         mobile: 'Développement mobile',
         qa: 'QA / tests',
         devops: 'DevOps / cloud',
+        web3: 'Blockchain / Web3',
         other: 'Autre profil technique',
       },
       levels: {
@@ -117,6 +119,7 @@ const forms = {
       'saas-api': 'SaaS, backend or API',
       automation: 'Process automation',
       ai: 'AI integration',
+      web3: 'Blockchain / Web3',
       maintenance: 'Maintenance or team augmentation',
       'white-label': 'White-label work for an agency',
       other: 'Other / not sure yet',
@@ -174,6 +177,7 @@ const forms = {
         mobile: 'Mobile development',
         qa: 'QA / testing',
         devops: 'DevOps / cloud',
+        web3: 'Blockchain / Web3',
         other: 'Other technical profile',
       },
       levels: {
