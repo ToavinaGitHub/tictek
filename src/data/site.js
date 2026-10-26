@@ -3,14 +3,16 @@ import { projects } from './projects';
 
 export const brand = {
   name: 'TicTek',
+  // Other spellings people type; helps Google tie them to the brand.
+  alternateNames: ['Tictek', 'TICTEK', 'Tic Tek'],
   logo: '/img/logo/logo_vf_light.png',
   logoDark: '/img/logo/logo_vf_dark.png',
   ogImage: { fr: '/img/og-image-fr.png', en: '/img/og-image-en.png' },
 };
 
 // Absolute origin used for canonical URLs, hreflang, the sitemap and Open
-// Graph. Set VITE_SITE_URL in .env.production to the real domain.
-export const siteUrl = (import.meta.env.VITE_SITE_URL || 'https://www.tictek.example').replace(/\/+$/, '');
+// Graph. tictek.mg redirects to www on Vercel, so www is the canonical host.
+export const siteUrl = (import.meta.env.VITE_SITE_URL || 'https://www.tictek.mg').replace(/\/+$/, '');
 
 export const contactInfo = {
   email: 'contact@tictek.mg',

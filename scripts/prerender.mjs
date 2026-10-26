@@ -59,27 +59,13 @@ ${urls.join('\n')}
 `,
 );
 
-// Security and cache headers, read by Netlify and Cloudflare Pages (other
-// hosts: copy them into their config). The inline theme script is allowed
-// by hash, so script-src stays free of 'unsafe-inline'.
-const themeHash = createHash('sha256').update(THEME_SCRIPT).digest('base64');
-await writeFile(
-  join(dist, '_headers'),
-  `/*
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'sha256-${themeHash}'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.emailjs.com; form-action 'self'; frame-ancestors 'none'; base-uri 'self'; object-src 'none'
-  X-Content-Type-Options: nosniff
-  Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: camera=(), microphone=(), geolocation=()
-  X-Frame-Options: DENY
-  Strict-Transport-Security: max-age=31536000
-
-/assets/*
-  Cache-Control: public, max-age=31536000, immutable
-
-/fonts/*
-  Cache-Control: public, max-age=31536000, immutable
-`,
-);
+// Security headers live in vercel.json (the host). Its CSP allows the inline
+// theme script by hash: fail the build if the script changed without it.
+const themeHash = `sha256-${createHash('sha256').update(THEME_SCRIPT).digest('base64')}`;
+const vercelConfig = await readFile(join(root, 'vercel.json'), 'utf8');
+if (!vercelConfig.includes(`'${themeHash}'`)) {
+  throw new Error(`vercel.json Content-Security-Policy must allow the theme script: add '${themeHash}' to script-src.`);
+}
 
 await writeFile(join(dist, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${origin}/sitemap.xml\n`);
 
@@ -88,6 +74,6 @@ await rm(ssrDir, { recursive: true, force: true });
 await rm(join(dist, '.vite'), { recursive: true, force: true });
 
 console.log(`Prerendered ${routes.length} pages + 404.html, sitemap.xml and robots.txt for ${origin}`);
-if (/\.example$|localhost/.test(origin)) {
-  console.warn('\n⚠ VITE_SITE_URL is not set to the real domain: canonical URLs, hreflang and the sitemap point to', origin, '\n');
+if (/localhost/.test(origin)) {
+  console.warn('\n⚠ VITE_SITE_URL points to localhost: canonical URLs, hreflang and the sitemap would be wrong in production.\n');
 }

@@ -17,7 +17,7 @@ npm run check    # contrôles SEO/liens sur dist/ (à lancer après build)
 
 | Variable | Rôle |
 | --- | --- |
-| `VITE_SITE_URL` | **À renseigner** dans `.env.production` : domaine de production sans `/` final. Sert aux canonical, hreflang, Open Graph, JSON-LD, sitemap et robots.txt. Le build affiche un avertissement tant qu'il n'est pas défini. |
+| `VITE_SITE_URL` | Domaine de production sans `/` final : `https://www.tictek.mg` (dans `.env.production`). Sert aux canonical, hreflang, Open Graph, JSON-LD, sitemap et robots.txt. |
 | `VITE_EMAILJS_SERVICE_ID`, `VITE_EMAILJS_TEMPLATE_ID`, `VITE_EMAILJS_PUBLIC_KEY` | Envoi du formulaire via l'API REST EmailJS. Identifiants publics par conception ; limitez les origines autorisées à votre domaine dans le tableau de bord EmailJS. |
 
 ## E-mails (EmailJS)
@@ -50,7 +50,7 @@ Publier le dossier `dist/` sur n'importe quel hébergement statique. Points à v
 
 - Servir `404.html` pour les URL inconnues (automatique sur Netlify, Cloudflare Pages, GitHub Pages).
 - Rediriger `/services` vers `/services/` (comportement par défaut de la plupart des hébergeurs statiques ; sur Vercel : `"trailingSlash": true`).
-- En-têtes de sécurité et de cache : `dist/_headers`, généré par `scripts/prerender.mjs` (Netlify, Cloudflare Pages). Il autorise le script de thème inline par son empreinte SHA-256 : ne pas modifier ce script sans relancer le build. Sur un autre hébergeur, reprendre les mêmes en-têtes dans sa configuration.
+- Hébergement actuel : **Vercel** (`vercel.json`) : build, redirection `/services` → `/services/`, en-têtes de sécurité et de cache. La CSP autorise le script de thème inline par son empreinte SHA-256 ; le build échoue si ce script change sans mise à jour de `vercel.json`.
 
 Après la mise en ligne : déclarer `https://<domaine>/sitemap.xml` dans Google Search Console et Bing Webmaster Tools.
 
