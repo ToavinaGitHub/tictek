@@ -30,7 +30,7 @@ const en = {
     learnMore: 'Learn more',
     consent: {
       label: 'Analytics cookies',
-      text: 'We would like to measure site traffic with Google Analytics to improve it. These cookies are only set with your consent.',
+      text: 'We would like to measure site traffic to improve it. These cookies are only set with your consent.',
       more: 'Learn more',
       accept: 'Accept',
       refuse: 'Decline',

@@ -30,7 +30,7 @@ const fr = {
     learnMore: 'En savoir plus',
     consent: {
       label: 'Cookies de mesure d’audience',
-      text: 'Nous aimerions mesurer la fréquentation du site avec Google Analytics pour l’améliorer. Ces cookies ne sont déposés qu’avec votre accord.',
+      text: 'Nous aimerions mesurer la fréquentation du site pour l’améliorer. Ces cookies ne sont déposés qu’avec votre accord.',
       more: 'En savoir plus',
       accept: 'Accepter',
       refuse: 'Refuser',
