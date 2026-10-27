@@ -18,6 +18,7 @@ const en = {
       contact: 'Contact',
       pricing: 'Pricing',
       careers: 'Careers',
+      privacy: 'Privacy',
     },
     ctaContact: "Let's talk about your project",
     cta: {
@@ -27,6 +28,14 @@ const en = {
     language: 'Language',
     darkMode: 'Dark mode',
     learnMore: 'Learn more',
+    consent: {
+      label: 'Analytics cookies',
+      text: 'We would like to measure site traffic with Google Analytics to improve it. These cookies are only set with your consent.',
+      more: 'Learn more',
+      accept: 'Accept',
+      refuse: 'Decline',
+      manage: 'Manage cookies',
+    },
   },
 
   footer: {
@@ -186,15 +195,14 @@ const en = {
 
   pages: {
     home: {
-      title: 'TicTek | Custom software development: web, mobile, SaaS and AI',
+      title: 'TicTek | Developers in Madagascar: web, mobile, AI and Web3',
       description:
-        'TicTek designs and builds web and mobile apps, SaaS products, APIs and automations, with AI integration. Team in Madagascar, clients worldwide, in English and French.',
+        'TicTek is a team of developers based in Antananarivo, Madagascar, building web and mobile apps, SaaS, APIs, automation, AI and Web3 for clients worldwide.',
       hero: {
-        eyebrow: 'Software development company',
         title: 'Your software development partner,',
         titleAccent: 'from first idea to production.',
         lede:
-          'TicTek helps companies build web and mobile software, automate their processes and integrate AI. Our technical team is based in Madagascar and works remotely with clients internationally, in English and French.',
+          'TicTek is a team of developers based in Antananarivo, Madagascar. We help companies build web and mobile software, automate their processes and integrate AI, working remotely with clients worldwide, in English and French.',
         ctaWork: 'See our work',
         ctaServices: 'Explore our services',
         visual: {
@@ -453,12 +461,12 @@ const en = {
     },
 
     about: {
-      title: 'About TicTek, software development company | TicTek',
+      title: 'About TicTek, a developer team in Antananarivo, Madagascar',
       description:
-        'TicTek is a software services company based in Antananarivo, Madagascar, working internationally: mission, skills, how we work, quality approach and remote collaboration.',
+        'TicTek is a team of developers based in Antananarivo, Madagascar, working internationally: mission, skills, how we work, quality approach and remote collaboration.',
       h1: 'About TicTek',
       lede:
-        'TicTek is a software services company based in Antananarivo, Madagascar, working remotely with clients internationally. We design, build and maintain software for companies looking for a reliable, flexible and cost-conscious technical partner.',
+        'TicTek is a team of developers based in Antananarivo, Madagascar, working remotely with clients internationally. We design, build and maintain software for companies looking for a reliable, flexible and cost-conscious technical partner.',
       sections: [
         {
           id: 'mission',
@@ -517,6 +525,57 @@ const en = {
         'If the project is a good fit, we propose a scoping phase and a written estimate.',
       ],
       directTitle: 'Email us directly',
+    },
+
+    privacy: {
+      title: 'Privacy and cookies | TicTek',
+      description:
+        'What data the TicTek website collects, why, with which services (EmailJS, Google Analytics, Vercel) and how to exercise your rights.',
+      h1: 'Privacy and cookies',
+      lede: 'This site collects as little data as possible. Here is what, why, and how to exercise your rights.',
+      sections: [
+        {
+          id: 'controller',
+          title: 'Who is responsible',
+          paragraphs: ['TicTek, a team of developers based in Antananarivo, Madagascar. For any question about your data: {email}.'],
+        },
+        {
+          id: 'forms',
+          title: 'Contact and application forms',
+          paragraphs: [
+            'The information you enter (name, email, project description or application) is only used to reply to you. It reaches us by email through the EmailJS service, then stays in our mailbox for as long as needed to follow up on your request.',
+            'It is never sold or used for marketing.',
+          ],
+        },
+        {
+          id: 'analytics',
+          title: 'Audience measurement (Google Analytics)',
+          paragraphs: [
+            'Only with your consent, we use Google Analytics 4 to see which pages are viewed and where visitors come from. Until you accept, no Google script is loaded and no cookie is set.',
+            'Cookies used after consent: _ga and _ga_<id>, lasting 13 months at most. Google advertising features stay disabled.',
+            'You can change your mind at any time with the “Manage cookies” link at the bottom of every page.',
+          ],
+        },
+        {
+          id: 'preferences',
+          title: 'Preferences stored on your device',
+          paragraphs: [
+            'Your theme choice (light or dark) and your cookie choice are stored in your browser’s local storage. They are not sent to TicTek.',
+          ],
+        },
+        {
+          id: 'hosting',
+          title: 'Hosting',
+          paragraphs: ['The site is hosted by Vercel Inc., which processes the technical data needed to serve pages (IP address, access logs).'],
+        },
+        {
+          id: 'rights',
+          title: 'Your rights',
+          paragraphs: [
+            'You can request access to, correction or deletion of your data by writing to {email}. If you live in the European Union, you can also lodge a complaint with your country’s data protection authority.',
+          ],
+        },
+      ],
     },
 
     notFound: {

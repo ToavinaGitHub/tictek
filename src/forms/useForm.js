@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { isLikelySpam } from './validate';
+import { trackEvent } from '../analytics';
 
 /**
  * State and handlers shared by the contact and careers forms: values,
@@ -62,6 +63,8 @@ export function useForm({ idPrefix, initialValues, validate, submit }) {
     setStatus('sending');
     try {
       const result = await submit(values);
+      // GA4 conversion (sent only if the visitor accepted analytics).
+      trackEvent('generate_lead', { form_name: idPrefix });
       setConfirmed(result.confirmed);
       setValues(initialValues);
       setStatus('success');

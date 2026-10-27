@@ -35,6 +35,14 @@ Les formulaires Contact et Nous rejoindre envoient deux e-mails :
 
 Chaque envoi consomme donc deux e-mails du quota EmailJS. Pensez à activer la limite de fréquence (Account → Security) et à restreindre les domaines autorisés.
 
+## Mesure d'audience (Google Analytics 4)
+
+- ID dans `.env.production` : `VITE_GA_ID=G-YV8X9STGH9`. Vide = ni bannière ni Analytics.
+- Consentement (`src/client/consent.js`, mode Consent Mode v2 « basique ») : aucun script Google n'est chargé avant « Accepter ». Choix mémorisé 6 mois, modifiable via « Gérer les cookies » dans le pied de page. Publicité et signaux Google désactivés, cookies limités à 13 mois.
+- Conversion : événement `generate_lead` (`form_name` = `contact` ou `careers`) à chaque formulaire envoyé.
+- La CSP de `vercel.json` autorise uniquement `www.googletagmanager.com`, `*.google-analytics.com` et `*.analytics.google.com`.
+- Page `/confidentialite/` (`/en/privacy/`) : à tenir à jour si un nouveau service est ajouté.
+
 ## Où modifier quoi
 
 - Textes : `src/data/locales/fr.js`, `en.js` ; formulaire : `src/data/locales/form.js`

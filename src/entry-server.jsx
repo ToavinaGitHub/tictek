@@ -15,6 +15,7 @@ import About from './pages/About';
 import Pricing from './pages/Pricing';
 import Careers from './pages/Careers';
 import Contact from './pages/Contact';
+import Privacy from './pages/Privacy';
 import NotFound from './pages/NotFound';
 
 export { siteUrl } from './data/site';
@@ -29,6 +30,7 @@ const PAGES = {
   about: About,
   careers: Careers,
   contact: Contact,
+  privacy: Privacy,
 };
 
 /** Pages with a form island (they load src/client/forms.jsx). */

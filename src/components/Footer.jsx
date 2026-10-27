@@ -1,4 +1,4 @@
-import { brand, companyIds, contactInfo, serviceIds } from '../data/site';
+import { analyticsId, brand, companyIds, contactInfo, serviceIds } from '../data/site';
 import { useLocale } from '../i18n';
 import Icon from './Icon';
 
@@ -62,6 +62,15 @@ export default function Footer() {
       <div className="container footer-bottom">
         <p>
           © {year} {brand.name}. {t.footer.rights}
+        </p>
+        <p className="footer-legal">
+          <a href={href('privacy')}>{t.common.nav.privacy}</a>
+          {analyticsId && (
+            // Shown by src/client/consent.js: it needs JavaScript to work.
+            <button type="button" className="link-button" data-consent-open hidden>
+              {t.common.consent.manage}
+            </button>
+          )}
         </p>
       </div>
     </footer>

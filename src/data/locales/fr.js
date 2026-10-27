@@ -18,6 +18,7 @@ const fr = {
       contact: 'Contact',
       pricing: 'Tarifs',
       careers: 'Nous rejoindre',
+      privacy: 'Confidentialité',
     },
     ctaContact: 'Discutons de votre projet',
     cta: {
@@ -27,6 +28,14 @@ const fr = {
     language: 'Langue',
     darkMode: 'Mode sombre',
     learnMore: 'En savoir plus',
+    consent: {
+      label: 'Cookies de mesure d’audience',
+      text: 'Nous aimerions mesurer la fréquentation du site avec Google Analytics pour l’améliorer. Ces cookies ne sont déposés qu’avec votre accord.',
+      more: 'En savoir plus',
+      accept: 'Accepter',
+      refuse: 'Refuser',
+      manage: 'Gérer les cookies',
+    },
   },
 
   footer: {
@@ -195,15 +204,14 @@ const fr = {
 
   pages: {
     home: {
-      title: 'TicTek | Développement logiciel sur mesure : web, mobile, SaaS et IA',
+      title: 'TicTek | Développeurs à Madagascar : web, mobile, IA et Web3',
       description:
-        'TicTek conçoit vos applications web et mobiles, SaaS, API et automatisations avec IA. Équipe à Madagascar, clients à l’international, en français et en anglais.',
+        'TicTek, équipe de développeurs basée à Antananarivo (Madagascar), conçoit vos applications web et mobiles, SaaS, API, automatisations, IA et Web3, partout dans le monde.',
       hero: {
-        eyebrow: 'Entreprise de services numériques',
         title: 'Votre partenaire de développement logiciel,',
         titleAccent: 'du besoin à la mise en production.',
         lede:
-          "TicTek accompagne les entreprises dans la création de logiciels web et mobiles, l'automatisation de leurs processus et l'intégration de l'IA. Notre équipe technique, basée à Madagascar, travaille à distance avec des clients à l’international, en français comme en anglais.",
+          "TicTek est une équipe de développeurs basée à Antananarivo, à Madagascar. Nous accompagnons les entreprises dans la création de logiciels web et mobiles, l'automatisation de leurs processus et l'intégration de l'IA, à distance, pour des clients à l’international, en français comme en anglais.",
         ctaWork: 'Découvrir nos réalisations',
         ctaServices: 'Découvrir nos services',
         visual: {
@@ -464,12 +472,12 @@ const fr = {
     },
 
     about: {
-      title: 'À propos de TicTek, entreprise de développement logiciel | TicTek',
+      title: 'À propos de TicTek, équipe de développeurs à Antananarivo, Madagascar',
       description:
-        'TicTek, entreprise de services numériques basée à Antananarivo (Madagascar) et tournée vers l’international : mission, compétences, organisation et approche qualité.',
+        'TicTek, équipe de développeurs basée à Antananarivo (Madagascar) et tournée vers l’international : mission, compétences, organisation et approche qualité.',
       h1: 'À propos de TicTek',
       lede:
-        'TicTek est une entreprise de services numériques basée à Antananarivo, à Madagascar, qui travaille à distance avec des clients à l’international. Nous concevons, développons et maintenons des logiciels pour des entreprises qui cherchent un partenaire technique fiable, flexible et attentif aux coûts.',
+        'TicTek est une équipe de développeurs basée à Antananarivo, à Madagascar, qui travaille à distance avec des clients à l’international. Nous concevons, développons et maintenons des logiciels pour des entreprises qui cherchent un partenaire technique fiable, flexible et attentif aux coûts.',
       sections: [
         {
           id: 'mission',
@@ -528,6 +536,57 @@ const fr = {
         'Si le projet nous correspond, nous vous proposons un cadrage et une estimation écrite.',
       ],
       directTitle: 'Nous écrire directement',
+    },
+
+    privacy: {
+      title: 'Confidentialité et cookies | TicTek',
+      description:
+        'Quelles données le site TicTek collecte, pourquoi, avec quels services (EmailJS, Google Analytics, Vercel) et comment exercer vos droits.',
+      h1: 'Confidentialité et cookies',
+      lede: 'Ce site collecte le minimum de données nécessaire. Voici lesquelles, pourquoi et comment exercer vos droits.',
+      sections: [
+        {
+          id: 'responsable',
+          title: 'Qui est responsable',
+          paragraphs: ['TicTek, équipe de développeurs basée à Antananarivo, Madagascar. Pour toute question sur vos données : {email}.'],
+        },
+        {
+          id: 'formulaires',
+          title: 'Formulaires de contact et de candidature',
+          paragraphs: [
+            'Les informations que vous saisissez (nom, e-mail, description du projet ou candidature) servent uniquement à vous répondre. Elles nous sont transmises par e-mail via le service EmailJS, puis conservées dans notre messagerie le temps nécessaire au suivi de votre demande.',
+            'Elles ne sont ni revendues, ni utilisées pour de la prospection.',
+          ],
+        },
+        {
+          id: 'mesure-audience',
+          title: 'Mesure d’audience (Google Analytics)',
+          paragraphs: [
+            'Avec votre accord uniquement, nous utilisons Google Analytics 4 pour savoir quelles pages sont consultées et d’où viennent les visiteurs. Tant que vous n’avez pas accepté, aucun script Google n’est chargé et aucun cookie n’est déposé.',
+            'Cookies utilisés après accord : _ga et _ga_<identifiant>, d’une durée de 13 mois au maximum. Les fonctions publicitaires de Google restent désactivées.',
+            'Vous pouvez changer d’avis à tout moment avec le lien « Gérer les cookies » en bas de chaque page.',
+          ],
+        },
+        {
+          id: 'preferences',
+          title: 'Préférences enregistrées sur votre appareil',
+          paragraphs: [
+            'Votre choix de thème (clair ou sombre) et votre choix concernant les cookies sont enregistrés dans le stockage local de votre navigateur. Ils ne sont pas transmis à TicTek.',
+          ],
+        },
+        {
+          id: 'hebergement',
+          title: 'Hébergement',
+          paragraphs: ['Le site est hébergé par Vercel Inc., qui traite les données techniques nécessaires à l’affichage des pages (adresse IP, journaux de connexion).'],
+        },
+        {
+          id: 'droits',
+          title: 'Vos droits',
+          paragraphs: [
+            'Vous pouvez demander l’accès, la rectification ou la suppression de vos données en écrivant à {email}. Si vous résidez dans l’Union européenne, vous pouvez aussi adresser une réclamation à l’autorité de protection des données de votre pays (la CNIL en France).',
+          ],
+        },
+      ],
     },
 
     notFound: {

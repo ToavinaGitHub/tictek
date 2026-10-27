@@ -26,8 +26,10 @@ function organization() {
     '@id': organizationId,
     name: brand.name,
     alternateName: brand.alternateNames,
+    description: translations.fr.pages.home.description,
     url: absoluteUrl('/'),
-    logo: absoluteUrl(brand.logo),
+    // Google needs a logo at least 112px on each side: the square mark, not the wordmark.
+    logo: absoluteUrl(brand.logoSquare),
     email: contactInfo.email,
     telephone: contactInfo.phone.replace(/\s+/g, ''),
     address: {
@@ -103,8 +105,12 @@ export function renderHead({ pageId, lang, assets, indexable = true }) {
     '<meta name="color-scheme" content="light dark">',
     '<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">',
     '<meta name="theme-color" content="#0a0f1a" media="(prefers-color-scheme: dark)">',
+    // Google's result favicon: /favicon.ico or a PNG that is a multiple of 48px.
+    '<link rel="icon" href="/favicon.ico" sizes="48x48">',
     '<link rel="icon" href="/favicon.svg" type="image/svg+xml">',
+    '<link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">',
     '<link rel="apple-touch-icon" href="/apple-touch-icon.png">',
+    '<link rel="manifest" href="/site.webmanifest">',
     '<link rel="preload" href="/fonts/plus-jakarta-sans-latin-var.woff2" as="font" type="font/woff2" crossorigin>',
     ...assets.css.map((href) => `<link rel="stylesheet" href="${href}">`),
     ...assets.preloads.map((src) => `<link rel="modulepreload" href="${src}">`),

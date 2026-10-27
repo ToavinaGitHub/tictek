@@ -1,6 +1,7 @@
 import { useLocale } from '../i18n';
 import Header from './Header';
 import Footer from './Footer';
+import ConsentBanner from './ConsentBanner';
 
 export default function Layout({ pageId, children }) {
   const { t } = useLocale();
@@ -15,6 +16,7 @@ export default function Layout({ pageId, children }) {
         {children}
       </main>
       <Footer />
+      <ConsentBanner />
     </>
   );
 }

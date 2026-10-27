@@ -7,6 +7,7 @@ export const brand = {
   alternateNames: ['Tictek', 'TICTEK', 'Tic Tek'],
   logo: '/img/logo/logo_vf_light.png',
   logoDark: '/img/logo/logo_vf_dark.png',
+  logoSquare: '/icon-512.png',
   ogImage: { fr: '/img/og-image-fr.png', en: '/img/og-image-en.png' },
 };
 
@@ -20,6 +21,9 @@ export const contactInfo = {
   city: 'Antananarivo',
   countryCode: 'MG',
 };
+
+// Google Analytics 4 (src/client/consent.js). Empty: no banner, no analytics.
+export const analyticsId = import.meta.env.VITE_GA_ID ?? '';
 
 export const languages = ['fr', 'en'];
 // Each language named in itself, for the language switcher.
@@ -38,11 +42,12 @@ export const pageIds = [
   'about',
   'careers',
   'contact',
+  'privacy',
 ];
 // Header links (Contact is the header button). Careers lives in the footer.
-export const navIds = pageIds.filter((id) => !['home', 'contact', 'careers'].includes(id));
-// Footer "Company" column.
-export const companyIds = pageIds.filter((id) => !['home', 'services', 'contact'].includes(id));
+export const navIds = pageIds.filter((id) => !['home', 'contact', 'careers', 'privacy'].includes(id));
+// Footer "Company" column. Privacy is linked in the footer's bottom line.
+export const companyIds = pageIds.filter((id) => !['home', 'services', 'contact', 'privacy'].includes(id));
 
 export const paths = {
   fr: {
@@ -54,6 +59,7 @@ export const paths = {
     about: '/a-propos/',
     careers: '/nous-rejoindre/',
     contact: '/contact/',
+    privacy: '/confidentialite/',
   },
   en: {
     home: '/en/',
@@ -64,6 +70,7 @@ export const paths = {
     about: '/en/about/',
     careers: '/en/careers/',
     contact: '/en/contact/',
+    privacy: '/en/privacy/',
   },
 };
 

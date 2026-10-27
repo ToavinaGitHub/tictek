@@ -1,7 +1,11 @@
 // Loaded on every page. The site is static HTML; this only adds the mobile
-// menu and the theme toggle (the theme itself is applied before first paint
-// by the inline script in seo/head.js).
+// menu, the theme toggle (the theme itself is applied before first paint
+// by the inline script in seo/head.js) and the analytics consent banner.
+import { initConsent } from './consent';
+
 const THEME_STORAGE_KEY = 'tictek-theme';
+
+initConsent();
 
 const toggle = document.querySelector('[data-nav-toggle]');
 const nav = toggle && document.getElementById(toggle.getAttribute('aria-controls'));
