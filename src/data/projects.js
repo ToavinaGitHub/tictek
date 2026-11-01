@@ -62,6 +62,28 @@ export const projects = [
     },
   },
   {
+    slug: 'applycheck',
+    title: { fr: 'ApplyCheck', en: 'ApplyCheck' },
+    summary: {
+      fr: 'Assistant de candidature par IA : à partir d’un CV et d’une offre, il produit un rapport noté, des lettres de motivation sur mesure et des messages adaptés à chaque plateforme, sans compte.',
+      en: 'AI job application assistant: from a CV and a job description, it produces a scored report, tailored cover letters and platform-specific messages, with no account required.',
+    },
+    stack: ['Next.js', 'TypeScript', 'Claude', 'Gemini'],
+    services: ['ai', 'web'],
+    link: 'https://applycheck.tictek.mg/',
+    linkLabel: { fr: 'Essayer l’application', en: 'Try the application' },
+    image: {
+      src: '/img/projects/applycheck.jpg',
+      small: '/img/projects/applycheck-960.jpg',
+      width: 1280,
+      height: 800,
+      alt: {
+        fr: 'Page d’accueil d’ApplyCheck : préparation de candidature et exemple de rapport noté 78 sur 100',
+        en: 'ApplyCheck home page: application preparation and a sample report scored 78 out of 100',
+      },
+    },
+  },
+  {
     slug: 'site-tictek',
     title: { fr: 'Site web de TicTek', en: 'TicTek website' },
     summary: {
