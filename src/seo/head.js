@@ -107,7 +107,7 @@ export function renderHead({ pageId, lang, assets, indexable = true }) {
     '<meta name="theme-color" content="#0a0f1a" media="(prefers-color-scheme: dark)">',
     // Google's result favicon: /favicon.ico or a PNG that is a multiple of 48px.
     '<link rel="icon" href="/favicon.ico" sizes="48x48">',
-    '<link rel="icon" href="/favicon.svg" type="image/svg+xml">',
+    '<link rel="icon" href="/favicon-48x48.png" type="image/png" sizes="48x48">',
     '<link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">',
     '<link rel="apple-touch-icon" href="/apple-touch-icon.png">',
     '<link rel="manifest" href="/site.webmanifest">',
