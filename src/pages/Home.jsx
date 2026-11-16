@@ -1,7 +1,8 @@
-import { hasProjects, modelIds, serviceIds } from '../data/site';
+import { clientCountries, clocks, hasProjects, modelIds, serviceIds } from '../data/site';
 import { projects } from '../data/projects';
 import { useLocale } from '../i18n';
 import Icon from '../components/Icon';
+import Flag from '../components/Flag';
 import HeroVisual from '../components/HeroVisual';
 import TechMarquee from '../components/TechMarquee';
 import ProcessSteps from '../components/ProcessSteps';
@@ -36,6 +37,60 @@ export default function Home() {
 
         <div className="container">
           <TechMarquee />
+        </div>
+      </section>
+
+      <section className="section section-alt section-clients" aria-labelledby="clients-title">
+        <div className="container clients-layout">
+          <div className="reveal">
+            <p className="eyebrow">{page.clients.eyebrow}</p>
+            <h2 id="clients-title">{page.clients.title}</h2>
+            <p>{page.clients.lede}</p>
+          </div>
+          <ul className="country-list reveal" aria-label={page.clients.listLabel}>
+            {clientCountries.map((code) => (
+              <li key={code}>
+                <Flag code={code} />
+                {t.countries[code]}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="container">
+          <div className="clocks" data-clocks data-same={page.hours.same} data-unit={page.hours.hourUnit} data-versus={page.hours.versus}>
+            <div className="clocks-head">
+              <div>
+                <h3>{page.hours.title}</h3>
+                <p>{page.hours.lede}</p>
+              </div>
+              <p className="clocks-langs">
+                <span>{page.hours.languagesLabel}</span>
+                {page.hours.languages.map((language) => (
+                  <strong key={language}>{language}</strong>
+                ))}
+              </p>
+            </div>
+            <ul className="clock-grid" aria-label={page.hours.listLabel}>
+              {clocks.map((clock, index) => (
+                <li key={clock.id} className={index === 0 ? 'clock is-home' : 'clock'} data-tz={clock.timeZone}>
+                  <span className="clock-place">
+                    <Flag code={clock.flag} />
+                    <span>
+                      <strong>{t.cities[clock.id].city}</strong>
+                      <span className="clock-country">{t.cities[clock.id].country}</span>
+                    </span>
+                  </span>
+                  <span className="clock-time" data-clock-time>
+                    --:--
+                  </span>
+                  <span className="clock-gap" data-clock-gap>
+                    {index === 0 ? page.hours.ours : '\u00a0'}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
 

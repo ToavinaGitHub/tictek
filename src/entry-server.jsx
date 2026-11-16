@@ -3,7 +3,7 @@
 // plain HTML; the only client code is src/client/main.js (menu) and the
 // form islands (src/client/forms.jsx).
 import { renderToStaticMarkup } from 'react-dom/server';
-import { languages, pageIds, paths } from './data/site';
+import { findPost, languages, pageIds, paths, postPageIds } from './data/site';
 import { LocaleProvider } from './i18n';
 import { renderHead } from './seo/head';
 import Layout from './components/Layout';
@@ -16,6 +16,8 @@ import Pricing from './pages/Pricing';
 import Careers from './pages/Careers';
 import Contact from './pages/Contact';
 import Privacy from './pages/Privacy';
+import Blog from './pages/Blog';
+import BlogPost from './pages/BlogPost';
 import NotFound from './pages/NotFound';
 
 export { siteUrl } from './data/site';
@@ -31,6 +33,7 @@ const PAGES = {
   careers: Careers,
   contact: Contact,
   privacy: Privacy,
+  blog: Blog,
 };
 
 /** Pages with a form island (they load src/client/forms.jsx). */
@@ -39,7 +42,9 @@ export const FORM_PAGES = ['contact', 'careers'];
 export const NOT_FOUND_PATH = '/404.html';
 
 /** Every indexable route: { lang, pageId, path }. */
-export const routes = languages.flatMap((lang) => pageIds.map((pageId) => ({ lang, pageId, path: paths[lang][pageId] })));
+export const routes = languages.flatMap((lang) =>
+  [...pageIds, ...postPageIds].map((pageId) => ({ lang, pageId, path: paths[lang][pageId] })),
+);
 
 export function findRoute(path) {
   return routes.find((route) => route.path === path);
@@ -51,7 +56,7 @@ export function findRoute(path) {
  */
 export function renderPage(route, assets) {
   const { lang, pageId } = route ?? { lang: 'fr', pageId: 'notFound' };
-  const Page = PAGES[pageId] ?? NotFound;
+  const Page = findPost(pageId) ? BlogPost : (PAGES[pageId] ?? NotFound);
   const pageAssets = {
     ...assets,
     modules: FORM_PAGES.includes(pageId) ? [...assets.modules, assets.islands.forms] : assets.modules,
@@ -60,7 +65,7 @@ export function renderPage(route, assets) {
   const body = renderToStaticMarkup(
     <LocaleProvider lang={lang}>
       <Layout pageId={pageId}>
-        <Page />
+        <Page pageId={pageId} />
       </Layout>
     </LocaleProvider>,
   );

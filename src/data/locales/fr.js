@@ -19,6 +19,7 @@ const fr = {
       pricing: 'Tarifs',
       careers: 'Nous rejoindre',
       privacy: 'Confidentialité',
+      blog: 'Blog',
     },
     ctaContact: 'Discutons de votre projet',
     cta: {
@@ -36,6 +37,29 @@ const fr = {
       refuse: 'Refuser',
       manage: 'Gérer les cookies',
     },
+    whatsapp: {
+      label: 'Nous écrire sur WhatsApp',
+      message: 'Bonjour TicTek, je souhaite discuter d’un projet.',
+    },
+    linkedin: 'TicTek sur LinkedIn',
+  },
+
+  // Keys follow site.js clientCountries.
+  countries: {
+    mu: 'Maurice',
+    mg: 'Madagascar',
+    fr: 'France',
+    ae: 'Dubaï (Émirats arabes unis)',
+  },
+
+  // Keys follow site.js clocks.
+  cities: {
+    antananarivo: { city: 'Antananarivo', country: 'Madagascar' },
+    'port-louis': { city: 'Port-Louis', country: 'Maurice' },
+    dubai: { city: 'Dubaï', country: 'Émirats arabes unis' },
+    paris: { city: 'Paris', country: 'France' },
+    geneva: { city: 'Genève', country: 'Suisse' },
+    montreal: { city: 'Montréal', country: 'Canada' },
   },
 
   footer: {
@@ -237,6 +261,23 @@ const fr = {
         title: 'Réalisations récentes',
         link: 'Voir toutes les réalisations',
       },
+      clients: {
+        eyebrow: 'Nos clients',
+        title: 'Des clients sur trois continents',
+        lede: 'Depuis Antananarivo, nous travaillons à distance avec des entreprises de l’océan Indien, d’Europe et du Moyen-Orient.',
+        listLabel: 'Pays de nos clients',
+      },
+      hours: {
+        title: 'Notre heure, votre heure',
+        lede: 'Madagascar est à UTC+3, sans changement d’heure : une à deux heures d’écart avec l’Europe, et des créneaux convenus ensemble pour les autres fuseaux.',
+        languagesLabel: 'Nous travaillons en',
+        languages: ['Français', 'Anglais'],
+        listLabel: 'Heure actuelle à Madagascar et chez nos clients',
+        ours: 'Notre heure · UTC+3',
+        same: 'Même heure',
+        hourUnit: 'h',
+        versus: 'par rapport à Madagascar',
+      },
       models: {
         title: 'Un mode de collaboration adapté à votre situation',
         lede: 'Avec ou sans équipe technique, en direct ou pour le compte de vos clients.',
@@ -333,7 +374,7 @@ const fr = {
       faq: [
         {
           q: 'Combien coûte un projet ?',
-          a: 'Cela dépend du périmètre, des intégrations et du niveau de qualité attendu. Nous ne publions pas de grille tarifaire : chaque projet fait l’objet d’une estimation détaillée après le cadrage. Indiquer une enveloppe dans le formulaire nous aide à proposer une solution adaptée.',
+          a: 'Cela dépend du périmètre, des intégrations et du niveau de qualité attendu. Notre taux horaire démarre à 8 $ US ; le budget total fait l’objet d’une estimation détaillée après le cadrage. Indiquer une enveloppe dans le formulaire nous aide à proposer une solution adaptée.',
         },
         {
           q: 'Comment se passe le travail à distance ?',
@@ -353,10 +394,17 @@ const fr = {
     pricing: {
       title: 'Tarifs : comment nous chiffrons votre projet logiciel | TicTek',
       description:
-        "Forfait, régie au jour, maintenance mensuelle ou marque blanche : comment TicTek établit ses devis et ce qui fait varier le prix d'un projet logiciel.",
+        "Taux horaire à partir de 8 $ US. Forfait, régie, maintenance mensuelle ou marque blanche : comment TicTek établit ses devis et ce qui fait varier le prix d'un projet.",
       h1: 'Tarifs',
       lede:
-        'Chaque projet logiciel est différent : nous ne publions pas de grille tarifaire figée. Voici comment nous facturons, ce qui fait varier le prix et comment obtenir une estimation.',
+        'Chaque projet logiciel est différent, mais voici un repère : notre taux horaire démarre à 8 $ US. Voici comment nous facturons, ce qui fait varier le prix et comment obtenir une estimation.',
+      rate: {
+        label: 'Taux horaire',
+        from: 'À partir de',
+        value: '8 $ US',
+        unit: '/ heure',
+        note: 'Le taux exact dépend des compétences demandées et du volume de l’engagement. Il est toujours indiqué dans le devis, avant tout démarrage.',
+      },
       modelsTitle: 'Nos modes de facturation',
       fitLabel: 'Pour :',
       models: [
@@ -374,9 +422,9 @@ const fr = {
         {
           id: 'regie',
           title: 'Régie',
-          text: 'Vous réservez du temps de développement, facturé au jour. Le périmètre peut évoluer librement.',
+          text: 'Vous réservez du temps de développement, facturé à l’heure ou au jour. Le périmètre peut évoluer librement.',
           points: [
-            'Taux journalier indiqué dans le devis',
+            'À partir de 8 $ US de l’heure, taux précisé dans le devis',
             'Suivi du temps passé partagé avec vous',
             'Volume ajustable selon vos besoins',
           ],
@@ -423,8 +471,8 @@ const fr = {
       faqTitle: 'Questions fréquentes',
       faq: [
         {
-          q: 'Pourquoi ne pas afficher de prix ?',
-          a: 'Deux applications qui se ressemblent peuvent demander des efforts très différents selon les intégrations, les volumes et le niveau d’exigence. Un prix affiché sans connaître votre projet serait soit trompeur, soit gonflé par précaution.',
+          q: 'Pourquoi pas de prix fixe par type de projet ?',
+          a: 'Notre taux horaire démarre à 8 $ US, mais le coût total dépend du temps nécessaire. Deux applications qui se ressemblent peuvent demander des efforts très différents selon les intégrations, les volumes et le niveau d’exigence. Un prix forfaitaire affiché sans connaître votre projet serait soit trompeur, soit gonflé par précaution.',
         },
         {
           q: 'Le premier échange est-il payant ?',
@@ -511,6 +559,8 @@ const fr = {
           ],
         },
       ],
+      teamTitle: 'L’équipe',
+      teamLede: 'Les personnes qui conçoivent et développent vos projets, et avec qui vous échangez directement.',
       skillsTitle: 'Compétences techniques',
       skills: [
         { name: 'Front-end', items: ['TypeScript', 'React', 'Next.js', 'Angular', 'Vue.js'] },
@@ -536,6 +586,16 @@ const fr = {
         'Si le projet nous correspond, nous vous proposons un cadrage et une estimation écrite.',
       ],
       directTitle: 'Nous écrire directement',
+    },
+
+    blog: {
+      title: 'Blog : la vie et les projets de TicTek à Madagascar | TicTek',
+      description:
+        'Les coulisses de TicTek, équipe de développeurs à Madagascar : projets en cours, façon de travailler et vie d’équipe.',
+      h1: 'Blog',
+      lede: 'Les coulisses de TicTek : nos projets, notre façon de travailler et la vie de l’équipe à Madagascar.',
+      readMore: 'Lire l’article',
+      allPosts: 'Tous les articles',
     },
 
     privacy: {

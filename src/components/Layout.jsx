@@ -2,6 +2,7 @@ import { useLocale } from '../i18n';
 import Header from './Header';
 import Footer from './Footer';
 import ConsentBanner from './ConsentBanner';
+import WhatsAppButton from './WhatsAppButton';
 
 export default function Layout({ pageId, children }) {
   const { t } = useLocale();
@@ -16,6 +17,7 @@ export default function Layout({ pageId, children }) {
         {children}
       </main>
       <Footer />
+      <WhatsAppButton />
       <ConsentBanner />
     </>
   );

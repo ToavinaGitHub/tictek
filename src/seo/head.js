@@ -1,4 +1,4 @@
-import { absoluteUrl, brand, contactInfo, languages, defaultLang, paths, serviceIds, siteUrl } from '../data/site';
+import { absoluteUrl, brand, clientCountries, contactInfo, findPost, languages, defaultLang, paths, serviceIds, siteUrl, socialLinks } from '../data/site';
 import { translations } from '../i18n';
 
 const escapeHtml = (value) =>
@@ -37,12 +37,51 @@ function organization() {
       addressLocality: contactInfo.city,
       addressCountry: contactInfo.countryCode,
     },
+    areaServed: clientCountries.map((code) => ({ '@type': 'Country', name: code.toUpperCase() })),
+    sameAs: Object.values(socialLinks),
   };
+}
+
+/** Title and description of a page; blog posts take theirs from posts.js. */
+function pageMeta(pageId, lang) {
+  const post = findPost(pageId);
+  if (!post) return translations[lang].pages[pageId];
+  return { title: `${post.title[lang]} | ${brand.name}`, description: post.excerpt[lang], post };
 }
 
 function structuredData(pageId, lang) {
   const t = translations[lang];
   const url = absoluteUrl(paths[lang][pageId]);
+  const post = findPost(pageId);
+
+  if (post) {
+    return {
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: t.common.nav.home, item: absoluteUrl(paths[lang].home) },
+            { '@type': 'ListItem', position: 2, name: t.common.nav.blog, item: absoluteUrl(paths[lang].blog) },
+            { '@type': 'ListItem', position: 3, name: post.title[lang], item: url },
+          ],
+        },
+        organization(),
+        {
+          '@type': 'BlogPosting',
+          headline: post.title[lang],
+          description: post.excerpt[lang],
+          image: absoluteUrl(post.image.src),
+          datePublished: post.date,
+          inLanguage: lang,
+          url,
+          mainEntityOfPage: url,
+          author: { '@id': organizationId },
+          publisher: { '@id': organizationId },
+        },
+      ],
+    };
+  }
 
   if (pageId === 'home') {
     return {
@@ -94,7 +133,7 @@ function structuredData(pageId, lang) {
  */
 export function renderHead({ pageId, lang, assets, indexable = true }) {
   const t = translations[lang];
-  const page = t.pages[pageId];
+  const page = pageMeta(pageId, lang);
   const path = paths[lang][pageId];
   const tags = [
     '<meta charset="utf-8">',
@@ -111,7 +150,7 @@ export function renderHead({ pageId, lang, assets, indexable = true }) {
     '<link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">',
     '<link rel="apple-touch-icon" href="/apple-touch-icon.png">',
     '<link rel="manifest" href="/site.webmanifest">',
-    '<link rel="preload" href="/fonts/plus-jakarta-sans-latin-var.woff2" as="font" type="font/woff2" crossorigin>',
+    '<link rel="preload" href="/fonts/ibm-plex-sans-latin-var.woff2" as="font" type="font/woff2" crossorigin>',
     ...assets.css.map((href) => `<link rel="stylesheet" href="${href}">`),
     ...assets.preloads.map((src) => `<link rel="modulepreload" href="${src}">`),
   ];
@@ -125,16 +164,21 @@ export function renderHead({ pageId, lang, assets, indexable = true }) {
     tags.push(`<link rel="alternate" hreflang="x-default" href="${absoluteUrl(paths[defaultLang][pageId])}">`);
 
     const otherLangs = languages.filter((code) => code !== lang);
+    const { post } = page;
+    const image = post
+      ? { src: post.image.src, width: post.image.width, height: post.image.height, alt: post.image.alt[lang] }
+      : { src: brand.ogImage[lang], width: 1200, height: 630, alt: brand.name };
     tags.push(
-      '<meta property="og:type" content="website">',
+      `<meta property="og:type" content="${post ? 'article' : 'website'}">`,
+      ...(post ? [`<meta property="article:published_time" content="${post.date}">`] : []),
       `<meta property="og:site_name" content="${brand.name}">`,
       `<meta property="og:title" content="${escapeHtml(page.title)}">`,
       `<meta property="og:description" content="${escapeHtml(page.description)}">`,
       `<meta property="og:url" content="${url}">`,
-      `<meta property="og:image" content="${absoluteUrl(brand.ogImage[lang])}">`,
-      '<meta property="og:image:width" content="1200">',
-      '<meta property="og:image:height" content="630">',
-      `<meta property="og:image:alt" content="${brand.name}">`,
+      `<meta property="og:image" content="${absoluteUrl(image.src)}">`,
+      `<meta property="og:image:width" content="${image.width}">`,
+      `<meta property="og:image:height" content="${image.height}">`,
+      `<meta property="og:image:alt" content="${escapeHtml(image.alt)}">`,
       `<meta property="og:locale" content="${t.ogLocale}">`,
       ...otherLangs.map((code) => `<meta property="og:locale:alternate" content="${translations[code].ogLocale}">`),
       '<meta name="twitter:card" content="summary_large_image">',

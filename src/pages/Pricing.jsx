@@ -11,6 +11,21 @@ export default function Pricing() {
     <>
       <PageHeader pageId="pricing" title={page.h1} lede={page.lede} />
 
+      <section className="container" aria-labelledby="rate-title">
+        <div className="rate-card">
+          <div>
+            <h2 id="rate-title" className="eyebrow">
+              {page.rate.label}
+            </h2>
+            <p className="rate-value">
+              <span className="rate-from">{page.rate.from}</span> <strong>{page.rate.value}</strong>{' '}
+              <span className="rate-unit">{page.rate.unit}</span>
+            </p>
+          </div>
+          <p className="rate-note">{page.rate.note}</p>
+        </div>
+      </section>
+
       <section className="container" aria-labelledby="billing-title">
         <h2 id="billing-title" className="section-title-sm">
           {page.modelsTitle}

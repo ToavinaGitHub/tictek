@@ -1,5 +1,6 @@
 // Language-independent site data. All translatable copy lives in ./locales/{fr,en}.js.
 import { projects } from './projects';
+import { posts } from './posts';
 
 export const brand = {
   name: 'TicTek',
@@ -18,9 +19,32 @@ export const siteUrl = (import.meta.env.VITE_SITE_URL || 'https://www.tictek.mg'
 export const contactInfo = {
   email: 'contact@tictek.mg',
   phone: '+261 38 47 110 37',
+  // Same number, digits only, for wa.me links (WhatsAppButton.jsx).
+  whatsapp: '261384711037',
   city: 'Antananarivo',
   countryCode: 'MG',
 };
+
+export const socialLinks = {
+  linkedin: 'https://www.linkedin.com/company/tictek-mg',
+};
+
+// Countries we have worked for, shown on the home page and given to Google
+// as areaServed. Lowercase ISO codes: they key the flags (Flag.jsx) and the
+// names in locales (countries). Only list countries with real clients.
+export const clientCountries = ['mu', 'mg', 'fr', 'ae'];
+
+// Live clocks on the home page (src/client/clocks.js fills in the time and
+// the gap with Madagascar, so daylight saving time is always right). The
+// first entry is our own time zone. City names live in locales (cities).
+export const clocks = [
+  { id: 'antananarivo', flag: 'mg', timeZone: 'Indian/Antananarivo' },
+  { id: 'port-louis', flag: 'mu', timeZone: 'Indian/Mauritius' },
+  { id: 'dubai', flag: 'ae', timeZone: 'Asia/Dubai' },
+  { id: 'paris', flag: 'fr', timeZone: 'Europe/Paris' },
+  { id: 'geneva', flag: 'ch', timeZone: 'Europe/Zurich' },
+  { id: 'montreal', flag: 'ca', timeZone: 'America/Toronto' },
+];
 
 // Google Analytics 4 (src/client/consent.js). Empty: no banner, no analytics.
 export const analyticsId = import.meta.env.VITE_GA_ID ?? '';
@@ -30,9 +54,10 @@ export const languages = ['fr', 'en'];
 export const languageNames = { fr: 'Français', en: 'English' };
 export const defaultLang = 'fr';
 
-// Page ids, in nav order. "work" is only built once projects.js has entries,
-// so the site never shows an empty portfolio.
+// Page ids, in nav order. "work" and "blog" are only built once projects.js
+// and posts.js have entries, so the site never shows an empty page.
 export const hasProjects = projects.length > 0;
+export const hasPosts = posts.length > 0;
 export const pageIds = [
   'home',
   'services',
@@ -40,6 +65,7 @@ export const pageIds = [
   'collaboration',
   'pricing',
   'about',
+  ...(hasPosts ? ['blog'] : []),
   'careers',
   'contact',
   'privacy',
@@ -60,6 +86,7 @@ export const paths = {
     careers: '/nous-rejoindre/',
     contact: '/contact/',
     privacy: '/confidentialite/',
+    blog: '/blog/',
   },
   en: {
     home: '/en/',
@@ -71,8 +98,19 @@ export const paths = {
     careers: '/en/careers/',
     contact: '/en/contact/',
     privacy: '/en/privacy/',
+    blog: '/en/blog/',
   },
 };
+
+// Each blog post is a page of its own, with the id "post:<slug>". They are
+// not in pageIds (no nav or footer link) but get routes, paths and a sitemap
+// entry like any other page.
+export const postPageId = (slug) => `post:${slug}`;
+export const postPageIds = posts.map((post) => postPageId(post.slug));
+for (const lang of Object.keys(paths)) {
+  for (const post of posts) paths[lang][postPageId(post.slug)] = `${paths[lang].blog}${post.slug}/`;
+}
+export const findPost = (pageId) => posts.find((post) => postPageId(post.slug) === pageId);
 
 export const absoluteUrl = (path) => `${siteUrl}${path}`;
 

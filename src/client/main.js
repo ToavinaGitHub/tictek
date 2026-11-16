@@ -1,11 +1,20 @@
 // Loaded on every page. The site is static HTML; this only adds the mobile
 // menu, the theme toggle (the theme itself is applied before first paint
-// by the inline script in seo/head.js) and the analytics consent banner.
+// by the inline script in seo/head.js), the analytics consent banner, the
+// home page clocks and click events on links marked data-track (e.g. WhatsApp).
 import { initConsent } from './consent';
+import { initClocks } from './clocks';
+import { trackEvent } from '../analytics';
 
 const THEME_STORAGE_KEY = 'tictek-theme';
 
 initConsent();
+initClocks();
+
+document.addEventListener('click', (e) => {
+  const link = e.target.closest('[data-track]');
+  if (link) trackEvent(link.dataset.track, { link_url: link.href });
+});
 
 const toggle = document.querySelector('[data-nav-toggle]');
 const nav = toggle && document.getElementById(toggle.getAttribute('aria-controls'));

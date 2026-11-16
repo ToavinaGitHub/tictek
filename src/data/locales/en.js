@@ -19,6 +19,7 @@ const en = {
       pricing: 'Pricing',
       careers: 'Careers',
       privacy: 'Privacy',
+      blog: 'Blog',
     },
     ctaContact: "Let's talk about your project",
     cta: {
@@ -36,6 +37,29 @@ const en = {
       refuse: 'Decline',
       manage: 'Manage cookies',
     },
+    whatsapp: {
+      label: 'Message us on WhatsApp',
+      message: 'Hello TicTek, I would like to discuss a project.',
+    },
+    linkedin: 'TicTek on LinkedIn',
+  },
+
+  // Keys follow site.js clientCountries.
+  countries: {
+    mu: 'Mauritius',
+    mg: 'Madagascar',
+    fr: 'France',
+    ae: 'Dubai (United Arab Emirates)',
+  },
+
+  // Keys follow site.js clocks.
+  cities: {
+    antananarivo: { city: 'Antananarivo', country: 'Madagascar' },
+    'port-louis': { city: 'Port Louis', country: 'Mauritius' },
+    dubai: { city: 'Dubai', country: 'United Arab Emirates' },
+    paris: { city: 'Paris', country: 'France' },
+    geneva: { city: 'Geneva', country: 'Switzerland' },
+    montreal: { city: 'Montreal', country: 'Canada' },
   },
 
   footer: {
@@ -228,6 +252,23 @@ const en = {
         title: 'Recent work',
         link: 'See all projects',
       },
+      clients: {
+        eyebrow: 'Our clients',
+        title: 'Clients on three continents',
+        lede: 'From Antananarivo, we work remotely with companies in the Indian Ocean, Europe and the Middle East.',
+        listLabel: 'Countries of our clients',
+      },
+      hours: {
+        title: 'Our time, your time',
+        lede: 'Madagascar is on UTC+3 with no daylight saving time: one to two hours from Europe, and agreed meeting slots for other time zones.',
+        languagesLabel: 'We work in',
+        languages: ['English', 'French'],
+        listLabel: 'Current time in Madagascar and where our clients are',
+        ours: 'Our time · UTC+3',
+        same: 'Same time',
+        hourUnit: 'h',
+        versus: 'compared with Madagascar',
+      },
       models: {
         title: 'An engagement model that fits your situation',
         lede: 'With or without a tech team, directly or on behalf of your clients.',
@@ -322,7 +363,7 @@ const en = {
       faq: [
         {
           q: 'How much does a project cost?',
-          a: 'It depends on scope, integrations and the expected level of quality. We don’t publish a price list: every project gets a detailed estimate after scoping. Sharing a budget range in the form helps us suggest a suitable approach.',
+          a: 'It depends on scope, integrations and the expected level of quality. Our hourly rate starts at US$8; the total budget is set out in a detailed estimate after scoping. Sharing a budget range in the form helps us suggest a suitable approach.',
         },
         {
           q: 'How does remote work happen in practice?',
@@ -342,10 +383,17 @@ const en = {
     pricing: {
       title: 'Pricing: how we estimate your software project | TicTek',
       description:
-        'Fixed price, time and materials, monthly maintenance or white label: how TicTek prices its work and what drives the cost of a software project.',
+        'Hourly rate from US$8. Fixed price, time and materials, monthly maintenance or white label: how TicTek prices its work and what drives the cost of a project.',
       h1: 'Pricing',
       lede:
-        'Every software project is different, so we don’t publish a fixed price list. Here is how we bill, what drives the price and how to get an estimate.',
+        'Every software project is different, but here is a benchmark: our hourly rate starts at US$8. Here is how we bill, what drives the price and how to get an estimate.',
+      rate: {
+        label: 'Hourly rate',
+        from: 'From',
+        value: 'US$8',
+        unit: '/ hour',
+        note: 'The exact rate depends on the skills required and the size of the engagement. It is always stated in the quote, before any work starts.',
+      },
       modelsTitle: 'How we bill',
       fitLabel: 'Best for:',
       models: [
@@ -363,9 +411,9 @@ const en = {
         {
           id: 'time-and-materials',
           title: 'Time and materials',
-          text: 'You book development time, billed per day. The scope can change freely.',
+          text: 'You book development time, billed per hour or per day. The scope can change freely.',
           points: [
-            'Daily rate stated in the quote',
+            'From US$8 per hour, exact rate stated in the quote',
             'Time tracking shared with you',
             'Volume adjusted to your needs',
           ],
@@ -412,8 +460,8 @@ const en = {
       faqTitle: 'Frequently asked questions',
       faq: [
         {
-          q: 'Why not show prices?',
-          a: 'Two similar-looking applications can take very different effort depending on integrations, volumes and requirements. A price shown without knowing your project would be either misleading or padded just in case.',
+          q: 'Why no fixed price per type of project?',
+          a: 'Our hourly rate starts at US$8, but the total cost depends on the time required. Two similar-looking applications can take very different effort depending on integrations, volumes and requirements. A flat price shown without knowing your project would be either misleading or padded just in case.',
         },
         {
           q: 'Is the first call free?',
@@ -500,6 +548,8 @@ const en = {
           ],
         },
       ],
+      teamTitle: 'The team',
+      teamLede: 'The people who design and build your projects, and who you talk to directly.',
       skillsTitle: 'Technical skills',
       skills: [
         { name: 'Front end', items: ['TypeScript', 'React', 'Next.js', 'Angular', 'Vue.js'] },
@@ -525,6 +575,16 @@ const en = {
         'If the project is a good fit, we propose a scoping phase and a written estimate.',
       ],
       directTitle: 'Email us directly',
+    },
+
+    blog: {
+      title: 'Blog: life and projects at TicTek in Madagascar | TicTek',
+      description:
+        'Behind the scenes at TicTek, a team of developers in Madagascar: current projects, how we work and team life.',
+      h1: 'Blog',
+      lede: 'Behind the scenes at TicTek: our projects, how we work and team life in Madagascar.',
+      readMore: 'Read the post',
+      allPosts: 'All posts',
     },
 
     privacy: {

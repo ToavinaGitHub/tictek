@@ -62,4 +62,4 @@ Publier le dossier `dist/` sur n'importe quel hébergement statique. Points à v
 
 Après la mise en ligne : déclarer `https://<domaine>/sitemap.xml` dans Google Search Console et Bing Webmaster Tools.
 
-La police Plus Jakarta Sans (`public/fonts/`) est distribuée sous licence SIL Open Font License 1.1.
+La police IBM Plex Sans (`public/fonts/`) est distribuée sous licence SIL Open Font License 1.1.

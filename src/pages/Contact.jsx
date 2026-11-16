@@ -1,7 +1,6 @@
 import { renderToString } from 'react-dom/server';
-import { contactInfo } from '../data/site';
 import { useLocale } from '../i18n';
-import Icon from '../components/Icon';
+import ContactList from '../components/ContactList';
 import PageHeader from '../components/PageHeader';
 import ContactForm from '../forms/ContactForm';
 
@@ -30,20 +29,7 @@ export default function Contact() {
 
           <section aria-labelledby="direct-title">
             <h2 id="direct-title">{page.directTitle}</h2>
-            <ul className="footer-contact">
-              <li>
-                <Icon name="mail" size={18} />
-                <a href={`mailto:${contactInfo.email}`}>{contactInfo.email}</a>
-              </li>
-              <li>
-                <Icon name="phone" size={18} />
-                <a href={`tel:${contactInfo.phone.replace(/\s+/g, '')}`}>{contactInfo.phone}</a>
-              </li>
-              <li>
-                <Icon name="pin" size={18} />
-                <span>{t.footer.location}</span>
-              </li>
-            </ul>
+            <ContactList />
           </section>
         </aside>
       </div>
