@@ -45,14 +45,6 @@ const fr = {
     keywords: ['Web', 'Mobile', 'SaaS', 'API', 'Automatisation', 'IA', 'Web3', 'Maintenance'],
   },
 
-  // Keys follow site.js clientCountries.
-  countries: {
-    mu: 'Maurice',
-    mg: 'Madagascar',
-    fr: 'France',
-    ae: 'Dubaï (Émirats arabes unis)',
-  },
-
   // Keys follow site.js clocks.
   cities: {
     antananarivo: { city: 'Antananarivo', country: 'Madagascar' },
@@ -233,6 +225,7 @@ const fr = {
       description:
         'TicTek, équipe de développeurs basée à Antananarivo (Madagascar), conçoit vos applications web et mobiles, SaaS, API, automatisations, IA et Web3, partout dans le monde.',
       hero: {
+        // titleAccent is written in hollow handwritten letters (Home.jsx).
         title: 'Votre partenaire de développement logiciel,',
         titleAccent: 'du besoin à la mise en production.',
         lede:
@@ -263,15 +256,11 @@ const fr = {
         link: 'Toutes les réalisations',
       },
       clients: {
-        eyebrow: 'Nos clients',
-        title: 'Des clients sur trois continents',
-        lede: 'Océan Indien, Europe, Moyen-Orient. À distance, depuis Antananarivo.',
-        listLabel: 'Pays de nos clients',
-        stats: { countries: 'pays', continents: 'continents', languages: 'langues de travail' },
+        eyebrow: 'À distance',
+        title: 'Où que vous soyez',
+        lede: 'Depuis Madagascar (UTC+3) : une à deux heures d’écart avec l’Europe, des créneaux convenus ensemble pour l’Amérique du Nord.',
       },
       hours: {
-        title: 'Notre heure, votre heure',
-        lede: 'UTC+3 : une à deux heures d’écart avec l’Europe.',
         languagesLabel: 'Nous travaillons en',
         languages: ['Français', 'Anglais'],
         listLabel: 'Heure actuelle à Madagascar et chez nos clients',

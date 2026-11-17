@@ -62,4 +62,4 @@ Publier le dossier `dist/` sur n'importe quel hébergement statique. Points à v
 
 Après la mise en ligne : déclarer `https://<domaine>/sitemap.xml` dans Google Search Console et Bing Webmaster Tools.
 
-La police IBM Plex Sans (`public/fonts/`) est distribuée sous licence SIL Open Font License 1.1.
+Les polices IBM Plex Sans et Sriracha (`public/fonts/`) sont distribuées sous licence SIL Open Font License 1.1.

@@ -1,4 +1,4 @@
-import { absoluteUrl, brand, clientCountries, contactInfo, findPost, languages, defaultLang, paths, serviceIds, siteUrl, socialLinks } from '../data/site';
+import { absoluteUrl, brand, servedCountries, contactInfo, findPost, languages, defaultLang, paths, serviceIds, siteUrl, socialLinks } from '../data/site';
 import { translations } from '../i18n';
 
 const escapeHtml = (value) =>
@@ -27,7 +27,7 @@ function organization() {
       addressLocality: contactInfo.city,
       addressCountry: contactInfo.countryCode,
     },
-    areaServed: clientCountries.map((code) => ({ '@type': 'Country', name: code.toUpperCase() })),
+    areaServed: servedCountries.map((code) => ({ '@type': 'Country', name: code.toUpperCase() })),
     sameAs: Object.values(socialLinks),
   };
 }

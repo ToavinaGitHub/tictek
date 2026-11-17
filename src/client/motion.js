@@ -2,7 +2,7 @@
 // header state is kept for visitors who prefer reduced motion.
 //  - blocks fade and rise into view as the page scrolls, siblings in cascade;
 //  - section headings rise word by word;
-//  - figures count up (home stats, pricing rate);
+//  - the starting rate counts up (pricing page);
 //  - cards get a soft light that follows the pointer;
 //  - main buttons lean towards the pointer ("magnetic");
 //  - the header compacts once the page is scrolled.
@@ -18,7 +18,6 @@ const TARGETS = [
   '.trust-list li',
   '.clocks-head',
   '.clock',
-  '.country-list li',
   '.service',
   '.toc li',
   '.prose-grid > section',
@@ -103,7 +102,7 @@ function initSplitHeadings() {
 }
 
 function initCountUp() {
-  const counters = [...document.querySelectorAll('.rate-value strong, .stat-value')].filter((el) => /\d/.test(el.textContent));
+  const counters = [...document.querySelectorAll('.rate-value strong')].filter((el) => /\d/.test(el.textContent));
   observeOnce(counters, (el) => {
     const original = el.textContent;
     const [match] = original.match(/\d+/);

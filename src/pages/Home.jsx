@@ -1,4 +1,4 @@
-import { clientCountries, clocks, continentCount, hasProjects, modelIds, serviceIds } from '../data/site';
+import { clocks, hasProjects, modelIds, serviceIds } from '../data/site';
 import { projects } from '../data/projects';
 import { useLocale } from '../i18n';
 import Icon from '../components/Icon';
@@ -19,7 +19,7 @@ export default function Home() {
         <div className="container hero-grid">
           <div className="hero-copy">
             <h1>
-              {page.hero.title} <span className="accent-text">{page.hero.titleAccent}</span>
+              {page.hero.title} <span className="script-text">{page.hero.titleAccent}</span>
             </h1>
             <p className="lede">{page.hero.lede}</p>
             <div className="actions">
@@ -143,40 +143,12 @@ export default function Home() {
 
       <section className="section section-clients" aria-labelledby="clients-title">
         <div className="container">
-          <div className="clients-head">
-            <div className="reveal">
-              <p className="eyebrow">{page.clients.eyebrow}</p>
-              <h2 id="clients-title">{page.clients.title}</h2>
-              <p className="clients-lede">{page.clients.lede}</p>
-            </div>
-            <dl className="stats reveal">
-              {[
-                [clientCountries.length, page.clients.stats.countries],
-                [continentCount, page.clients.stats.continents],
-                [page.hours.languages.length, page.clients.stats.languages],
-              ].map(([value, label]) => (
-                <div key={label}>
-                  <dt>{label}</dt>
-                  <dd className="stat-value">{value}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
-
-          <ul className="country-list" aria-label={page.clients.listLabel}>
-            {clientCountries.map((code) => (
-              <li key={code}>
-                <Flag code={code} />
-                {t.countries[code]}
-              </li>
-            ))}
-          </ul>
-
           <div className="clocks" data-clocks data-same={page.hours.same} data-unit={page.hours.hourUnit} data-versus={page.hours.versus}>
-            <div className="clocks-head">
+            <div className="clients-head reveal">
               <div>
-                <h3>{page.hours.title}</h3>
-                <p>{page.hours.lede}</p>
+                <p className="eyebrow">{page.clients.eyebrow}</p>
+                <h2 id="clients-title">{page.clients.title}</h2>
+                <p className="clients-lede">{page.clients.lede}</p>
               </div>
               <p className="clocks-langs">
                 <span>{page.hours.languagesLabel}</span>

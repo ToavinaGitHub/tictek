@@ -45,14 +45,6 @@ const en = {
     keywords: ['Web', 'Mobile', 'SaaS', 'API', 'Automation', 'AI', 'Web3', 'Maintenance'],
   },
 
-  // Keys follow site.js clientCountries.
-  countries: {
-    mu: 'Mauritius',
-    mg: 'Madagascar',
-    fr: 'France',
-    ae: 'Dubai (United Arab Emirates)',
-  },
-
   // Keys follow site.js clocks.
   cities: {
     antananarivo: { city: 'Antananarivo', country: 'Madagascar' },
@@ -224,6 +216,7 @@ const en = {
       description:
         'TicTek is a team of developers based in Antananarivo, Madagascar, building web and mobile apps, SaaS, APIs, automation, AI and Web3 for clients worldwide.',
       hero: {
+        // titleAccent is written in hollow handwritten letters (Home.jsx).
         title: 'Your software development partner,',
         titleAccent: 'from first idea to production.',
         lede:
@@ -254,15 +247,11 @@ const en = {
         link: 'All projects',
       },
       clients: {
-        eyebrow: 'Our clients',
-        title: 'Clients on three continents',
-        lede: 'Indian Ocean, Europe, Middle East. Remotely, from Antananarivo.',
-        listLabel: 'Countries of our clients',
-        stats: { countries: 'countries', continents: 'continents', languages: 'working languages' },
+        eyebrow: 'Remote',
+        title: 'Wherever you are',
+        lede: 'From Madagascar (UTC+3): one to two hours from Europe, agreed meeting slots for North America.',
       },
       hours: {
-        title: 'Our time, your time',
-        lede: 'UTC+3: one to two hours from Europe.',
         languagesLabel: 'We work in',
         languages: ['English', 'French'],
         listLabel: 'Current time in Madagascar and where our clients are',

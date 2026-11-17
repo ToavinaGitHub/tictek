@@ -1,7 +1,7 @@
 // Inline SVG flags: flag emoji don't render on Windows. Decorative only:
 // the language or country name is always given as text next to or behind them.
 // Keys are language codes (header switcher) and lowercase ISO country codes
-// (site.js clientCountries); "fr" serves both.
+// (site.js clocks); "fr" serves both.
 const FLAGS = {
   fr: (
     <svg className="flag" viewBox="0 0 3 2" width="20" height="14" aria-hidden="true" focusable="false">

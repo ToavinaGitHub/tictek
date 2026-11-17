@@ -12,23 +12,12 @@ export function SplitWords({ text }) {
   ));
 }
 
-/** Decorative shapes of the inner-page headers (floating disc and square). */
-export function HeaderArt() {
-  return (
-    <div className="ph-art" aria-hidden="true">
-      <span className="ph-disc" />
-      <span className="ph-square" />
-    </div>
-  );
-}
-
 /** Visible breadcrumb + H1 + intro for inner pages. JSON-LD breadcrumbs are emitted in seo/head.js. */
 export default function PageHeader({ pageId, title, lede }) {
   const { t, href } = useLocale();
 
   return (
     <div className="page-header">
-      <HeaderArt />
       <div className="container">
         <nav aria-label={t.common.breadcrumb} className="breadcrumb">
           <ol>

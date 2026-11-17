@@ -28,12 +28,6 @@ export const socialLinks = {
   linkedin: 'https://www.linkedin.com/company/tictek-mg',
 };
 
-// Countries we have worked for, shown on the home page and given to Google
-// as areaServed. Lowercase ISO codes: they key the flags (Flag.jsx) and the
-// names in locales (countries). Only list countries with real clients.
-export const clientCountries = ['mu', 'mg', 'fr', 'ae'];
-// Continents covered by clientCountries (Africa, Europe, Asia), shown on the home page.
-export const continentCount = 3;
 
 // Live clocks on the home page (src/client/clocks.js fills in the time and
 // the gap with Madagascar, so daylight saving time is always right). The
@@ -46,6 +40,10 @@ export const clocks = [
   { id: 'geneva', flag: 'ch', timeZone: 'Europe/Zurich' },
   { id: 'montreal', flag: 'ca', timeZone: 'America/Toronto' },
 ];
+
+// Countries we work with: those of the clocks, given to Google as areaServed
+// (seo/head.js). Lowercase ISO codes, as for the flags (Flag.jsx).
+export const servedCountries = [...new Set(clocks.map((clock) => clock.flag))];
 
 // Google Analytics 4 (src/client/consent.js). Empty: no banner, no analytics.
 export const analyticsId = import.meta.env.VITE_GA_ID ?? '';
