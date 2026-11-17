@@ -1,13 +1,14 @@
-// Loaded on every page. The site is static HTML; this only adds the mobile
-// menu, the theme toggle (the theme itself is applied before first paint
-// by the inline script in seo/head.js), the analytics consent banner, the
-// home page clocks and click events on links marked data-track (e.g. WhatsApp).
+// Loaded on every page. The site is static HTML; this only adds the opening
+// animation exit, scroll animations, the mobile menu, the analytics consent banner, the home page clocks and click events
+// on links marked data-track (e.g. WhatsApp).
 import { initConsent } from './consent';
 import { initClocks } from './clocks';
+import { initLoader } from './loader';
+import { initMotion } from './motion';
 import { trackEvent } from '../analytics';
 
-const THEME_STORAGE_KEY = 'tictek-theme';
-
+initLoader();
+initMotion();
 initConsent();
 initClocks();
 
@@ -35,20 +36,3 @@ if (toggle && nav) {
   });
 }
 
-const themeToggle = document.querySelector('[data-theme-toggle]');
-
-if (themeToggle) {
-  const root = document.documentElement;
-  const sync = () => themeToggle.setAttribute('aria-pressed', String(root.dataset.theme === 'dark'));
-  sync();
-
-  themeToggle.addEventListener('click', () => {
-    root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
-    try {
-      localStorage.setItem(THEME_STORAGE_KEY, root.dataset.theme);
-    } catch {
-      // Storage blocked (private mode): the choice just won't persist.
-    }
-    sync();
-  });
-}

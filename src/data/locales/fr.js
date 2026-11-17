@@ -23,11 +23,10 @@ const fr = {
     },
     ctaContact: 'Discutons de votre projet',
     cta: {
-      title: 'Un projet, une idée, une application à reprendre ?',
-      text: 'Expliquez-nous où vous en êtes. Nous vous dirons ce que nous pouvons faire, comment et dans quelles conditions.',
+      title: 'Un projet en tête ?',
+      text: 'Parlons-en, sans engagement.',
     },
     language: 'Langue',
-    darkMode: 'Mode sombre',
     learnMore: 'En savoir plus',
     consent: {
       label: 'Cookies de mesure d’audience',
@@ -42,6 +41,8 @@ const fr = {
       message: 'Bonjour TicTek, je souhaite discuter d’un projet.',
     },
     linkedin: 'TicTek sur LinkedIn',
+    // Scrolling band above the footer (KeywordBand.jsx).
+    keywords: ['Web', 'Mobile', 'SaaS', 'API', 'Automatisation', 'IA', 'Web3', 'Maintenance'],
   },
 
   // Keys follow site.js clientCountries.
@@ -76,7 +77,7 @@ const fr = {
   services: {
     web: {
       title: 'Applications web et logiciels métier',
-      short: 'Outils internes, portails clients, back-offices : des applications adaptées à vos processus.',
+      short: 'Outils internes, portails clients, back-offices.',
       problem:
         "Vos équipes jonglent entre tableurs, e-mails et outils qui ne communiquent pas, ou votre application actuelle freine votre activité au lieu de la soutenir.",
       deliverables: [
@@ -91,7 +92,7 @@ const fr = {
     },
     mobile: {
       title: 'Applications mobiles iOS et Android',
-      short: 'Une seule base de code pour les deux plateformes, avec mode hors ligne si nécessaire.',
+      short: 'Une base de code, deux plateformes.',
       problem:
         "Vos clients ou vos équipes terrain ont besoin d'un outil utilisable sur téléphone, y compris avec une connexion instable.",
       deliverables: [
@@ -105,7 +106,7 @@ const fr = {
     },
     'saas-api': {
       title: 'SaaS, backend et API',
-      short: 'Des fondations solides pour votre produit en ligne et des API fiables pour vos échanges de données.',
+      short: 'Des fondations solides pour votre produit.',
       problem:
         'Vous lancez un produit en ligne, ou vos outils et vos partenaires doivent échanger des données de façon fiable et sécurisée.',
       deliverables: [
@@ -120,7 +121,7 @@ const fr = {
     },
     automation: {
       title: 'Automatisation des processus',
-      short: 'Moins de saisie manuelle : vos outils échangent leurs données sans copier-coller.',
+      short: 'Fini le copier-coller entre vos outils.',
       problem:
         'Des heures sont perdues chaque semaine à recopier des données entre vos outils, avec des erreurs à la clé.',
       deliverables: [
@@ -134,7 +135,7 @@ const fr = {
     },
     ai: {
       title: 'Intégration de fonctionnalités IA',
-      short: "L'IA générative appliquée à vos documents, vos données et vos outils, là où elle est réellement utile.",
+      short: 'L’IA là où elle est vraiment utile.',
       problem:
         "Vous voulez exploiter l'IA générative dans vos outils ou sur vos propres données, sans vous lancer dans un projet expérimental sans fin.",
       deliverables: [
@@ -148,7 +149,7 @@ const fr = {
     },
     web3: {
       title: 'Blockchain et Web3',
-      short: 'Smart contracts et applications décentralisées, reliés à vos outils existants.',
+      short: 'Smart contracts et applications décentralisées.',
       problem:
         'Vous voulez tokeniser un actif, certifier des données ou lancer une application décentralisée, sans prendre de risque sur la sécurité des contrats.',
       deliverables: [
@@ -162,7 +163,7 @@ const fr = {
     },
     maintenance: {
       title: "Maintenance évolutive et renfort d'équipe",
-      short: 'Faire vivre une application existante ou renforcer votre équipe technique.',
+      short: 'Faire vivre et évoluer votre application.',
       problem:
         'Votre application doit continuer à évoluer, mais votre équipe manque de temps ou de compétences sur certaines technologies.',
       deliverables: [
@@ -217,13 +218,13 @@ const fr = {
   },
 
   process: [
-    { title: 'Premier échange', text: 'Un appel pour comprendre votre besoin, vos contraintes et vos priorités. Sans engagement.' },
-    { title: 'Cadrage', text: 'Fonctionnalités, utilisateurs, intégrations, risques : nous clarifions le périmètre et vous remettons une synthèse écrite.' },
-    { title: 'Estimation', text: 'Une proposition détaillée : découpage en étapes, planning et budget.' },
-    { title: 'Développement', text: 'Des itérations courtes et des démonstrations régulières sur un environnement de test.' },
-    { title: 'Tests', text: 'Tests automatisés et recette fonctionnelle avec vous avant chaque mise en production.' },
-    { title: 'Livraison', text: 'Mise en production, documentation technique et passation.' },
-    { title: 'Maintenance', text: 'Si vous le souhaitez, nous assurons ensuite le suivi, les corrections et les évolutions.' },
+    { title: 'Premier échange', text: 'Un appel, sans engagement.' },
+    { title: 'Cadrage', text: 'Le périmètre, clarifié par écrit.' },
+    { title: 'Estimation', text: 'Étapes, planning et budget.' },
+    { title: 'Développement', text: 'Itérations courtes, démos régulières.' },
+    { title: 'Tests', text: 'Automatisés, puis validés avec vous.' },
+    { title: 'Livraison', text: 'Mise en ligne et documentation.' },
+    { title: 'Maintenance', text: 'Suivi et évolutions, si besoin.' },
   ],
 
   pages: {
@@ -235,7 +236,7 @@ const fr = {
         title: 'Votre partenaire de développement logiciel,',
         titleAccent: 'du besoin à la mise en production.',
         lede:
-          "TicTek est une équipe de développeurs basée à Antananarivo, à Madagascar. Nous accompagnons les entreprises dans la création de logiciels web et mobiles, l'automatisation de leurs processus et l'intégration de l'IA, à distance, pour des clients à l’international, en français comme en anglais.",
+          'Une équipe de développeurs à Madagascar. Web, mobile, automatisation et IA, pour des clients du monde entier.',
         ctaWork: 'Découvrir nos réalisations',
         ctaServices: 'Découvrir nos services',
         visual: {
@@ -247,29 +248,30 @@ const fr = {
           synced: 'Synchronisé',
           automation: 'Workflow automatisé',
         },
-        stackTitle: 'Technologies que nous utilisons au quotidien',
+        stackTitle: 'Notre stack au quotidien',
         stackPause: 'Mettre en pause le défilement',
       },
       services: {
         title: 'Ce que nous développons pour vous',
-        lede: 'Du logiciel métier à l’IA et au Web3, nous partons de votre problème avant de choisir la technologie.',
-        link: 'Voir le détail des services',
+        lede: 'Votre problème d’abord, la technologie ensuite.',
+        link: 'Tous les services',
         otherTitle: 'Un autre besoin ?',
-        otherText: 'Votre projet ne rentre dans aucune case ? Décrivez-le-nous, nous vous dirons comment nous pouvons aider.',
+        otherText: 'Décrivez-le, on vous dit comment aider.',
       },
       work: {
         title: 'Réalisations récentes',
-        link: 'Voir toutes les réalisations',
+        link: 'Toutes les réalisations',
       },
       clients: {
         eyebrow: 'Nos clients',
         title: 'Des clients sur trois continents',
-        lede: 'Depuis Antananarivo, nous travaillons à distance avec des entreprises de l’océan Indien, d’Europe et du Moyen-Orient.',
+        lede: 'Océan Indien, Europe, Moyen-Orient. À distance, depuis Antananarivo.',
         listLabel: 'Pays de nos clients',
+        stats: { countries: 'pays', continents: 'continents', languages: 'langues de travail' },
       },
       hours: {
         title: 'Notre heure, votre heure',
-        lede: 'Madagascar est à UTC+3, sans changement d’heure : une à deux heures d’écart avec l’Europe, et des créneaux convenus ensemble pour les autres fuseaux.',
+        lede: 'UTC+3 : une à deux heures d’écart avec l’Europe.',
         languagesLabel: 'Nous travaillons en',
         languages: ['Français', 'Anglais'],
         listLabel: 'Heure actuelle à Madagascar et chez nos clients',
@@ -279,39 +281,31 @@ const fr = {
         versus: 'par rapport à Madagascar',
       },
       models: {
-        title: 'Un mode de collaboration adapté à votre situation',
-        lede: 'Avec ou sans équipe technique, en direct ou pour le compte de vos clients.',
-        link: 'Comparer les modes de collaboration',
+        title: 'Trois façons de travailler ensemble',
+        lede: 'Avec ou sans équipe technique.',
+        link: 'Comparer les modes',
       },
       process: {
-        title: 'Une méthode claire, du premier échange à la mise en production',
+        title: 'Notre méthode',
       },
       trust: {
-        title: 'Ce sur quoi vous pouvez compter',
+        title: 'Nos engagements',
         items: [
           {
             title: 'Un interlocuteur technique direct',
-            text: 'Vous échangez avec les personnes qui conçoivent et développent votre projet, sans intermédiaire commercial.',
+            text: 'Vous parlez directement aux développeurs.',
           },
           {
             title: 'Une estimation avant tout engagement',
-            text: 'Périmètre, étapes et budget sont posés par écrit avant le démarrage.',
+            text: 'Périmètre et budget écrits avant de commencer.',
           },
           {
             title: 'De la visibilité en continu',
-            text: "Démonstrations régulières et accès à l'environnement de test : vous voyez le logiciel avancer.",
+            text: 'Démos régulières : vous voyez le projet avancer.',
           },
           {
             title: 'Du code pensé pour durer',
-            text: 'Tests automatisés, revues de code et documentation font partie du travail, pas des options.',
-          },
-          {
-            title: 'Français et anglais',
-            text: "Nous travaillons dans les deux langues, à l'écrit comme à l'oral.",
-          },
-          {
-            title: 'Des horaires adaptés à votre fuseau',
-            text: 'Madagascar est à UTC+3 : une à deux heures d’écart avec l’Europe, et des créneaux convenus ensemble pour les autres fuseaux.',
+            text: 'Tests, revues de code et documentation inclus.',
           },
         ],
       },
@@ -631,7 +625,7 @@ const fr = {
           id: 'preferences',
           title: 'Préférences enregistrées sur votre appareil',
           paragraphs: [
-            'Votre choix de thème (clair ou sombre) et votre choix concernant les cookies sont enregistrés dans le stockage local de votre navigateur. Ils ne sont pas transmis à TicTek.',
+            'Votre choix concernant les cookies est enregistré dans le stockage local de votre navigateur, et le fait d’avoir déjà vu l’animation d’ouverture dans son stockage de session. Rien de cela n’est transmis à TicTek.',
           ],
         },
         {

@@ -3,7 +3,7 @@ import { useLocale } from '../i18n';
 import Flag from './Flag';
 import Icon from './Icon';
 
-// The menu toggle and the theme toggle are wired up by src/client/main.js.
+// The menu toggle is wired up by src/client/main.js.
 
 // A blog post highlights "Blog" without being that page ("true", not "page").
 const navCurrent = (id, pageId) => {
@@ -19,8 +19,7 @@ export default function Header({ pageId }) {
     <header className="site-header">
       <div className="container header-inner">
         <a href={href('home')} className="brand" aria-label={`${brand.name}, ${t.common.nav.home}`}>
-          <img src={brand.logo} alt="" width={275} height={89} className="brand-logo logo-light" />
-          <img src={brand.logoDark} alt="" width={275} height={89} className="brand-logo logo-dark" loading="lazy" />
+          <img src={brand.logo} alt="" width={275} height={89} className="brand-logo" />
         </a>
 
         <nav id="site-nav" className="site-nav" aria-label={t.common.mainNav}>
@@ -69,12 +68,6 @@ export default function Header({ pageId }) {
               ),
             )}
           </div>
-
-          <button type="button" className="icon-btn theme-toggle" aria-pressed="false" data-theme-toggle title={t.common.darkMode}>
-            <Icon name="moon" size={20} className="icon icon-moon" />
-            <Icon name="sun" size={20} className="icon icon-sun" />
-            <span className="visually-hidden">{t.common.darkMode}</span>
-          </button>
 
           <button
             type="button"

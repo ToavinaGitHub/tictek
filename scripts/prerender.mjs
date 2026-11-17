@@ -1,6 +1,5 @@
 // Writes one static HTML file per route, plus 404.html, sitemap.xml and
 // robots.txt, into dist/. Runs after the client and SSR builds (see package.json).
-import { createHash } from 'node:crypto';
 import { readFile, writeFile, mkdir, rm } from 'node:fs/promises';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
@@ -10,7 +9,7 @@ const dist = join(root, 'dist');
 const ssrDir = join(root, 'dist-ssr');
 
 const manifest = JSON.parse(await readFile(join(dist, '.vite/manifest.json'), 'utf8'));
-const { routes, renderPage, NOT_FOUND_PATH, FORM_PAGES, siteUrl, THEME_SCRIPT } = await import(pathToFileURL(join(ssrDir, 'entry-server.js')).href);
+const { routes, renderPage, NOT_FOUND_PATH, FORM_PAGES, siteUrl } = await import(pathToFileURL(join(ssrDir, 'entry-server.js')).href);
 
 /** Resolves a manifest entry to its JS file, its CSS and the chunks it imports. */
 function entry(src) {
@@ -58,14 +57,6 @@ ${urls.join('\n')}
 </urlset>
 `,
 );
-
-// Security headers live in vercel.json (the host). Its CSP allows the inline
-// theme script by hash: fail the build if the script changed without it.
-const themeHash = `sha256-${createHash('sha256').update(THEME_SCRIPT).digest('base64')}`;
-const vercelConfig = await readFile(join(root, 'vercel.json'), 'utf8');
-if (!vercelConfig.includes(`'${themeHash}'`)) {
-  throw new Error(`vercel.json Content-Security-Policy must allow the theme script: add '${themeHash}' to script-src.`);
-}
 
 await writeFile(join(dist, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${origin}/sitemap.xml\n`);
 

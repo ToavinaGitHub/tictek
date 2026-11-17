@@ -23,11 +23,10 @@ const en = {
     },
     ctaContact: "Let's talk about your project",
     cta: {
-      title: 'A project, an idea, an application to take over?',
-      text: 'Tell us where you stand. We will tell you what we can do, how, and on what terms.',
+      title: 'Got a project in mind?',
+      text: 'Let’s talk, no commitment.',
     },
     language: 'Language',
-    darkMode: 'Dark mode',
     learnMore: 'Learn more',
     consent: {
       label: 'Analytics cookies',
@@ -42,6 +41,8 @@ const en = {
       message: 'Hello TicTek, I would like to discuss a project.',
     },
     linkedin: 'TicTek on LinkedIn',
+    // Scrolling band above the footer (KeywordBand.jsx).
+    keywords: ['Web', 'Mobile', 'SaaS', 'API', 'Automation', 'AI', 'Web3', 'Maintenance'],
   },
 
   // Keys follow site.js clientCountries.
@@ -75,7 +76,7 @@ const en = {
   services: {
     web: {
       title: 'Web applications and business software',
-      short: 'Internal tools, client portals, back offices: applications shaped around your processes.',
+      short: 'Internal tools, client portals, back offices.',
       problem:
         'Your teams juggle spreadsheets, emails and tools that don’t talk to each other, or your current application holds your business back instead of supporting it.',
       deliverables: [
@@ -89,7 +90,7 @@ const en = {
     },
     mobile: {
       title: 'iOS and Android mobile apps',
-      short: 'One codebase for both platforms, with offline mode when you need it.',
+      short: 'One codebase, two platforms.',
       problem: 'Your customers or field teams need a tool that works on a phone, including on an unreliable connection.',
       deliverables: [
         'iOS and Android app from a shared codebase',
@@ -102,7 +103,7 @@ const en = {
     },
     'saas-api': {
       title: 'SaaS, backend and APIs',
-      short: 'Solid foundations for your online product and reliable APIs for your data exchanges.',
+      short: 'Solid foundations for your product.',
       problem: 'You are launching an online product, or your tools and partners need to exchange data reliably and securely.',
       deliverables: [
         'Backend architecture and development',
@@ -115,7 +116,7 @@ const en = {
     },
     automation: {
       title: 'Business process automation',
-      short: 'Less manual data entry: your tools exchange data without copy and paste.',
+      short: 'No more copy-paste between your tools.',
       problem: 'Hours are lost every week copying data from one tool to another, and mistakes follow.',
       deliverables: [
         'Review of repetitive tasks and data flows',
@@ -128,7 +129,7 @@ const en = {
     },
     ai: {
       title: 'AI feature integration',
-      short: 'Generative AI applied to your documents, data and tools, where it actually helps.',
+      short: 'AI where it actually helps.',
       problem: 'You want to use generative AI in your tools or on your own data, without starting an open-ended experiment.',
       deliverables: [
         'Realistic use cases, and an honest view of where AI is not the answer',
@@ -141,7 +142,7 @@ const en = {
     },
     web3: {
       title: 'Blockchain and Web3',
-      short: 'Smart contracts and decentralized applications, connected to your existing tools.',
+      short: 'Smart contracts and decentralized apps.',
       problem:
         'You want to tokenize an asset, certify data or launch a decentralized application, without taking risks on contract security.',
       deliverables: [
@@ -155,7 +156,7 @@ const en = {
     },
     maintenance: {
       title: 'Ongoing development and team augmentation',
-      short: 'Keep an existing application moving, or add capacity to your tech team.',
+      short: 'Keep your application alive and growing.',
       problem: 'Your application has to keep evolving, but your team lacks time or skills in some technologies.',
       deliverables: [
         'Planned fixes and improvements',
@@ -208,13 +209,13 @@ const en = {
   },
 
   process: [
-    { title: 'Intro call', text: 'A call to understand your need, your constraints and your priorities. No commitment.' },
-    { title: 'Scoping', text: 'Features, users, integrations, risks: we clarify the scope and send you a written summary.' },
-    { title: 'Estimate', text: 'A detailed proposal: milestones, schedule and budget.' },
-    { title: 'Development', text: 'Short iterations and regular demos on a staging environment.' },
-    { title: 'Testing', text: 'Automated tests and acceptance testing with you before every release.' },
-    { title: 'Delivery', text: 'Production release, technical documentation and handover.' },
-    { title: 'Maintenance', text: 'If you wish, we then take care of monitoring, fixes and improvements.' },
+    { title: 'Intro call', text: 'One call, no commitment.' },
+    { title: 'Scoping', text: 'The scope, clarified in writing.' },
+    { title: 'Estimate', text: 'Milestones, schedule and budget.' },
+    { title: 'Development', text: 'Short iterations, regular demos.' },
+    { title: 'Testing', text: 'Automated, then validated with you.' },
+    { title: 'Delivery', text: 'Go-live and documentation.' },
+    { title: 'Maintenance', text: 'Ongoing support, if needed.' },
   ],
 
   pages: {
@@ -226,7 +227,7 @@ const en = {
         title: 'Your software development partner,',
         titleAccent: 'from first idea to production.',
         lede:
-          'TicTek is a team of developers based in Antananarivo, Madagascar. We help companies build web and mobile software, automate their processes and integrate AI, working remotely with clients worldwide, in English and French.',
+          'A team of developers in Madagascar. Web, mobile, automation and AI, for clients worldwide.',
         ctaWork: 'See our work',
         ctaServices: 'Explore our services',
         visual: {
@@ -238,29 +239,30 @@ const en = {
           synced: 'Synced',
           automation: 'Automated workflow',
         },
-        stackTitle: 'Technologies we use every day',
+        stackTitle: 'Our everyday stack',
         stackPause: 'Pause the scrolling',
       },
       services: {
         title: 'What we build for you',
-        lede: 'From business software to AI and Web3, we start from your problem before choosing the technology.',
-        link: 'See all services in detail',
+        lede: 'Your problem first, technology second.',
+        link: 'All services',
         otherTitle: 'Something else?',
-        otherText: 'Your project doesn’t fit any box? Describe it and we will tell you how we can help.',
+        otherText: 'Describe it, we’ll tell you how we can help.',
       },
       work: {
         title: 'Recent work',
-        link: 'See all projects',
+        link: 'All projects',
       },
       clients: {
         eyebrow: 'Our clients',
         title: 'Clients on three continents',
-        lede: 'From Antananarivo, we work remotely with companies in the Indian Ocean, Europe and the Middle East.',
+        lede: 'Indian Ocean, Europe, Middle East. Remotely, from Antananarivo.',
         listLabel: 'Countries of our clients',
+        stats: { countries: 'countries', continents: 'continents', languages: 'working languages' },
       },
       hours: {
         title: 'Our time, your time',
-        lede: 'Madagascar is on UTC+3 with no daylight saving time: one to two hours from Europe, and agreed meeting slots for other time zones.',
+        lede: 'UTC+3: one to two hours from Europe.',
         languagesLabel: 'We work in',
         languages: ['English', 'French'],
         listLabel: 'Current time in Madagascar and where our clients are',
@@ -270,39 +272,31 @@ const en = {
         versus: 'compared with Madagascar',
       },
       models: {
-        title: 'An engagement model that fits your situation',
-        lede: 'With or without a tech team, directly or on behalf of your clients.',
-        link: 'Compare engagement models',
+        title: 'Three ways to work together',
+        lede: 'With or without a tech team.',
+        link: 'Compare models',
       },
       process: {
-        title: 'A clear method, from first call to production',
+        title: 'Our method',
       },
       trust: {
-        title: 'What you can count on',
+        title: 'Our commitments',
         items: [
           {
             title: 'A direct technical contact',
-            text: 'You talk to the people who design and build your project, with no sales layer in between.',
+            text: 'You talk directly to the developers.',
           },
           {
             title: 'An estimate before any commitment',
-            text: 'Scope, milestones and budget are set out in writing before work starts.',
+            text: 'Scope and budget in writing before we start.',
           },
           {
             title: 'Continuous visibility',
-            text: 'Regular demos and access to the staging environment: you see the software take shape.',
+            text: 'Regular demos: you see the project move.',
           },
           {
             title: 'Code built to last',
-            text: 'Automated tests, code reviews and documentation are part of the job, not extras.',
-          },
-          {
-            title: 'English and French',
-            text: 'We work in both languages, written and spoken.',
-          },
-          {
-            title: 'Hours that fit your time zone',
-            text: 'Madagascar is on UTC+3: one to two hours from Europe, and agreed meeting slots for other time zones.',
+            text: 'Tests, code reviews and docs included.',
           },
         ],
       },
@@ -620,7 +614,7 @@ const en = {
           id: 'preferences',
           title: 'Preferences stored on your device',
           paragraphs: [
-            'Your theme choice (light or dark) and your cookie choice are stored in your browser’s local storage. They are not sent to TicTek.',
+            'Your cookie choice is stored in your browser’s local storage, and whether you have already seen the opening animation in its session storage. None of this is sent to TicTek.',
           ],
         },
         {

@@ -10,16 +10,6 @@ const jsonLd = (data) =>
 
 const organizationId = `${siteUrl}/#organization`;
 
-export const THEME_STORAGE_KEY = 'tictek-theme';
-
-/**
- * Runs before the first paint so the page never flashes in the wrong theme:
- * saved choice first, else the system preference. Inline on purpose (an
- * external file would block rendering); scripts/prerender.mjs allows it in
- * the Content-Security-Policy by its SHA-256 hash.
- */
-export const THEME_SCRIPT = `(function(){var t;try{t=localStorage.getItem('${THEME_STORAGE_KEY}')}catch(e){}if(t!=='dark'&&t!=='light')t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t})()`;
-
 function organization() {
   return {
     '@type': 'Organization',
@@ -140,10 +130,10 @@ export function renderHead({ pageId, lang, assets, indexable = true }) {
     '<meta name="viewport" content="width=device-width, initial-scale=1">',
     `<title>${escapeHtml(page.title)}</title>`,
     `<meta name="description" content="${escapeHtml(page.description)}">`,
-    `<script>${THEME_SCRIPT}</script>`,
-    '<meta name="color-scheme" content="light dark">',
-    '<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">',
-    '<meta name="theme-color" content="#0a0f1a" media="(prefers-color-scheme: dark)">',
+    // Skips the opening animation after the first page of a session (Loader.jsx).
+    '<script src="/js/loader.js"></script>',
+    '<meta name="color-scheme" content="light">',
+    '<meta name="theme-color" content="#ffffff">',
     // Google's result favicon: /favicon.ico or a PNG that is a multiple of 48px.
     '<link rel="icon" href="/favicon.ico" sizes="48x48">',
     '<link rel="icon" href="/favicon-48x48.png" type="image/png" sizes="48x48">',

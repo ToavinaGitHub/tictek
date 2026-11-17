@@ -47,7 +47,7 @@ Chaque envoi consomme donc deux e-mails du quota EmailJS. Pensez à activer la l
 
 - Textes : `src/data/locales/fr.js`, `en.js` ; formulaire : `src/data/locales/form.js`
 - Coordonnées, nom, URL des pages, logos des technologies : `src/data/site.js`
-- Thème clair / sombre : variables CSS en tête de `src/styles/style.css` (`:root` et `:root[data-theme="dark"]`)
+- Couleurs, typographies, espacements : variables CSS en tête de `src/styles/style.css` (`:root`)
 - Réalisations : `src/data/projects.js` — la page `/realisations/` (`/en/work/`), son lien de menu, son entrée de sitemap et la section d'accueil n'apparaissent qu'à partir d'un projet renseigné.
 - Pages : `src/pages/`, composants : `src/components/`, styles : `src/styles/style.css`
 - Métadonnées et données structurées : `src/seo/head.js`
@@ -58,7 +58,7 @@ Publier le dossier `dist/` sur n'importe quel hébergement statique. Points à v
 
 - Servir `404.html` pour les URL inconnues (automatique sur Netlify, Cloudflare Pages, GitHub Pages).
 - Rediriger `/services` vers `/services/` (comportement par défaut de la plupart des hébergeurs statiques ; sur Vercel : `"trailingSlash": true`).
-- Hébergement actuel : **Vercel** (`vercel.json`) : build, redirection `/services` → `/services/`, en-têtes de sécurité et de cache. La CSP autorise le script de thème inline par son empreinte SHA-256 ; le build échoue si ce script change sans mise à jour de `vercel.json`.
+- Hébergement actuel : **Vercel** (`vercel.json`) : build, redirection `/services` → `/services/`, en-têtes de sécurité et de cache. La CSP n'autorise aucun script inline.
 
 Après la mise en ligne : déclarer `https://<domaine>/sitemap.xml` dans Google Search Console et Bing Webmaster Tools.
 

@@ -21,7 +21,6 @@ import BlogPost from './pages/BlogPost';
 import NotFound from './pages/NotFound';
 
 export { siteUrl } from './data/site';
-export { THEME_SCRIPT } from './seo/head';
 
 const PAGES = {
   home: Home,

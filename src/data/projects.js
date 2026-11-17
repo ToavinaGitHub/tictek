@@ -87,8 +87,8 @@ export const projects = [
     slug: 'site-tictek',
     title: { fr: 'Site web de TicTek', en: 'TicTek website' },
     summary: {
-      fr: 'Le site que vous consultez : bilingue, rapide et accessible, avec thème clair ou sombre, formulaires de contact et de candidature, et SEO technique intégré.',
-      en: 'The site you are browsing: bilingual, fast and accessible, with light or dark theme, contact and application forms, and built-in technical SEO.',
+      fr: 'Le site que vous consultez : bilingue, rapide et accessible, avec formulaires de contact et de candidature, et SEO technique intégré.',
+      en: 'The site you are browsing: bilingual, fast and accessible, with contact and application forms, and built-in technical SEO.',
     },
     stack: ['React', 'Vite', 'EmailJS', 'Vercel'],
     services: ['web'],
@@ -100,8 +100,8 @@ export const projects = [
       width: 1280,
       height: 800,
       alt: {
-        fr: 'Page d’accueil du site TicTek en thème clair',
-        en: 'TicTek website home page in light theme',
+        fr: 'Page d’accueil du site TicTek',
+        en: 'TicTek website home page',
       },
     },
   },

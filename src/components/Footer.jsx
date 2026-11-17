@@ -10,8 +10,7 @@ export default function Footer() {
     <footer className="site-footer">
       <div className="container footer-grid">
         <div className="footer-about">
-          <img src={brand.logo} alt={brand.name} width={275} height={89} className="brand-logo logo-light" loading="lazy" />
-          <img src={brand.logoDark} alt={brand.name} width={275} height={89} className="brand-logo logo-dark" loading="lazy" />
+          <img src={brand.logo} alt={brand.name} width={275} height={89} className="brand-logo" loading="lazy" />
           <p>{t.footer.about}</p>
         </div>
 

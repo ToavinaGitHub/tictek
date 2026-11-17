@@ -13,7 +13,6 @@ function TechList({ hidden = false }) {
             height={28}
             loading="lazy"
             decoding="async"
-            className={tech.mono ? 'mono' : undefined}
           />
           <span>{tech.name}</span>
         </li>

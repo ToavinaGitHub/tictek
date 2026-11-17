@@ -3,6 +3,7 @@ import { useLocale } from '../i18n';
 import Icon from '../components/Icon';
 import CtaBand from '../components/CtaBand';
 import { formatDate } from '../components/PostCard';
+import { HeaderArt, SplitWords } from '../components/PageHeader';
 
 /** One blog post, rendered for each entry of data/posts.js (pageId "post:<slug>"). */
 export default function BlogPost({ pageId }) {
@@ -14,6 +15,7 @@ export default function BlogPost({ pageId }) {
     <>
       <article className="post">
         <header className="page-header">
+          <HeaderArt />
           <div className="container post-container">
             <nav aria-label={t.common.breadcrumb} className="breadcrumb">
               <ol>
@@ -26,7 +28,9 @@ export default function BlogPost({ pageId }) {
                 <li aria-current="page">{post.title[lang]}</li>
               </ol>
             </nav>
-            <h1>{post.title[lang]}</h1>
+            <h1 className="split-title">
+              <SplitWords text={post.title[lang]} />
+            </h1>
             <time className="post-date" dateTime={post.date}>
               {formatDate(post.date, lang)}
             </time>

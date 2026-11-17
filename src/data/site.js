@@ -7,7 +7,6 @@ export const brand = {
   // Other spellings people type; helps Google tie them to the brand.
   alternateNames: ['Tictek', 'TICTEK', 'Tic Tek'],
   logo: '/img/logo/logo_vf_light.png',
-  logoDark: '/img/logo/logo_vf_dark.png',
   logoSquare: '/icon-512.png',
   ogImage: { fr: '/img/og-image-fr.png', en: '/img/og-image-en.png' },
 };
@@ -33,6 +32,8 @@ export const socialLinks = {
 // as areaServed. Lowercase ISO codes: they key the flags (Flag.jsx) and the
 // names in locales (countries). Only list countries with real clients.
 export const clientCountries = ['mu', 'mg', 'fr', 'ae'];
+// Continents covered by clientCountries (Africa, Europe, Asia), shown on the home page.
+export const continentCount = 3;
 
 // Live clocks on the home page (src/client/clocks.js fills in the time and
 // the gap with Madagascar, so daylight saving time is always right). The
@@ -119,9 +120,6 @@ export const serviceIds = ['web', 'mobile', 'saas-api', 'automation', 'ai', 'web
 
 // Technologies scrolled under the home hero. Logos are self-hosted in
 // public/img/tech/ (Devicon, MIT; n8n, OpenAI, Expo, Ethereum and Ethers from Simple Icons, CC0).
-// Single-colour black logos, inverted in the dark theme.
-const MONO_LOGOS = new Set(['nextjs', 'expo', 'openai', 'solidity', 'ethereum']);
-
 // Categories are interleaved so each kind (web, back end, mobile, AI, Web3…)
 // shows up within the first seconds of the scroll.
 export const techLogos = [
@@ -153,6 +151,6 @@ export const techLogos = [
   ['MySQL', 'mysql'],
   ['GitHub Actions', 'githubactions'],
   ['GitLab CI', 'gitlab'],
-].map(([name, file]) => ({ name, logo: `/img/tech/${file}.svg`, mono: MONO_LOGOS.has(file) }));
+].map(([name, file]) => ({ name, logo: `/img/tech/${file}.svg` }));
 
 export const modelIds = ['project', 'white-label', 'staff-augmentation'];
