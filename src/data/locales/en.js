@@ -41,6 +41,18 @@ const en = {
       message: 'Hello TicTek, I would like to discuss a project.',
     },
     linkedin: 'TicTek on LinkedIn',
+    linkedinProfile: 'View LinkedIn profile',
+    booking: 'Book a 30-min call',
+    // Commitments shown on the home and contact pages (Guarantees.jsx).
+    guarantees: {
+      title: 'Our guarantees',
+      items: [
+        { icon: 'code', title: 'You own the code', text: 'Once paid, the source code and every access are yours.' },
+        { icon: 'lock', title: 'Confidentiality', text: 'We sign a non-disclosure agreement (NDA) on request.' },
+        { icon: 'shield', title: 'Bug-fix warranty', text: 'Bugs found after delivery are fixed free of charge, for a period stated in the quote.' },
+        { icon: 'clock', title: 'Reply within 24h', text: 'Every request gets an answer within one business day.' },
+      ],
+    },
     // Scrolling band above the footer (KeywordBand.jsx).
     keywords: ['Web', 'Mobile', 'SaaS', 'API', 'Automation', 'AI', 'Web3', 'Maintenance'],
   },
@@ -212,15 +224,15 @@ const en = {
 
   pages: {
     home: {
-      title: 'TicTek | Developers in Madagascar: web, mobile, AI and Web3',
+      title: 'TicTek | Your outsourced software development team in Madagascar',
       description:
-        'TicTek is a team of developers based in Antananarivo, Madagascar, building web and mobile apps, SaaS, APIs, automation, AI and Web3 for clients worldwide.',
+        'Outsource the development and maintenance of your software without hiring: a team of developers in Madagascar, on your working hours, in English and French.',
       hero: {
         // titleAccent is written in hollow handwritten letters (Home.jsx).
-        title: 'Your software development partner,',
-        titleAccent: 'from first idea to production.',
+        title: 'Your outsourced tech team,',
+        titleAccent: 'without hiring.',
         lede:
-          'A team of developers in Madagascar. Web, mobile, automation and AI, for clients worldwide.',
+          'We build, maintain and evolve your software and IT systems from Madagascar, on your working hours.',
         ctaWork: 'See our work',
         ctaServices: 'Explore our services',
         visual: {
@@ -235,6 +247,38 @@ const en = {
         stackTitle: 'Our everyday stack',
         stackPause: 'Pause the scrolling',
       },
+      outsource: {
+        eyebrow: 'Outsourcing',
+        title: 'Hire or outsource?',
+        lede: 'Hand us your tools and IT systems: you stay in control, without the constraints of hiring.',
+        inhouse: {
+          title: 'Hiring in-house',
+          items: [
+            'Often months to find the right profile',
+            'Fixed salaries and costs, even in quiet periods',
+            'One skill per person hired',
+            'Knowledge leaves with the person',
+            'Management stays on your plate',
+          ],
+        },
+        tictek: {
+          title: 'Outsourcing to TicTek',
+          items: [
+            'We start as soon as the scope is agreed',
+            'Fixed price or hourly, as you need',
+            'Web, mobile, back end, AI: a full team',
+            'Documented code: continuity is ensured',
+            'A single contact who runs things for you',
+          ],
+        },
+        hours: 'On your hours: one to two hours from Europe, agreed meeting slots for the rest of the world.',
+      },
+      team: {
+        eyebrow: 'The team',
+        title: 'The people behind TicTek',
+        lede: 'You talk to us directly, no middleman.',
+        link: 'More about us',
+      },
       services: {
         title: 'What we build for you',
         lede: 'Your problem first, technology second.',
@@ -247,8 +291,8 @@ const en = {
         link: 'All projects',
       },
       clients: {
-        eyebrow: 'Remote',
-        title: 'Wherever you are',
+        eyebrow: 'On your hours',
+        title: 'We work on your time',
         lede: 'From Madagascar (UTC+3): one to two hours from Europe, agreed meeting slots for North America.',
       },
       hours: {
@@ -268,25 +312,17 @@ const en = {
       process: {
         title: 'Our method',
       },
-      trust: {
-        title: 'Our commitments',
+      why: {
+        title: 'Why work with TicTek?',
+        lede: 'A serious tech team, at a rate that stays reasonable.',
+        priceTitle: 'Clear pricing',
+        priceText: 'The exact rate is always stated in the quote, before work starts.',
+        priceLink: 'See pricing',
         items: [
-          {
-            title: 'A direct technical contact',
-            text: 'You talk directly to the developers.',
-          },
-          {
-            title: 'An estimate before any commitment',
-            text: 'Scope and budget in writing before we start.',
-          },
-          {
-            title: 'Continuous visibility',
-            text: 'Regular demos: you see the project move.',
-          },
-          {
-            title: 'Code built to last',
-            text: 'Tests, code reviews and docs included.',
-          },
+          { icon: 'staff-augmentation', title: 'A direct contact', text: 'You talk to the developers, no middleman.' },
+          { icon: 'project', title: 'An estimate before we start', text: 'Scope, schedule and budget set out in writing.' },
+          { icon: 'saas-api', title: 'One team, from web to AI', text: 'Web, mobile, backend, automation, AI and Web3.' },
+          { icon: 'check', title: 'You see the project move', text: 'Regular demos, tested and documented code.' },
         ],
       },
     },

@@ -593,7 +593,7 @@ a.lang-option:hover { color: var(--text); background: var(--bg-alt); }
 @media (min-width: 1024px) { .hero-grid { grid-template-columns: 1.1fr 1fr; gap: 56px; } }
 
 .hero h1 {
-    max-width: 19ch;
+    max-width: 22ch;
     color: #fff;
     font-size: clamp(2.25rem, 1.3rem + 3vw, 3.75rem);
     font-weight: 700;
@@ -908,6 +908,61 @@ a.lang-option:hover { color: var(--text); background: var(--bg-alt); }
     border-radius: var(--radius);
     filter: saturate(.9);
 }
+/* Compact cards, used while some photos are missing: a round initials badge
+   beside the name, role and LinkedIn link. */
+.team-grid-compact { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.team-grid-compact .team-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition: border-color .3s ease, transform .4s cubic-bezier(.2, .7, .2, 1), box-shadow .4s ease;
+}
+.team-grid-compact .team-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+    box-shadow: 0 24px 40px -28px rgba(10, 120, 150, .45);
+}
+.team-badge {
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--deep);
+    color: #fff;
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: .02em;
+    object-fit: cover;
+}
+.team-grid-compact .team-body { gap: 8px; padding: 0; }
+.team-grid-compact .team-body h3 { font-size: 1.125rem; line-height: 1.3; }
+.team-grid-compact .team-link { margin-top: 6px; }
+.team-link { text-decoration: none; white-space: nowrap; }
+.team-link:hover { text-decoration: underline; }
+
+/* No photo yet (portrait layout): the initials in large hollow letters. */
+.team-avatar {
+    display: grid;
+    place-items: center;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    background: var(--deep);
+    border-radius: var(--radius);
+    color: transparent;
+    -webkit-text-stroke: 2px var(--accent-bright);
+    font-size: clamp(5rem, 3rem + 6vw, 8rem);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    transition: color .4s ease, background-color .4s ease;
+}
+.team-card:hover .team-avatar { color: var(--accent-bright); }
 .team-body { display: grid; gap: 10px; padding: 20px 0 0; }
 .team-body h3 { font-weight: 600; font-size: 1.25rem; }
 .team-role { display: grid; color: var(--text-muted); font-size: .9375rem; }
@@ -1019,6 +1074,144 @@ a.lang-option:hover { color: var(--text); background: var(--bg-alt); }
 .trust-list p { color: var(--text-muted); font-size: .9375rem; }
 
 
+/*** Hire or outsource (home): side-by-side comparison ***/
+.compare { display: grid; gap: 20px; }
+@media (min-width: 860px) { .compare { grid-template-columns: 1fr 1.15fr; align-items: stretch; } }
+.compare-col { display: flex; flex-direction: column; gap: 20px; padding: clamp(28px, 4vw, 44px); border-radius: var(--radius); }
+.compare-col h3 { font-size: 1.375rem; letter-spacing: -0.02em; }
+.compare-col ul { display: grid; gap: 14px; list-style: none; }
+
+.compare-inhouse { background: var(--bg-alt); color: var(--text-muted); }
+.compare-inhouse h3 { color: var(--text-muted); }
+.compare-inhouse li { position: relative; padding-left: 28px; }
+/* A small cross before each drawback. */
+.compare-inhouse li::before, .compare-inhouse li::after {
+    content: '';
+    position: absolute;
+    left: 3px;
+    top: .75em;
+    width: 12px;
+    height: 2px;
+    background: var(--border-strong);
+    rotate: 45deg;
+}
+.compare-inhouse li::after { rotate: -45deg; }
+
+.compare-tictek { position: relative; overflow: hidden; background: var(--deep); color: #fff; }
+.compare-tictek::before {
+    content: '';
+    position: absolute;
+    right: -80px;
+    top: -100px;
+    width: 260px;
+    height: 260px;
+    border: 40px solid rgba(27, 181, 212, .12);
+    border-radius: 50%;
+    pointer-events: none;
+}
+.compare-tictek > * { position: relative; }
+.compare-tictek h3 { color: #fff; }
+.compare-tictek .check-list li { color: #fff; }
+.compare-tictek .check-list li::before { border-color: var(--accent-bright); }
+.compare-tictek .text-link { margin-top: auto; color: var(--accent-bright); }
+.compare-tictek :focus-visible { outline-color: #fff; }
+
+.compare-hours {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 28px;
+    color: var(--text);
+    font-weight: 500;
+}
+.compare-hours .icon { color: var(--accent); }
+
+/*** Why TicTek (home): bento grid, the pricing tile in front ***/
+.why-grid { display: grid; gap: 20px; list-style: none; }
+@media (min-width: 720px) { .why-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) {
+    .why-grid { grid-template-columns: 1.3fr 1fr 1fr; }
+    .why-price { grid-row: span 2; }
+}
+.why-card h3 { font-size: 1.125rem; }
+.why-card.card { gap: 10px; }
+
+.why-price {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: clamp(28px, 4vw, 44px);
+    background: var(--deep);
+    border-radius: var(--radius);
+    color: var(--on-deep);
+}
+/* A large hollow ring behind the figure, like the outlined numerals. */
+.why-price::before {
+    content: '';
+    position: absolute;
+    right: -90px;
+    bottom: -110px;
+    width: 300px;
+    height: 300px;
+    border: 46px solid rgba(27, 181, 212, .12);
+    border-radius: 50%;
+    pointer-events: none;
+    transition: scale .8s cubic-bezier(.2, .7, .2, 1);
+}
+.why-price:hover::before { scale: 1.15; }
+.why-price > * { position: relative; }
+.why-price h3 { color: #fff; font-size: 1.25rem; }
+.why-price p { color: var(--on-deep-muted); max-width: 34ch; }
+.why-price .rate-value { flex-direction: column; align-items: flex-start; gap: 6px; margin-top: auto; color: #fff; }
+.why-price .rate-value strong {
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--accent-bright);
+    font-size: clamp(3.5rem, 2.5rem + 3vw, 5.5rem);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1;
+}
+.why-price .rate-from, .why-price .rate-unit { color: var(--on-deep-muted); }
+.why-price .text-link { color: var(--accent-bright); }
+.why-price :focus-visible { outline-color: #fff; }
+
+/*** Guarantees (Guarantees.jsx): band on the home page, list on contact ***/
+.guarantees-band {
+    margin-top: 20px;
+    padding: clamp(28px, 4vw, 40px);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+.guarantees-title {
+    margin-bottom: 24px;
+    color: var(--accent);
+    font-size: .8125rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+.guarantees { display: grid; gap: 24px 32px; list-style: none; }
+@media (min-width: 720px) { .guarantees:not(.guarantees-compact) { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1100px) { .guarantees:not(.guarantees-compact) { grid-template-columns: repeat(4, 1fr); } }
+.guarantees li { display: flex; gap: 14px; align-items: flex-start; }
+.guarantees :is(h3, h4) { margin-bottom: 4px; font-size: 1rem; font-weight: 600; }
+.guarantees p { color: var(--text-muted); font-size: .9375rem; }
+.guarantee-icon {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    padding: 9px;
+    border-radius: 50%;
+    background: var(--accent-soft);
+    color: var(--accent);
+    transition: background-color .3s ease, color .3s ease, transform .4s cubic-bezier(.34, 1.56, .64, 1);
+}
+.guarantees li:hover .guarantee-icon { background: var(--accent); color: #fff; transform: rotate(-8deg) scale(1.08); }
+.guarantees-compact { gap: 18px; }
+
 /*** CTA band ***/
 .cta-band {
     position: relative;
@@ -1048,6 +1241,9 @@ a.lang-option:hover { color: var(--text); background: var(--bg-alt); }
 .cta-band h2 { grid-row: span 2; color: var(--on-deep); max-width: 18ch; font-size: clamp(2rem, 1.4rem + 2.4vw, 3.25rem); }
 .cta-band p { max-width: 46ch; color: var(--on-deep-muted); }
 .cta-band .btn { justify-self: start; }
+.cta-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.cta-band .btn-secondary { color: #fff; border-color: rgba(255, 255, 255, .5); }
+.cta-band .btn-secondary:hover { background: #fff; border-color: #fff; color: var(--deep); }
 .cta-band .btn-primary { background: var(--accent-bright); color: var(--deep); }
 .cta-band .btn-primary:hover { background: #fff; color: var(--accent); }
 .cta-band :focus-visible { outline-color: #fff; }

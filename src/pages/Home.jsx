@@ -8,6 +8,9 @@ import TechMarquee from '../components/TechMarquee';
 import ProcessSteps from '../components/ProcessSteps';
 import ProjectCard from '../components/ProjectCard';
 import CtaBand from '../components/CtaBand';
+import TeamCards from '../components/TeamCards';
+import Guarantees from '../components/Guarantees';
+import { team } from '../data/team';
 
 export default function Home() {
   const { t, href } = useLocale();
@@ -40,7 +43,43 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section" aria-labelledby="services-title">
+      <section className="section" aria-labelledby="outsource-title">
+        <div className="container">
+          <div className="section-head reveal">
+            <p className="eyebrow">{page.outsource.eyebrow}</p>
+            <h2 id="outsource-title">{page.outsource.title}</h2>
+            <p>{page.outsource.lede}</p>
+          </div>
+          <div className="compare">
+            <div className="compare-col compare-inhouse reveal">
+              <h3>{page.outsource.inhouse.title}</h3>
+              <ul>
+                {page.outsource.inhouse.items.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="compare-col compare-tictek reveal">
+              <h3>{page.outsource.tictek.title}</h3>
+              <ul className="check-list">
+                {page.outsource.tictek.items.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+              <a href={href('collaboration')} className="text-link">
+                {page.models.link}
+                <Icon name="arrow" size={18} />
+              </a>
+            </div>
+          </div>
+          <p className="compare-hours reveal">
+            <Icon name="globe" size={20} />
+            {page.outsource.hours}
+          </p>
+        </div>
+      </section>
+
+      <section className="section section-alt" aria-labelledby="services-title">
         <div className="container">
           <div className="section-head reveal">
             <p className="eyebrow">{t.common.nav.services}</p>
@@ -84,6 +123,25 @@ export default function Home() {
           </p>
         </div>
       </section>
+
+      {team.length > 0 && (
+        <section className="section" aria-labelledby="team-title">
+          <div className="container">
+            <div className="section-head reveal">
+              <p className="eyebrow">{page.team.eyebrow}</p>
+              <h2 id="team-title">{page.team.title}</h2>
+              <p>{page.team.lede}</p>
+            </div>
+            <TeamCards />
+            <p className="section-link">
+              <a href={href('about')} className="text-link">
+                {page.team.link}
+                <Icon name="arrow" size={18} />
+              </a>
+            </p>
+          </div>
+        </section>
+      )}
 
       {hasProjects && (
         <section className="section section-alt" aria-labelledby="work-title">
@@ -180,22 +238,37 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section section-alt" aria-labelledby="trust-title">
-        <div className="container trust-layout">
-          <div className="reveal">
-            <h2 id="trust-title">{page.trust.title}</h2>
+      <section className="section section-alt" aria-labelledby="why-title">
+        <div className="container">
+          <div className="section-head reveal">
+            <h2 id="why-title">{page.why.title}</h2>
+            <p>{page.why.lede}</p>
           </div>
-          <ul className="trust-list">
-            {page.trust.items.map((item) => (
-              <li key={item.title} className="reveal">
-                <Icon name="check" className="icon trust-icon" />
-                <div>
-                  <h3>{item.title}</h3>
-                  <p>{item.text}</p>
-                </div>
+          <ul className="why-grid">
+            <li className="why-card why-price">
+              <h3>{page.why.priceTitle}</h3>
+              <p className="rate-value">
+                <span className="rate-from">{t.pages.pricing.rate.from}</span> <strong>{t.pages.pricing.rate.value}</strong>{' '}
+                <span className="rate-unit">{t.pages.pricing.rate.unit}</span>
+              </p>
+              <p>{page.why.priceText}</p>
+              <a href={href('pricing')} className="text-link">
+                {page.why.priceLink}
+                <Icon name="arrow" size={18} />
+              </a>
+            </li>
+            {page.why.items.map((item) => (
+              <li key={item.title} className="card why-card">
+                <Icon name={item.icon} className="icon card-icon" />
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
               </li>
             ))}
           </ul>
+          <div className="guarantees-band reveal">
+            <h3 className="guarantees-title">{t.common.guarantees.title}</h3>
+            <Guarantees headingLevel={4} />
+          </div>
         </div>
       </section>
 

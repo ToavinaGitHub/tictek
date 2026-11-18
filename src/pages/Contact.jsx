@@ -3,6 +3,9 @@ import { useLocale } from '../i18n';
 import ContactList from '../components/ContactList';
 import PageHeader from '../components/PageHeader';
 import ContactForm from '../forms/ContactForm';
+import Guarantees from '../components/Guarantees';
+import Icon from '../components/Icon';
+import { bookingUrl } from '../data/site';
 
 export default function Contact() {
   const { lang, t } = useLocale();
@@ -26,6 +29,20 @@ export default function Contact() {
               ))}
             </ol>
           </section>
+
+          <section aria-labelledby="guarantees-title">
+            <h2 id="guarantees-title">{t.common.guarantees.title}</h2>
+            <Guarantees compact />
+          </section>
+
+          {bookingUrl && (
+            <p>
+              <a href={bookingUrl} className="btn btn-secondary" target="_blank" rel="noopener noreferrer" data-track="book_call">
+                <Icon name="calendar" size={18} />
+                {t.common.booking}
+              </a>
+            </p>
+          )}
 
           <section aria-labelledby="direct-title">
             <h2 id="direct-title">{page.directTitle}</h2>

@@ -1,7 +1,7 @@
 import { team } from '../data/team';
 import { useLocale } from '../i18n';
-import BrandIcon from '../components/BrandIcon';
 import PageHeader from '../components/PageHeader';
+import TeamCards from '../components/TeamCards';
 import { TechList } from '../components/ProjectCard';
 import CtaBand from '../components/CtaBand';
 
@@ -31,27 +31,7 @@ export default function About() {
               <h2 id="team-title">{page.teamTitle}</h2>
               <p>{page.teamLede}</p>
             </div>
-            <ul className="team-grid">
-              {team.map((member) => (
-                <li className="team-card" key={member.name}>
-                  <img src={member.photo} alt={member.name} width={480} height={600} loading="lazy" className="team-photo" />
-                  <div className="team-body">
-                    <h3>{member.name}</h3>
-                    <p className="team-role">
-                      <strong>{member.role[lang]}</strong>
-                      {member.title[lang]}
-                    </p>
-                    <TechList items={member.focus[lang]} />
-                    {member.linkedin && (
-                      <a href={member.linkedin} className="team-link" target="_blank" rel="noopener noreferrer">
-                        <BrandIcon name="linkedin" size={18} />
-                        <span className="visually-hidden">{member.name} </span>LinkedIn
-                      </a>
-                    )}
-                  </div>
-                </li>
-              ))}
-            </ul>
+            <TeamCards />
           </div>
         </section>
       )}

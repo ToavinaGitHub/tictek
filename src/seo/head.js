@@ -1,5 +1,6 @@
 import { absoluteUrl, brand, servedCountries, contactInfo, findPost, languages, defaultLang, paths, serviceIds, siteUrl, socialLinks } from '../data/site';
 import { translations } from '../i18n';
+import { team } from '../data/team';
 
 const escapeHtml = (value) =>
   String(value).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -29,6 +30,14 @@ function organization() {
     },
     areaServed: servedCountries.map((code) => ({ '@type': 'Country', name: code.toUpperCase() })),
     sameAs: Object.values(socialLinks),
+    founder: team
+      .filter((member) => member.founder)
+      .map((member) => ({
+        '@type': 'Person',
+        name: member.name,
+        jobTitle: member.title?.en,
+        ...(member.linkedin && { sameAs: [member.linkedin] }),
+      })),
   };
 }
 

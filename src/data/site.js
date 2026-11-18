@@ -56,6 +56,10 @@ export const defaultLang = 'fr';
 // Page ids, in nav order. "work" and "blog" are only built once projects.js
 // and posts.js have entries, so the site never shows an empty page.
 export const hasProjects = projects.length > 0;
+
+// Online booking page for a first call (Calendly or similar). While null, the
+// "Book a call" buttons stay hidden (CtaBand.jsx, Contact.jsx).
+export const bookingUrl = 'https://calendly.com/tetude159/30min';
 export const hasPosts = posts.length > 0;
 export const pageIds = [
   'home',

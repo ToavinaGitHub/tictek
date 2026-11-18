@@ -41,6 +41,18 @@ const fr = {
       message: 'Bonjour TicTek, je souhaite discuter d’un projet.',
     },
     linkedin: 'TicTek sur LinkedIn',
+    linkedinProfile: 'Voir le profil LinkedIn',
+    booking: 'Réserver un appel de 30 min',
+    // Commitments shown on the home and contact pages (Guarantees.jsx).
+    guarantees: {
+      title: 'Nos garanties',
+      items: [
+        { icon: 'code', title: 'Le code vous appartient', text: 'Une fois payé, le code source et tous les accès sont à vous.' },
+        { icon: 'lock', title: 'Confidentialité', text: 'Nous signons un accord de confidentialité (NDA) sur simple demande.' },
+        { icon: 'shield', title: 'Garantie de correction', text: 'Les bugs constatés après livraison sont corrigés gratuitement, sur une durée précisée dans le devis.' },
+        { icon: 'clock', title: 'Réponse sous 24 h', text: 'Chaque demande reçoit une réponse sous un jour ouvré.' },
+      ],
+    },
     // Scrolling band above the footer (KeywordBand.jsx).
     keywords: ['Web', 'Mobile', 'SaaS', 'API', 'Automatisation', 'IA', 'Web3', 'Maintenance'],
   },
@@ -221,15 +233,15 @@ const fr = {
 
   pages: {
     home: {
-      title: 'TicTek | Développeurs à Madagascar : web, mobile, IA et Web3',
+      title: 'TicTek | Votre équipe de développement externalisée à Madagascar',
       description:
-        'TicTek, équipe de développeurs basée à Antananarivo (Madagascar), conçoit vos applications web et mobiles, SaaS, API, automatisations, IA et Web3, partout dans le monde.',
+        'Externalisez le développement et la maintenance de vos logiciels sans recruter : une équipe de développeurs à Madagascar, sur vos horaires, en français et en anglais.',
       hero: {
         // titleAccent is written in hollow handwritten letters (Home.jsx).
-        title: 'Votre partenaire de développement logiciel,',
-        titleAccent: 'du besoin à la mise en production.',
+        title: 'Votre équipe technique externalisée,',
+        titleAccent: 'sans recruter.',
         lede:
-          'Une équipe de développeurs à Madagascar. Web, mobile, automatisation et IA, pour des clients du monde entier.',
+          'Nous développons, maintenons et faisons évoluer vos logiciels et votre système d’information, depuis Madagascar, sur vos horaires.',
         ctaWork: 'Découvrir nos réalisations',
         ctaServices: 'Découvrir nos services',
         visual: {
@@ -244,6 +256,38 @@ const fr = {
         stackTitle: 'Notre stack au quotidien',
         stackPause: 'Mettre en pause le défilement',
       },
+      outsource: {
+        eyebrow: 'Externalisation',
+        title: 'Recruter ou externaliser ?',
+        lede: 'Confiez-nous vos outils et votre SI : vous gardez la main, sans les contraintes d’une embauche.',
+        inhouse: {
+          title: 'Recruter en interne',
+          items: [
+            'Souvent des mois pour trouver le bon profil',
+            'Salaires et charges fixes, même en période creuse',
+            'Une compétence par personne recrutée',
+            'Le savoir part avec la personne',
+            'Le management reste à votre charge',
+          ],
+        },
+        tictek: {
+          title: 'Externaliser chez TicTek',
+          items: [
+            'On démarre dès que le périmètre est validé',
+            'Au forfait ou à l’heure, selon vos besoins',
+            'Web, mobile, backend, IA : une équipe complète',
+            'Code documenté : la continuité est assurée',
+            'Un interlocuteur unique qui pilote pour vous',
+          ],
+        },
+        hours: 'Sur vos horaires : une à deux heures d’écart avec l’Europe, des créneaux convenus pour le reste du monde.',
+      },
+      team: {
+        eyebrow: 'L’équipe',
+        title: 'Les personnes derrière TicTek',
+        lede: 'Vous échangez directement avec nous, sans intermédiaire.',
+        link: 'En savoir plus sur nous',
+      },
       services: {
         title: 'Ce que nous développons pour vous',
         lede: 'Votre problème d’abord, la technologie ensuite.',
@@ -256,8 +300,8 @@ const fr = {
         link: 'Toutes les réalisations',
       },
       clients: {
-        eyebrow: 'À distance',
-        title: 'Où que vous soyez',
+        eyebrow: 'Sur vos horaires',
+        title: 'Nous travaillons à votre heure',
         lede: 'Depuis Madagascar (UTC+3) : une à deux heures d’écart avec l’Europe, des créneaux convenus ensemble pour l’Amérique du Nord.',
       },
       hours: {
@@ -277,25 +321,17 @@ const fr = {
       process: {
         title: 'Notre méthode',
       },
-      trust: {
-        title: 'Nos engagements',
+      why: {
+        title: 'Pourquoi travailler avec TicTek ?',
+        lede: 'Une équipe technique sérieuse, à un tarif qui reste raisonnable.',
+        priceTitle: 'Des tarifs clairs',
+        priceText: 'Le taux exact est toujours indiqué dans le devis, avant de commencer.',
+        priceLink: 'Voir les tarifs',
         items: [
-          {
-            title: 'Un interlocuteur technique direct',
-            text: 'Vous parlez directement aux développeurs.',
-          },
-          {
-            title: 'Une estimation avant tout engagement',
-            text: 'Périmètre et budget écrits avant de commencer.',
-          },
-          {
-            title: 'De la visibilité en continu',
-            text: 'Démos régulières : vous voyez le projet avancer.',
-          },
-          {
-            title: 'Du code pensé pour durer',
-            text: 'Tests, revues de code et documentation inclus.',
-          },
+          { icon: 'staff-augmentation', title: 'Un interlocuteur direct', text: 'Vous parlez aux développeurs, sans intermédiaire.' },
+          { icon: 'project', title: 'Une estimation avant de commencer', text: 'Périmètre, planning et budget posés par écrit.' },
+          { icon: 'saas-api', title: 'Une seule équipe, du web à l’IA', text: 'Web, mobile, backend, automatisation, IA et Web3.' },
+          { icon: 'check', title: 'Vous voyez le projet avancer', text: 'Démos régulières, code testé et documenté.' },
         ],
       },
     },

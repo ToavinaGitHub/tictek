@@ -14,6 +14,7 @@ const TARGETS = [
   '.section-head',
   '.section-link',
   '.grid > *',
+  '.why-grid > *',
   '.step',
   '.trust-list li',
   '.clocks-head',
