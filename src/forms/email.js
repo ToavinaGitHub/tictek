@@ -65,24 +65,42 @@ async function sendConfirmation(kind, lang, email) {
 }
 
 export function buildContactEmail(values, lang) {
-  const need = fr.needs[values.need] ?? values.need;
+  const collaboration = fr.collaborations[values.collaboration] ?? values.collaboration;
   const company = values.company.trim();
+  const country = values.country.trim();
+  const companyWebsite = values.companyWebsite.trim();
+  const language = fr.languages[values.language] ?? values.language;
   const budget = values.budget.trim();
-  const timeline = values.timeline ? fr.timelines[values.timeline] : '';
+  const timeline = fr.timelines[values.timeline] && values.timeline ? fr.timelines[values.timeline] : '';
 
   return {
     name: values.name,
     email: values.email,
-    reason: `Demande de projet : ${need}`,
+    reason: `Demande de projet : ${collaboration} (${country})`,
     details: [
-      `Type de besoin : ${need}`,
-      company && `Entreprise : ${company}`,
-      budget && `Budget : ${budget}`,
-      timeline && `Délai : ${timeline}`,
-      `Langue du visiteur : ${lang.toUpperCase()}`,
+      `Type de collaboration : ${collaboration}`,
+      `Entreprise : ${company}`,
+      `Pays : ${country}`,
+      companyWebsite && `Site web : ${companyWebsite}`,
+      `Langue préférée : ${language}`,
+      budget && `Budget estimé : ${budget}`,
+      timeline && `Délai souhaité : ${timeline}`,
+      `Langue du site : ${lang.toUpperCase()}`,
     ],
     body: values.message,
-    extra: { company, need, budget, timeline, lang },
+    // Also sent as separate template variables, for a richer EmailJS template.
+    extra: {
+      company,
+      country,
+      company_website: companyWebsite,
+      preferred_language: language,
+      collaboration,
+      // Kept for templates written before the collaboration field existed.
+      need: collaboration,
+      budget,
+      timeline,
+      lang,
+    },
   };
 }
 

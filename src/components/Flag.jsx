@@ -1,7 +1,24 @@
 // Inline SVG flags: flag emoji don't render on Windows. Decorative only:
 // the language or country name is always given as text next to or behind them.
 // Keys are language codes (header switcher) and lowercase ISO country codes
-// (site.js clocks); "fr" serves both.
+// (site.js clocks, markets.js); "fr" serves both, "en" is also "gb".
+// Union Jack; each copy needs its own clipPath id (the header and the home
+// clocks can show it on the same page).
+function ukFlag(clipId) {
+  return (
+    <svg className="flag" viewBox="0 0 60 30" width="20" height="14" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+      <clipPath id={clipId}>
+        <path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z" />
+      </clipPath>
+      <path d="M0,0 v30 h60 v-30 z" fill="#012169" />
+      <path d="M0,0 L60,30 M60,0 L0,30" stroke="#FFFFFF" strokeWidth="6" />
+      <path d="M0,0 L60,30 M60,0 L0,30" clipPath={`url(#${clipId})`} stroke="#C8102E" strokeWidth="4" />
+      <path d="M30,0 v30 M0,15 h60" stroke="#FFFFFF" strokeWidth="10" />
+      <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" strokeWidth="6" />
+    </svg>
+  );
+}
+
 const FLAGS = {
   fr: (
     <svg className="flag" viewBox="0 0 3 2" width="20" height="14" aria-hidden="true" focusable="false">
@@ -10,18 +27,7 @@ const FLAGS = {
       <rect x="2" width="1" height="2" fill="#CE1126" />
     </svg>
   ),
-  en: (
-    <svg className="flag" viewBox="0 0 60 30" width="20" height="14" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-      <clipPath id="flag-uk-diagonals">
-        <path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z" />
-      </clipPath>
-      <path d="M0,0 v30 h60 v-30 z" fill="#012169" />
-      <path d="M0,0 L60,30 M60,0 L0,30" stroke="#FFFFFF" strokeWidth="6" />
-      <path d="M0,0 L60,30 M60,0 L0,30" clipPath="url(#flag-uk-diagonals)" stroke="#C8102E" strokeWidth="4" />
-      <path d="M30,0 v30 M0,15 h60" stroke="#FFFFFF" strokeWidth="10" />
-      <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" strokeWidth="6" />
-    </svg>
-  ),
+  en: ukFlag('flag-uk-diagonals'),
   mu: (
     <svg className="flag" viewBox="0 0 3 2" width="20" height="14" aria-hidden="true" focusable="false">
       <rect width="3" height=".5" fill="#EA2839" />
@@ -62,6 +68,29 @@ const FLAGS = {
     </svg>
   ),
 };
+
+// Simplified at 20×14: stripes and canton only, no individual stars.
+FLAGS.gb = ukFlag('flag-gb-diagonals');
+FLAGS.us = (
+  <svg className="flag" viewBox="0 0 19 10" width="20" height="14" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+    <rect width="19" height="10" fill="#FFFFFF" />
+    <path d="M0 0h19v.77H0zM0 1.54h19v.77H0zM0 3.08h19v.77H0zM0 4.62h19v.77H0zM0 6.15h19v.77H0zM0 7.69h19v.77H0zM0 9.23h19V10H0z" fill="#B22234" />
+    <rect width="7.6" height="5.38" fill="#3C3B6E" />
+  </svg>
+);
+FLAGS.au = (
+  <svg className="flag" viewBox="0 0 20 10" width="20" height="14" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+    <rect width="20" height="10" fill="#012169" />
+    <path d="M0 0l10 5M10 0L0 5" stroke="#FFFFFF" strokeWidth="1" />
+    <path d="M5 0v5M0 2.5h10" stroke="#FFFFFF" strokeWidth="1.6" />
+    <path d="M5 0v5M0 2.5h10" stroke="#C8102E" strokeWidth=".9" />
+    <circle cx="5" cy="7.6" r=".9" fill="#FFFFFF" />
+    <circle cx="15" cy="2" r=".5" fill="#FFFFFF" />
+    <circle cx="13" cy="4.8" r=".5" fill="#FFFFFF" />
+    <circle cx="17.2" cy="4.2" r=".5" fill="#FFFFFF" />
+    <circle cx="15" cy="8.2" r=".5" fill="#FFFFFF" />
+  </svg>
+);
 
 export default function Flag({ code }) {
   return FLAGS[code] ?? null;

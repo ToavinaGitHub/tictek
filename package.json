@@ -11,7 +11,7 @@
     "build": "vite build && vite build --ssr src/entry-server.jsx --outDir dist-ssr && node scripts/prerender.mjs",
     "preview": "vite preview",
     "test": "node --test",
-    "check": "node scripts/check-site.mjs"
+    "check": "node scripts/check-locales.mjs && node scripts/check-site.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",

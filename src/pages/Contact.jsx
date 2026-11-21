@@ -18,7 +18,12 @@ export default function Contact() {
       <PageHeader pageId="contact" title={page.h1} lede={page.lede} />
 
       <div className="container contact-grid">
-        <div data-form="contact" data-lang={lang} dangerouslySetInnerHTML={{ __html: formHtml }} />
+        <section className="contact-main" aria-labelledby="form-title">
+          <h2 id="form-title" className="contact-form-title">
+            {page.formTitle}
+          </h2>
+          <div id="form" data-form="contact" data-lang={lang} dangerouslySetInnerHTML={{ __html: formHtml }} />
+        </section>
 
         <aside className="contact-aside">
           <section aria-labelledby="next-title">

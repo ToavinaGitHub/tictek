@@ -29,33 +29,48 @@ export function isLikelySpam(values, elapsedMs) {
   return values.website !== '' || elapsedMs < MIN_FILL_TIME_MS;
 }
 
+/** A company website: a bare domain ("www.acme.com") or an http(s) URL. */
+function isWebsite(value) {
+  return isHttpUrl(/^https?:\/\//i.test(value) ? value : `https://${value}`);
+}
+
 /* ---------- Contact (project request) ---------- */
 
-export const needIds = ['web', 'mobile', 'saas-api', 'automation', 'ai', 'web3', 'maintenance', 'white-label', 'other'];
+// Type of collaboration. CTAs preselect one with ?type=<id> (ContactForm.jsx).
+export const collaborationIds = ['dedicated', 'team', 'white-label', 'custom', 'ai-automation', 'maintenance', 'other'];
+export const contactLanguageIds = ['fr', 'en'];
 export const timelineIds = ['', 'asap', 'quarter', 'later'];
 
 export const CONTACT_INITIAL = {
   name: '',
   email: '',
   company: '',
-  need: '',
+  country: '',
+  companyWebsite: '',
+  language: '',
+  collaboration: '',
   message: '',
   budget: '',
   timeline: '',
   website: '', // honeypot: hidden from people, filled by naive bots
 };
 
-export const CONTACT_MAX = { name: 100, email: 254, company: 120, message: 5000, budget: 100 };
+export const CONTACT_MAX = { name: 100, email: 254, company: 120, country: 80, companyWebsite: 200, message: 5000, budget: 100 };
 
 export function validateContact(values) {
   const errors = {};
   const email = values.email.trim();
+  const companyWebsite = values.companyWebsite.trim();
   const message = values.message.trim();
 
   if (!values.name.trim()) errors.name = 'nameRequired';
   if (!email) errors.email = 'emailRequired';
   else if (!isEmail(email)) errors.email = 'emailInvalid';
-  if (!needIds.includes(values.need)) errors.need = 'needRequired';
+  if (!values.company.trim()) errors.company = 'companyRequired';
+  if (!values.country.trim()) errors.country = 'countryRequired';
+  if (companyWebsite && !isWebsite(companyWebsite)) errors.companyWebsite = 'websiteInvalid';
+  if (!contactLanguageIds.includes(values.language)) errors.language = 'languageRequired';
+  if (!collaborationIds.includes(values.collaboration)) errors.collaboration = 'collaborationRequired';
   if (!message) errors.message = 'messageRequired';
   else if (message.length < MIN_MESSAGE_LENGTH) errors.message = 'messageTooShort';
 

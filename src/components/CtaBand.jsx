@@ -1,8 +1,9 @@
-import { bookingUrl } from '../data/site';
+import { bookingUrl, contactHref } from '../data/site';
 import { useLocale } from '../i18n';
 import Icon from './Icon';
 
-export default function CtaBand() {
+/** Closing call to action on every commercial page. */
+export default function CtaBand({ type }) {
   const { t, href } = useLocale();
 
   return (
@@ -12,8 +13,9 @@ export default function CtaBand() {
           <h2 id="cta-title">{t.common.cta.title}</h2>
           <p>{t.common.cta.text}</p>
           <p className="cta-actions">
-            <a href={href('contact')} className="btn btn-primary">
-              {t.common.ctaContact}
+            <a href={contactHref(href('contact'), type)} className="btn btn-primary" data-track="cta_click" data-track-label="cta_band">
+              {t.common.cta.button}
+              <Icon name="arrow" size={18} />
             </a>
             {bookingUrl && (
               <a href={bookingUrl} className="btn btn-secondary" target="_blank" rel="noopener noreferrer" data-track="book_call">

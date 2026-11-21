@@ -1,6 +1,7 @@
 // Language-independent site data. All translatable copy lives in ./locales/{fr,en}.js.
 import { projects } from './projects';
 import { posts } from './posts';
+import { markets, marketIds } from './markets';
 
 export const brand = {
   name: 'TicTek',
@@ -34,16 +35,19 @@ export const socialLinks = {
 // first entry is our own time zone. City names live in locales (cities).
 export const clocks = [
   { id: 'antananarivo', flag: 'mg', timeZone: 'Indian/Antananarivo' },
-  { id: 'port-louis', flag: 'mu', timeZone: 'Indian/Mauritius' },
-  { id: 'dubai', flag: 'ae', timeZone: 'Asia/Dubai' },
-  { id: 'paris', flag: 'fr', timeZone: 'Europe/Paris' },
   { id: 'geneva', flag: 'ch', timeZone: 'Europe/Zurich' },
+  { id: 'paris', flag: 'fr', timeZone: 'Europe/Paris' },
+  { id: 'london', flag: 'gb', timeZone: 'Europe/London' },
   { id: 'montreal', flag: 'ca', timeZone: 'America/Toronto' },
+  { id: 'new-york', flag: 'us', timeZone: 'America/New_York' },
+  { id: 'dubai', flag: 'ae', timeZone: 'Asia/Dubai' },
+  { id: 'sydney', flag: 'au', timeZone: 'Australia/Sydney' },
 ];
+export const homeClock = clocks[0];
 
-// Countries we work with: those of the clocks, given to Google as areaServed
-// (seo/head.js). Lowercase ISO codes, as for the flags (Flag.jsx).
-export const servedCountries = [...new Set(clocks.map((clock) => clock.flag))];
+// Countries we work with, given to Google as areaServed (seo/head.js).
+// ISO 3166-1 alpha-2 codes. Priority markets first.
+export const servedCountries = ['CH', 'CA', 'FR', 'GB', 'US', 'AU', 'MU', 'AE', 'MG'];
 
 // Google Analytics 4 (src/client/consent.js). Empty: no banner, no analytics.
 export const analyticsId = import.meta.env.VITE_GA_ID ?? '';
@@ -64,25 +68,32 @@ export const hasPosts = posts.length > 0;
 export const pageIds = [
   'home',
   'services',
+  'outsourcing',
   ...(hasProjects ? ['work'] : []),
   'collaboration',
   'pricing',
   'about',
+  ...marketIds,
   ...(hasPosts ? ['blog'] : []),
   'careers',
   'contact',
   'privacy',
 ];
-// Header links (Contact is the header button). Careers lives in the footer.
-export const navIds = pageIds.filter((id) => !['home', 'contact', 'careers', 'privacy'].includes(id));
+// Header links (Contact is the header button). Blog and Careers live in the footer.
+export const navIds = ['services', 'outsourcing', 'collaboration', ...(hasProjects ? ['work'] : []), 'pricing', 'about'];
 // Footer "Company" column. Privacy is linked in the footer's bottom line.
-export const companyIds = pageIds.filter((id) => !['home', 'services', 'contact', 'privacy'].includes(id));
+export const companyIds = pageIds.filter((id) =>
+  ['about', 'work', 'collaboration', 'pricing', 'blog', 'careers'].includes(id),
+);
+// Footer "Markets" column: the outsourcing page, then each country page.
+export const marketNavIds = ['outsourcing', ...marketIds];
 
 export const paths = {
   fr: {
     home: '/',
     services: '/services/',
     work: '/realisations/',
+    outsourcing: '/externalisation-developpement/',
     collaboration: '/collaboration/',
     pricing: '/tarifs/',
     about: '/a-propos/',
@@ -95,6 +106,7 @@ export const paths = {
     home: '/en/',
     services: '/en/services/',
     work: '/en/work/',
+    outsourcing: '/en/software-development-outsourcing/',
     collaboration: '/en/engagement-models/',
     pricing: '/en/pricing/',
     about: '/en/about/',
@@ -108,7 +120,15 @@ export const paths = {
 // Each blog post is a page of its own, with the id "post:<slug>". They are
 // not in pageIds (no nav or footer link) but get routes, paths and a sitemap
 // entry like any other page.
+for (const market of markets) {
+  for (const lang of Object.keys(paths)) paths[lang][market.id] = market.paths[lang];
+}
+
 export const postPageId = (slug) => `post:${slug}`;
+for (const market of markets) {
+  for (const lang of Object.keys(paths)) paths[lang][market.id] = market.paths[lang];
+}
+
 export const postPageIds = posts.map((post) => postPageId(post.slug));
 for (const lang of Object.keys(paths)) {
   for (const post of posts) paths[lang][postPageId(post.slug)] = `${paths[lang].blog}${post.slug}/`;
@@ -117,8 +137,17 @@ export const findPost = (pageId) => posts.find((post) => postPageId(post.slug) =
 
 export const absoluteUrl = (path) => `${siteUrl}${path}`;
 
-// Service anchors on the services page, shared by both languages.
-export const serviceIds = ['web', 'mobile', 'saas-api', 'automation', 'ai', 'web3', 'maintenance'];
+// The six offers (what clients buy), anchors on the services page. Copy in
+// locales: offers.<id>. Icons: components/Icon.jsx.
+export const offerIds = ['development', 'dedicated', 'outsourcing', 'white-label', 'ai-automation', 'support'];
+
+// Technical areas of expertise, lower on the services page. Their anchors
+// (/services/#web…) predate the offers and are kept so old links still work.
+export const expertiseIds = ['web', 'mobile', 'saas-api', 'automation', 'ai', 'web3', 'maintenance'];
+
+// Engagement models (home, collaboration and outsourcing pages). Anchors on
+// /collaboration/. Copy in locales: models.<id>.
+//   staff-augmentation = dedicated developer, project = outsourced team.
 
 // Technologies scrolled under the home hero. Logos are self-hosted in
 // public/img/tech/ (Devicon, MIT; n8n, OpenAI, Expo, Ethereum and Ethers from Simple Icons, CC0).
@@ -155,4 +184,9 @@ export const techLogos = [
   ['GitLab CI', 'gitlab'],
 ].map(([name, file]) => ({ name, logo: `/img/tech/${file}.svg` }));
 
-export const modelIds = ['project', 'white-label', 'staff-augmentation'];
+export const modelIds = ['staff-augmentation', 'project', 'white-label'];
+
+// Contact page link, optionally preselecting the form's "type of
+// collaboration" (a collaborationIds value, see forms/validate.js).
+export { collaborationIds } from '../forms/validate';
+export const contactHref = (path, type) => (type ? `${path}?type=${type}#form` : `${path}#form`);

@@ -1,20 +1,33 @@
+import { useEffect } from 'react';
 import forms from '../data/locales/form';
-import { CONTACT_INITIAL, CONTACT_MAX, needIds, timelineIds, validateContact } from './validate';
+import { CONTACT_INITIAL, CONTACT_MAX, collaborationIds, contactLanguageIds, timelineIds, validateContact } from './validate';
 import { submitForm } from './email';
 import { useForm } from './useForm';
 import { ErrorSummary, Field, FormFooter, FormSuccess, Honeypot } from './FormParts';
 
-const ERROR_ORDER = ['name', 'email', 'company', 'need', 'message', 'budget'];
+const ERROR_ORDER = ['name', 'email', 'company', 'country', 'companyWebsite', 'language', 'collaboration', 'message', 'budget'];
 
-/** Project request form. Rendered at build time, hydrated by src/client/forms.jsx. */
+/**
+ * Project request form. Rendered at build time, hydrated by src/client/forms.jsx.
+ * The preferred language starts as the page language; links to the contact
+ * page can preselect the type of collaboration with ?type=<collaborationId>.
+ */
 export default function ContactForm({ lang }) {
   const t = forms[lang];
   const form = useForm({
     idPrefix: 'contact',
-    initialValues: CONTACT_INITIAL,
+    initialValues: { ...CONTACT_INITIAL, language: lang },
     validate: validateContact,
     submit: (values) => submitForm('contact', values, lang),
+    trackParams: (values) => ({ collaboration_type: values.collaboration, preferred_language: values.language }),
   });
+
+  // After hydration only, so the server HTML and the first client render match.
+  const { setValue } = form;
+  useEffect(() => {
+    const type = new URLSearchParams(window.location.search).get('type');
+    if (collaborationIds.includes(type)) setValue('collaboration', type);
+  }, [setValue]);
 
   if (form.status === 'success') {
     return <FormSuccess form={form} title={t.successTitle} text={t.successText} confirmationText={t.confirmationSent} />;
@@ -40,16 +53,59 @@ export default function ContactForm({ lang }) {
           />
         </Field>
 
-        <Field form={form} messages={t.errors} name="company" label={t.fields.company} optionalLabel={t.optional}>
-          <input type="text" autoComplete="organization" maxLength={CONTACT_MAX.company} {...form.inputProps('company')} />
+        <Field form={form} messages={t.errors} name="company" label={t.fields.company}>
+          <input type="text" autoComplete="organization" maxLength={CONTACT_MAX.company} {...form.inputProps('company', { required: true })} />
         </Field>
 
-        <Field form={form} messages={t.errors} name="need" label={t.fields.need}>
-          <select {...form.inputProps('need', { required: true })}>
-            <option value="">{t.choose}</option>
-            {needIds.map((id) => (
+        <Field form={form} messages={t.errors} name="country" label={t.fields.country}>
+          <input
+            type="text"
+            autoComplete="country-name"
+            list={form.fieldId('countries')}
+            maxLength={CONTACT_MAX.country}
+            {...form.inputProps('country', { required: true })}
+          />
+          <datalist id={form.fieldId('countries')}>
+            {t.countries.map((country) => (
+              <option key={country} value={country} />
+            ))}
+          </datalist>
+        </Field>
+
+        <Field
+          form={form}
+          messages={t.errors}
+          name="companyWebsite"
+          label={t.fields.companyWebsite}
+          optionalLabel={t.optional}
+          hint={t.hints.companyWebsite}
+        >
+          <input
+            type="text"
+            inputMode="url"
+            autoComplete="url"
+            spellCheck={false}
+            maxLength={CONTACT_MAX.companyWebsite}
+            {...form.inputProps('companyWebsite', { hint: true })}
+          />
+        </Field>
+
+        <Field form={form} messages={t.errors} name="language" label={t.fields.language}>
+          <select {...form.inputProps('language', { required: true })}>
+            {contactLanguageIds.map((id) => (
               <option key={id} value={id}>
-                {t.needs[id]}
+                {t.languages[id]}
+              </option>
+            ))}
+          </select>
+        </Field>
+
+        <Field form={form} messages={t.errors} name="collaboration" label={t.fields.collaboration} full>
+          <select {...form.inputProps('collaboration', { required: true })}>
+            <option value="">{t.choose}</option>
+            {collaborationIds.map((id) => (
+              <option key={id} value={id}>
+                {t.collaborations[id]}
               </option>
             ))}
           </select>
@@ -83,7 +139,7 @@ export default function ContactForm({ lang }) {
         <Honeypot form={form} />
       </div>
 
-      <FormFooter form={form} t={t} submitLabel={t.submit} privacy={t.privacy} />
+      <FormFooter form={form} t={t} submitLabel={t.submit} privacy={t.privacy} note={t.quoteNote} />
     </form>
   );
 }

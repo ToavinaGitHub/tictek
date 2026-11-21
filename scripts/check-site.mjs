@@ -128,8 +128,14 @@ for (const [path, { file, html, ids }] of pages) {
     }
     if (/^(mailto:|tel:|https?:)/.test(href)) continue;
 
-    const [target, hash] = href.split('#');
+    const [targetWithQuery, hash] = href.split('#');
+    const [target, query] = targetWithQuery.split('?');
     const targetPath = target === '' ? path : target;
+    // ?type= preselects the contact form: it must name an existing option.
+    const type = new URLSearchParams(query ?? '').get('type');
+    if (type !== null && !pages.get(targetPath)?.html.includes(`<option value="${type}"`)) {
+      fail(file, `link ${href}: no form option "${type}" on ${targetPath}`);
+    }
     const page = pages.get(targetPath);
     if (!page) {
       fail(file, `broken link ${href}`);

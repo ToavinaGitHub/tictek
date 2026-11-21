@@ -1,4 +1,5 @@
 import forms from './form';
+import marketPages from './markets.en';
 
 const en = {
   lang: 'en',
@@ -12,6 +13,7 @@ const en = {
     nav: {
       home: 'Home',
       services: 'Services',
+      outsourcing: 'Outsourcing',
       work: 'Work',
       collaboration: 'Engagement models',
       about: 'About',
@@ -20,11 +22,16 @@ const en = {
       careers: 'Careers',
       privacy: 'Privacy',
       blog: 'Blog',
+      switzerland: 'Switzerland',
+      canada: 'Canada',
     },
-    ctaContact: "Let's talk about your project",
+    slogan: 'Your International Software Development Partner, Based in Madagascar.',
+    ctaContact: 'Discuss Your Project',
+    requestQuote: 'Request a Quote',
     cta: {
-      title: 'Got a project in mind?',
-      text: 'Let’s talk, no commitment.',
+      title: 'Let’s Build Something Together.',
+      text: 'Whether you need additional technical resources, a software development partner or business automation, TicTek is ready to help.',
+      button: 'Start a Conversation',
     },
     language: 'Language',
     learnMore: 'Learn more',
@@ -43,9 +50,9 @@ const en = {
     linkedin: 'TicTek on LinkedIn',
     linkedinProfile: 'View LinkedIn profile',
     booking: 'Book a 30-min call',
-    // Commitments shown on the home and contact pages (Guarantees.jsx).
+    // Commitments shown on the home, about and contact pages (Guarantees.jsx).
     guarantees: {
-      title: 'Our guarantees',
+      title: 'Our commitments',
       items: [
         { icon: 'code', title: 'You own the code', text: 'Once paid, the source code and every access are yours.' },
         { icon: 'lock', title: 'Confidentiality', text: 'We sign a non-disclosure agreement (NDA) on request.' },
@@ -54,30 +61,130 @@ const en = {
       ],
     },
     // Scrolling band above the footer (KeywordBand.jsx).
-    keywords: ['Web', 'Mobile', 'SaaS', 'API', 'Automation', 'AI', 'Web3', 'Maintenance'],
+    keywords: ['Software development', 'Dedicated developers', 'IT outsourcing', 'White label', 'AI automation', 'Maintenance'],
+    // Hero trust points (Home.jsx) and the outsourcing page.
+    trust: ['Team based in Madagascar', 'International collaboration', 'English and French', 'Tailored solutions', 'Optimized costs'],
   },
 
-  // Keys follow site.js clocks.
+  // Keys follow site.js clocks and markets.js clocks.
   cities: {
     antananarivo: { city: 'Antananarivo', country: 'Madagascar' },
-    'port-louis': { city: 'Port Louis', country: 'Mauritius' },
-    dubai: { city: 'Dubai', country: 'United Arab Emirates' },
-    paris: { city: 'Paris', country: 'France' },
     geneva: { city: 'Geneva', country: 'Switzerland' },
+    paris: { city: 'Paris', country: 'France' },
+    london: { city: 'London', country: 'United Kingdom' },
     montreal: { city: 'Montreal', country: 'Canada' },
+    vancouver: { city: 'Vancouver', country: 'Canada' },
+    'new-york': { city: 'New York', country: 'United States' },
+    dubai: { city: 'Dubai', country: 'United Arab Emirates' },
+    sydney: { city: 'Sydney', country: 'Australia' },
+  },
+
+  // Live clocks (Clocks.jsx).
+  hours: {
+    languagesLabel: 'We work in',
+    languages: ['English', 'French'],
+    listLabel: 'Current time in Madagascar and where our clients are',
+    ours: 'Our time · UTC+3',
+    same: 'Same time',
+    hourUnit: 'h',
+    versus: 'compared with Madagascar',
   },
 
   footer: {
     about:
-      'TicTek designs, builds and maintains custom software: web and mobile apps, SaaS, APIs, process automation and AI integration. Team based in Madagascar, serving clients internationally, in English and French.',
+      'TicTek is a software development team based in Madagascar, working with companies worldwide in English and French: custom software, dedicated developers, IT outsourcing, white-label development, AI automation and maintenance.',
     servicesTitle: 'Services',
+    marketsTitle: 'Outsourcing',
     companyTitle: 'Company',
     contactTitle: 'Contact',
     location: 'Antananarivo, Madagascar · clients worldwide',
     rights: 'All rights reserved.',
   },
 
-  services: {
+  // The six offers. Keys follow site.js offerIds.
+  offers: {
+    development: {
+      title: 'Software Development',
+      short: 'Web apps, mobile apps and business software built around your processes.',
+      need: 'Off-the-shelf tools don’t fit the way you work, or you need a new product built from scratch.',
+      points: [
+        'Web applications, client portals and internal tools',
+        'iOS and Android apps from a single codebase',
+        'SaaS products, back ends and APIs',
+        'From scoping to production, with documentation',
+      ],
+      audience: 'SMEs, startups and organizations with a specific need.',
+      type: 'custom',
+    },
+    dedicated: {
+      title: 'Dedicated Developers',
+      short: 'Developers who join your team and work in your tools.',
+      need: 'Your roadmap is growing faster than your team, and hiring locally takes months.',
+      points: [
+        'One or more developers working alongside your team',
+        'Onboarding into your Git, tickets and chat',
+        'Code reviews and team rituals',
+        'Capacity adjusted to your needs',
+      ],
+      audience: 'Startups, software companies and in-house IT teams.',
+      type: 'dedicated',
+    },
+    outsourcing: {
+      title: 'IT Outsourcing',
+      short: 'Hand over part of your IT activity to a team that takes ownership.',
+      need: 'You want to delegate development or technical work without building and managing an in-house team.',
+      points: [
+        'A full project or a clearly defined scope',
+        'A single technical contact who runs things for you',
+        'Regular updates and demos',
+        'Documented code that belongs to you',
+      ],
+      audience: 'Companies without a tech team, or that want to free theirs up.',
+      type: 'team',
+    },
+    'white-label': {
+      title: 'White-label Development',
+      short: 'Technical delivery for agencies and partners, under your brand.',
+      need: 'Your agency wins projects but lacks the technical capacity to deliver all of them.',
+      points: [
+        'All or part of your projects, delivered discreetly',
+        'No contact with your clients without your agreement',
+        'Work in your tools, following your conventions',
+        'Invoiced to your agency only',
+      ],
+      audience: 'Web, digital and marketing agencies, consulting firms.',
+      type: 'white-label',
+    },
+    'ai-automation': {
+      title: 'AI & Business Automation',
+      short: 'Automate repetitive work and put AI where it actually helps.',
+      need: 'Your teams lose hours copying data between tools, or you want to use AI on your own data without an open-ended experiment.',
+      points: [
+        'Automated workflows between CRM, invoicing, email and internal tools',
+        'AI agents and assistants connected to your data',
+        'Processing of documents, emails and forms',
+        'An honest view of where AI is not the answer',
+      ],
+      audience: 'Sales, admin and operations teams, and companies handling a lot of text.',
+      type: 'ai-automation',
+    },
+    support: {
+      title: 'Maintenance & Technical Support',
+      short: 'Keep your software secure, working and moving forward.',
+      need: 'Your application is in production and needs fixes, updates and new features, but nobody has time for it.',
+      points: [
+        'Bug fixes and planned improvements',
+        'Dependency updates and security patches',
+        'Takeover of existing applications after a code review',
+        'Monthly volume agreed together',
+      ],
+      audience: 'Companies with software in production.',
+      type: 'maintenance',
+    },
+  },
+
+  // Technical areas of expertise (services page). Keys follow site.js expertiseIds.
+  expertise: {
     web: {
       title: 'Web applications and business software',
       short: 'Internal tools, client portals, back offices.',
@@ -173,68 +280,170 @@ const en = {
     },
   },
 
+  // Keys follow site.js modelIds.
+  modelLabels: {
+    audience: 'Who it’s for',
+    when: 'When to choose it',
+    how: 'How it works',
+    benefits: 'Benefits',
+  },
   models: {
-    project: {
-      title: 'Fixed-scope project',
-      short: 'A defined need, an agreed scope, a delivered application.',
-      text:
-        'You have a clear need but no in-house tech team. We define the scope together, then build the application against an estimate and a schedule agreed before work starts.',
-      points: [
-        'Scope, deliverables and milestones agreed in writing',
-        'Regular demos during development',
-        'Acceptance testing with you before release',
+    'staff-augmentation': {
+      title: 'Dedicated Developer',
+      short: 'A developer who works remotely as part of your team.',
+      audience: 'Companies with an in-house tech team or a technical lead: startups, software companies, IT departments.',
+      when: 'You need extra capacity or a specific skill, for a few months or longer, without going through local hiring.',
+      how: 'The developer joins your tools (Git, tickets, chat) and your rituals, and works on your priorities. You manage the backlog; we take care of the rest.',
+      benefits: [
+        'No long hiring process',
+        'Volume adjusted as your needs change',
+        'Overlapping working hours agreed at kickoff',
+        'A TicTek contact for any follow-up',
       ],
-      fit: 'SMEs and organizations without an in-house development team.',
+      cta: 'Hire a dedicated developer',
+      type: 'dedicated',
+    },
+    project: {
+      title: 'Outsourced Development Team',
+      short: 'TicTek takes charge of part or all of your project.',
+      audience: 'SMEs and organizations without a development team, or teams that want to delegate a full scope.',
+      when: 'You have a defined need, such as an application, an MVP or a tool to replace, and want a team that delivers it.',
+      how: 'We scope the project with you, agree on scope, milestones and budget in writing, then build in short iterations with regular demos until delivery.',
+      benefits: [
+        'A single contact from scoping to delivery',
+        'Scope, schedule and budget set before work starts',
+        'Acceptance testing with you before release',
+        'Documented code that belongs to you',
+      ],
+      cta: 'Outsource your project',
+      type: 'team',
     },
     'white-label': {
-      title: 'White-label development',
-      short: 'We build for your clients, under your brand.',
-      text:
-        'You run an agency. You keep the client relationship; we handle all or part of the technical delivery, discreetly.',
-      points: [
-        'No direct contact with your client without your consent',
-        'We work in your tools and follow your conventions',
+      title: 'White-label Partnership',
+      short: 'We work behind the scenes for agencies and partners.',
+      audience: 'Web, digital and marketing agencies, consulting firms and IT service companies.',
+      when: 'You want to take on more projects, or offer technical services you don’t have in-house, while keeping the client relationship.',
+      how: 'You keep the relationship and the brand; we handle all or part of the technical delivery, in your tools and following your conventions.',
+      benefits: [
+        'No direct contact with your client without your agreement',
         'A single technical contact for your team',
+        'Fixed price per project or monthly volume',
+        'Complete discretion',
       ],
-      fit: 'Web, digital and marketing agencies.',
-    },
-    'staff-augmentation': {
-      title: 'Team augmentation',
-      short: 'Developers who join your team, your tools and your rituals.',
-      text:
-        'Your team needs extra capacity or a specific skill. One or more TicTek developers work alongside you, inside your organization.',
-      points: [
-        'Onboarding into your tools: Git, tickets, chat',
-        'Participation in code reviews and team rituals',
-        'Volume and duration adjusted to your needs',
-      ],
-      fit: 'Startups, software vendors and in-house tech teams.',
+      cta: 'Become a partner',
+      type: 'white-label',
     },
   },
 
   process: [
-    { title: 'Intro call', text: 'One call, no commitment.' },
-    { title: 'Scoping', text: 'The scope, clarified in writing.' },
-    { title: 'Estimate', text: 'Milestones, schedule and budget.' },
-    { title: 'Development', text: 'Short iterations, regular demos.' },
-    { title: 'Testing', text: 'Automated, then validated with you.' },
-    { title: 'Delivery', text: 'Go-live and documentation.' },
-    { title: 'Maintenance', text: 'Ongoing support, if needed.' },
+    { title: 'Discovery', text: 'We understand your needs, your context and your constraints.' },
+    { title: 'Planning', text: 'We define the solution, the timeline and the budget, in writing.' },
+    { title: 'Development', text: 'We build in short iterations, with regular updates and demos.' },
+    { title: 'Delivery', text: 'We test the solution with you, then put it into production.' },
+    { title: 'Support', text: 'We maintain your software and build what comes next.' },
+  ],
+
+  // Four reasons to choose TicTek (home page).
+  advantages: [
+    {
+      icon: 'coins',
+      title: 'Cost Optimization',
+      text: 'Work with a development team based in Madagascar and reduce the cost of building and running your software, without cutting corners on quality.',
+    },
+    {
+      icon: 'layers',
+      title: 'Flexible Collaboration',
+      text: 'A one-off project, extra capacity for your team or an ongoing partnership: you choose the level of involvement and adjust it along the way.',
+    },
+    {
+      icon: 'globe',
+      title: 'International Communication',
+      text: 'Work in English or French, talk directly to the developers, with meeting slots agreed around your time zone.',
+    },
+    {
+      icon: 'code',
+      title: 'Technical Expertise',
+      text: 'Back end, front end, mobile, automation and AI: one team that covers the skills your project needs.',
+    },
+  ],
+
+  // Security and trust practices (Security.jsx). No certification is claimed.
+  security: {
+    eyebrow: 'Security & trust',
+    title: 'Professional practices you can rely on',
+    lede: 'Working with a remote team takes trust. Here is how we protect your projects and your information.',
+    items: [
+      { icon: 'lock', title: 'Confidentiality', text: 'Your project and your information stay between us. Nothing is shared or reused without your agreement.' },
+      { icon: 'key', title: 'Access management', text: 'Access is limited to the people working on your project, and handed back or revoked when the work ends.' },
+      { icon: 'shield', title: 'Information protection', text: 'Credentials are never sent in plain text by email or chat, and production data is only used when the work requires it.' },
+      { icon: 'branch', title: 'Source code management', text: 'Code lives in a Git repository, ideally yours, with reviewed changes and a full history.' },
+      { icon: 'file', title: 'Documentation', text: 'Technical documentation comes with the code, so your team or another provider can take over.' },
+      { icon: 'list', title: 'Task tracking', text: 'Every request is tracked in a shared tool: you always know what is in progress.' },
+      { icon: 'chat', title: 'Regular communication', text: 'Regular check-ins and demos, with a named contact who answers your questions.' },
+      { icon: 'signature', title: 'NDA on request', text: 'We sign a non-disclosure agreement before you share sensitive information.' },
+    ],
+    note: 'These are our working practices, not certifications. We can write them into your contract.',
+  },
+
+  // Home page FAQ (also FAQPage structured data).
+  faq: [
+    {
+      q: 'Why outsource software development to Madagascar?',
+      a: 'Madagascar combines a lower cost structure than Europe or North America with a team that works in English and French. On UTC+3, it shares most of the working day with Europe, and agreed meeting slots work for North America and Australia. You get development skills at an optimized cost, without the constraints of local hiring.',
+    },
+    {
+      q: 'How does remote collaboration work?',
+      a: 'Video calls for key discussions, a chat channel for day-to-day questions, a shared ticketing tool to track requests and regular demos on a staging environment. If you already have your own tools, we work in them.',
+    },
+    {
+      q: 'Can you work with international companies?',
+      a: 'Yes. We work remotely with companies in different countries and time zones. At kickoff, we agree on regular meeting slots that fit your hours; the rest of the follow-up happens asynchronously in your tools.',
+    },
+    {
+      q: 'Do you speak English and French?',
+      a: 'Yes. Calls, written exchanges, documentation and deliverables can be in English or French, as you prefer.',
+    },
+    {
+      q: 'Can we hire a dedicated developer?',
+      a: 'Yes. A TicTek developer can join your team remotely, work in your tools and follow your priorities. Volume and duration are agreed together and can change over time.',
+    },
+    {
+      q: 'Do you provide white-label development?',
+      a: 'Yes. Agencies and partners can hand us all or part of their projects. You keep the client relationship and your brand; we have no direct contact with your client without your agreement.',
+    },
+    {
+      q: 'How do you manage project security?',
+      a: 'Access limited to the people working on your project, code in a Git repository with reviewed changes, no credentials sent in plain text, documentation delivered with the code and an NDA on request. Once the work is paid for, the source code and every access are yours.',
+    },
+    {
+      q: 'How are your services priced?',
+      a: 'It depends on the engagement model and your project: a quote per project, a monthly collaboration, a dedicated developer, an outsourced team or a maintenance contract. Every price is set out in writing before work starts.',
+    },
+    {
+      q: 'Can we start with a small project?',
+      a: 'Yes, and it is often the best way to start: a defined scope, a short timeline, and a concrete basis for deciding what comes next.',
+    },
+    {
+      q: 'Do you provide ongoing maintenance?',
+      a: 'Yes. We maintain and evolve applications in production, whether we built them or not (after a code review): fixes, updates, security patches and new features.',
+    },
   ],
 
   pages: {
     home: {
-      title: 'TicTek | Your outsourced software development team in Madagascar',
+      title: 'Software Development Outsourcing in Madagascar | TicTek',
       description:
-        'Outsource the development and maintenance of your software without hiring: a team of developers in Madagascar, on your working hours, in English and French.',
+        'TicTek is your remote software development team in Madagascar: custom software, dedicated developers, IT outsourcing and AI automation, in English or French.',
       hero: {
         // titleAccent is written in hollow handwritten letters (Home.jsx).
         title: 'Your outsourced tech team,',
         titleAccent: 'without hiring.',
         lede:
           'We build, maintain and evolve your software and IT systems from Madagascar, on your working hours.',
+        ctaContact: "Let's talk about your project",
         ctaWork: 'See our work',
         ctaServices: 'Explore our services',
+        trustLabel: 'What you get with TicTek',
         visual: {
           url: 'app.your-company.com',
           dashboard: 'Dashboard',
@@ -247,10 +456,238 @@ const en = {
         stackTitle: 'Our everyday stack',
         stackPause: 'Pause the scrolling',
       },
-      outsource: {
-        eyebrow: 'Outsourcing',
-        title: 'Hire or outsource?',
-        lede: 'Hand us your tools and IT systems: you stay in control, without the constraints of hiring.',
+      why: {
+        eyebrow: 'Why TicTek',
+        title: 'Why choose TicTek?',
+        lede: 'A technical partner that adapts to the way you work, not the other way around.',
+      },
+      services: {
+        eyebrow: 'Services',
+        title: 'Our services',
+        lede: 'Your business needs first, technology second.',
+        link: 'All services',
+      },
+      models: {
+        eyebrow: 'Engagement models',
+        title: 'Three ways to work together',
+        lede: 'Pick the model that fits your organization. You can switch along the way.',
+        link: 'Compare engagement models',
+      },
+      work: {
+        eyebrow: 'Case studies',
+        title: 'Our work',
+        lede: 'Projects delivered by TicTek as a service provider, from scoping to production.',
+        link: 'All case studies',
+        read: 'Read the case study',
+      },
+      process: {
+        eyebrow: 'Process',
+        title: 'Our process',
+        lede: 'Five steps, from the first call to ongoing support.',
+      },
+      clients: {
+        eyebrow: 'International collaboration',
+        title: 'We work on your time',
+        lede: 'From Madagascar (UTC+3): one to two hours from Europe, agreed meeting slots for North America and Australia.',
+      },
+      team: {
+        eyebrow: 'The team',
+        title: 'The people behind TicTek',
+        lede: 'You talk to us directly, with no middleman.',
+        link: 'More about us',
+      },
+      faq: {
+        eyebrow: 'FAQ',
+        title: 'Frequently asked questions',
+      },
+    },
+
+    services: {
+      title: 'Software Development & IT Outsourcing Services | TicTek',
+      description:
+        'Custom software development, dedicated developers, IT outsourcing, white-label development, AI and business automation, maintenance: TicTek’s services.',
+      h1: 'Software development and IT outsourcing services',
+      lede:
+        'Six ways to support your business, each described by the need it answers. Not sure which one fits? Tell us about your project: it often spans several.',
+      labels: {
+        need: 'Your need',
+        deliverables: 'What we deliver',
+        audience: 'Who it’s for',
+        problem: 'The problem',
+        tech: 'Technologies',
+        projects: 'Related work',
+        cta: 'Discuss this service',
+      },
+      expertise: {
+        eyebrow: 'Technical expertise',
+        title: 'The expertise behind our services',
+        lede: 'The technical areas our team works in every day. Each one starts from a problem to solve.',
+      },
+      quality: {
+        title: 'Quality is part of every service',
+        items: [
+          'Automated tests written alongside the code and run on every change through CI/CD',
+          'Code review before every merge',
+          'Application security best practices (OWASP Top 10)',
+          'Containerized environments so staging matches production',
+        ],
+      },
+    },
+
+    work: {
+      title: 'Case Studies: Software, AI and Mobile Projects | TicTek',
+      description:
+        'Case studies of projects designed and built by TicTek: ride-hailing platform with AI and blockchain, architecture decision engine, AI job application assistant.',
+      h1: 'Our work',
+      lede:
+        'Projects delivered by TicTek as a service provider, from scoping to production. They show how we work and what we can build for you.',
+      labels: {
+        link: 'View project',
+        origin: { provider: 'Delivered as a service provider' },
+        context: 'Context',
+        problem: 'The problem',
+        solution: 'The solution',
+        features: 'Main features',
+        role: 'TicTek’s contribution',
+        facts: 'Key facts',
+        tech: 'Technologies',
+      },
+    },
+
+    collaboration: {
+      title: 'Engagement models: dedicated developer, team or white label | TicTek',
+      description:
+        'Dedicated developer, outsourced development team or white-label partnership: who each TicTek engagement model is for, when to choose it and how it works.',
+      h1: 'How to work with TicTek',
+      lede: 'Three engagement models, one method. Pick the one that fits your organization; you can switch along the way.',
+      processTitle: 'Our process',
+      processLede: 'Every step applies to an outsourced project. For a dedicated developer or a white-label partnership, we follow your own process.',
+      estimateTitle: 'What helps us estimate your project',
+      estimateItems: [
+        'The problem to solve and who will use the software',
+        'Existing tools or systems to connect',
+        'Your timing constraints and, if possible, a budget range',
+        'Any existing material: specifications, mockups, screenshots',
+      ],
+      faqTitle: 'Frequently asked questions',
+      faq: [
+        {
+          q: 'How much does a project cost?',
+          a: 'It depends on the engagement model, the scope, the integrations and the expected level of quality. The price is set out in a written quote after scoping, before any work starts. Sharing a budget range in the form helps us suggest a suitable approach.',
+        },
+        {
+          q: 'Can we change models along the way?',
+          a: 'Yes. Many collaborations start with a defined project, then continue as maintenance or with a dedicated developer. We adjust the setup with you.',
+        },
+        {
+          q: 'Do you work with clients in other time zones?',
+          a: 'Yes, we work internationally. Madagascar is on UTC+3 with no daylight saving time: one to two hours from France and Switzerland, seven to eight hours from Eastern Canada. At kickoff we agree on regular meeting slots that fit your hours; the rest of the follow-up happens asynchronously in your tools.',
+        },
+        {
+          q: 'Can you take over an existing application?',
+          a: 'Yes. We start by reviewing the code, dependencies and infrastructure to assess the project, then propose a takeover plan.',
+        },
+      ],
+    },
+
+    pricing: {
+      title: 'Pricing: flexible pricing based on your needs | TicTek',
+      description:
+        'Quote per project, monthly collaboration, dedicated developer, outsourced team or maintenance contract: how TicTek prices its work and how to get a quote.',
+      h1: 'Flexible Pricing Based on Your Needs.',
+      lede:
+        'Every project is different. Our prices depend on your needs, your project and the engagement model you choose, and they are always set out in writing before work starts.',
+      optionsTitle: 'Pricing options',
+      fitLabel: 'Best for:',
+      options: [
+        {
+          id: 'project-quote',
+          icon: 'project',
+          title: 'Quote per project',
+          text: 'One overall price for a scope defined together during scoping.',
+          points: ['Price, deliverables and milestones set in the quote', 'Out-of-scope changes priced separately, before any work'],
+          fit: 'applications, business software, MVPs, white-label projects.',
+        },
+        {
+          id: 'monthly',
+          icon: 'calendar',
+          title: 'Monthly collaboration',
+          text: 'A monthly volume of development time, for a product that keeps evolving.',
+          points: ['Volume agreed together and adjustable', 'Time tracking shared with you'],
+          fit: 'products in progress, evolving needs, agencies.',
+        },
+        {
+          id: 'dedicated-developer',
+          icon: 'staff-augmentation',
+          title: 'Dedicated developer',
+          text: 'A developer who joins your team, billed by the month.',
+          points: ['Profile chosen according to your needs', 'Duration agreed together'],
+          fit: 'companies with an in-house tech team.',
+        },
+        {
+          id: 'outsourced-team',
+          icon: 'layers',
+          title: 'Outsourced team',
+          text: 'A team that takes charge of a full project or a defined scope.',
+          points: ['A single contact who runs the project', 'Milestones and payment schedule set in the quote'],
+          fit: 'companies without a development team.',
+        },
+        {
+          id: 'maintenance',
+          icon: 'maintenance',
+          title: 'Maintenance contract',
+          text: 'A monthly amount to keep an application in production secure and up to date.',
+          points: ['Security and dependency updates', 'Fixes and small improvements'],
+          fit: 'applications already in production.',
+        },
+      ],
+      factorsTitle: 'What drives the price',
+      factors: [
+        { title: 'Engagement model', text: 'A project quote, a monthly volume, a dedicated developer or a maintenance contract.' },
+        { title: 'Scope', text: 'Number of screens, features and user types.' },
+        { title: 'Platforms', text: 'Web, iOS, Android, or several at once.' },
+        { title: 'Integrations', text: 'Connections to your existing tools, online payment, third-party APIs, AI.' },
+        { title: 'Requirements', text: 'Data volume, security, test coverage, expected availability.' },
+        { title: 'Timeline', text: 'A tight schedule can require more developers working in parallel.' },
+      ],
+      stepsTitle: 'How to get a quote',
+      steps: [
+        'Describe your project through the contact form, ideally with a budget range.',
+        'We discuss it in a first call, free and with no commitment.',
+        'We send you a written proposal: scope, milestones, schedule and price.',
+      ],
+      faqTitle: 'Frequently asked questions',
+      faq: [
+        {
+          q: 'Why don’t you publish fixed prices?',
+          a: 'Two similar-looking projects can take very different effort depending on integrations, volumes and requirements. A price shown without knowing your project would be either misleading or padded just in case. We prefer to give you a precise written quote.',
+        },
+        {
+          q: 'Is the first call free?',
+          a: 'Yes, the first call is free and with no commitment. For a complex project, we may suggest a scoping phase before the final quote; it is then priced upfront.',
+        },
+        {
+          q: 'Can we start small?',
+          a: 'Yes. A small first project is a good way to test the collaboration before committing to more.',
+        },
+        {
+          q: 'How does payment work?',
+          a: 'The payment schedule (deposit, milestones, balance or monthly billing) is stated in every quote and agreed with you before any work starts.',
+        },
+      ],
+    },
+
+    outsourcing: {
+      title: 'Software Development Outsourcing to Madagascar | TicTek',
+      description:
+        'Outsource your software development to TicTek, a remote team in Madagascar: dedicated developers, outsourced team or white label, in English or French.',
+      h1: 'Outsource Your Software Development with TicTek.',
+      lede:
+        'A remote development team based in Madagascar that builds, maintains and evolves your software, in English or French, at an optimized cost and with the professional practices you expect.',
+      why: {
+        eyebrow: 'Why outsource',
+        title: 'Hire in-house or outsource?',
+        lede: 'Outsourcing lets you move forward on your software without the cost, delay and management load of hiring.',
         inhouse: {
           title: 'Hiring in-house',
           items: [
@@ -265,234 +702,110 @@ const en = {
           title: 'Outsourcing to TicTek',
           items: [
             'We start as soon as the scope is agreed',
-            'Fixed price or hourly, as you need',
-            'Web, mobile, back end, AI: a full team',
+            'Capacity that follows your projects',
+            'Web, mobile, back end, AI: several skills in one team',
             'Documented code: continuity is ensured',
             'A single contact who runs things for you',
           ],
         },
-        hours: 'On your hours: one to two hours from Europe, agreed meeting slots for the rest of the world.',
       },
-      team: {
-        eyebrow: 'The team',
-        title: 'The people behind TicTek',
-        lede: 'You talk to us directly, no middleman.',
-        link: 'More about us',
+      madagascar: {
+        eyebrow: 'Why Madagascar',
+        title: 'Why work with a team in Madagascar?',
+        items: [
+          {
+            icon: 'clock',
+            title: 'A convenient time zone',
+            text: 'UTC+3, no daylight saving time: one to two hours from Western Europe, and agreed meeting slots with North America and Australia.',
+          },
+          {
+            icon: 'globe',
+            title: 'French and English',
+            text: 'French is widely used in business in Madagascar, and our team works in English with international clients.',
+          },
+          {
+            icon: 'coins',
+            title: 'Optimized costs',
+            text: 'A lower cost structure than in Europe or North America: more of your budget goes into your product.',
+          },
+          {
+            icon: 'code',
+            title: 'Professional standards',
+            text: 'Modern tools and practices: Git, code reviews, automated tests, continuous integration and documentation.',
+          },
+        ],
       },
-      services: {
-        title: 'What we build for you',
-        lede: 'Your problem first, technology second.',
-        link: 'All services',
-        otherTitle: 'Something else?',
-        otherText: 'Describe it, we’ll tell you how we can help.',
-      },
-      work: {
-        title: 'Recent work',
-        link: 'All projects',
-      },
-      clients: {
-        eyebrow: 'On your hours',
-        title: 'We work on your time',
-        lede: 'From Madagascar (UTC+3): one to two hours from Europe, agreed meeting slots for North America.',
-      },
-      hours: {
-        languagesLabel: 'We work in',
-        languages: ['English', 'French'],
-        listLabel: 'Current time in Madagascar and where our clients are',
-        ours: 'Our time · UTC+3',
-        same: 'Same time',
-        hourUnit: 'h',
-        versus: 'compared with Madagascar',
+      remote: {
+        title: 'The benefits of a remote team',
+        items: [
+          'No local recruitment, onboarding or office costs',
+          'Capacity that grows or shrinks with your projects',
+          'Several skills in one team, instead of one hire per skill',
+          'Work that moves forward asynchronously while you are offline',
+          'Documented code: the knowledge stays with your company',
+        ],
       },
       models: {
-        title: 'Three ways to work together',
-        lede: 'With or without a tech team.',
-        link: 'Compare models',
+        eyebrow: 'Engagement models',
+        title: 'Choose your engagement model',
+        lede: 'Three setups, depending on whether you have a tech team and how much you want to delegate.',
+      },
+      skills: {
+        title: 'Skills you can count on',
+        lede: 'The technologies our team works with. Tell us what you need: we will tell you honestly whether we are the right fit.',
+      },
+      audiences: {
+        title: 'Who Can Benefit from Our Services?',
+        items: [
+          { icon: 'building', title: 'SMEs', text: 'Get custom tools and automation without building an in-house tech team.' },
+          { icon: 'rocket', title: 'Startups', text: 'Build your MVP or grow your team quickly while keeping your costs under control.' },
+          { icon: 'white-label', title: 'Digital Agencies', text: 'Take on more projects with a white-label development partner.' },
+          { icon: 'briefcase', title: 'Consulting Firms', text: 'Turn your recommendations into working software for your clients.' },
+          { icon: 'users', title: 'Non-Technical Businesses', text: 'Rely on a team that explains things clearly and takes care of the technical side.' },
+          { icon: 'staff-augmentation', title: 'Companies with Existing IT Teams', text: 'Add capacity or a specific skill to your team, for as long as you need.' },
+        ],
       },
       process: {
-        title: 'Our method',
+        title: 'How we work together',
+        lede: 'A clear method, whatever the engagement model.',
       },
-      why: {
-        title: 'Why work with TicTek?',
-        lede: 'A serious tech team, at a rate that stays reasonable.',
-        priceTitle: 'Clear pricing',
-        priceText: 'The exact rate is always stated in the quote, before work starts.',
-        priceLink: 'See pricing',
-        items: [
-          { icon: 'staff-augmentation', title: 'A direct contact', text: 'You talk to the developers, no middleman.' },
-          { icon: 'project', title: 'An estimate before we start', text: 'Scope, schedule and budget set out in writing.' },
-          { icon: 'saas-api', title: 'One team, from web to AI', text: 'Web, mobile, backend, automation, AI and Web3.' },
-          { icon: 'check', title: 'You see the project move', text: 'Regular demos, tested and documented code.' },
+      maintenance: {
+        title: 'Maintenance after delivery',
+        text: 'Delivery is not the end of the road. We can keep your software secure and up to date, and keep building it as your business evolves.',
+        points: [
+          'Fixes and planned improvements',
+          'Dependency updates and security patches',
+          'Monthly volume agreed together',
         ],
+        link: 'Maintenance & technical support',
       },
-    },
-
-    services: {
-      title: 'Services: web, mobile, SaaS, APIs, AI and Web3 | TicTek',
-      description:
-        'Web and business applications, mobile apps, SaaS and APIs, automation, AI, blockchain and Web3, maintenance and team augmentation: TicTek’s services.',
-      h1: 'Custom software development services',
-      lede:
-        'Seven areas of work, presented by the problem they solve. If your need doesn’t fit any of them, tell us about it: it often spans several.',
-      labels: {
-        problem: 'The problem',
-        deliverables: 'What we deliver',
-        audience: 'Who it’s for',
-        tech: 'Technologies',
-        projects: 'Related work',
+      ctaMid: {
+        title: 'Not sure which setup fits?',
+        text: 'Describe your situation: we will suggest the right engagement model in a first call, free and with no commitment.',
       },
-      quality: {
-        title: 'Quality is part of every service',
-        items: [
-          'Automated tests written alongside the code and run on every change through CI/CD',
-          'Code review before every merge',
-          'Application security best practices (OWASP Top 10)',
-          'Containerized environments so staging matches production',
-        ],
-      },
-    },
-
-    work: {
-      title: 'Work: web, mobile and software projects | TicTek',
-      description: 'Projects designed and built by TicTek: ride-hailing platform with AI and blockchain, architecture decision tool, web and mobile apps.',
-      h1: 'Our work',
-      lede: 'A few projects designed and built by the TicTek team.',
-      labels: {
-        link: 'View project',
-      },
-    },
-
-    collaboration: {
-      title: 'Fixed-scope, white-label or team augmentation | TicTek',
-      description:
-        'Fixed-scope projects, white-label development for agencies or team augmentation: how TicTek works with you, step by step.',
-      h1: 'How to work with TicTek',
-      lede: 'Three engagement models, one method. Pick the one that fits your organization; we can switch along the way.',
-      fitLabel: 'Best for:',
-      processTitle: 'Project steps',
-      processLede: 'Every step applies to a fixed-scope project. For white-label or team augmentation, we follow your own process.',
-      estimateTitle: 'What helps us estimate your project',
-      estimateItems: [
-        'The problem to solve and who will use the software',
-        'Existing tools or systems to connect',
-        'Your timing constraints and, if possible, a budget range',
-        'Any existing material: specifications, mockups, screenshots',
-      ],
-      faqTitle: 'Frequently asked questions',
+      faqTitle: 'Outsourcing: frequently asked questions',
       faq: [
         {
-          q: 'How much does a project cost?',
-          a: 'It depends on scope, integrations and the expected level of quality. Our hourly rate starts at US$8; the total budget is set out in a detailed estimate after scoping. Sharing a budget range in the form helps us suggest a suitable approach.',
+          q: 'What can we outsource to TicTek?',
+          a: 'The development of a new application, part of an existing project, maintenance, process automation or AI integration. You can also add a developer to your own team.',
         },
         {
-          q: 'How does remote work happen in practice?',
-          a: 'Video calls for key discussions, chat for day-to-day questions, a ticketing tool to track requests, and regular demos on a staging environment.',
+          q: 'How quickly can we start?',
+          a: 'As soon as the scope and engagement model are agreed. A first call is enough to tell you when we can start on your project.',
         },
         {
-          q: 'Do you work with clients in other time zones?',
-          a: 'Yes, we work internationally. Madagascar is on UTC+3 with no daylight saving time: one to two hours from France and Switzerland, seven to eight hours from Eastern Canada. At kickoff we agree on regular meeting slots that fit your hours; the rest of the follow-up happens asynchronously in your tools.',
+          q: 'Who owns the code?',
+          a: 'You do. Once the work is paid for, the source code and every access are yours. Ideally, the code lives in your own repository from day one.',
         },
         {
-          q: 'Can you take over an existing application?',
-          a: 'Yes. We start by reviewing the code, dependencies and infrastructure to assess the project, then propose a takeover plan.',
+          q: 'Can we bring development back in-house later?',
+          a: 'Yes. Documented code, a full Git history and a handover with your team make that transition straightforward.',
         },
       ],
     },
 
-    pricing: {
-      title: 'Pricing: how we estimate your software project | TicTek',
-      description:
-        'Hourly rate from US$8. Fixed price, time and materials, monthly maintenance or white label: how TicTek prices its work and what drives the cost of a project.',
-      h1: 'Pricing',
-      lede:
-        'Every software project is different, but here is a benchmark: our hourly rate starts at US$8. Here is how we bill, what drives the price and how to get an estimate.',
-      rate: {
-        label: 'Hourly rate',
-        from: 'From',
-        value: 'US$8',
-        unit: '/ hour',
-        note: 'The exact rate depends on the skills required and the size of the engagement. It is always stated in the quote, before any work starts.',
-      },
-      modelsTitle: 'How we bill',
-      fitLabel: 'Best for:',
-      models: [
-        {
-          id: 'fixed-price',
-          title: 'Fixed price',
-          text: 'One overall price agreed upfront, for a scope defined together during scoping.',
-          points: [
-            'Price, deliverables and milestones set in the quote',
-            'Out-of-scope changes priced separately, before any work',
-            'Payment schedule stated in the quote',
-          ],
-          fit: 'projects with a clear need: application, business software, MVP.',
-        },
-        {
-          id: 'time-and-materials',
-          title: 'Time and materials',
-          text: 'You book development time, billed per hour or per day. The scope can change freely.',
-          points: [
-            'From US$8 per hour, exact rate stated in the quote',
-            'Time tracking shared with you',
-            'Volume adjusted to your needs',
-          ],
-          fit: 'team augmentation, products in progress, evolving needs.',
-        },
-        {
-          id: 'maintenance',
-          title: 'Monthly maintenance',
-          text: 'A monthly amount to maintain and improve an application in production.',
-          points: [
-            'Security and dependency updates',
-            'Fixes and small improvements',
-            'Monthly volume agreed together',
-          ],
-          fit: 'applications already in production.',
-        },
-        {
-          id: 'white-label',
-          title: 'White label',
-          text: 'Terms designed for agencies that include our development work in their own offers.',
-          points: [
-            'Fixed price per project or time and materials',
-            'Invoiced to your agency only',
-            'Complete discretion towards your clients',
-          ],
-          fit: 'web, digital and marketing agencies.',
-        },
-      ],
-      factorsTitle: 'What drives the price',
-      factors: [
-        { title: 'Scope', text: 'Number of screens, features and user types.' },
-        { title: 'Platforms', text: 'Web, iOS, Android, or several at once.' },
-        { title: 'Integrations', text: 'Connections to your existing tools, online payment, third-party APIs, AI.' },
-        { title: 'Design', text: 'Mockups provided by you, or interface design by our team.' },
-        { title: 'Requirements', text: 'Data volume, security, test coverage, expected availability.' },
-        { title: 'Timeline', text: 'A tight schedule can require more developers working in parallel.' },
-      ],
-      stepsTitle: 'How to get a quote',
-      steps: [
-        'Describe your project through the contact form, ideally with a budget range.',
-        'We discuss it in a first call, free and with no commitment.',
-        'We send you a written estimate: scope, milestones, schedule and price.',
-      ],
-      faqTitle: 'Frequently asked questions',
-      faq: [
-        {
-          q: 'Why no fixed price per type of project?',
-          a: 'Our hourly rate starts at US$8, but the total cost depends on the time required. Two similar-looking applications can take very different effort depending on integrations, volumes and requirements. A flat price shown without knowing your project would be either misleading or padded just in case.',
-        },
-        {
-          q: 'Is the first call free?',
-          a: 'Yes, the first call is free and with no commitment. For a complex project, we may suggest a scoping phase before the final estimate; it is then priced upfront.',
-        },
-        {
-          q: 'How does payment work?',
-          a: 'The payment schedule (deposit, milestones, balance) is stated in every quote and agreed with you before any work starts.',
-        },
-      ],
-      cta: 'Request a quote',
-    },
+    // Country pages (Market.jsx), keys from data/markets.js.
+    ...marketPages,
 
     careers: {
       title: 'Careers: send an open application | TicTek',
@@ -528,47 +841,52 @@ const en = {
     },
 
     about: {
-      title: 'About TicTek, a developer team in Antananarivo, Madagascar',
+      title: 'About TicTek: a software development team in Madagascar',
       description:
-        'TicTek is a team of developers based in Antananarivo, Madagascar, working internationally: mission, skills, how we work, quality approach and remote collaboration.',
+        'TicTek is a software development team in Antananarivo, Madagascar, working with companies worldwide: mission, vision, values, team, skills and how we work.',
       h1: 'About TicTek',
       lede:
-        'TicTek is a team of developers based in Antananarivo, Madagascar, working remotely with clients internationally. We design, build and maintain software for companies looking for a reliable, flexible and cost-conscious technical partner.',
-      sections: [
+        'TicTek is a software development team based in Antananarivo, Madagascar, working remotely with companies worldwide, in English and French. We design, build and maintain software for businesses looking for a reliable, flexible and cost-conscious technical partner.',
+      intro: [
         {
           id: 'mission',
           title: 'Our mission',
-          paragraphs: [
-            'Make custom software development accessible to companies without a tech team, and provide reliable extra capacity to those who have one.',
-          ],
+          text: 'Give companies of every size access to a dependable development team: custom software for those without a tech team, and reliable extra capacity for those who have one.',
         },
         {
-          id: 'team',
-          title: 'How we work',
-          paragraphs: [
-            'Every project has a named technical lead who is your contact from scoping to delivery.',
-            'Work is organized in short iterations tracked in a shared ticketing tool. Every change goes through code review and automated tests before it ships.',
-          ],
+          id: 'vision',
+          title: 'Our vision',
+          text: 'Show that a team based in Madagascar can be a long-term technical partner for international companies, chosen for the quality of its work and its communication, not only for its costs.',
         },
-        {
-          id: 'quality',
-          title: 'Our approach to quality',
-          paragraphs: [
-            'We treat quality as a daily discipline, not an end-of-project phase: typing, automated tests, continuous integration, security best practices and containerized environments.',
-            'The goal is simple: software your team can keep evolving without having to rewrite it.',
-          ],
-        },
-        {
-          id: 'remote',
-          title: 'Remote collaboration',
-          paragraphs: [
-            'From Madagascar, we work remotely with companies internationally, in English and French. Madagascar is on UTC+3, which gives a wide overlap with Europe; for other time zones, we agree on suitable meeting slots.',
-            'We communicate by video call, chat and shared tracking tools, following your habits.',
-          ],
-        },
+      ],
+      valuesTitle: 'Our values',
+      values: [
+        { title: 'Transparency', text: 'Clear estimates, honest advice, including when the answer is “you don’t need this”.' },
+        { title: 'Reliability', text: 'We do what we say, on the agreed schedule, and we tell you early when something changes.' },
+        { title: 'Quality', text: 'Tested, reviewed and documented code that your team can keep evolving.' },
+        { title: 'Partnership', text: 'We work as an extension of your team, with your goals in mind.' },
       ],
       teamTitle: 'The team',
       teamLede: 'The people who design and build your projects, and who you talk to directly.',
+      workTitle: 'How we work',
+      work: [
+        {
+          title: 'Organization',
+          text: 'Every project has a named technical lead, your contact from scoping to delivery. Work is organized in short iterations, tracked in a shared ticketing tool.',
+        },
+        {
+          title: 'Quality',
+          text: 'Every change goes through code review and automated tests before it ships. Typing, continuous integration and containerized environments are part of our daily routine.',
+        },
+        {
+          title: 'Collaboration',
+          text: 'Video calls for key discussions, chat for day-to-day questions, regular demos. We follow your habits and tools when you have them.',
+        },
+        {
+          title: 'Remote, from Madagascar',
+          text: 'Madagascar is on UTC+3, with a wide overlap with Europe. For other time zones, we agree on meeting slots that fit your hours.',
+        },
+      ],
       skillsTitle: 'Technical skills',
       skills: [
         { name: 'Front end', items: ['TypeScript', 'React', 'Next.js', 'Angular', 'Vue.js'] },
@@ -576,24 +894,27 @@ const en = {
         { name: 'Mobile', items: ['React Native', 'Expo'] },
         { name: 'Data', items: ['PostgreSQL', 'MySQL', 'SQL Server', 'MongoDB', 'Redis'] },
         { name: 'DevOps', items: ['Docker', 'CI/CD', 'GitHub Actions', 'GitLab CI'] },
-        { name: 'AI and automation', items: ['OpenAI API', 'Gemini', 'n8n'] },
+        { name: 'AI and automation', items: ['OpenAI API', 'Gemini', 'Claude', 'n8n'] },
         { name: 'Blockchain and Web3', items: ['Solidity', 'Hardhat', 'Ethers.js', 'Polygon'] },
       ],
+      commitmentTitle: 'Our commitment to clients',
+      commitmentLede: 'What you can expect from us on every project.',
     },
 
     contact: {
-      title: 'Contact: tell us about your software project | TicTek',
+      title: 'Contact: Discuss Your Software Project | TicTek',
       description:
-        'Describe your web, mobile, SaaS, automation or AI integration project. TicTek replies by email to set up a first call.',
-      h1: "Let's talk about your project",
-      lede: 'Describe your need in a few lines. We will reply by email to set up a first call.',
+        'Tell TicTek about your project: dedicated developer, outsourced team, white label, custom software, AI automation or maintenance. Reply within one business day.',
+      h1: 'Discuss Your Project',
+      lede: 'Tell us about your needs in a few lines. We reply within one business day to set up a first call, in English or French.',
+      formTitle: 'Tell us about your project',
       nextTitle: 'What happens next?',
       next: [
         'We read your request and reply by email, with any questions we have.',
-        'We set up a first video call, with no commitment.',
-        'If the project is a good fit, we propose a scoping phase and a written estimate.',
+        'We set up a first video call, free and with no commitment.',
+        'We send you a written proposal adapted to your needs and engagement model.',
       ],
-      directTitle: 'Email us directly',
+      directTitle: 'Contact us directly',
     },
 
     blog: {
@@ -622,7 +943,7 @@ const en = {
           id: 'forms',
           title: 'Contact and application forms',
           paragraphs: [
-            'The information you enter (name, email, project description or application) is only used to reply to you. It reaches us by email through the EmailJS service, then stays in our mailbox for as long as needed to follow up on your request.',
+            'The information you enter (name, email, company, country, website, project description, budget and timeline, or application) is only used to reply to you. It reaches us by email through the EmailJS service, then stays in our mailbox for as long as needed to follow up on your request.',
             'It is never sold or used for marketing.',
           ],
         },

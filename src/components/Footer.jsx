@@ -1,4 +1,4 @@
-import { analyticsId, brand, companyIds, serviceIds } from '../data/site';
+import { analyticsId, brand, companyIds, marketNavIds, offerIds } from '../data/site';
 import { useLocale } from '../i18n';
 import ContactList from './ContactList';
 
@@ -17,25 +17,30 @@ export default function Footer() {
         <div>
           <h2 className="footer-title">{t.footer.servicesTitle}</h2>
           <ul className="footer-links">
-            {serviceIds.map((id) => (
+            {offerIds.map((id) => (
               <li key={id}>
-                <a href={`${href('services')}#${id}`}>{t.services[id].title}</a>
+                <a href={`${href('services')}#${id}`}>{t.offers[id].title}</a>
               </li>
             ))}
           </ul>
         </div>
 
         <div>
-          <h2 className="footer-title">{t.footer.companyTitle}</h2>
+          <h2 className="footer-title">{t.footer.marketsTitle}</h2>
+          <ul className="footer-links">
+            {marketNavIds.map((id) => (
+              <li key={id}>
+                <a href={href(id)}>{t.common.nav[id]}</a>
+              </li>
+            ))}
+          </ul>
+          <h2 className="footer-title footer-title-gap">{t.footer.companyTitle}</h2>
           <ul className="footer-links">
             {companyIds.map((id) => (
               <li key={id}>
                 <a href={href(id)}>{t.common.nav[id]}</a>
               </li>
             ))}
-            <li>
-              <a href={href('contact')}>{t.common.nav.contact}</a>
-            </li>
           </ul>
         </div>
 

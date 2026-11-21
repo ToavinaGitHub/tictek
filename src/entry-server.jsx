@@ -4,11 +4,14 @@
 // form islands (src/client/forms.jsx).
 import { renderToStaticMarkup } from 'react-dom/server';
 import { findPost, languages, pageIds, paths, postPageIds } from './data/site';
+import { marketIds } from './data/markets';
 import { LocaleProvider } from './i18n';
 import { renderHead } from './seo/head';
 import Layout from './components/Layout';
 import Home from './pages/Home';
 import Services from './pages/Services';
+import Outsourcing from './pages/Outsourcing';
+import Market from './pages/Market';
 import Work from './pages/Work';
 import Collaboration from './pages/Collaboration';
 import About from './pages/About';
@@ -25,6 +28,8 @@ export { siteUrl } from './data/site';
 const PAGES = {
   home: Home,
   services: Services,
+  outsourcing: Outsourcing,
+  ...Object.fromEntries(marketIds.map((id) => [id, Market])),
   work: Work,
   collaboration: Collaboration,
   pricing: Pricing,

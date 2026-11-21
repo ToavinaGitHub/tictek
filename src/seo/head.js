@@ -1,4 +1,5 @@
-import { absoluteUrl, brand, servedCountries, contactInfo, findPost, languages, defaultLang, paths, serviceIds, siteUrl, socialLinks } from '../data/site';
+import { absoluteUrl, brand, servedCountries, contactInfo, findPost, languages, defaultLang, paths, offerIds, siteUrl, socialLinks } from '../data/site';
+import { findMarket } from '../data/markets';
 import { translations } from '../i18n';
 import { team } from '../data/team';
 
@@ -11,13 +12,15 @@ const jsonLd = (data) =>
 
 const organizationId = `${siteUrl}/#organization`;
 
-function organization() {
+function organization(lang = defaultLang) {
   return {
     '@type': 'Organization',
     '@id': organizationId,
     name: brand.name,
     alternateName: brand.alternateNames,
-    description: translations.fr.pages.home.description,
+    slogan: translations[lang].common.slogan,
+    description: translations[lang].pages.home.description,
+    knowsLanguage: ['fr', 'en'],
     url: absoluteUrl('/'),
     // Google needs a logo at least 112px on each side: the square mark, not the wordmark.
     logo: absoluteUrl(brand.logoSquare),
@@ -28,7 +31,7 @@ function organization() {
       addressLocality: contactInfo.city,
       addressCountry: contactInfo.countryCode,
     },
-    areaServed: servedCountries.map((code) => ({ '@type': 'Country', name: code.toUpperCase() })),
+    areaServed: servedCountries.map((code) => ({ '@type': 'Country', name: code })),
     sameAs: Object.values(socialLinks),
     founder: team
       .filter((member) => member.founder)
@@ -48,6 +51,25 @@ function pageMeta(pageId, lang) {
   return { title: `${post.title[lang]} | ${brand.name}`, description: post.excerpt[lang], post };
 }
 
+/** Questions shown on a page (Faq.jsx), for its FAQPage structured data. */
+function faqFor(pageId, lang) {
+  const page = translations[lang].pages[pageId];
+  return page?.faq?.length ? page.faq : null;
+}
+
+function faqPage(items, url, lang) {
+  return {
+    '@type': 'FAQPage',
+    '@id': `${url}#faq`,
+    inLanguage: lang,
+    mainEntity: items.map((item) => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: { '@type': 'Answer', text: item.a },
+    })),
+  };
+}
+
 function structuredData(pageId, lang) {
   const t = translations[lang];
   const url = absoluteUrl(paths[lang][pageId]);
@@ -65,7 +87,7 @@ function structuredData(pageId, lang) {
             { '@type': 'ListItem', position: 3, name: post.title[lang], item: url },
           ],
         },
-        organization(),
+        organization(lang),
         {
           '@type': 'BlogPosting',
           headline: post.title[lang],
@@ -86,7 +108,7 @@ function structuredData(pageId, lang) {
     return {
       '@context': 'https://schema.org',
       '@graph': [
-        organization(),
+        organization(lang),
         {
           '@type': 'WebSite',
           '@id': `${absoluteUrl(paths[lang].home)}#website`,
@@ -96,32 +118,56 @@ function structuredData(pageId, lang) {
           inLanguage: lang,
           publisher: { '@id': organizationId },
         },
+        faqPage(t.faq, url, lang),
       ],
     };
   }
 
+  // Country pages sit under the outsourcing page in the breadcrumb.
+  const parent = findMarket(pageId) ? 'outsourcing' : null;
+  const crumbs = [
+    { name: t.common.nav.home, path: paths[lang].home },
+    ...(parent ? [{ name: t.common.nav[parent], path: paths[lang][parent] }] : []),
+    { name: t.common.nav[pageId], path: paths[lang][pageId] },
+  ];
   const graph = [
     {
       '@type': 'BreadcrumbList',
-      itemListElement: [
-        { '@type': 'ListItem', position: 1, name: t.common.nav.home, item: absoluteUrl(paths[lang].home) },
-        { '@type': 'ListItem', position: 2, name: t.common.nav[pageId], item: url },
-      ],
+      itemListElement: crumbs.map((crumb, i) => ({ '@type': 'ListItem', position: i + 1, name: crumb.name, item: absoluteUrl(crumb.path) })),
     },
   ];
 
   if (pageId === 'services') {
-    graph.push(organization());
-    for (const id of serviceIds) {
+    graph.push(organization(lang));
+    for (const id of offerIds) {
       graph.push({
         '@type': 'Service',
-        name: t.services[id].title,
-        description: t.services[id].short,
+        name: t.offers[id].title,
+        description: t.offers[id].short,
         url: `${url}#${id}`,
         provider: { '@id': organizationId },
+        areaServed: 'Worldwide',
+        availableLanguage: ['fr', 'en'],
       });
     }
   }
+
+  const market = findMarket(pageId);
+  if (pageId === 'outsourcing' || market) {
+    graph.push(organization(lang), {
+      '@type': 'Service',
+      name: t.pages[pageId].h1.replace(/\.$/, ''),
+      serviceType: 'Software development outsourcing',
+      description: t.pages[pageId].description,
+      url,
+      provider: { '@id': organizationId },
+      areaServed: market ? { '@type': 'Country', name: market.flag.toUpperCase() } : 'Worldwide',
+      availableLanguage: ['fr', 'en'],
+    });
+  }
+
+  const faq = faqFor(pageId, lang);
+  if (faq) graph.push(faqPage(faq, url, lang));
 
   return { '@context': 'https://schema.org', '@graph': graph };
 }

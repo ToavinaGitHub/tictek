@@ -13,7 +13,10 @@ const contact = {
   ...CONTACT_INITIAL,
   name: 'Jeanne Martin',
   email: 'jeanne@entreprise.ch',
-  need: 'web',
+  company: 'Entreprise SA',
+  country: 'Suisse',
+  language: 'fr',
+  collaboration: 'custom',
   message: 'Nous voulons remplacer nos tableurs de suivi de commandes.',
 };
 
@@ -29,14 +32,18 @@ const application = {
 
 test('contact: a complete form is valid, optional fields can stay empty', () => {
   assert.deepEqual(validateContact(contact), {});
-  assert.deepEqual(validateContact({ ...contact, company: '', budget: '', timeline: '' }), {});
+  assert.deepEqual(validateContact({ ...contact, companyWebsite: '', budget: '', timeline: '' }), {});
+  assert.deepEqual(validateContact({ ...contact, companyWebsite: 'www.entreprise.ch', budget: '20k CHF', timeline: 'quarter' }), {});
 });
 
 test('contact: required fields are reported', () => {
   assert.deepEqual(validateContact(CONTACT_INITIAL), {
     name: 'nameRequired',
     email: 'emailRequired',
-    need: 'needRequired',
+    company: 'companyRequired',
+    country: 'countryRequired',
+    language: 'languageRequired',
+    collaboration: 'collaborationRequired',
     message: 'messageRequired',
   });
 });
@@ -55,10 +62,20 @@ test('contact: email format is checked', () => {
 });
 
 test('contact: unknown select values, short and oversized text are rejected', () => {
-  assert.equal(validateContact({ ...contact, need: 'hacking' }).need, 'needRequired');
+  assert.equal(validateContact({ ...contact, collaboration: 'hacking' }).collaboration, 'collaborationRequired');
+  assert.equal(validateContact({ ...contact, language: 'de' }).language, 'languageRequired');
   assert.equal(validateContact({ ...contact, message: 'Un site' }).message, 'messageTooShort');
   assert.equal(validateContact({ ...contact, company: 'x'.repeat(121) }).company, 'tooLong');
   assert.equal(validateContact({ ...contact, message: 'x'.repeat(5001) }).message, 'tooLong');
+});
+
+test('contact: company website accepts a domain or an http(s) URL', () => {
+  for (const companyWebsite of ['entreprise.ch', 'www.entreprise.ch', 'https://entreprise.ch/fr/']) {
+    assert.equal(validateContact({ ...contact, companyWebsite }).companyWebsite, undefined, companyWebsite);
+  }
+  for (const companyWebsite of ['entreprise', 'javascript:alert(1)', 'ftp://entreprise.ch', 'pas un site']) {
+    assert.equal(validateContact({ ...contact, companyWebsite }).companyWebsite, 'websiteInvalid', companyWebsite);
+  }
 });
 
 test('careers: a complete application is valid', () => {

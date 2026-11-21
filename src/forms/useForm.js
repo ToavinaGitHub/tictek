@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { isLikelySpam } from './validate';
 import { trackEvent } from '../analytics';
 
@@ -6,8 +6,9 @@ import { trackEvent } from '../analytics';
  * State and handlers shared by the contact and careers forms: values,
  * per-field errors, submit status, anti-spam timing and focus management.
  * `submit(values)` sends the form and resolves to { confirmed }.
+ * `trackParams(values)`: optional extra parameters for the GA4 conversion event.
  */
-export function useForm({ idPrefix, initialValues, validate, submit }) {
+export function useForm({ idPrefix, initialValues, validate, submit, trackParams }) {
   const [values, setValues] = useState(initialValues);
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState('idle'); // idle | sending | success | error
@@ -29,6 +30,9 @@ export function useForm({ idPrefix, initialValues, validate, submit }) {
   }, [status]);
 
   const fieldId = (name) => `${idPrefix}-${name}`;
+
+  /** Sets one value from code (e.g. a choice preselected from the URL). */
+  const setValue = useCallback((name, value) => setValues((current) => ({ ...current, [name]: value })), []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -64,7 +68,7 @@ export function useForm({ idPrefix, initialValues, validate, submit }) {
     try {
       const result = await submit(values);
       // GA4 conversion (sent only if the visitor accepted analytics).
-      trackEvent('generate_lead', { form_name: idPrefix });
+      trackEvent('generate_lead', { form_name: idPrefix, ...(trackParams?.(values) ?? {}) });
       setConfirmed(result.confirmed);
       setValues(initialValues);
       setStatus('success');
@@ -93,6 +97,7 @@ export function useForm({ idPrefix, initialValues, validate, submit }) {
     ready,
     fieldId,
     inputProps,
+    setValue,
     handleChange,
     handleSubmit,
     summaryRef,

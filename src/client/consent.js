@@ -62,6 +62,8 @@ function loadAnalytics() {
   script.async = true;
   script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(GA_ID)}`;
   document.head.appendChild(script);
+  // Lets page scripts send events that depend on consent (client/main.js).
+  window.dispatchEvent(new Event('tictek:analytics-granted'));
 }
 
 /** Withdrawal: stop collection and remove the GA cookies already set. */

@@ -3,6 +3,38 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "trailingSlash": true,
+  "redirects": [
+    {
+      "source": "/software-development-outsourcing-switzerland",
+      "destination": "/en/software-development-outsourcing-switzerland/",
+      "permanent": true
+    },
+    {
+      "source": "/software-development-outsourcing-switzerland/",
+      "destination": "/en/software-development-outsourcing-switzerland/",
+      "permanent": true
+    },
+    {
+      "source": "/software-development-outsourcing-canada",
+      "destination": "/en/software-development-outsourcing-canada/",
+      "permanent": true
+    },
+    {
+      "source": "/software-development-outsourcing-canada/",
+      "destination": "/en/software-development-outsourcing-canada/",
+      "permanent": true
+    },
+    {
+      "source": "/software-development-outsourcing",
+      "destination": "/en/software-development-outsourcing/",
+      "permanent": true
+    },
+    {
+      "source": "/software-development-outsourcing/",
+      "destination": "/en/software-development-outsourcing/",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
@@ -11,15 +43,32 @@
           "key": "Content-Security-Policy",
           "value": "default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self'; img-src 'self' data: https://*.google-analytics.com https://www.googletagmanager.com; font-src 'self'; connect-src 'self' https://api.emailjs.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; form-action 'self'; frame-ancestors 'none'; base-uri 'self'; object-src 'none'"
         },
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" },
-        { "key": "X-Frame-Options", "value": "DENY" }
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=()"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        }
       ]
     },
     {
       "source": "/(assets|fonts)/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
     }
   ]
 }

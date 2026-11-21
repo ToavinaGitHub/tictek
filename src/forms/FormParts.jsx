@@ -74,7 +74,7 @@ export function FormSuccess({ form, title, text, confirmationText }) {
 }
 
 /** Send error, privacy note, submit button and a live region for the sending state. */
-export function FormFooter({ form, t, submitLabel, privacy }) {
+export function FormFooter({ form, t, submitLabel, privacy, note }) {
   return (
     <>
       {form.status === 'error' && (
@@ -88,6 +88,7 @@ export function FormFooter({ form, t, submitLabel, privacy }) {
       <button type="submit" className="btn btn-primary" disabled={!form.ready || form.status === 'sending'}>
         {form.status === 'sending' ? t.sending : submitLabel}
       </button>
+      {note && <p className="form-note">{note}</p>}
       <p className="visually-hidden" role="status">
         {form.status === 'sending' ? t.sending : ''}
       </p>

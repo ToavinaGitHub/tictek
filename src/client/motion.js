@@ -2,7 +2,6 @@
 // header state is kept for visitors who prefer reduced motion.
 //  - blocks fade and rise into view as the page scrolls, siblings in cascade;
 //  - section headings rise word by word;
-//  - the starting rate counts up (pricing page);
 //  - cards get a soft light that follows the pointer;
 //  - main buttons lean towards the pointer ("magnetic");
 //  - the header compacts once the page is scrolled.
@@ -24,7 +23,11 @@ const TARGETS = [
   '.prose-grid > section',
   '.prose > section',
   '.panel',
-  '.rate-card',
+  '.feature',
+  '.model-card',
+  '.case-study',
+  '.values-list > li',
+  '.city-list li',
   '.two-col > *',
   '.faq details',
   '.team-card',
@@ -102,24 +105,6 @@ function initSplitHeadings() {
   observeOnce(headings, show);
 }
 
-function initCountUp() {
-  const counters = [...document.querySelectorAll('.rate-value strong')].filter((el) => /\d/.test(el.textContent));
-  observeOnce(counters, (el) => {
-    const original = el.textContent;
-    const [match] = original.match(/\d+/);
-    const target = Number(match);
-    const duration = 1200;
-    const start = performance.now();
-    const tick = (now) => {
-      const progress = Math.min(1, (now - start) / duration);
-      const eased = 1 - (1 - progress) ** 3;
-      el.textContent = original.replace(match, String(Math.round(target * eased)));
-      if (progress < 1) requestAnimationFrame(tick);
-    };
-    requestAnimationFrame(tick);
-  });
-}
-
 function initSpotlight() {
   document.addEventListener(
     'pointermove',
@@ -169,7 +154,6 @@ export function initMotion() {
 
   initSplitHeadings();
   initReveal();
-  initCountUp();
   if (finePointer()) {
     initSpotlight();
     initMagnetic();

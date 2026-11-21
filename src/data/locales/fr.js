@@ -1,4 +1,5 @@
 import forms from './form';
+import marketPages from './markets.fr';
 
 const fr = {
   lang: 'fr',
@@ -12,6 +13,7 @@ const fr = {
     nav: {
       home: 'Accueil',
       services: 'Services',
+      outsourcing: 'Externalisation',
       work: 'Réalisations',
       collaboration: 'Collaboration',
       about: 'À propos',
@@ -20,11 +22,16 @@ const fr = {
       careers: 'Nous rejoindre',
       privacy: 'Confidentialité',
       blog: 'Blog',
+      switzerland: 'Suisse',
+      canada: 'Canada',
     },
-    ctaContact: 'Discutons de votre projet',
+    slogan: 'Votre partenaire international en développement logiciel, basé à Madagascar.',
+    ctaContact: 'Discuter de votre projet',
+    requestQuote: 'Demander un devis',
     cta: {
-      title: 'Un projet en tête ?',
-      text: 'Parlons-en, sans engagement.',
+      title: 'Vous avez un projet ou souhaitez renforcer votre équipe technique ? Parlons-en.',
+      text: 'Ressources techniques supplémentaires, partenaire de développement ou automatisation de vos opérations : TicTek est prête à vous accompagner.',
+      button: 'Démarrer la conversation',
     },
     language: 'Langue',
     learnMore: 'En savoir plus',
@@ -43,9 +50,9 @@ const fr = {
     linkedin: 'TicTek sur LinkedIn',
     linkedinProfile: 'Voir le profil LinkedIn',
     booking: 'Réserver un appel de 30 min',
-    // Commitments shown on the home and contact pages (Guarantees.jsx).
+    // Commitments shown on the home, about and contact pages (Guarantees.jsx).
     guarantees: {
-      title: 'Nos garanties',
+      title: 'Nos engagements',
       items: [
         { icon: 'code', title: 'Le code vous appartient', text: 'Une fois payé, le code source et tous les accès sont à vous.' },
         { icon: 'lock', title: 'Confidentialité', text: 'Nous signons un accord de confidentialité (NDA) sur simple demande.' },
@@ -54,31 +61,130 @@ const fr = {
       ],
     },
     // Scrolling band above the footer (KeywordBand.jsx).
-    keywords: ['Web', 'Mobile', 'SaaS', 'API', 'Automatisation', 'IA', 'Web3', 'Maintenance'],
+    keywords: ['Développement logiciel', 'Développeurs dédiés', 'Externalisation IT', 'Marque blanche', 'Automatisation IA', 'Maintenance'],
+    // Hero trust points (Home.jsx) and the outsourcing page.
+    trust: ['Équipe basée à Madagascar', 'Collaboration internationale', 'Français et anglais', 'Solutions sur mesure', 'Coûts optimisés'],
   },
 
-  // Keys follow site.js clocks.
+  // Keys follow site.js clocks and markets.js clocks.
   cities: {
     antananarivo: { city: 'Antananarivo', country: 'Madagascar' },
-    'port-louis': { city: 'Port-Louis', country: 'Maurice' },
-    dubai: { city: 'Dubaï', country: 'Émirats arabes unis' },
-    paris: { city: 'Paris', country: 'France' },
     geneva: { city: 'Genève', country: 'Suisse' },
+    paris: { city: 'Paris', country: 'France' },
+    london: { city: 'Londres', country: 'Royaume-Uni' },
     montreal: { city: 'Montréal', country: 'Canada' },
+    vancouver: { city: 'Vancouver', country: 'Canada' },
+    'new-york': { city: 'New York', country: 'États-Unis' },
+    dubai: { city: 'Dubaï', country: 'Émirats arabes unis' },
+    sydney: { city: 'Sydney', country: 'Australie' },
+  },
+
+  // Live clocks (Clocks.jsx).
+  hours: {
+    languagesLabel: 'Nous travaillons en',
+    languages: ['Français', 'Anglais'],
+    listLabel: 'Heure actuelle à Madagascar et chez nos clients',
+    ours: 'Notre heure · UTC+3',
+    same: 'Même heure',
+    hourUnit: 'h',
+    versus: 'par rapport à Madagascar',
   },
 
   footer: {
     about:
-      'TicTek conçoit, développe et maintient des logiciels sur mesure : applications web et mobiles, SaaS, API, automatisation et intégration IA. Équipe basée à Madagascar, au service de clients à l’international, en français et en anglais.',
+      'TicTek est une équipe de développement logiciel basée à Madagascar, au service d’entreprises du monde entier, en français et en anglais : logiciels sur mesure, développeurs dédiés, externalisation informatique, marque blanche, automatisation IA et maintenance.',
     servicesTitle: 'Services',
+    marketsTitle: 'Externalisation',
     companyTitle: 'Entreprise',
     contactTitle: 'Contact',
     location: 'Antananarivo, Madagascar · clients à l’international',
     rights: 'Tous droits réservés.',
   },
 
-  // Shared by the home page and the services page. Keys follow site.js serviceIds.
-  services: {
+  // The six offers. Keys follow site.js offerIds.
+  offers: {
+    development: {
+      title: 'Développement logiciel',
+      short: 'Applications web, mobiles et logiciels métier conçus autour de vos processus.',
+      need: 'Les outils du marché ne correspondent pas à votre façon de travailler, ou vous devez créer un nouveau produit.',
+      points: [
+        'Applications web, portails clients et outils internes',
+        'Applications iOS et Android à partir d’une base de code commune',
+        'Produits SaaS, backends et API',
+        'Du cadrage à la mise en production, avec la documentation',
+      ],
+      audience: 'PME, startups et organisations avec un besoin spécifique.',
+      type: 'custom',
+    },
+    dedicated: {
+      title: 'Développeurs dédiés',
+      short: 'Des développeurs qui rejoignent votre équipe et travaillent dans vos outils.',
+      need: 'Votre feuille de route avance plus vite que votre équipe, et recruter localement prend des mois.',
+      points: [
+        'Un ou plusieurs développeurs aux côtés de votre équipe',
+        'Intégration à votre Git, vos tickets et votre messagerie',
+        'Revues de code et rituels d’équipe',
+        'Capacité ajustée à vos besoins',
+      ],
+      audience: 'Startups, éditeurs de logiciels et équipes informatiques internes.',
+      type: 'dedicated',
+    },
+    outsourcing: {
+      title: 'Externalisation informatique',
+      short: 'Confiez une partie de votre activité informatique à une équipe qui s’en charge.',
+      need: 'Vous voulez déléguer du développement ou des tâches techniques sans constituer ni encadrer une équipe interne.',
+      points: [
+        'Un projet complet ou un périmètre bien défini',
+        'Un interlocuteur technique unique qui pilote pour vous',
+        'Points d’avancement et démonstrations réguliers',
+        'Un code documenté qui vous appartient',
+      ],
+      audience: 'Entreprises sans équipe technique, ou qui veulent libérer la leur.',
+      type: 'team',
+    },
+    'white-label': {
+      title: 'Développement en marque blanche',
+      short: 'La réalisation technique pour les agences et partenaires, sous votre marque.',
+      need: 'Votre agence remporte des projets mais manque de capacité technique pour tous les réaliser.',
+      points: [
+        'Tout ou partie de vos projets, réalisés en toute discrétion',
+        'Aucun contact avec vos clients sans votre accord',
+        'Travail dans vos outils, selon vos conventions',
+        'Facturation à votre agence uniquement',
+      ],
+      audience: 'Agences web, digitales et de communication, cabinets de conseil.',
+      type: 'white-label',
+    },
+    'ai-automation': {
+      title: 'IA et automatisation',
+      short: 'Automatisez les tâches répétitives et utilisez l’IA là où elle est vraiment utile.',
+      need: 'Vos équipes perdent des heures à recopier des données entre vos outils, ou vous voulez exploiter l’IA sur vos données sans expérimentation sans fin.',
+      points: [
+        'Workflows automatisés entre CRM, facturation, e-mails et outils internes',
+        'Agents et assistants IA connectés à vos données',
+        'Traitement de documents, d’e-mails et de formulaires',
+        'Un avis franc sur les cas où l’IA n’est pas la bonne réponse',
+      ],
+      audience: 'Équipes commerciales, administratives et opérationnelles, entreprises qui traitent beaucoup de texte.',
+      type: 'ai-automation',
+    },
+    support: {
+      title: 'Maintenance et support technique',
+      short: 'Un logiciel sécurisé, fonctionnel et qui continue d’évoluer.',
+      need: 'Votre application est en production et demande corrections, mises à jour et évolutions, mais personne n’a le temps de s’en occuper.',
+      points: [
+        'Corrections et évolutions planifiées',
+        'Mises à jour des dépendances et correctifs de sécurité',
+        'Reprise d’applications existantes après audit du code',
+        'Volume mensuel défini ensemble',
+      ],
+      audience: 'Entreprises dont un logiciel est en production.',
+      type: 'maintenance',
+    },
+  },
+
+  // Technical areas of expertise (services page). Keys follow site.js expertiseIds.
+  expertise: {
     web: {
       title: 'Applications web et logiciels métier',
       short: 'Outils internes, portails clients, back-offices.',
@@ -182,68 +288,169 @@ const fr = {
   },
 
   // Keys follow site.js modelIds.
+  modelLabels: {
+    audience: 'Pour qui',
+    when: 'Quand le choisir',
+    how: 'Comment ça marche',
+    benefits: 'Les avantages',
+  },
   models: {
-    project: {
-      title: 'Projet au forfait',
-      short: 'Un besoin défini, un périmètre validé, une application livrée.',
-      text:
-        "Vous avez un besoin précis mais pas d'équipe technique. Nous cadrons le périmètre ensemble, puis nous réalisons l'application selon une estimation et un planning validés avant le démarrage.",
-      points: [
-        'Périmètre, livrables et étapes fixés par écrit',
-        'Démonstrations régulières pendant le développement',
-        'Recette avec vous avant la mise en production',
+    'staff-augmentation': {
+      title: 'Développeur dédié',
+      short: 'Un développeur qui travaille à distance au sein de votre équipe.',
+      audience: 'Entreprises avec une équipe technique ou un responsable technique : startups, éditeurs de logiciels, DSI.',
+      when: 'Vous avez besoin de capacité supplémentaire ou d’une compétence précise, pour quelques mois ou plus, sans passer par un recrutement local.',
+      how: 'Le développeur rejoint vos outils (Git, tickets, messagerie) et vos rituels, et travaille sur vos priorités. Vous gérez le backlog, nous nous occupons du reste.',
+      benefits: [
+        'Pas de long processus de recrutement',
+        'Volume ajusté à l’évolution de vos besoins',
+        'Plages horaires communes fixées au démarrage',
+        'Un interlocuteur TicTek pour le suivi',
       ],
-      fit: 'PME et organisations sans équipe de développement interne.',
+      cta: 'Intégrer un développeur dédié',
+      type: 'dedicated',
+    },
+    project: {
+      title: 'Équipe de développement externalisée',
+      short: 'TicTek prend en charge une partie ou la totalité de votre projet.',
+      audience: 'PME et organisations sans équipe de développement, ou équipes qui veulent déléguer un périmètre complet.',
+      when: 'Vous avez un besoin défini, comme une application, un MVP ou un outil à remplacer, et vous voulez une équipe qui le livre.',
+      how: 'Nous cadrons le projet avec vous, fixons par écrit le périmètre, les étapes et le budget, puis développons en itérations courtes avec des démonstrations régulières jusqu’à la livraison.',
+      benefits: [
+        'Un interlocuteur unique du cadrage à la livraison',
+        'Périmètre, planning et budget fixés avant le démarrage',
+        'Recette avec vous avant la mise en production',
+        'Un code documenté qui vous appartient',
+      ],
+      cta: 'Externaliser votre projet',
+      type: 'team',
     },
     'white-label': {
-      title: 'Sous-traitance en marque blanche',
-      short: 'Nous développons pour vos clients, sous votre marque.',
-      text:
-        'Vous êtes une agence. Vous gardez la relation avec votre client, nous prenons en charge tout ou partie de la réalisation technique, en toute discrétion.',
-      points: [
+      title: 'Partenariat en marque blanche',
+      short: 'Nous travaillons en coulisses pour les agences et partenaires.',
+      audience: 'Agences web, digitales et de communication, cabinets de conseil et ESN.',
+      when: 'Vous voulez prendre plus de projets, ou proposer des services techniques que vous n’avez pas en interne, tout en gardant la relation client.',
+      how: 'Vous gardez la relation et la marque ; nous réalisons tout ou partie du travail technique, dans vos outils et selon vos conventions.',
+      benefits: [
         'Aucun contact direct avec votre client sans votre accord',
-        'Travail dans vos outils et selon vos conventions',
         'Un interlocuteur technique unique pour votre équipe',
+        'Forfait par projet ou volume mensuel',
+        'Discrétion totale',
       ],
-      fit: 'Agences web, digitales et de communication.',
-    },
-    'staff-augmentation': {
-      title: "Renfort d'équipe",
-      short: 'Des développeurs qui rejoignent votre équipe, vos outils et vos rituels.',
-      text:
-        "Votre équipe a besoin de capacité supplémentaire ou d'une compétence précise. Un ou plusieurs développeurs TicTek travaillent avec vous, dans votre organisation.",
-      points: [
-        'Intégration à vos outils : Git, tickets, messagerie',
-        'Participation aux revues de code et aux rituels',
-        'Volume et durée ajustables selon vos besoins',
-      ],
-      fit: 'Startups, éditeurs de logiciels et équipes techniques internes.',
+      cta: 'Devenir partenaire',
+      type: 'white-label',
     },
   },
 
   process: [
-    { title: 'Premier échange', text: 'Un appel, sans engagement.' },
-    { title: 'Cadrage', text: 'Le périmètre, clarifié par écrit.' },
-    { title: 'Estimation', text: 'Étapes, planning et budget.' },
-    { title: 'Développement', text: 'Itérations courtes, démos régulières.' },
-    { title: 'Tests', text: 'Automatisés, puis validés avec vous.' },
-    { title: 'Livraison', text: 'Mise en ligne et documentation.' },
-    { title: 'Maintenance', text: 'Suivi et évolutions, si besoin.' },
+    { title: 'Découverte', text: 'Nous comprenons vos besoins, votre contexte et vos contraintes.' },
+    { title: 'Planification', text: 'Nous définissons la solution, les délais et le budget, par écrit.' },
+    { title: 'Développement', text: 'Nous développons en itérations courtes, avec un suivi régulier.' },
+    { title: 'Livraison', text: 'Nous validons la solution avec vous, puis la mettons en production.' },
+    { title: 'Support', text: 'Nous assurons la maintenance et les évolutions.' },
+  ],
+
+  // Four reasons to choose TicTek (home page).
+  advantages: [
+    {
+      icon: 'coins',
+      title: 'Des coûts optimisés',
+      text: 'Travaillez avec une équipe de développement basée à Madagascar et réduisez le coût de vos logiciels, sans transiger sur la qualité.',
+    },
+    {
+      icon: 'layers',
+      title: 'Une collaboration flexible',
+      text: 'Mission ponctuelle, renfort technique ou collaboration continue : vous choisissez le niveau d’intervention et l’ajustez en cours de route.',
+    },
+    {
+      icon: 'globe',
+      title: 'Une communication internationale',
+      text: 'Échangez en français ou en anglais, directement avec les développeurs, sur des créneaux adaptés à votre fuseau horaire.',
+    },
+    {
+      icon: 'code',
+      title: 'Une expertise technique',
+      text: 'Backend, frontend, mobile, automatisation et IA : une seule équipe pour les compétences dont votre projet a besoin.',
+    },
+  ],
+
+  // Security and trust practices (Security.jsx). No certification is claimed.
+  security: {
+    eyebrow: 'Sécurité et confiance',
+    title: 'Des pratiques professionnelles sur lesquelles vous pouvez compter',
+    lede: 'Travailler avec une équipe à distance demande de la confiance. Voici comment nous protégeons vos projets et vos informations.',
+    items: [
+      { icon: 'lock', title: 'Confidentialité', text: 'Votre projet et vos informations restent entre nous. Rien n’est partagé ni réutilisé sans votre accord.' },
+      { icon: 'key', title: 'Gestion des accès', text: 'Les accès sont limités aux personnes qui travaillent sur votre projet, et rendus ou révoqués à la fin de la mission.' },
+      { icon: 'shield', title: 'Protection des informations', text: 'Aucun identifiant n’est envoyé en clair par e-mail ou messagerie, et les données de production ne sont utilisées que lorsque le travail l’exige.' },
+      { icon: 'branch', title: 'Gestion du code source', text: 'Le code est versionné dans un dépôt Git, idéalement le vôtre, avec des modifications relues et un historique complet.' },
+      { icon: 'file', title: 'Documentation', text: 'La documentation technique accompagne le code, pour que votre équipe ou un autre prestataire puisse reprendre le projet.' },
+      { icon: 'list', title: 'Suivi des tâches', text: 'Chaque demande est suivie dans un outil partagé : vous savez toujours ce qui est en cours.' },
+      { icon: 'chat', title: 'Communication régulière', text: 'Points réguliers et démonstrations, avec un interlocuteur identifié qui répond à vos questions.' },
+      { icon: 'signature', title: 'NDA sur demande', text: 'Nous signons un accord de confidentialité avant que vous partagiez des informations sensibles.' },
+    ],
+    note: 'Ce sont nos pratiques de travail, pas des certifications. Nous pouvons les inscrire dans votre contrat.',
+  },
+
+  // Home page FAQ (also FAQPage structured data).
+  faq: [
+    {
+      q: 'Pourquoi externaliser son développement logiciel à Madagascar ?',
+      a: 'Madagascar associe une structure de coûts plus légère qu’en Europe ou en Amérique du Nord et une équipe qui travaille en français et en anglais. À UTC+3, l’île partage l’essentiel de la journée de travail avec l’Europe, et des créneaux convenus fonctionnent avec l’Amérique du Nord et l’Australie. Vous accédez à des compétences de développement à coût optimisé, sans les contraintes d’un recrutement local.',
+    },
+    {
+      q: 'Comment se passe la collaboration à distance ?',
+      a: 'Visioconférence pour les échanges importants, messagerie pour le quotidien, outil de tickets partagé pour suivre les demandes et démonstrations régulières sur un environnement de test. Si vous avez déjà vos outils, nous travaillons dedans.',
+    },
+    {
+      q: 'Travaillez-vous avec des entreprises internationales ?',
+      a: 'Oui. Nous travaillons à distance avec des entreprises dans différents pays et fuseaux horaires. Au démarrage, nous fixons des créneaux d’échange réguliers adaptés à vos horaires ; le reste du suivi se fait en asynchrone dans vos outils.',
+    },
+    {
+      q: 'Parlez-vous français et anglais ?',
+      a: 'Oui. Appels, échanges écrits, documentation et livrables peuvent être en français ou en anglais, selon votre préférence.',
+    },
+    {
+      q: 'Peut-on recruter un développeur dédié ?',
+      a: 'Oui. Un développeur TicTek peut rejoindre votre équipe à distance, travailler dans vos outils et suivre vos priorités. Le volume et la durée sont fixés ensemble et peuvent évoluer.',
+    },
+    {
+      q: 'Proposez-vous du développement en marque blanche ?',
+      a: 'Oui. Agences et partenaires peuvent nous confier tout ou partie de leurs projets. Vous gardez la relation client et votre marque ; nous n’avons aucun contact direct avec votre client sans votre accord.',
+    },
+    {
+      q: 'Comment gérez-vous la sécurité des projets ?',
+      a: 'Accès limités aux personnes du projet, code dans un dépôt Git avec des modifications relues, aucun identifiant envoyé en clair, documentation livrée avec le code et NDA sur demande. Une fois le travail payé, le code source et tous les accès vous appartiennent.',
+    },
+    {
+      q: 'Comment vos services sont-ils facturés ?',
+      a: 'Selon le modèle de collaboration et votre projet : devis par projet, collaboration mensuelle, développeur dédié, équipe externalisée ou contrat de maintenance. Chaque prix est fixé par écrit avant le démarrage.',
+    },
+    {
+      q: 'Peut-on commencer par un petit projet ?',
+      a: 'Oui, et c’est souvent la meilleure façon de commencer : un périmètre défini, un délai court et une base concrète pour décider de la suite.',
+    },
+    {
+      q: 'Assurez-vous la maintenance dans la durée ?',
+      a: 'Oui. Nous maintenons et faisons évoluer des applications en production, que nous les ayons développées ou non (après un audit du code) : corrections, mises à jour, correctifs de sécurité et nouvelles fonctionnalités.',
+    },
   ],
 
   pages: {
     home: {
-      title: 'TicTek | Votre équipe de développement externalisée à Madagascar',
+      title: 'Externalisation informatique à Madagascar | TicTek',
       description:
-        'Externalisez le développement et la maintenance de vos logiciels sans recruter : une équipe de développeurs à Madagascar, sur vos horaires, en français et en anglais.',
+        'TicTek, votre équipe de développement externalisée à Madagascar : logiciels sur mesure, développeurs dédiés, externalisation et IA, en français ou en anglais.',
       hero: {
         // titleAccent is written in hollow handwritten letters (Home.jsx).
         title: 'Votre équipe technique externalisée,',
         titleAccent: 'sans recruter.',
         lede:
           'Nous développons, maintenons et faisons évoluer vos logiciels et votre système d’information, depuis Madagascar, sur vos horaires.',
+        ctaContact: 'Discutons de votre projet',
         ctaWork: 'Découvrir nos réalisations',
         ctaServices: 'Découvrir nos services',
+        trustLabel: 'Ce que vous apporte TicTek',
         visual: {
           url: 'app.votre-entreprise.com',
           dashboard: 'Tableau de bord',
@@ -256,10 +463,238 @@ const fr = {
         stackTitle: 'Notre stack au quotidien',
         stackPause: 'Mettre en pause le défilement',
       },
-      outsource: {
-        eyebrow: 'Externalisation',
+      why: {
+        eyebrow: 'Pourquoi TicTek',
+        title: 'Pourquoi choisir TicTek ?',
+        lede: 'Un partenaire technique qui s’adapte à votre façon de travailler, et non l’inverse.',
+      },
+      services: {
+        eyebrow: 'Services',
+        title: 'Nos services',
+        lede: 'Vos besoins d’abord, la technologie ensuite.',
+        link: 'Tous les services',
+      },
+      models: {
+        eyebrow: 'Collaboration',
+        title: 'Trois façons de travailler ensemble',
+        lede: 'Choisissez le modèle adapté à votre organisation. Vous pourrez en changer en cours de route.',
+        link: 'Comparer les modèles',
+      },
+      work: {
+        eyebrow: 'Études de cas',
+        title: 'Nos réalisations',
+        lede: 'Des projets réalisés par TicTek en tant que prestataire, du cadrage à la mise en production.',
+        link: 'Toutes les études de cas',
+        read: 'Lire l’étude de cas',
+      },
+      process: {
+        eyebrow: 'Méthode',
+        title: 'Notre processus',
+        lede: 'Cinq étapes, du premier échange au support dans la durée.',
+      },
+      clients: {
+        eyebrow: 'Collaboration internationale',
+        title: 'Nous travaillons à votre heure',
+        lede: 'Depuis Madagascar (UTC+3) : une à deux heures d’écart avec l’Europe, des créneaux convenus avec l’Amérique du Nord et l’Australie.',
+      },
+      team: {
+        eyebrow: 'L’équipe',
+        title: 'Les personnes derrière TicTek',
+        lede: 'Vous échangez directement avec nous, sans intermédiaire.',
+        link: 'En savoir plus sur nous',
+      },
+      faq: {
+        eyebrow: 'FAQ',
+        title: 'Questions fréquentes',
+      },
+    },
+
+    services: {
+      title: 'Services : développement logiciel et externalisation IT | TicTek',
+      description:
+        'Développement logiciel sur mesure, développeurs dédiés, externalisation informatique, marque blanche, IA et automatisation, maintenance : les services de TicTek.',
+      h1: 'Développement logiciel et externalisation informatique',
+      lede:
+        'Six façons d’accompagner votre entreprise, présentées par le besoin auquel elles répondent. Vous hésitez ? Décrivez-nous votre projet : il en combine souvent plusieurs.',
+      labels: {
+        need: 'Votre besoin',
+        deliverables: 'Ce que nous livrons',
+        audience: 'Pour qui',
+        problem: 'Le problème',
+        tech: 'Technologies',
+        projects: 'Réalisations liées',
+        cta: 'Discuter de ce service',
+      },
+      expertise: {
+        eyebrow: 'Expertise technique',
+        title: 'L’expertise derrière nos services',
+        lede: 'Les domaines techniques dans lesquels notre équipe travaille au quotidien. Chacun part d’un problème à résoudre.',
+      },
+      quality: {
+        title: 'La qualité fait partie de chaque service',
+        items: [
+          'Tests automatisés écrits avec le code et exécutés à chaque modification via la CI/CD',
+          'Revue de code avant chaque intégration',
+          'Bonnes pratiques de sécurité applicative (OWASP Top 10)',
+          'Environnements conteneurisés : le test reflète la production',
+        ],
+      },
+    },
+
+    work: {
+      title: 'Réalisations : études de cas logiciels, IA et mobile | TicTek',
+      description:
+        'Études de cas de projets conçus et développés par TicTek : plateforme VTC avec IA et blockchain, moteur de décision d’architecture, assistant de candidature IA.',
+      h1: 'Nos réalisations',
+      lede:
+        'Des projets réalisés par TicTek en tant que prestataire, du cadrage à la mise en production. Ils montrent notre façon de travailler et ce que nous pouvons construire pour vous.',
+      labels: {
+        link: 'Voir le projet',
+        origin: { provider: 'Réalisé en tant que prestataire' },
+        context: 'Contexte',
+        problem: 'Le problème',
+        solution: 'La solution',
+        features: 'Fonctionnalités principales',
+        role: 'Contribution de TicTek',
+        facts: 'En bref',
+        tech: 'Technologies',
+      },
+    },
+
+    collaboration: {
+      title: 'Collaboration : développeur dédié, équipe ou marque blanche | TicTek',
+      description:
+        'Développeur dédié, équipe externalisée ou marque blanche : pour qui, quand choisir chaque modèle de collaboration TicTek et comment il fonctionne.',
+      h1: 'Comment travailler avec TicTek',
+      lede: 'Trois modèles de collaboration, une seule méthode. Choisissez celui qui correspond à votre organisation ; vous pourrez en changer en cours de route.',
+      processTitle: 'Notre processus',
+      processLede: 'Chaque étape s’applique à un projet externalisé. Pour un développeur dédié ou un partenariat en marque blanche, nous suivons votre propre processus.',
+      estimateTitle: 'Ce qui nous aide à estimer votre projet',
+      estimateItems: [
+        'Le problème à résoudre et les personnes qui utiliseront le logiciel',
+        'Les outils ou systèmes existants à connecter',
+        'Vos contraintes de délai et, si possible, une fourchette de budget',
+        'Tout support existant : cahier des charges, maquettes, captures d’écran',
+      ],
+      faqTitle: 'Questions fréquentes',
+      faq: [
+        {
+          q: 'Combien coûte un projet ?',
+          a: 'Cela dépend du modèle de collaboration, du périmètre, des intégrations et du niveau de qualité attendu. Le prix est fixé dans un devis écrit après le cadrage, avant tout démarrage. Indiquer une fourchette de budget dans le formulaire nous aide à proposer une approche adaptée.',
+        },
+        {
+          q: 'Peut-on changer de modèle en cours de route ?',
+          a: 'Oui. Beaucoup de collaborations commencent par un projet défini, puis se poursuivent en maintenance ou avec un développeur dédié. Nous ajustons l’organisation avec vous.',
+        },
+        {
+          q: 'Travaillez-vous avec des clients dans d’autres fuseaux horaires ?',
+          a: 'Oui, nous travaillons à l’international. Madagascar est à UTC+3, sans changement d’heure : une à deux heures d’écart avec la France et la Suisse, sept à huit heures avec l’Est du Canada. Au démarrage, nous fixons des créneaux d’échange réguliers adaptés à vos horaires ; le reste du suivi se fait en asynchrone dans vos outils.',
+        },
+        {
+          q: 'Pouvez-vous reprendre une application existante ?',
+          a: 'Oui. Nous commençons par un audit du code, des dépendances et de l’infrastructure pour évaluer le projet, puis nous proposons un plan de reprise.',
+        },
+      ],
+    },
+
+    pricing: {
+      title: 'Tarifs : des prix adaptés à vos besoins | TicTek',
+      description:
+        'Devis par projet, collaboration mensuelle, développeur dédié, équipe externalisée ou contrat de maintenance : comment TicTek fixe ses prix et comment obtenir un devis.',
+      h1: 'Des tarifs adaptés à vos besoins, à votre projet et à votre modèle de collaboration.',
+      lede:
+        'Chaque projet est différent. Nos prix dépendent de vos besoins, de votre projet et du modèle de collaboration choisi, et sont toujours fixés par écrit avant le démarrage.',
+      optionsTitle: 'Les formules possibles',
+      fitLabel: 'Idéal pour :',
+      options: [
+        {
+          id: 'devis-projet',
+          icon: 'project',
+          title: 'Devis par projet',
+          text: 'Un prix global pour un périmètre défini ensemble lors du cadrage.',
+          points: ['Prix, livrables et étapes fixés dans le devis', 'Hors périmètre chiffré à part, avant tout travail'],
+          fit: 'applications, logiciels métier, MVP, projets en marque blanche.',
+        },
+        {
+          id: 'mensuel',
+          icon: 'calendar',
+          title: 'Collaboration mensuelle',
+          text: 'Un volume mensuel de temps de développement, pour un produit qui évolue.',
+          points: ['Volume fixé ensemble et ajustable', 'Suivi du temps partagé avec vous'],
+          fit: 'produits en cours, besoins évolutifs, agences.',
+        },
+        {
+          id: 'developpeur-dedie',
+          icon: 'staff-augmentation',
+          title: 'Développeur dédié',
+          text: 'Un développeur qui rejoint votre équipe, facturé au mois.',
+          points: ['Profil choisi selon vos besoins', 'Durée fixée ensemble'],
+          fit: 'entreprises avec une équipe technique.',
+        },
+        {
+          id: 'equipe-externalisee',
+          icon: 'layers',
+          title: 'Équipe externalisée',
+          text: 'Une équipe qui prend en charge un projet complet ou un périmètre défini.',
+          points: ['Un interlocuteur unique qui pilote le projet', 'Étapes et échéancier fixés dans le devis'],
+          fit: 'entreprises sans équipe de développement.',
+        },
+        {
+          id: 'maintenance',
+          icon: 'maintenance',
+          title: 'Contrat de maintenance',
+          text: 'Un montant mensuel pour garder une application en production sécurisée et à jour.',
+          points: ['Mises à jour de sécurité et des dépendances', 'Corrections et petites évolutions'],
+          fit: 'applications déjà en production.',
+        },
+      ],
+      factorsTitle: 'Ce qui fait varier le prix',
+      factors: [
+        { title: 'Modèle de collaboration', text: 'Devis par projet, volume mensuel, développeur dédié ou contrat de maintenance.' },
+        { title: 'Périmètre', text: 'Nombre d’écrans, de fonctionnalités et de types d’utilisateurs.' },
+        { title: 'Plateformes', text: 'Web, iOS, Android, ou plusieurs à la fois.' },
+        { title: 'Intégrations', text: 'Connexion à vos outils existants, paiement en ligne, API tierces, IA.' },
+        { title: 'Exigences', text: 'Volume de données, sécurité, couverture de tests, disponibilité attendue.' },
+        { title: 'Délai', text: 'Un planning serré peut demander plus de développeurs en parallèle.' },
+      ],
+      stepsTitle: 'Comment obtenir un devis',
+      steps: [
+        'Décrivez votre projet via le formulaire de contact, idéalement avec une fourchette de budget.',
+        'Nous en discutons lors d’un premier échange, gratuit et sans engagement.',
+        'Nous vous envoyons une proposition écrite : périmètre, étapes, planning et prix.',
+      ],
+      faqTitle: 'Questions fréquentes',
+      faq: [
+        {
+          q: 'Pourquoi ne pas afficher de prix fixes ?',
+          a: 'Deux projets qui se ressemblent peuvent demander des efforts très différents selon les intégrations, les volumes et les exigences. Un prix affiché sans connaître votre projet serait soit trompeur, soit gonflé par précaution. Nous préférons vous remettre un devis écrit précis.',
+        },
+        {
+          q: 'Le premier échange est-il gratuit ?',
+          a: 'Oui, le premier échange est gratuit et sans engagement. Pour un projet complexe, nous pouvons proposer une phase de cadrage avant le devis définitif ; elle est alors chiffrée à l’avance.',
+        },
+        {
+          q: 'Peut-on commencer petit ?',
+          a: 'Oui. Un premier projet de taille réduite est un bon moyen de tester la collaboration avant d’aller plus loin.',
+        },
+        {
+          q: 'Comment se passe le paiement ?',
+          a: 'L’échéancier (acompte, étapes, solde ou facturation mensuelle) est précisé dans chaque devis et validé avec vous avant tout démarrage.',
+        },
+      ],
+    },
+
+    outsourcing: {
+      title: 'Externalisation du développement logiciel à Madagascar | TicTek',
+      description:
+        'Externalisez votre développement informatique avec TicTek, équipe à distance à Madagascar : développeur dédié, équipe externalisée ou marque blanche.',
+      h1: 'Externalisez votre développement informatique avec TicTek.',
+      lede:
+        'Une équipe de développement à distance, basée à Madagascar, qui conçoit, maintient et fait évoluer vos logiciels, en français ou en anglais, à coût optimisé et avec les pratiques professionnelles que vous attendez.',
+      why: {
+        eyebrow: 'Pourquoi externaliser',
         title: 'Recruter ou externaliser ?',
-        lede: 'Confiez-nous vos outils et votre SI : vous gardez la main, sans les contraintes d’une embauche.',
+        lede: 'L’externalisation fait avancer vos logiciels sans le coût, les délais ni la charge d’encadrement d’un recrutement.',
         inhouse: {
           title: 'Recruter en interne',
           items: [
@@ -273,237 +708,111 @@ const fr = {
         tictek: {
           title: 'Externaliser chez TicTek',
           items: [
-            'On démarre dès que le périmètre est validé',
-            'Au forfait ou à l’heure, selon vos besoins',
-            'Web, mobile, backend, IA : une équipe complète',
+            'Démarrage dès que le périmètre est validé',
+            'Une capacité qui suit vos projets',
+            'Web, mobile, backend, IA : plusieurs compétences dans une équipe',
             'Code documenté : la continuité est assurée',
             'Un interlocuteur unique qui pilote pour vous',
           ],
         },
-        hours: 'Sur vos horaires : une à deux heures d’écart avec l’Europe, des créneaux convenus pour le reste du monde.',
       },
-      team: {
-        eyebrow: 'L’équipe',
-        title: 'Les personnes derrière TicTek',
-        lede: 'Vous échangez directement avec nous, sans intermédiaire.',
-        link: 'En savoir plus sur nous',
+      madagascar: {
+        eyebrow: 'Pourquoi Madagascar',
+        title: 'Pourquoi travailler avec une équipe à Madagascar ?',
+        items: [
+          {
+            icon: 'clock',
+            title: 'Un fuseau horaire pratique',
+            text: 'UTC+3, sans changement d’heure : une à deux heures d’écart avec l’Europe de l’Ouest, et des créneaux convenus avec l’Amérique du Nord et l’Australie.',
+          },
+          {
+            icon: 'globe',
+            title: 'Français et anglais',
+            text: 'Le français est une langue d’affaires courante à Madagascar, et notre équipe travaille en anglais avec ses clients internationaux.',
+          },
+          {
+            icon: 'coins',
+            title: 'Des coûts optimisés',
+            text: 'Une structure de coûts plus légère qu’en Europe ou en Amérique du Nord : une plus grande part de votre budget va à votre produit.',
+          },
+          {
+            icon: 'code',
+            title: 'Des standards professionnels',
+            text: 'Des outils et pratiques modernes : Git, revues de code, tests automatisés, intégration continue et documentation.',
+          },
+        ],
       },
-      services: {
-        title: 'Ce que nous développons pour vous',
-        lede: 'Votre problème d’abord, la technologie ensuite.',
-        link: 'Tous les services',
-        otherTitle: 'Un autre besoin ?',
-        otherText: 'Décrivez-le, on vous dit comment aider.',
-      },
-      work: {
-        title: 'Réalisations récentes',
-        link: 'Toutes les réalisations',
-      },
-      clients: {
-        eyebrow: 'Sur vos horaires',
-        title: 'Nous travaillons à votre heure',
-        lede: 'Depuis Madagascar (UTC+3) : une à deux heures d’écart avec l’Europe, des créneaux convenus ensemble pour l’Amérique du Nord.',
-      },
-      hours: {
-        languagesLabel: 'Nous travaillons en',
-        languages: ['Français', 'Anglais'],
-        listLabel: 'Heure actuelle à Madagascar et chez nos clients',
-        ours: 'Notre heure · UTC+3',
-        same: 'Même heure',
-        hourUnit: 'h',
-        versus: 'par rapport à Madagascar',
+      remote: {
+        title: 'Les avantages d’une équipe à distance',
+        items: [
+          'Ni recrutement local, ni intégration, ni frais de bureaux',
+          'Une capacité qui augmente ou diminue avec vos projets',
+          'Plusieurs compétences dans une équipe, au lieu d’un recrutement par compétence',
+          'Un travail qui avance en asynchrone pendant que vous êtes déconnecté',
+          'Un code documenté : le savoir reste dans votre entreprise',
+        ],
       },
       models: {
-        title: 'Trois façons de travailler ensemble',
-        lede: 'Avec ou sans équipe technique.',
-        link: 'Comparer les modes',
+        eyebrow: 'Modèles de collaboration',
+        title: 'Choisissez votre modèle de collaboration',
+        lede: 'Trois organisations possibles, selon que vous avez une équipe technique et ce que vous souhaitez déléguer.',
+      },
+      skills: {
+        title: 'Les compétences mobilisables',
+        lede: 'Les technologies avec lesquelles notre équipe travaille. Dites-nous ce dont vous avez besoin : nous vous dirons franchement si nous sommes la bonne équipe.',
+      },
+      audiences: {
+        title: 'À qui s’adressent nos services ?',
+        items: [
+          { icon: 'building', title: 'PME', text: 'Des outils sur mesure et de l’automatisation, sans constituer d’équipe technique interne.' },
+          { icon: 'rocket', title: 'Startups', text: 'Construisez votre MVP ou renforcez votre équipe rapidement, en gardant vos coûts sous contrôle.' },
+          { icon: 'white-label', title: 'Agences digitales', text: 'Prenez plus de projets avec un partenaire de développement en marque blanche.' },
+          { icon: 'briefcase', title: 'Cabinets de conseil', text: 'Transformez vos recommandations en logiciels opérationnels pour vos clients.' },
+          { icon: 'users', title: 'Entreprises non techniques', text: 'Appuyez-vous sur une équipe qui explique clairement et prend en charge la partie technique.' },
+          { icon: 'staff-augmentation', title: 'Entreprises avec une équipe IT', text: 'Ajoutez de la capacité ou une compétence précise à votre équipe, aussi longtemps que nécessaire.' },
+        ],
       },
       process: {
-        title: 'Notre méthode',
+        title: 'Comment nous travaillons ensemble',
+        lede: 'Une méthode claire, quel que soit le modèle de collaboration.',
       },
-      why: {
-        title: 'Pourquoi travailler avec TicTek ?',
-        lede: 'Une équipe technique sérieuse, à un tarif qui reste raisonnable.',
-        priceTitle: 'Des tarifs clairs',
-        priceText: 'Le taux exact est toujours indiqué dans le devis, avant de commencer.',
-        priceLink: 'Voir les tarifs',
-        items: [
-          { icon: 'staff-augmentation', title: 'Un interlocuteur direct', text: 'Vous parlez aux développeurs, sans intermédiaire.' },
-          { icon: 'project', title: 'Une estimation avant de commencer', text: 'Périmètre, planning et budget posés par écrit.' },
-          { icon: 'saas-api', title: 'Une seule équipe, du web à l’IA', text: 'Web, mobile, backend, automatisation, IA et Web3.' },
-          { icon: 'check', title: 'Vous voyez le projet avancer', text: 'Démos régulières, code testé et documenté.' },
+      maintenance: {
+        title: 'La maintenance après la livraison',
+        text: 'La livraison n’est pas une fin. Nous pouvons garder votre logiciel sécurisé et à jour, et continuer à le faire évoluer avec votre activité.',
+        points: [
+          'Corrections et évolutions planifiées',
+          'Mises à jour des dépendances et correctifs de sécurité',
+          'Volume mensuel défini ensemble',
         ],
+        link: 'Maintenance et support technique',
       },
-    },
-
-    services: {
-      title: 'Services : web, mobile, SaaS, API, IA et Web3 | TicTek',
-      description:
-        "Applications web et métier, mobile, SaaS et API, automatisation, intégration IA, blockchain et Web3, maintenance et renfort d'équipe : les services de TicTek.",
-      h1: 'Services de développement logiciel sur mesure',
-      lede:
-        'Sept domaines d’intervention, présentés par le problème qu’ils résolvent. Si votre besoin ne rentre dans aucune case, décrivez-le-nous : il recoupe souvent plusieurs d’entre eux.',
-      labels: {
-        problem: 'Le problème',
-        deliverables: 'Ce que nous livrons',
-        audience: 'Pour qui',
-        tech: 'Technologies',
-        projects: 'Réalisations liées',
+      ctaMid: {
+        title: 'Vous hésitez entre plusieurs modèles ?',
+        text: 'Décrivez-nous votre situation : nous vous proposons le modèle de collaboration adapté lors d’un premier échange, gratuit et sans engagement.',
       },
-      quality: {
-        title: 'La qualité fait partie de chaque service',
-        items: [
-          'Tests automatisés intégrés au développement, exécutés à chaque modification via CI/CD',
-          'Revues de code systématiques avant intégration',
-          'Bonnes pratiques de sécurité applicative (référentiel OWASP Top 10)',
-          'Environnements conteneurisés pour que la recette reflète la production',
-        ],
-      },
-    },
-
-    work: {
-      title: 'Réalisations : projets web, mobiles et logiciels | TicTek',
-      description:
-        'Projets conçus et développés par TicTek : plateforme VTC avec IA et blockchain, outil d’aide aux décisions d’architecture, applications web et mobiles.',
-      h1: 'Réalisations',
-      lede: 'Quelques projets conçus et développés par l’équipe TicTek.',
-      labels: {
-        link: 'Voir le projet',
-      },
-    },
-
-    collaboration: {
-      title: 'Collaboration : forfait, marque blanche ou renfort d’équipe | TicTek',
-      description:
-        "Projet au forfait, sous-traitance en marque blanche pour les agences ou renfort d'équipe : comment TicTek travaille avec vous, étape par étape.",
-      h1: 'Comment travailler avec TicTek',
-      lede:
-        'Trois modes de collaboration, une même méthode. Choisissez celui qui correspond à votre organisation : nous pouvons aussi en changer en cours de route.',
-      fitLabel: 'Pour qui :',
-      processTitle: 'Les étapes d’un projet',
-      processLede: 'Pour un projet au forfait, toutes les étapes s’appliquent. En marque blanche ou en renfort, nous nous adaptons à votre propre processus.',
-      estimateTitle: 'Ce qui nous aide à estimer votre projet',
-      estimateItems: [
-        'Le problème à résoudre et les personnes qui utiliseront le logiciel',
-        'Les outils ou systèmes existants à connecter',
-        'Vos contraintes de délai et, si possible, une enveloppe budgétaire',
-        'Tout document existant : cahier des charges, maquettes, captures d’écran',
-      ],
-      faqTitle: 'Questions fréquentes',
+      faqTitle: 'Externalisation : questions fréquentes',
       faq: [
         {
-          q: 'Combien coûte un projet ?',
-          a: 'Cela dépend du périmètre, des intégrations et du niveau de qualité attendu. Notre taux horaire démarre à 8 $ US ; le budget total fait l’objet d’une estimation détaillée après le cadrage. Indiquer une enveloppe dans le formulaire nous aide à proposer une solution adaptée.',
+          q: 'Que peut-on externaliser chez TicTek ?',
+          a: 'Le développement d’une nouvelle application, une partie d’un projet existant, la maintenance, l’automatisation de processus ou l’intégration de l’IA. Vous pouvez aussi intégrer un développeur à votre propre équipe.',
         },
         {
-          q: 'Comment se passe le travail à distance ?',
-          a: 'Visioconférences pour les points importants, messagerie pour le quotidien, outil de tickets pour suivre les demandes, et démonstrations régulières sur un environnement de test.',
+          q: 'Dans quels délais pouvez-vous démarrer ?',
+          a: 'Dès que le périmètre et le modèle de collaboration sont validés. Un premier échange suffit pour vous dire quand nous pouvons démarrer votre projet.',
         },
         {
-          q: 'Travaillez-vous avec des clients dans d’autres fuseaux horaires ?',
-          a: 'Oui, nous travaillons à l’international. Madagascar est à UTC+3, sans changement d’heure : une à deux heures d’écart avec la France et la Suisse, sept à huit heures avec le Québec. Au démarrage, nous fixons ensemble des créneaux d’échange réguliers compatibles avec vos horaires ; le reste du suivi se fait de façon asynchrone dans vos outils.',
+          q: 'À qui appartient le code ?',
+          a: 'À vous. Une fois le travail payé, le code source et tous les accès vous appartiennent. Idéalement, le code est dans votre propre dépôt dès le premier jour.',
         },
         {
-          q: 'Pouvez-vous reprendre une application existante ?',
-          a: 'Oui. Nous commençons par examiner le code, les dépendances et l’infrastructure pour évaluer l’état du projet, puis nous proposons un plan de reprise.',
+          q: 'Pourra-t-on réinternaliser le développement plus tard ?',
+          a: 'Oui. Un code documenté, un historique Git complet et une passation avec votre équipe rendent cette transition simple.',
         },
       ],
     },
 
-    pricing: {
-      title: 'Tarifs : comment nous chiffrons votre projet logiciel | TicTek',
-      description:
-        "Taux horaire à partir de 8 $ US. Forfait, régie, maintenance mensuelle ou marque blanche : comment TicTek établit ses devis et ce qui fait varier le prix d'un projet.",
-      h1: 'Tarifs',
-      lede:
-        'Chaque projet logiciel est différent, mais voici un repère : notre taux horaire démarre à 8 $ US. Voici comment nous facturons, ce qui fait varier le prix et comment obtenir une estimation.',
-      rate: {
-        label: 'Taux horaire',
-        from: 'À partir de',
-        value: '8 $ US',
-        unit: '/ heure',
-        note: 'Le taux exact dépend des compétences demandées et du volume de l’engagement. Il est toujours indiqué dans le devis, avant tout démarrage.',
-      },
-      modelsTitle: 'Nos modes de facturation',
-      fitLabel: 'Pour :',
-      models: [
-        {
-          id: 'forfait',
-          title: 'Forfait',
-          text: "Un prix global fixé à l'avance, pour un périmètre défini ensemble lors du cadrage.",
-          points: [
-            'Prix, livrables et étapes fixés dans le devis',
-            'Évolutions hors périmètre chiffrées à part, avant réalisation',
-            'Échéancier de paiement précisé dans le devis',
-          ],
-          fit: 'projets au besoin clair : application, logiciel métier, MVP.',
-        },
-        {
-          id: 'regie',
-          title: 'Régie',
-          text: 'Vous réservez du temps de développement, facturé à l’heure ou au jour. Le périmètre peut évoluer librement.',
-          points: [
-            'À partir de 8 $ US de l’heure, taux précisé dans le devis',
-            'Suivi du temps passé partagé avec vous',
-            'Volume ajustable selon vos besoins',
-          ],
-          fit: "renfort d'équipe, produits en construction, besoins évolutifs.",
-        },
-        {
-          id: 'maintenance',
-          title: 'Maintenance mensuelle',
-          text: 'Un montant mensuel pour maintenir et faire évoluer une application en production.',
-          points: [
-            'Mises à jour de sécurité et des dépendances',
-            'Corrections et petites évolutions',
-            'Volume mensuel défini ensemble',
-          ],
-          fit: 'applications déjà en production.',
-        },
-        {
-          id: 'marque-blanche',
-          title: 'Marque blanche',
-          text: 'Des conditions adaptées aux agences qui intègrent nos développements dans leurs propres offres.',
-          points: [
-            'Au forfait par projet ou en régie',
-            'Facturation à votre agence uniquement',
-            'Discrétion totale vis-à-vis de vos clients',
-          ],
-          fit: 'agences web, digitales et de communication.',
-        },
-      ],
-      factorsTitle: 'Ce qui fait varier le prix',
-      factors: [
-        { title: 'Le périmètre', text: "Nombre d'écrans, de fonctionnalités et de types d'utilisateurs." },
-        { title: 'Les plateformes', text: 'Web, iOS, Android, ou plusieurs à la fois.' },
-        { title: 'Les intégrations', text: 'Connexion à vos outils existants, paiement en ligne, API tierces, IA.' },
-        { title: 'Le design', text: "Maquettes fournies par vous, ou conception de l'interface par nos soins." },
-        { title: "Le niveau d'exigence", text: 'Volume de données, sécurité, couverture de tests, disponibilité attendue.' },
-        { title: 'Les délais', text: 'Un calendrier serré peut demander plus de développeurs en parallèle.' },
-      ],
-      stepsTitle: 'Comment obtenir un devis',
-      steps: [
-        'Vous décrivez votre projet via le formulaire de contact, en indiquant si possible une enveloppe budgétaire.',
-        'Nous en parlons lors d’un premier appel, gratuit et sans engagement.',
-        'Nous vous envoyons une estimation écrite : périmètre, étapes, planning et prix.',
-      ],
-      faqTitle: 'Questions fréquentes',
-      faq: [
-        {
-          q: 'Pourquoi pas de prix fixe par type de projet ?',
-          a: 'Notre taux horaire démarre à 8 $ US, mais le coût total dépend du temps nécessaire. Deux applications qui se ressemblent peuvent demander des efforts très différents selon les intégrations, les volumes et le niveau d’exigence. Un prix forfaitaire affiché sans connaître votre projet serait soit trompeur, soit gonflé par précaution.',
-        },
-        {
-          q: 'Le premier échange est-il payant ?',
-          a: 'Non, le premier appel est gratuit et sans engagement. Pour un projet complexe, nous pouvons proposer une phase de cadrage avant l’estimation définitive ; elle est alors chiffrée à l’avance.',
-        },
-        {
-          q: 'Comment se passe le paiement ?',
-          a: 'L’échéancier (acompte, étapes, solde) est précisé dans chaque devis et validé avec vous avant tout démarrage.',
-        },
-      ],
-      cta: 'Demander un devis',
-    },
+    // Country pages (Market.jsx), keys from data/markets.js.
+    ...marketPages,
 
     careers: {
       title: 'Nous rejoindre : candidature spontanée | TicTek',
@@ -539,47 +848,52 @@ const fr = {
     },
 
     about: {
-      title: 'À propos de TicTek, équipe de développeurs à Antananarivo, Madagascar',
+      title: 'À propos de TicTek, équipe de développement logiciel à Madagascar',
       description:
-        'TicTek, équipe de développeurs basée à Antananarivo (Madagascar) et tournée vers l’international : mission, compétences, organisation et approche qualité.',
+        'TicTek, équipe de développement logiciel basée à Antananarivo (Madagascar) au service d’entreprises du monde entier : mission, vision, valeurs, équipe et méthodes.',
       h1: 'À propos de TicTek',
       lede:
-        'TicTek est une équipe de développeurs basée à Antananarivo, à Madagascar, qui travaille à distance avec des clients à l’international. Nous concevons, développons et maintenons des logiciels pour des entreprises qui cherchent un partenaire technique fiable, flexible et attentif aux coûts.',
-      sections: [
+        'TicTek est une équipe de développement logiciel basée à Antananarivo, à Madagascar, qui travaille à distance avec des entreprises du monde entier, en français et en anglais. Nous concevons, développons et maintenons des logiciels pour des entreprises qui cherchent un partenaire technique fiable, flexible et attentif aux coûts.',
+      intro: [
         {
           id: 'mission',
           title: 'Notre mission',
-          paragraphs: [
-            "Rendre le développement logiciel sur mesure accessible aux entreprises qui n'ont pas d'équipe technique, et apporter un renfort fiable à celles qui en ont une.",
-          ],
+          text: 'Donner aux entreprises de toutes tailles accès à une équipe de développement fiable : des logiciels sur mesure pour celles qui n’ont pas d’équipe technique, et un renfort solide pour celles qui en ont une.',
         },
         {
-          id: 'equipe',
-          title: 'Comment nous fonctionnons',
-          paragraphs: [
-            'Chaque projet a un responsable technique identifié, qui est votre interlocuteur du cadrage à la livraison.',
-            'Le travail est organisé en itérations courtes, suivies dans un outil de tickets partagé. Chaque modification passe par une revue de code et des tests automatisés avant d’être livrée.',
-          ],
+          id: 'vision',
+          title: 'Notre vision',
+          text: 'Montrer qu’une équipe basée à Madagascar peut être un partenaire technique durable pour des entreprises internationales, choisie pour la qualité de son travail et de sa communication, pas seulement pour ses coûts.',
         },
-        {
-          id: 'qualite',
-          title: 'Notre approche de la qualité',
-          paragraphs: [
-            'Nous considérons la qualité comme une discipline quotidienne, pas comme une phase de fin de projet : typage, tests automatisés, intégration continue, bonnes pratiques de sécurité et environnements conteneurisés.',
-            'Le but est simple : un logiciel que vos équipes peuvent faire évoluer sans devoir le réécrire.',
-          ],
-        },
-        {
-          id: 'distance',
-          title: 'Collaboration à distance',
-          paragraphs: [
-            'Depuis Madagascar, nous travaillons à distance avec des entreprises à l’international, en français et en anglais. Madagascar est à UTC+3, ce qui laisse une large plage horaire commune avec l’Europe ; avec les autres fuseaux, nous convenons de créneaux d’échange adaptés.',
-            'Les échanges se font par visioconférence, messagerie et outils de suivi partagés, selon vos habitudes.',
-          ],
-        },
+      ],
+      valuesTitle: 'Nos valeurs',
+      values: [
+        { title: 'Transparence', text: 'Des estimations claires et des conseils francs, y compris quand la réponse est « vous n’en avez pas besoin ».' },
+        { title: 'Fiabilité', text: 'Nous faisons ce que nous annonçons, dans les délais convenus, et prévenons tôt quand quelque chose change.' },
+        { title: 'Qualité', text: 'Un code testé, relu et documenté, que votre équipe peut continuer à faire évoluer.' },
+        { title: 'Partenariat', text: 'Nous travaillons comme une extension de votre équipe, avec vos objectifs en tête.' },
       ],
       teamTitle: 'L’équipe',
       teamLede: 'Les personnes qui conçoivent et développent vos projets, et avec qui vous échangez directement.',
+      workTitle: 'Comment nous travaillons',
+      work: [
+        {
+          title: 'Organisation',
+          text: 'Chaque projet a un responsable technique identifié, votre interlocuteur du cadrage à la livraison. Le travail est organisé en itérations courtes, suivies dans un outil de tickets partagé.',
+        },
+        {
+          title: 'Qualité',
+          text: 'Chaque modification passe par une revue de code et des tests automatisés avant d’être livrée. Typage, intégration continue et environnements conteneurisés font partie du quotidien.',
+        },
+        {
+          title: 'Collaboration',
+          text: 'Visioconférence pour les échanges importants, messagerie pour le quotidien, démonstrations régulières. Nous suivons vos habitudes et vos outils quand vous en avez.',
+        },
+        {
+          title: 'À distance, depuis Madagascar',
+          text: 'Madagascar est à UTC+3, avec une large plage horaire commune avec l’Europe. Avec les autres fuseaux, nous convenons de créneaux adaptés à vos horaires.',
+        },
+      ],
       skillsTitle: 'Compétences techniques',
       skills: [
         { name: 'Front-end', items: ['TypeScript', 'React', 'Next.js', 'Angular', 'Vue.js'] },
@@ -587,24 +901,27 @@ const fr = {
         { name: 'Mobile', items: ['React Native', 'Expo'] },
         { name: 'Données', items: ['PostgreSQL', 'MySQL', 'SQL Server', 'MongoDB', 'Redis'] },
         { name: 'DevOps', items: ['Docker', 'CI/CD', 'GitHub Actions', 'GitLab CI'] },
-        { name: 'IA et automatisation', items: ['API OpenAI', 'Gemini', 'n8n'] },
+        { name: 'IA et automatisation', items: ['API OpenAI', 'Gemini', 'Claude', 'n8n'] },
         { name: 'Blockchain et Web3', items: ['Solidity', 'Hardhat', 'Ethers.js', 'Polygon'] },
       ],
+      commitmentTitle: 'Notre engagement envers nos clients',
+      commitmentLede: 'Ce que vous pouvez attendre de nous sur chaque projet.',
     },
 
     contact: {
-      title: 'Contact : parlez-nous de votre projet logiciel | TicTek',
+      title: 'Contact : discutons de votre projet logiciel | TicTek',
       description:
-        "Décrivez votre projet d'application web, mobile, SaaS, d'automatisation ou d'intégration IA. TicTek vous répond par e-mail pour convenir d'un premier échange.",
+        'Parlez-nous de votre projet : développeur dédié, équipe externalisée, marque blanche, logiciel sur mesure, IA ou maintenance. Réponse sous un jour ouvré.',
       h1: 'Discutons de votre projet',
-      lede: "Décrivez votre besoin en quelques lignes. Nous vous répondons par e-mail pour convenir d'un premier échange.",
+      lede: 'Décrivez votre besoin en quelques lignes. Nous vous répondons sous un jour ouvré pour convenir d’un premier échange, en français ou en anglais.',
+      formTitle: 'Parlez-nous de votre projet',
       nextTitle: 'Et ensuite ?',
       next: [
         'Nous lisons votre demande et revenons vers vous par e-mail, avec nos questions éventuelles.',
-        'Nous organisons un premier échange en visioconférence, sans engagement.',
-        'Si le projet nous correspond, nous vous proposons un cadrage et une estimation écrite.',
+        'Nous organisons un premier échange en visioconférence, gratuit et sans engagement.',
+        'Nous vous envoyons une proposition écrite adaptée à votre besoin et à votre modèle de collaboration.',
       ],
-      directTitle: 'Nous écrire directement',
+      directTitle: 'Nous contacter directement',
     },
 
     blog: {
@@ -633,7 +950,7 @@ const fr = {
           id: 'formulaires',
           title: 'Formulaires de contact et de candidature',
           paragraphs: [
-            'Les informations que vous saisissez (nom, e-mail, description du projet ou candidature) servent uniquement à vous répondre. Elles nous sont transmises par e-mail via le service EmailJS, puis conservées dans notre messagerie le temps nécessaire au suivi de votre demande.',
+            'Les informations que vous saisissez (nom, e-mail, entreprise, pays, site web, description du projet, budget et délai, ou candidature) servent uniquement à vous répondre. Elles nous sont transmises par e-mail via le service EmailJS, puis conservées dans notre messagerie le temps nécessaire au suivi de votre demande.',
             'Elles ne sont ni revendues, ni utilisées pour de la prospection.',
           ],
         },
